@@ -1,0 +1,675 @@
+<title>SAMVEDNA Demo Run-Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+  :root {
+    --paper:   #F3F3F1;
+    --paper-2: #E7E8E4;
+    --card:    #FFFFFF;
+    --rule:    #D2D4CE;
+    --rule-2:  #E2E4DE;
+    --ink:     #15161A;
+    --ink-2:   #4A4D55;
+    --ink-3:   #7C8088;
+    --cue:     #C62F22;
+    --cue-soft:#FBE6E3;
+    --say:     #1F4E8C;
+    --say-soft:#E4EDF8;
+    --ok:      #1E6B45;
+    --ok-soft: #E1EFE7;
+    --sans: "Archivo", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #121316; --paper-2: #1A1C20; --card: #1B1D22;
+      --rule: #2C2F35; --rule-2: #24272C;
+      --ink: #ECEDEF; --ink-2: #A8ACB4; --ink-3: #797E86;
+      --cue: #F0655A; --cue-soft: #2D1614;
+      --say: #6FA3E0; --say-soft: #14212F;
+      --ok: #5DB588; --ok-soft: #142720;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #121316; --paper-2: #1A1C20; --card: #1B1D22;
+    --rule: #2C2F35; --rule-2: #24272C;
+    --ink: #ECEDEF; --ink-2: #A8ACB4; --ink-3: #797E86;
+    --cue: #F0655A; --cue-soft: #2D1614;
+    --say: #6FA3E0; --say-soft: #14212F;
+    --ok: #5DB588; --ok-soft: #142720;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: 15.5px; line-height: 1.58;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1000px; margin: 0 auto; padding: 0 24px 90px; }
+
+  h1, h2, h3 { margin: 0; font-weight: 800; letter-spacing: -0.022em; text-wrap: balance; }
+  h1 { font-size: clamp(2rem, 4.6vw, 2.9rem); line-height: 1.02; text-transform: uppercase; }
+  h2 { font-size: clamp(1.25rem, 2.4vw, 1.55rem); line-height: 1.14; }
+  h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  ul, ol { margin: 0; padding-inline-start: 20px; }
+  li + li { margin-top: 4px; }
+
+  .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  code {
+    font-family: var(--mono); font-size: 0.86em; background: var(--paper-2);
+    padding: 1px 5px; border-radius: 3px;
+  }
+  .label {
+    font-family: var(--mono); font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+  }
+
+  header {
+    padding: 52px 0 28px; border-bottom: 3px solid var(--ink);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  header .label { color: var(--cue); }
+  header .sub { color: var(--ink-2); max-width: 60ch; font-size: 1.04rem; }
+  .totals { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 4px; }
+  .total .n { font-family: var(--mono); font-size: 1.5rem; font-weight: 700; display: block; line-height: 1.1; }
+  .total .k { font-size: 0.74rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  section { padding-top: 46px; display: flex; flex-direction: column; gap: 16px; }
+
+  /* ---- pre-flight ---- */
+  .preflight {
+    background: var(--cue-soft); border: 2px solid var(--cue);
+    border-radius: 4px; padding: 22px 24px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .preflight h2 { color: var(--cue); }
+  .check { display: flex; gap: 11px; align-items: flex-start; }
+  .check .box {
+    font-family: var(--mono); font-weight: 700; color: var(--cue); flex-shrink: 0;
+  }
+
+  /* ---- cue cards ---- */
+  .cue {
+    background: var(--card); border: 1px solid var(--rule);
+    border-radius: 4px; overflow: hidden;
+    box-shadow: 0 1px 2px rgba(21,22,26,0.05);
+  }
+  .cue.key { border: 2px solid var(--cue); }
+  .cue-head {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 14px 20px; background: var(--paper-2); border-bottom: 1px solid var(--rule);
+  }
+  .cue.key .cue-head { background: var(--cue-soft); }
+  .cue-n {
+    font-family: var(--mono); font-size: 1.05rem; font-weight: 700;
+    background: var(--ink); color: var(--paper);
+    padding: 3px 10px; border-radius: 3px;
+  }
+  .cue.key .cue-n { background: var(--cue); color: #FFFFFF; }
+  .cue-head h3 { flex: 1; min-width: 180px; }
+  .badge {
+    font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 3px; white-space: nowrap;
+    border: 1px solid var(--rule); background: var(--card); color: var(--ink-2);
+  }
+  .badge.time { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .badge.who  { background: var(--say-soft); color: var(--say); border-color: var(--say); }
+
+  .cue-body { padding: 4px 20px 20px; display: flex; flex-direction: column; }
+  .block { padding: 15px 0; border-bottom: 1px dashed var(--rule-2); }
+  .block:last-child { border-bottom: none; }
+  .block > .label { display: block; margin-bottom: 7px; }
+  .block.do    > .label { color: var(--ink-3); }
+  .block.say   > .label { color: var(--say); }
+  .block.show  > .label { color: var(--ok); }
+  .block.watch > .label { color: var(--cue); }
+
+  .path {
+    font-family: var(--mono); font-size: 0.86rem; color: var(--ink);
+    background: var(--paper-2); border-radius: 3px; padding: 9px 12px;
+    display: block; overflow-x: auto; white-space: pre-wrap;
+  }
+  .script {
+    border-inline-start: 3px solid var(--say); padding-inline-start: 15px;
+    font-size: 1.04rem; color: var(--ink);
+  }
+  .script em { color: var(--say); font-style: normal; font-weight: 600; }
+
+  .figs { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
+  .fig {
+    display: grid; grid-template-columns: 148px 1fr; gap: 14px;
+    font-family: var(--mono); font-size: 0.82rem; align-items: baseline;
+  }
+  .fig .k { color: var(--ink-3); }
+  .fig .v { color: var(--ink); font-weight: 500; }
+
+  /* ---- Q&A ---- */
+  .qa { display: flex; flex-direction: column; gap: 0; }
+  .q {
+    padding: 16px 0; border-top: 1px solid var(--rule-2);
+    display: grid; grid-template-columns: 1fr 1.35fr; gap: 22px;
+  }
+  .q:last-child { border-bottom: 1px solid var(--rule-2); }
+  .q .ask { font-weight: 700; }
+  .q .ans { color: var(--ink-2); }
+  .q .ans strong { color: var(--ink); }
+
+  .note {
+    background: var(--paper-2); border-radius: 4px; padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .faint { color: var(--ink-3); font-size: 0.9rem; }
+  .measure { max-width: 66ch; }
+
+  footer {
+    margin-top: 66px; padding-top: 24px; border-top: 3px solid var(--ink);
+    display: flex; flex-direction: column; gap: 7px;
+    color: var(--ink-3); font-size: 0.9rem;
+  }
+
+  @media (max-width: 700px) {
+    .q { grid-template-columns: 1fr; gap: 6px; }
+    .fig { grid-template-columns: 1fr; gap: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="page">
+
+  <header>
+    <p class="label">Live demonstration · run-sheet</p>
+    <h1>SAMVEDNA<br>demo in six cues</h1>
+    <p class="sub">
+      Eight minutes, four chairs, one refusal. Every figure below is what the
+      running system currently shows — read it off the screen, don't recite it.
+    </p>
+    <div class="totals">
+      <div class="total"><span class="n">8</span><span class="k">minutes</span></div>
+      <div class="total"><span class="n">6</span><span class="k">cues</span></div>
+      <div class="total"><span class="n">4</span><span class="k">roles</span></div>
+      <div class="total"><span class="n">3</span><span class="k">to close on cue 3</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="preflight">
+      <p class="label">Before you open your mouth</p>
+      <h2>Pre-flight — do this ten minutes early</h2>
+      <div class="check">
+        <span class="box">1</span>
+        <span>
+          Run <code>./run.sh</code> from the <code>samvedna</code> folder. Wait
+          for <strong>&ldquo;ready: http://localhost:3100&rdquo;</strong>. It
+          will not say ready until the stylesheet actually loads, so if it says
+          ready, the page is fine.
+        </span>
+      </div>
+      <div class="check">
+        <span class="box">2</span>
+        <span>
+          Open <code>localhost:3100/demo</code> in one tab. Leave it there —
+          it is your prompt sheet, and each cue signs you into the right role.
+        </span>
+      </div>
+      <div class="check">
+        <span class="box">3</span>
+        <span>
+          Click <strong>Sign out</strong> on the role bar, so you start as a
+          member of the public. The first thing judges should see is the pitch,
+          not somebody's caseload.
+        </span>
+      </div>
+      <div class="check">
+        <span class="box">4</span>
+        <span>
+          Zoom the browser to <strong>110–125%</strong>. The gate formulas are
+          the point and they are small at 100% on a projector.
+        </span>
+      </div>
+      <div class="check">
+        <span class="box">5</span>
+        <span>
+          If anything looks unstyled, the servers went down.
+          <code>./run.sh</code> again — it takes about 40 seconds.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label" style="color: var(--ink-3)">The six cues</p>
+    <h2>Run it in this order</h2>
+    <p class="measure faint">
+      Each cue is: where to click, what to say, what to point at. The
+      <span style="color: var(--cue); font-weight: 700">red</span> one is the
+      one that wins the room — don't rush to it and don't go past it.
+    </p>
+  </section>
+
+  <!-- CUE 1 -->
+  <div class="cue">
+    <div class="cue-head">
+      <span class="cue-n">1</span>
+      <h3>The problem, and the shape of a night</h3>
+      <span class="badge who">public</span>
+      <span class="badge time">1 min</span>
+    </div>
+    <div class="cue-body">
+      <div class="block do">
+        <span class="label">Do</span>
+        <span class="path">localhost:3100  →  scroll to "The scale of the problem"</span>
+      </div>
+      <div class="block say">
+        <span class="label">Say</span>
+        <p class="script">
+          &ldquo;654 CAPF personnel died by suicide between 2018 and 2022 — one
+          every three days. 50,155 resigned or took early retirement in five
+          years. And the records that would have warned us were already
+          sitting in the files. <em>Nobody was reading them together, because no
+          human could.</em>&rdquo;
+        </p>
+      </div>
+      <div class="block show">
+        <span class="label">Then scroll to the funnel and show</span>
+        <div class="figs">
+          <div class="fig"><span class="k">screened</span><span class="v">240</span></div>
+          <div class="fig"><span class="k">something changed</span><span class="v">128</span></div>
+          <div class="fig"><span class="k">watched, not named</span><span class="v">125</span></div>
+          <div class="fig"><span class="k">named to an officer</span><span class="v">3</span></div>
+        </div>
+        <p class="faint" style="margin-top: 9px">
+          &ldquo;That last number is the product. Not the 240 — the 3.&rdquo;
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUE 2 -->
+  <div class="cue">
+    <div class="cue-head">
+      <span class="cue-n">2</span>
+      <h3>A case that cleared all four gates</h3>
+      <span class="badge who">welfare officer</span>
+      <span class="badge time">2 min</span>
+    </div>
+    <div class="cue-body">
+      <div class="block do">
+        <span class="label">Do</span>
+        <span class="path">/demo → cue 2 "Enter as Welfare Officer"  →  Open case  →  click any gate bar</span>
+      </div>
+      <div class="block say">
+        <span class="label">Say</span>
+        <p class="script">
+          &ldquo;This is 07:00 the next morning. Three cases, not 240. Watch what
+          she gets for each one.&rdquo; <em>Click a gate bar.</em> &ldquo;That is
+          the actual sum, with the actual numbers in it. She can defend this to
+          the man sitting opposite her.&rdquo;
+        </p>
+      </div>
+      <div class="block show">
+        <span class="label">Point at, in this order</span>
+        <div class="figs">
+          <div class="fig"><span class="k">composite</span><span class="v">0.905</span></div>
+          <div class="fig"><span class="k">evidence</span><span class="v">0.754 / 0.65 &nbsp;PASS</span></div>
+          <div class="fig"><span class="k">consistency</span><span class="v">1.000 / 0.70 &nbsp;PASS</span></div>
+          <div class="fig"><span class="k">persistence</span><span class="v">0.943 / 0.60 &nbsp;PASS</span></div>
+          <div class="fig"><span class="k">actionability</span><span class="v">1.000 / 0.50 &nbsp;PASS</span></div>
+          <div class="fig"><span class="k">roster rhythm</span><span class="v">longest unbroken run 31 days</span></div>
+          <div class="fig"><span class="k">action</span><span class="v">WLF-COUNSEL</span></div>
+        </div>
+      </div>
+      <div class="block watch">
+        <span class="label">The line judges remember</span>
+        <p class="script" style="border-color: var(--cue)">
+          Scroll to <strong>&ldquo;The case against — read this first&rdquo;</strong>
+          and say: &ldquo;Notice where this sits. <em>Above</em> the buttons. She
+          reads the argument against the flag before she is able to act on it.
+          That is the difference between decision support and an
+          instruction.&rdquo;
+        </p>
+      </div>
+      <div class="block do">
+        <span class="label">Finish the loop</span>
+        <span>
+          Click <strong>Reveal identity</strong> — &ldquo;logged before the name
+          is looked up&rdquo; — then <strong>Record contact</strong>, and show the
+          red banner appear: <em>close-out required</em>. Try closing with
+          nothing selected; you can't.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUE 3 -->
+  <div class="cue key">
+    <div class="cue-head">
+      <span class="cue-n">3</span>
+      <h3>What it refused to say</h3>
+      <span class="badge who">auditor</span>
+      <span class="badge time">2 min</span>
+    </div>
+    <div class="cue-body">
+      <div class="block do">
+        <span class="label">Do</span>
+        <span class="path">/demo → cue 3 "Enter as Auditor"  →  "What the system refused to say"  →  Why not</span>
+      </div>
+      <div class="block say">
+        <span class="label">Say</span>
+        <p class="script">
+          &ldquo;She saw three names. The system looked at 240 people, and for
+          <em>125 of them it decided to say nothing</em>. This is where a
+          governance board reviews those refusals — sorted nearest-miss first,
+          because the near misses are where the thresholds are actually doing
+          their work.&rdquo;
+        </p>
+      </div>
+      <div class="block show">
+        <span class="label">Open the top one and read it out</span>
+        <div class="figs">
+          <div class="fig"><span class="k">total refused</span><span class="v">125</span></div>
+          <div class="fig"><span class="k">nearest miss</span><span class="v">consistency, by 0.003</span></div>
+          <div class="fig"><span class="k">the sum</span><span class="v">mean(0.712, 0.708, 0.650) = 0.690</span></div>
+          <div class="fig"><span class="k">needed</span><span class="v">0.700</span></div>
+        </div>
+      </div>
+      <div class="block watch">
+        <span class="label">This is the whole pitch — slow down here</span>
+        <p class="script" style="border-color: var(--cue)">
+          &ldquo;Three thousandths of a point. This man had a real, sustained,
+          multi-record pattern — and his unit was moving with him, because the
+          unit is deployed. So the system produced <em>no name at all</em>. And
+          then it did the thing I want you to remember: it told us exactly what
+          would have changed its mind, in words an officer can go and
+          check.&rdquo;
+        </p>
+      </div>
+      <div class="block show">
+        <span class="label">Add the second half</span>
+        <p>
+          &ldquo;And notice <strong>who is looking at this screen</strong>. It's
+          the auditor, not the welfare officer. Handing an officer the list of
+          people the gates refused to name would undo the refusal — so she
+          cannot open this page. The server refuses her, not the menu.&rdquo;
+        </p>
+      </div>
+      <div class="block say">
+        <span class="label">If you have to stop, stop here</span>
+        <p class="script">
+          &ldquo;It did not stay silent because we told it to. It stayed silent
+          because the arithmetic came out that way — and it said exactly what
+          would have changed it.&rdquo;
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUE 4 -->
+  <div class="cue">
+    <div class="cue-head">
+      <span class="cue-n">4</span>
+      <h3>The same night, from the CO's chair</h3>
+      <span class="badge who">commanding officer</span>
+      <span class="badge time">1 min</span>
+    </div>
+    <div class="cue-body">
+      <div class="block do">
+        <span class="label">Do</span>
+        <span class="path">/demo → cue 4 "Enter as Commanding Officer"  →  then click UNIT-02</span>
+      </div>
+      <div class="block say">
+        <span class="label">Say</span>
+        <p class="script">
+          &ldquo;Same data, same morning, different chair. A CO gets a heat map of
+          where his unit is running hot, so he can fix rosters. <em>13 of 24
+          squares are showing. The other 11 are removed</em> — not blurred,
+          removed — because they cover fewer than five people.&rdquo;
+        </p>
+      </div>
+      <div class="block watch">
+        <span class="label">Then break it on purpose</span>
+        <p class="script" style="border-color: var(--cue)">
+          Click <strong>UNIT-02</strong>. &ldquo;He's scoped to UNIT-01. Watch.&rdquo;
+          <em>Refused.</em> &ldquo;And there is no 'show me who' button anywhere on
+          this screen — not because we hid it, but because the data that reached
+          this page contains no identifier at all. There is nothing to drill
+          into.&rdquo;
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUE 5 -->
+  <div class="cue">
+    <div class="cue-head">
+      <span class="cue-n">5</span>
+      <h3>What the jawan sees</h3>
+      <span class="badge who">personnel</span>
+      <span class="badge time">1.5 min</span>
+    </div>
+    <div class="cue-body">
+      <div class="block do">
+        <span class="label">Do</span>
+        <span class="path">/demo → cue 5 "Enter as Personnel"  →  click हिन्दी  →  then اردو</span>
+      </div>
+      <div class="block say">
+        <span class="label">Say</span>
+        <p class="script">
+          &ldquo;This has to be worth opening for <em>his</em> benefit. If it reads
+          as surveillance, nobody fills anything in and the best signal we have
+          dies.&rdquo; <em>Click हिन्दी.</em> &ldquo;Eight languages, each in its own
+          script.&rdquo; <em>Click اردو.</em> &ldquo;Including right to left.&rdquo;
+        </p>
+      </div>
+      <div class="block show">
+        <span class="label">Show three things fast</span>
+        <ul>
+          <li>
+            The page <em>opens</em> with &ldquo;what this system can and cannot
+            see about me&rdquo; — before any toggle.
+          </li>
+          <li>
+            The <strong>welfare-contact toggle is separate</strong>. Turn it off:
+            &ldquo;he can allow the analysis and still refuse to be
+            approached — and then no officer ever sees his name, whatever the
+            analysis finds.&rdquo;
+          </li>
+          <li>
+            Press <strong>Save my choices</strong> while in Hindi. <em>It
+            refuses.</em> &ldquo;No native speaker has verified that translation
+            yet, so the system will not record consent against words nobody has
+            checked.&rdquo;
+          </li>
+        </ul>
+      </div>
+      <div class="block watch">
+        <span class="label">Optional, if they look interested</span>
+        <p>
+          Take the PHQ-9. Answer <strong>anything above zero on question 9</strong>
+          and show the response: contacted today, routed to a mental-health
+          authority, <em>never</em> to the CO, and it bypasses all four gates.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUE 6 -->
+  <div class="cue">
+    <div class="cue-head">
+      <span class="cue-n">6</span>
+      <h3>Everything anybody did</h3>
+      <span class="badge who">auditor</span>
+      <span class="badge time">45 sec</span>
+    </div>
+    <div class="cue-body">
+      <div class="block do">
+        <span class="label">Do</span>
+        <span class="path">/audit  →  scroll past the refusals to the ledger  →  filter disclosure.granted</span>
+      </div>
+      <div class="block say">
+        <span class="label">Say</span>
+        <p class="script">
+          &ldquo;Everything you just watched me do is in here. The name I revealed
+          in cue two, with my operator ID. The close-out. Every entry carries the
+          hash of the one before it — <em>alter one and every hash after it
+          breaks</em>.&rdquo;
+        </p>
+      </div>
+      <div class="block show">
+        <span class="label">Point at</span>
+        <div class="figs">
+          <div class="fig"><span class="k">ledger entries</span><span class="v">131</span></div>
+          <div class="fig"><span class="k">chain</span><span class="v">verified</span></div>
+          <div class="fig"><span class="k">privacy budget</span><span class="v">13.0 of 60.0 ε spent</span></div>
+        </div>
+      </div>
+      <div class="block say">
+        <span class="label">Close on</span>
+        <p class="script">
+          &ldquo;And if this ledger had failed to write, the name would never have
+          been released. The audit record is written <em>before</em> the name is
+          looked up. There is no order of operations in which somebody gets named
+          without a record of it.&rdquo;
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <p class="label" style="color: var(--cue)">Q &amp; A</p>
+    <h2>The questions you will actually be asked</h2>
+    <div class="qa">
+      <div class="q">
+        <p class="ask">&ldquo;What's your model accuracy?&rdquo;</p>
+        <p class="ans">
+          &ldquo;About 0.92 AUROC on our synthetic data — and I'd ask you to
+          ignore that number. The published research gets 0.72 on real records,
+          and <strong>we designed for that</strong>. The four gates exist because
+          the model is not good enough to be trusted alone, and no accuracy
+          figure would change that.&rdquo;
+        </p>
+      </div>
+      <div class="q">
+        <p class="ask">&ldquo;What if the model is wrong?&rdquo;</p>
+        <p class="ans">
+          &ldquo;It is, often. That's why a score of 1.000 changes no gate value
+          and no verdict — we have a test that asserts it. And if the model file
+          is missing entirely, the night still runs and still escalates the same
+          people.&rdquo;
+        </p>
+      </div>
+      <div class="q">
+        <p class="ask">&ldquo;Won't this stigmatise people?&rdquo;</p>
+        <p class="ans">
+          Go back to cue 3. &ldquo;125 people were looked at and deliberately not
+          named. Weak evidence produces <strong>no name at all</strong> — not a
+          watchlist, not a maybe. And only a welfare officer ever sees an
+          identity.&rdquo;
+        </p>
+      </div>
+      <div class="q">
+        <p class="ask">&ldquo;Could a commander misuse it?&rdquo;</p>
+        <p class="ans">
+          Cue 4 again. &ldquo;His screen contains no identifier. There is no API
+          that would answer 'who is it'. And ACR, promotion, posting and
+          disciplinary purposes are refused for <strong>every</strong> role — in
+          the software, with a test.&rdquo;
+        </p>
+      </div>
+      <div class="q">
+        <p class="ask">&ldquo;Why would a jawan consent?&rdquo;</p>
+        <p class="ans">
+          &ldquo;Because the app gives him something: his own trend, the reasons
+          the officer saw, and one-tap withdrawal that nobody is told about. And
+          his self-assessment is worth a fifth of the evidence gate — it's the
+          only input he controls.&rdquo;
+        </p>
+      </div>
+      <div class="q">
+        <p class="ask">&ldquo;Have you tested it on real data?&rdquo;</p>
+        <p class="ans">
+          <strong>Say no, plainly.</strong> &ldquo;No. Everything you've seen runs
+          on realistic synthetic records. Phase 1 of our rollout is shadow mode
+          on one battalion's retrospective data — the gates run, every verdict is
+          recorded, and <em>no alert is issued to anybody</em> — so thresholds get
+          calibrated before a single officer is asked to act.&rdquo;
+        </p>
+      </div>
+      <div class="q">
+        <p class="ask">&ldquo;What about voice analysis?&rdquo;</p>
+        <p class="ans">
+          &ldquo;That's an add-on we explored after submission, and it's labelled
+          as one. It's tiered so it can corroborate a case and never make one.
+          And it's honest about its limit — a man who hides it well is invisible
+          to voice, which is exactly why the other eight signals carry the
+          case.&rdquo;
+        </p>
+      </div>
+      <div class="q">
+        <p class="ask">&ldquo;What's left to build?&rdquo;</p>
+        <p class="ans">
+          &ldquo;Three things. Seven of our eight translations need a native
+          speaker — the system refuses consent against them until then. Airflow,
+          Keycloak and Postgres are wired as swappable seams but never run
+          against the real thing. And nothing has touched a real record.&rdquo;
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="note">
+      <p class="label" style="color: var(--cue)">If something breaks live</p>
+      <p>
+        <strong>Page looks unstyled</strong> — the servers dropped.
+        <code>./run.sh</code>, about 40 seconds. It won't say ready until the
+        stylesheet loads.
+      </p>
+      <p>
+        <strong>A page says &ldquo;Refused&rdquo;</strong> — that is almost
+        certainly the demo working. Check the role bar at the top: you are
+        signed in as somebody who can't see that screen. Say so out loud; it
+        makes the point for you.
+      </p>
+      <p>
+        <strong>No network at the venue</strong> — doesn't matter. Nothing here
+        touches the internet. No cloud, no external API, no fonts fetched from
+        anywhere.
+      </p>
+      <p>
+        <strong>Laptop dies</strong> — <code>uv run samvedna cohorts</code> and
+        <code>uv run samvedna case pid-mon-0001</code> run the whole gate engine
+        in a terminal, formulas and all.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="label" style="color: var(--ink-3)">One sentence</p>
+    <h2>If you only get thirty seconds</h2>
+    <p class="script measure" style="font-size: 1.16rem">
+      &ldquo;Everyone builds a risk score. We built the thing that decides whether
+      a risk score is allowed to become a name — <em>and most nights, for most
+      people, the answer is no.</em>&rdquo;
+    </p>
+  </section>
+
+  <footer>
+    <span>
+      Every figure on this sheet was read from the running system. Re-check them
+      before you present — <code>./run.sh</code> generates a fresh night each time,
+      so the case IDs and the nearest-miss margin will differ.
+    </span>
+    <span>
+      566 automated tests · 8 languages · runs entirely offline ·
+      <code>localhost:3100</code>
+    </span>
+    <span>Smart India Hackathon 2026 · PS 26186 · Team CodeZila</span>
+  </footer>
+
+</div>

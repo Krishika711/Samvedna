@@ -1,0 +1,836 @@
+<title>SAMVEDNA in Plain Words</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --paper:    #F6F7F4;
+    --paper-2:  #ECEEE9;
+    --card:     #FFFFFF;
+    --rule:     #D8DCD5;
+    --rule-2:   #E7EAE4;
+    --ink:      #1D2320;
+    --ink-2:    #4B554F;
+    --ink-3:    #7C857E;
+    --rust:     #A8452C;
+    --rust-soft:#F7E7E1;
+    --slate:    #33544D;
+    --slate-soft:#E4EDEA;
+    --pass:     #2C6B4E;
+    --pass-soft:#E3EFE7;
+    --hold:     #93641A;
+    --hold-soft:#F8EEDA;
+
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body:    "Source Sans 3", system-ui, -apple-system, sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --measure: 62ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:    #141816;
+      --paper-2:  #1C221F;
+      --card:     #1D2422;
+      --rule:     #303A36;
+      --rule-2:   #27302C;
+      --ink:      #E8EDE9;
+      --ink-2:    #AAB4AE;
+      --ink-3:    #79837D;
+      --rust:     #E08A6E;
+      --rust-soft:#35201A;
+      --slate:    #85B8AC;
+      --slate-soft:#1B2B27;
+      --pass:     #6BB48D;
+      --pass-soft:#152A20;
+      --hold:     #D5A455;
+      --hold-soft:#2C2314;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141816; --paper-2: #1C221F; --card: #1D2422;
+    --rule: #303A36; --rule-2: #27302C;
+    --ink: #E8EDE9; --ink-2: #AAB4AE; --ink-3: #79837D;
+    --rust: #E08A6E; --rust-soft: #35201A;
+    --slate: #85B8AC; --slate-soft: #1B2B27;
+    --pass: #6BB48D; --pass-soft: #152A20;
+    --hold: #D5A455; --hold-soft: #2C2314;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 0 26px 100px; }
+  .col  { max-width: var(--measure); }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(2.2rem, 5.4vw, 3.4rem); line-height: 1.02; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.55rem, 3.2vw, 2.1rem); line-height: 1.12; letter-spacing: -0.014em; }
+  h3 { font-size: 1.16rem; line-height: 1.3; }
+  p  { margin: 0; }
+  ul, ol { margin: 0; padding-inline-start: 22px; }
+  li + li { margin-top: 5px; }
+  strong { font-weight: 600; }
+
+  .mono { font-family: var(--mono); font-size: 0.88em; font-variant-numeric: tabular-nums; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--rust); font-weight: 500;
+  }
+
+  /* ---------- opening ---------- */
+  header {
+    padding: 66px 0 40px;
+    display: flex; flex-direction: column; gap: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header .sub { font-size: 1.18rem; color: var(--ink-2); max-width: 56ch; }
+
+  section { padding-top: 58px; display: flex; flex-direction: column; gap: 18px; }
+  section > p, section > ul, section > ol { max-width: var(--measure); }
+
+  /* ---------- the plain-words band ---------- */
+  .plain {
+    background: var(--slate-soft);
+    border-radius: 4px;
+    padding: 22px 26px;
+    display: flex; flex-direction: column; gap: 9px;
+  }
+  .plain .tag {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--slate); font-weight: 500;
+  }
+  .plain p {
+    font-family: var(--display); font-size: 1.22rem; line-height: 1.42;
+    color: var(--ink); max-width: 52ch;
+  }
+
+  /* ---------- story ---------- */
+  .story {
+    background: var(--card); border: 1px solid var(--rule);
+    border-radius: 4px; padding: 26px 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .story-who {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    padding-bottom: 14px; border-bottom: 1px solid var(--rule-2);
+  }
+  .story-who .name { font-family: var(--display); font-size: 1.3rem; font-weight: 600; }
+  .story-who .rank { font-size: 0.9rem; color: var(--ink-3); }
+
+  .beat { display: grid; grid-template-columns: 78px 1fr; gap: 18px; }
+  .beat + .beat { padding-top: 16px; border-top: 1px dashed var(--rule-2); }
+  .beat .when {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--rust);
+    font-weight: 500; padding-top: 3px;
+  }
+  .beat .what { display: flex; flex-direction: column; gap: 7px; }
+  .beat .what strong { display: block; }
+
+  /* ---------- four tests ---------- */
+  .tests { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; }
+  .test { background: var(--card); padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .test-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .test-head .n {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--card);
+    background: var(--slate); padding: 3px 8px; border-radius: 2px; font-weight: 500;
+  }
+  .test-head h3 { flex: 1; }
+  .test .asks { font-size: 1.05rem; color: var(--ink); font-family: var(--display); }
+  .test .like { color: var(--ink-2); }
+  .test .like em { color: var(--rust); font-style: normal; font-weight: 600; }
+
+  /* ---------- gate figure ---------- */
+  .figure {
+    background: var(--card); border: 1px solid var(--rule);
+    border-radius: 4px; overflow: hidden;
+  }
+  .figure-head {
+    padding: 16px 22px; background: var(--paper-2);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .figure-head .who { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-3); }
+  .figure-head .spacer { flex: 1; }
+  .verdict-tag {
+    font-family: var(--mono); font-size: 0.74rem; font-weight: 500;
+    letter-spacing: 0.09em; padding: 3px 10px; border-radius: 2px;
+  }
+  .verdict-tag.named   { background: var(--pass-soft); color: var(--pass); }
+  .verdict-tag.silent  { background: var(--hold-soft); color: var(--hold); }
+  .rows { padding: 8px 22px 20px; }
+  .grow { padding: 14px 0; border-bottom: 1px dashed var(--rule-2); }
+  .grow:last-child { border-bottom: none; }
+  .grow-line { display: grid; grid-template-columns: 128px 1fr 58px 56px; gap: 12px; align-items: center; }
+  .grow-name { font-size: 0.94rem; color: var(--ink-2); }
+  .bar { position: relative; height: 9px; background: var(--paper-2); border-radius: 2px; border: 1px solid var(--rule-2); }
+  .fill { position: absolute; inset: 0 auto 0 0; border-radius: 1px; }
+  .fill.ok { background: var(--pass); }
+  .fill.no { background: var(--hold); }
+  .mark { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
+  .val { font-family: var(--mono); font-size: 0.92rem; text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; }
+  .val.ok { color: var(--pass); }
+  .val.no { color: var(--hold); }
+  .say { font-family: var(--mono); font-size: 0.68rem; text-align: right; letter-spacing: 0.05em; color: var(--ink-3); }
+  .maths {
+    font-family: var(--mono); font-size: 0.79rem; color: var(--ink-2);
+    background: var(--paper-2); border-radius: 3px;
+    margin-top: 9px; padding: 9px 12px; overflow-x: auto; white-space: pre;
+  }
+  .figure-foot {
+    padding: 18px 22px; border-top: 1px solid var(--rule);
+    background: var(--paper-2); display: flex; flex-direction: column; gap: 9px;
+  }
+
+  /* ---------- who sees what ---------- */
+  .people { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .person {
+    background: var(--card); border: 1px solid var(--rule); border-radius: 4px;
+    padding: 20px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .person h3 { font-size: 1.05rem; }
+  .person .line { display: flex; gap: 9px; font-size: 0.94rem; }
+  .person .line .m { font-family: var(--mono); flex-shrink: 0; font-weight: 500; }
+  .person .yes { color: var(--ink-2); }
+  .person .yes .m { color: var(--pass); }
+  .person .no  { color: var(--ink-3); }
+  .person .no .m { color: var(--rust); }
+
+  /* ---------- funnel ---------- */
+  .funnel { display: flex; flex-direction: column; gap: 7px; max-width: 640px; }
+  .rung { display: grid; grid-template-columns: 150px 1fr 62px; gap: 13px; align-items: center; }
+  .rung .lab { font-size: 0.93rem; color: var(--ink-2); }
+  .rung .b { height: 22px; border-radius: 2px; background: var(--slate); min-width: 4px; }
+  .rung .b.last { background: var(--rust); }
+  .rung .n { font-family: var(--mono); font-size: 0.9rem; font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  /* ---------- misc ---------- */
+  .note {
+    border-inline-start: 3px solid var(--rust);
+    padding: 4px 0 4px 20px; color: var(--ink-2); max-width: 56ch;
+  }
+  .bare { display: flex; flex-direction: column; gap: 0; }
+  .bare-row {
+    display: grid; grid-template-columns: 190px 1fr; gap: 20px;
+    padding: 14px 0; border-top: 1px solid var(--rule-2); align-items: baseline;
+  }
+  .bare-row:last-child { border-bottom: 1px solid var(--rule-2); }
+  .bare-row dt { font-weight: 600; }
+  .bare-row dd { margin: 0; color: var(--ink-2); }
+
+  .scroller { overflow-x: auto; }
+  .faint { color: var(--ink-3); font-size: 0.92rem; }
+
+  footer {
+    margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--rule);
+    color: var(--ink-3); font-size: 0.92rem;
+    display: flex; flex-direction: column; gap: 7px; max-width: var(--measure);
+  }
+
+  @media (max-width: 640px) {
+    .beat { grid-template-columns: 1fr; gap: 6px; }
+    .grow-line { grid-template-columns: 1fr 54px 50px; }
+    .grow-line .bar { grid-column: 1 / -1; order: 4; margin-top: 7px; }
+    .bare-row { grid-template-columns: 1fr; gap: 4px; }
+    .rung { grid-template-columns: 104px 1fr 54px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">SAMVEDNA · explained without jargon</p>
+    <h1>A system that has to<br>earn the right to<br>name a soldier</h1>
+    <p class="sub">
+      What it does, how it works, and why the most important thing about it is
+      what it refuses to do. No technical background needed.
+    </p>
+  </header>
+
+  <section>
+    <p class="eyebrow">Start here</p>
+    <h2>The problem, in one paragraph</h2>
+    <p>
+      In the CAPF and the Armed Forces, a jawan under severe stress is usually
+      noticed by a person — a section commander who sees something, or the jawan
+      himself walking in and saying so. Both are late. Between 2018 and 2022,
+      <strong>654 CAPF personnel died by suicide</strong> — roughly one every
+      three days. Another 50,155 resigned or took early retirement in five years.
+    </p>
+    <p>
+      Meanwhile, the force is already writing things down every day. Who was
+      refused leave. Who has worked twenty-three days without a break. Who has
+      been posted three times in eighteen months. Nobody reads all of it
+      together, because no human could.
+    </p>
+
+    <div class="plain">
+      <span class="tag">In plain words</span>
+      <p>
+        The information that would have told us someone was struggling was
+        already in the files. It just wasn't being read.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The obvious idea, and why it fails</p>
+    <h2>Why we didn't just build a risk score</h2>
+    <p>
+      The obvious thing to build is a program that reads all those records and
+      gives each person a score out of ten. Anyone can build that. We didn't,
+      and the reason is a number.
+    </p>
+    <p>
+      The best published research on predicting burnout from personnel records
+      gets it right about <strong>72% of the time</strong>. That sounds
+      reasonable. Now apply it to ten lakh personnel. You have just accused
+      thousands of people, wrongly, of being mentally unwell.
+    </p>
+    <p>
+      Each one of those is a real soldier being told, in effect, that a computer
+      thinks something is wrong with him. Word travels in a unit. After the first
+      few, nobody fills in a wellness form again, and the whole thing is dead.
+    </p>
+
+    <div class="plain">
+      <span class="tag">The core decision</span>
+      <p>
+        So we stopped letting the computer's guess be the answer. The guess is
+        only allowed to <em>raise a question</em>. Something else decides.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">How it actually works</p>
+    <h2>Four tests, and all four must pass</h2>
+    <p>
+      Think of it like a court, not a scanner. The computer is the person raising
+      a concern — a witness who says "I think something is wrong here." Before
+      that concern becomes a name handed to a welfare officer, it has to survive
+      four tests. Each one is plain arithmetic that a human can check on paper.
+    </p>
+
+    <div class="tests">
+      <div class="test">
+        <div class="test-head">
+          <span class="n">1</span>
+          <h3>Is there enough evidence?</h3>
+        </div>
+        <p class="asks">Is more than one thing pointing the same way?</p>
+        <p class="like">
+          <em>Like a court:</em> one witness is not enough, however confident he
+          sounds. This test counts how many different, unrelated records agree —
+          leave, roster, workload, and so on. It is built so that
+          <strong>no single record can ever pass it</strong>, no matter how
+          extreme. One unusual number about you is not a case about you.
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="test-head">
+          <span class="n">2</span>
+          <h3>Do they agree, or is one shouting?</h3>
+        </div>
+        <p class="asks">Is there an ordinary explanation we've missed?</p>
+        <p class="like">
+          <em>Like a court:</em> before believing the witnesses, check whether
+          they all have the same reason to be wrong. If a jawan's hours went up
+          — but so did everyone's in his unit, because the unit is deployed —
+          then his hours tell you about the deployment, not about him.
+          <strong>This is the test that does most of the work.</strong>
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="test-head">
+          <span class="n">3</span>
+          <h3>Has it lasted?</h3>
+        </div>
+        <p class="asks">Is this a pattern, or just a bad week?</p>
+        <p class="like">
+          <em>Like a court:</em> one incident is not a habit. This test weighs the
+          last month most heavily — long enough that a rough patch doesn't count,
+          short enough to act before things get worse. Everyone has bad weeks.
+          A bad month is different.
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="test-head">
+          <span class="n">4</span>
+          <h3>Is there anything we can do?</h3>
+        </div>
+        <p class="asks">And has he agreed to be approached at all?</p>
+        <p class="like">
+          <em>Like a court:</em> there is no point in a verdict with no remedy.
+          If nobody is already helping him, and there is a real action available
+          — a rest cycle, a leave review, a counselling referral — and
+          <strong>he has consented to being contacted</strong>, this passes.
+          If he hasn't consented, it fails instantly and completely.
+        </p>
+      </div>
+    </div>
+
+    <p class="note">
+      Miss any one of the four and no name is produced. Not a weaker warning, not
+      a "possible case" list. Nothing. Nobody learns his name.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">One night, one person</p>
+    <h2>Follow it through</h2>
+    <p>
+      Here is the whole system, as it happens to one man. He is not real — this
+      is a run on synthetic records — but every number below came out of the
+      working system.
+    </p>
+
+    <div class="story">
+      <div class="story-who">
+        <span class="name">A jawan in 7th Battalion</span>
+        <span class="rank">Head Constable · 11 years' service</span>
+      </div>
+
+      <div class="beat">
+        <span class="when">Months<br>before</span>
+        <div class="what">
+          <strong>Things start showing up in the files.</strong>
+          <p>
+            His leave is refused four times. His roster starts showing longer
+            unbroken stretches than he has ever worked. Nobody notices, because
+            these are three different clerks entering three different records in
+            three different systems.
+          </p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <span class="when">Earlier</span>
+        <div class="what">
+          <strong>He decided what the system may look at.</strong>
+          <p>
+            On his phone, in Hindi, he was shown a screen headed
+            <em>"what this system can and cannot see about me"</em> — before
+            being asked to agree to anything. He ticked service records and the
+            wellness questionnaire. He left the fitness-band option off. He also
+            agreed, as a separate question, that a welfare officer may approach
+            him. He could have said no to that and still allowed the analysis.
+          </p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <span class="when">02:00</span>
+        <div class="what">
+          <strong>The machine runs. Nobody is awake.</strong>
+          <p>
+            It pulls the records, and <em>immediately replaces every name and
+            service number with a meaningless code</em>. From this point on,
+            nothing in the system knows who he is. It works out how far each of
+            his numbers has moved <strong>from his own normal</strong> — not from
+            some force-wide average, because a man in a hard posting has always
+            worked hard and that is not news.
+          </p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <span class="when">02:00</span>
+        <div class="what">
+          <strong>Three assistants argue about him, in parallel.</strong>
+          <p>
+            One builds the strongest case that something is wrong. One hunts for
+            innocent explanations — is the unit deployed? was that leave
+            sanctioned? are records missing? One looks up what was tried with
+            similar cases before, including the ones that turned out to be
+            nothing.
+          </p>
+          <p class="faint">
+            None of the three gets to decide. They gather facts. If the second
+            one — the one looking for innocent explanations — fails to run, the
+            whole night refuses to name <em>anybody</em>.
+          </p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <span class="when">02:00</span>
+        <div class="what">
+          <strong>The four tests run. This is the only step that decides.</strong>
+          <p>
+            Four sums. Same input, same answer, every time. No cleverness, no
+            model, nothing that can't be checked by hand.
+          </p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <span class="when">07:00</span>
+        <div class="what">
+          <strong>A welfare officer opens her console.</strong>
+          <p>
+            She sees a line: <span class="mono">240 screened · 128 deviating ·
+            3 escalated</span>. Three cases. She opens the first.
+          </p>
+          <p>
+            She is shown three reasons in plain language, the four sums with the
+            actual numbers in them, <strong>and the argument against the flag —
+            placed above the buttons, so she reads it before she can act.</strong>
+            Then a recommended action.
+          </p>
+          <p>
+            She clicks to reveal his name. The system writes that down —
+            who asked, when, and why — <em>before</em> it looks his name up. And
+            she cannot close the case without saying what happened: helped,
+            didn't need help, already being helped, or he declined to talk.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The case that passed</p>
+    <h2>What "all four passed" looks like</h2>
+    <p>
+      The bar is how far the test got. The black line is the pass mark. Under
+      each is the actual sum — this is what the officer sees, and it is the whole
+      point of the design.
+    </p>
+
+    <div class="figure">
+      <div class="figure-head">
+        <span class="who">case 1a120eaf…</span>
+        <span class="spacer"></span>
+        <span class="verdict-tag named">NAME RELEASED</span>
+      </div>
+      <div class="rows">
+        <div class="grow">
+          <div class="grow-line">
+            <span class="grow-name">Enough evidence</span>
+            <span class="bar"><span class="fill ok" style="width:75.4%"></span><span class="mark" style="left:65%"></span></span>
+            <span class="val ok">0.754</span>
+            <span class="say">PASS</span>
+          </div>
+          <div class="maths">0.50 × 0.708 + 0.30 × 0.667 + 0.20 × 1 = 0.754</div>
+        </div>
+        <div class="grow">
+          <div class="grow-line">
+            <span class="grow-name">They agree</span>
+            <span class="bar"><span class="fill ok" style="width:100%"></span><span class="mark" style="left:70%"></span></span>
+            <span class="val ok">1.000</span>
+            <span class="say">PASS</span>
+          </div>
+          <div class="maths">no innocent explanation found — nothing pushed against it</div>
+        </div>
+        <div class="grow">
+          <div class="grow-line">
+            <span class="grow-name">It has lasted</span>
+            <span class="bar"><span class="fill ok" style="width:94.3%"></span><span class="mark" style="left:60%"></span></span>
+            <span class="val ok">0.943</span>
+            <span class="say">PASS</span>
+          </div>
+          <div class="maths">0.20 × 1.000 + 0.45 × 1.000 + 0.35 × 0.837 = 0.943</div>
+        </div>
+        <div class="grow">
+          <div class="grow-line">
+            <span class="grow-name">We can act</span>
+            <span class="bar"><span class="fill ok" style="width:100%"></span><span class="mark" style="left:50%"></span></span>
+            <span class="val ok">1.000</span>
+            <span class="say">PASS</span>
+          </div>
+          <div class="maths">action available × not already helped × he consented × capacity = 1.000</div>
+        </div>
+      </div>
+      <div class="figure-foot">
+        <p><strong>His name goes to the welfare officer, with these reasons attached.</strong></p>
+        <p class="faint">
+          Suggested action: referral to the unit counselling cell. Not a
+          diagnosis — the system never says what is wrong with anybody, only that
+          somebody should have a conversation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The case that mattered more</p>
+    <h2>And what "we are not going to say" looks like</h2>
+    <p>
+      A different man, same night. Three records moving together. Sustained for
+      months. On any ordinary dashboard this is a red flag — the strongest case
+      of the night.
+    </p>
+    <p>
+      But <strong>61% of his unit shows exactly the same pattern</strong>,
+      because the unit is deployed. The second test notices, and the case
+      collapses by six thousandths of a point.
+    </p>
+
+    <div class="figure">
+      <div class="figure-head">
+        <span class="who">case pid-mon-0001</span>
+        <span class="spacer"></span>
+        <span class="verdict-tag silent">NO NAME PRODUCED</span>
+      </div>
+      <div class="rows">
+        <div class="grow">
+          <div class="grow-line">
+            <span class="grow-name">Enough evidence</span>
+            <span class="bar"><span class="fill ok" style="width:100%"></span><span class="mark" style="left:65%"></span></span>
+            <span class="val ok">1.000</span>
+            <span class="say">PASS</span>
+          </div>
+          <div class="maths">three separate records, one of them a form he filled in himself</div>
+        </div>
+        <div class="grow">
+          <div class="grow-line">
+            <span class="grow-name">They agree</span>
+            <span class="bar"><span class="fill no" style="width:69.4%"></span><span class="mark" style="left:70%"></span></span>
+            <span class="val no">0.694</span>
+            <span class="say">FAILS</span>
+          </div>
+          <div class="maths">needs 0.700 — misses by 0.006. His unit is deployed.</div>
+        </div>
+        <div class="grow">
+          <div class="grow-line">
+            <span class="grow-name">It has lasted</span>
+            <span class="bar"><span class="fill ok" style="width:96.5%"></span><span class="mark" style="left:60%"></span></span>
+            <span class="val ok">0.965</span>
+            <span class="say">PASS</span>
+          </div>
+          <div class="maths">breaching nearly every day for three months</div>
+        </div>
+        <div class="grow">
+          <div class="grow-line">
+            <span class="grow-name">We can act</span>
+            <span class="bar"><span class="fill ok" style="width:100%"></span><span class="mark" style="left:50%"></span></span>
+            <span class="val ok">1.000</span>
+            <span class="say">PASS</span>
+          </div>
+          <div class="maths">everything available, and he had consented</div>
+        </div>
+      </div>
+      <div class="figure-foot">
+        <p><strong>Nobody learns his name. No alert is raised.</strong></p>
+        <p class="faint">
+          Instead the system says what would change its mind, in words the
+          officer can go and check: <em>"if this is still there after the unit's
+          deployment ends."</em> And it re-labels the finding as what it actually
+          is — a workload problem for the commanding officer to fix by changing
+          rosters, not a welfare concern about one man.
+        </p>
+      </div>
+    </div>
+
+    <div class="plain">
+      <span class="tag">This is the whole system</span>
+      <p>
+        It did not stay quiet because someone told it to. It stayed quiet because
+        the sums came out that way — and then it explained exactly what would
+        have changed them.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The shape of a night</p>
+    <h2>How few people reach a human</h2>
+    <div class="funnel">
+      <div class="rung">
+        <span class="lab">looked at</span>
+        <span class="b" style="width:100%"></span>
+        <span class="n">240</span>
+      </div>
+      <div class="rung">
+        <span class="lab">something changed</span>
+        <span class="b" style="width:53.3%"></span>
+        <span class="n">128</span>
+      </div>
+      <div class="rung">
+        <span class="lab">kept an eye on</span>
+        <span class="b" style="width:52.1%"></span>
+        <span class="n">125</span>
+      </div>
+      <div class="rung">
+        <span class="lab">name released</span>
+        <span class="b last" style="width:1.25%"></span>
+        <span class="n">3</span>
+      </div>
+    </div>
+    <p>
+      125 people were looked at, found to have changed, and
+      <strong>deliberately not named</strong>. That is not the system failing to
+      find them. That is the system declining to accuse them on evidence that
+      didn't hold up.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Who sees what</p>
+    <h2>Four people, four completely different screens</h2>
+    <p>
+      This is enforced deep in the software, not by hiding menu items. If someone
+      opens the wrong page, the system refuses — a mistake in the app could not
+      leak a name, because the name was never sent to it.
+    </p>
+
+    <div class="people">
+      <div class="person">
+        <h3>The jawan</h3>
+        <p class="line yes"><span class="m">✓</span><span>His own records, his own consent, in his own language</span></p>
+        <p class="line yes"><span class="m">✓</span><span>Why the system looked at him — the same reasons the officer got</span></p>
+        <p class="line no"><span class="m">✗</span><span>Anything at all about anybody else</span></p>
+      </div>
+      <div class="person">
+        <h3>The welfare officer</h3>
+        <p class="line yes"><span class="m">✓</span><span>Names, only for cases that passed all four tests, only in her own units</span></p>
+        <p class="line yes"><span class="m">✓</span><span>The reasons, the sums, and the argument against</span></p>
+        <p class="line no"><span class="m">✗</span><span>Anyone the tests refused — no name exists to show her</span></p>
+        <p class="line no"><span class="m">✗</span><span>His actual answers to any questionnaire</span></p>
+      </div>
+      <div class="person">
+        <h3>The commanding officer</h3>
+        <p class="line yes"><span class="m">✓</span><span>A heat map of where his unit is running hot, so he can fix rosters</span></p>
+        <p class="line no"><span class="m">✗</span><span><strong>Any individual, ever.</strong> There is no button, and no way to build one</span></p>
+        <p class="line no"><span class="m">✗</span><span>Any square covering fewer than five people — it is removed, not blurred</span></p>
+      </div>
+      <div class="person">
+        <h3>The auditor</h3>
+        <p class="line yes"><span class="m">✓</span><span>Every access, decision and override ever made, in a tamper-proof list</span></p>
+        <p class="line no"><span class="m">✗</span><span>Any name. Reading the list never reveals who anyone is</span></p>
+        <p class="line no"><span class="m">✗</span><span>The contents of anything — only that an event happened</span></p>
+      </div>
+    </div>
+
+    <p class="note">
+      The commanding officer's screen is the one people ask about most. When a CO
+      asks "so who is it?", the honest answer is a process, not a name: raise the
+      welfare cell's capacity, and let the welfare officer — who is trained for
+      this and is not in his chain of command — work the individual cases.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Two promises</p>
+    <h2>What it will never be used for</h2>
+    <div class="bare">
+      <div class="bare-row">
+        <dt>Never for your career</dt>
+        <dd>
+          Nothing this system produces can reach your ACR, your promotion, your
+          posting, or any disciplinary process. That isn't a policy in a
+          document — it is blocked in the software for every single role, and
+          tested.
+        </dd>
+      </div>
+      <div class="bare-row">
+        <dt>Withdrawing is invisible</dt>
+        <dd>
+          If you pull your consent, nobody is told. Not your CO, not your welfare
+          officer. There is no "recently withdrawn" list anywhere for anybody to
+          notice, because we did not build one. Only an auditor can see that an
+          event occurred at all.
+        </dd>
+      </div>
+      <div class="bare-row">
+        <dt>Never a diagnosis</dt>
+        <dd>
+          The system never says anyone is depressed or unwell. It says somebody
+          should have a conversation, and suggests what kind. A doctor diagnoses.
+          This does not.
+        </dd>
+      </div>
+      <div class="bare-row">
+        <dt>If you say it out loud</dt>
+        <dd>
+          If you write something urgent into the app — the questionnaire has one
+          question specifically about this — it does not wait for tonight's run
+          and it does not go through the four tests. Someone qualified contacts
+          you the same working day, and it goes to a mental-health authority,
+          never to your commanding officer.
+        </dd>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Being straight about it</p>
+    <h2>What this cannot do</h2>
+    <p>
+      Every claim above is tested. These are the things we cannot claim.
+    </p>
+    <ul>
+      <li>
+        <strong>It cannot see a man who hides it well.</strong> Someone who is
+        struggling and says nothing and shows nothing in the records is invisible
+        to this, completely. It is a net with a known mesh size, not a
+        mind-reader.
+      </li>
+      <li>
+        <strong>It will still miss people.</strong> We deliberately tuned it to
+        stay quiet when unsure. That choice means some genuine cases wait until
+        the next cycle. We made it on purpose: a missed early signal can be
+        caught next month, and a wrongly named soldier cannot be un-named.
+      </li>
+      <li>
+        <strong>Seven of its eight languages have not been checked by a native
+        speaker yet.</strong> They are complete and we wrote them carefully, but
+        the system <em>refuses to record consent</em> against an unverified
+        translation. Getting them checked is a real task still outstanding.
+      </li>
+      <li>
+        <strong>It has never seen real records.</strong> Everything works, end to
+        end, on realistic invented data. Nothing here has been tested on a real
+        force, and no accuracy figure from this build means anything about real
+        people.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">If you remember one thing</p>
+    <h2>The sentence it all comes down to</h2>
+    <div class="plain">
+      <span class="tag">The design in one line</span>
+      <p>
+        The computer may raise the concern. The evidence has to back it up. Plain
+        arithmetic makes the decision. And a human being takes the action.
+      </p>
+    </div>
+    <p>
+      Everything else in this document is a consequence of putting those four
+      things in that order — and refusing to let the computer skip to the end.
+    </p>
+  </section>
+
+  <footer>
+    <span>
+      Every figure in this document was read from the working system, not written
+      by hand. 561 automated tests · 8 languages · runs entirely offline with no
+      internet connection.
+    </span>
+    <span>
+      Smart India Hackathon 2026 · Problem Statement 26186 · Team CodeZila
+    </span>
+    <span>
+      Welfare support, never disciplinary action.
+    </span>
+  </footer>
+
+</div>

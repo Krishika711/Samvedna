@@ -1,0 +1,747 @@
+<title>How SAMVEDNA Decides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --paper:      #F1F3F0;
+    --paper-2:    #E7EAE6;
+    --card:       #FBFCFA;
+    --rule:       #D2D8D2;
+    --ink:        #191E1C;
+    --ink-2:      #4A534E;
+    --ink-3:      #7C857F;
+    --pine:       #2F5347;
+    --pine-soft:  #E2EBE5;
+    --pass:       #3F7057;
+    --pass-soft:  #E1EDE5;
+    --hold:       #9C6B2F;
+    --hold-soft:  #F4E9D8;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --measure: 66ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:     #121715;
+      --paper-2:   #1A211E;
+      --card:      #1B2320;
+      --rule:      #2E3833;
+      --ink:       #E8EDE9;
+      --ink-2:     #A9B4AE;
+      --ink-3:     #77837C;
+      --pine:      #8FC4AC;
+      --pine-soft: #1E2E28;
+      --pass:      #6FB48F;
+      --pass-soft: #172C22;
+      --hold:      #D9A45F;
+      --hold-soft: #2C2313;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:     #121715;
+    --paper-2:   #1A211E;
+    --card:      #1B2320;
+    --rule:      #2E3833;
+    --ink:       #E8EDE9;
+    --ink-2:     #A9B4AE;
+    --ink-3:     #77837C;
+    --pine:      #8FC4AC;
+    --pine-soft: #1E2E28;
+    --pass:      #6FB48F;
+    --pass-soft: #172C22;
+    --hold:      #D9A45F;
+    --hold-soft: #2C2313;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 24px 96px; }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(2.1rem, 5vw, 3.1rem); line-height: 1.08; letter-spacing: -0.015em; }
+  h2 { font-size: clamp(1.5rem, 3vw, 1.95rem); line-height: 1.15; letter-spacing: -0.01em; }
+  h3 { font-size: 1.15rem; line-height: 1.25; }
+  p  { margin: 0; max-width: var(--measure); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  .lede { font-size: 1.12rem; color: var(--ink-2); }
+
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding: 56px 0 32px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .masthead-meta {
+    display: flex; flex-wrap: wrap; gap: 8px 20px;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--ink-3);
+    letter-spacing: 0.05em;
+  }
+
+  .thesis {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    line-height: 1.42;
+    color: var(--ink);
+    border-left: 3px solid var(--pine);
+    padding: 4px 0 4px 22px;
+    max-width: 30em;
+  }
+  .thesis em { font-style: italic; color: var(--pine); }
+
+  section { padding-top: 56px; display: flex; flex-direction: column; gap: 20px; }
+  section > .stack { display: flex; flex-direction: column; gap: 14px; }
+
+  .verdict {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .verdict-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-2);
+  }
+  .verdict-head .pid { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-3); }
+  .verdict-head .spacer { flex: 1; }
+  .decision {
+    font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.1em; padding: 3px 10px; border-radius: 2px;
+  }
+  .decision.named   { background: var(--pass-soft); color: var(--pass); }
+  .decision.unnamed { background: var(--hold-soft); color: var(--hold); }
+
+  .gates { padding: 6px 20px 18px; }
+  .gate { padding: 14px 0; border-bottom: 1px dashed var(--rule); }
+  .gate:last-child { border-bottom: none; }
+  .gate-row {
+    display: grid;
+    grid-template-columns: 116px 1fr 62px 46px;
+    align-items: center; gap: 12px;
+  }
+  .gate-name { font-size: 0.9rem; color: var(--ink-2); }
+  .track {
+    position: relative; height: 7px; background: var(--paper-2);
+    border-radius: 1px;
+  }
+  .fill { position: absolute; inset: 0 auto 0 0; border-radius: 1px; }
+  .fill.ok   { background: var(--pass); }
+  .fill.hold { background: var(--hold); }
+  .thresh {
+    position: absolute; top: -4px; bottom: -4px; width: 1.5px;
+    background: var(--ink-3);
+  }
+  .gate-val {
+    font-family: var(--mono); font-size: 0.9rem;
+    font-variant-numeric: tabular-nums; text-align: right;
+  }
+  .gate-val.ok   { color: var(--pass); }
+  .gate-val.hold { color: var(--hold); font-weight: 500; }
+  .gate-flag {
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em;
+    text-align: right; color: var(--ink-3);
+  }
+  .formula {
+    font-family: var(--mono); font-size: 0.79rem;
+    color: var(--ink-2); background: var(--paper-2);
+    margin-top: 9px; padding: 8px 11px; border-radius: 2px;
+    overflow-x: auto; white-space: pre;
+  }
+  .gate-ask { font-size: 0.85rem; color: var(--ink-3); margin-top: 7px; }
+
+  .verdict-foot {
+    padding: 15px 20px; border-top: 1px solid var(--rule);
+    background: var(--paper-2); font-size: 0.9rem; color: var(--ink-2);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .verdict-foot strong { color: var(--ink); font-weight: 600; }
+
+  .asks { display: flex; flex-direction: column; gap: 0; }
+  .ask {
+    display: grid; grid-template-columns: 132px 1fr 76px;
+    gap: 16px; padding: 15px 0; border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .ask:last-child { border-bottom: 1px solid var(--rule); }
+  .ask dt { font-family: var(--mono); font-size: 0.8rem; color: var(--pine); letter-spacing: 0.03em; }
+  .ask dd { margin: 0; font-size: 0.94rem; color: var(--ink-2); }
+  .ask .need {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--ink-3);
+    text-align: right; font-variant-numeric: tabular-nums;
+  }
+
+  .pipeline { display: flex; flex-direction: column; }
+  .stage {
+    display: grid;
+    grid-template-columns: 30px 148px 1fr auto;
+    gap: 16px; align-items: baseline;
+    padding: 13px 0; border-top: 1px solid var(--rule);
+  }
+  .stage:last-child { border-bottom: 1px solid var(--rule); }
+  .stage .n {
+    font-family: var(--mono); font-size: 0.74rem; color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .stage .what { font-weight: 500; font-size: 0.93rem; }
+  .stage .does { font-size: 0.88rem; color: var(--ink-2); }
+  .stage .count {
+    font-family: var(--mono); font-size: 0.8rem; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .stage.decides { background: var(--pine-soft); margin: 0 -12px; padding: 13px 12px; }
+  .stage.decides .what { color: var(--pine); }
+
+  .funnel { display: flex; flex-direction: column; gap: 3px; }
+  .rung { display: grid; grid-template-columns: 128px 1fr 92px; gap: 14px; align-items: center; }
+  .rung .label { font-size: 0.87rem; color: var(--ink-2); }
+  .rung .bar { height: 22px; background: var(--pine); border-radius: 1px; opacity: 0.82; }
+  .rung .bar.final { background: var(--pass); opacity: 1; }
+  .rung .n {
+    font-family: var(--mono); font-size: 0.84rem; color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .roles { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 3px; }
+  .role { background: var(--card); padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .role h3 { font-size: 1rem; }
+  .role .can, .role .cannot { font-size: 0.88rem; display: flex; gap: 9px; }
+  .role .can    { color: var(--ink-2); }
+  .role .cannot { color: var(--ink-3); }
+  .role .mark { font-family: var(--mono); flex-shrink: 0; }
+  .role .can .mark    { color: var(--pass); }
+  .role .cannot .mark { color: var(--hold); }
+
+  .callout {
+    background: var(--pine-soft); border-radius: 3px;
+    padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .callout p { color: var(--ink-2); }
+  .callout .head { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); }
+
+  .lineage { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .lineage th {
+    text-align: left; font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+    padding: 0 12px 8px 0; border-bottom: 1px solid var(--rule); font-weight: 500;
+  }
+  .lineage td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-2); }
+  .lineage td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .lineage .no { color: var(--hold); font-family: var(--mono); font-size: 0.8rem; }
+  .lineage .yes { color: var(--pass); font-family: var(--mono); font-size: 0.8rem; }
+
+  .scroller { overflow-x: auto; }
+
+  footer {
+    margin-top: 72px; padding-top: 26px; border-top: 1px solid var(--rule);
+    font-size: 0.85rem; color: var(--ink-3);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  footer code { font-family: var(--mono); font-size: 0.85em; color: var(--ink-2); }
+  a { color: var(--pine); }
+
+  @media (max-width: 640px) {
+    .gate-row { grid-template-columns: 1fr 58px 42px; }
+    .gate-row .track { grid-column: 1 / -1; order: 3; margin-top: 6px; }
+    .ask { grid-template-columns: 1fr; gap: 5px; }
+    .ask .need { text-align: left; }
+    .stage { grid-template-columns: 26px 1fr; }
+    .stage .does, .stage .count { grid-column: 2; }
+    .rung { grid-template-columns: 100px 1fr 74px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Predictive personnel welfare monitoring · SIH 2026 · PS 26186</p>
+    <h1>How SAMVEDNA decides</h1>
+    <p class="lede">
+      Every number on this page came out of the system running on your machine
+      just now. Nothing here is illustrative.
+    </p>
+    <div class="masthead-meta">
+      <span>config 2026.09.05-1</span>
+      <span>597 tests</span>
+      <span>8 languages</span>
+      <span>7.7 ms per person</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="eyebrow">The problem</p>
+    <h2>A risk score is not a decision</h2>
+    <div class="stack">
+      <p>
+        Published machine-learning models for burnout risk reach roughly
+        <strong>AUROC 0.72</strong> on personnel-record data. Deploy a raw score
+        like that across ten lakh personnel and you name thousands of people
+        wrongly — each one a soldier told, in effect, that a computer thinks
+        something is wrong with them.
+      </p>
+      <p>
+        The problem statement names its own hardest risks: false positives,
+        stigmatisation, and trust. A bare classifier makes all three worse. So
+        the score is not allowed to be the answer.
+      </p>
+    </div>
+    <p class="thesis">
+      The model raises the concern. The evidence must corroborate it.
+      <em>The arithmetic makes the decision.</em> A welfare officer takes the action.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The mechanism</p>
+    <h2>Four gates, and all four must clear</h2>
+    <p>
+      A model can suggest that somebody is struggling. Before that suggestion
+      becomes a name on an officer's screen, it has to pass four separate
+      arithmetic tests. Each one asks a different question, and each is computed
+      by hand-checkable formula — not by a model.
+    </p>
+
+    <dl class="asks">
+      <div class="ask">
+        <dt>evidence</dt>
+        <dd>Is there enough corroborated signal to be talking about a person at all? One domain alone can never clear this — the maths won't allow it.</dd>
+        <span class="need">&ge; 0.65</span>
+      </div>
+      <div class="ask">
+        <dt>consistency</dt>
+        <dd>Do the signals agree with each other, or is one anomaly shouting? Benign explanations — a unit deployment, sanctioned leave — push this down.</dd>
+        <span class="need">&ge; 0.70</span>
+      </div>
+      <div class="ask">
+        <dt>persistence</dt>
+        <dd>Sustained, or a bad week? Weighted toward the 30-day window: long enough to exclude a rough patch, short enough to act before a crisis.</dd>
+        <span class="need">&ge; 0.60</span>
+      </div>
+      <div class="ask">
+        <dt>actionability</dt>
+        <dd>Is there a welfare action that fits, that isn't already being taken, that this person consented to? Three hard vetoes — any one forces zero.</dd>
+        <span class="need">&ge; 0.50</span>
+      </div>
+    </dl>
+  </section>
+
+  <section>
+    <p class="eyebrow">Watch it work — case 1 of 2</p>
+    <h2>All four clear, so a name is produced</h2>
+    <p>
+      A real case from last night's run. Three domains deviating, sustained over
+      months, a voluntary self-assessment among them, and nothing in the unit
+      explaining it away.
+    </p>
+
+    <div class="verdict">
+      <div class="verdict-head">
+        <span class="pid">1a120eaf3d&hellip;</span>
+        <span class="spacer"></span>
+        <span class="pid">composite 0.905</span>
+        <span class="decision named">ESCALATE</span>
+      </div>
+      <div class="gates">
+        <div class="gate">
+          <div class="gate-row">
+            <span class="gate-name">evidence</span>
+            <span class="track"><span class="fill ok" style="width:75.4%"></span><span class="thresh" style="left:65%"></span></span>
+            <span class="gate-val ok">0.754</span>
+            <span class="gate-flag">CLEAR</span>
+          </div>
+          <div class="formula">evidence = 0.50 &times; 0.708 + 0.30 &times; 0.667 + 0.20 &times; 1 = 0.754</div>
+          <p class="gate-ask">Volume, breadth, and a validated self-assessment present.</p>
+        </div>
+        <div class="gate">
+          <div class="gate-row">
+            <span class="gate-name">consistency</span>
+            <span class="track"><span class="fill ok" style="width:100%"></span><span class="thresh" style="left:70%"></span></span>
+            <span class="gate-val ok">1.000</span>
+            <span class="gate-flag">CLEAR</span>
+          </div>
+          <div class="formula">consistency = mean(1.000, 1.000) = 1.000</div>
+          <p class="gate-ask">The domains agree, and no benign explanation was found.</p>
+        </div>
+        <div class="gate">
+          <div class="gate-row">
+            <span class="gate-name">persistence</span>
+            <span class="track"><span class="fill ok" style="width:94.3%"></span><span class="thresh" style="left:60%"></span></span>
+            <span class="gate-val ok">0.943</span>
+            <span class="gate-flag">CLEAR</span>
+          </div>
+          <div class="formula">0.20 &times; 1.000 + 0.45 &times; 1.000 + 0.35 &times; 0.837 = 0.943</div>
+          <p class="gate-ask">Breaching almost every day across 7, 30 and 90-day windows.</p>
+        </div>
+        <div class="gate">
+          <div class="gate-row">
+            <span class="gate-name">actionability</span>
+            <span class="track"><span class="fill ok" style="width:100%"></span><span class="thresh" style="left:50%"></span></span>
+            <span class="gate-val ok">1.000</span>
+            <span class="gate-flag">CLEAR</span>
+          </div>
+          <div class="formula">actionability = 1 &times; 1 &times; 1 &times; (0.75 + 0.25 &times; 1) = 1.000</div>
+          <p class="gate-ask">Action matched · not a duplicate · consented · capacity available.</p>
+        </div>
+      </div>
+      <div class="verdict-foot">
+        <span><strong>A name is released to the welfare officer.</strong></span>
+        <span>Recommended: WLF-COUNSEL — referral to the unit counselling cell.</span>
+        <span>The disclosure is written to the audit ledger <em>before</em> the name is looked up.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Watch it refuse — case 2 of 2</p>
+    <h2>One gate misses by 0.006, and nobody is named</h2>
+    <p>
+      Same machinery, different person. This jawan shows a strong, sustained
+      deviation across three domains — evidence <strong>1.000</strong>,
+      persistence <strong>0.965</strong>. On any dashboard built around a risk
+      score, this is a flag.
+    </p>
+    <p>
+      But 45&ndash;61% of their unit is deviating the same way, because the unit is
+      deployed. The Confounder Check finds it, contributes mass against the
+      signal, and consistency lands at <strong>0.694</strong> against a
+      <strong>0.700</strong> threshold.
+    </p>
+
+    <div class="verdict">
+      <div class="verdict-head">
+        <span class="pid">pid-mon-0001</span>
+        <span class="spacer"></span>
+        <span class="pid">composite 0.817</span>
+        <span class="decision unnamed">MONITOR · NO NAME</span>
+      </div>
+      <div class="gates">
+        <div class="gate">
+          <div class="gate-row">
+            <span class="gate-name">evidence</span>
+            <span class="track"><span class="fill ok" style="width:100%"></span><span class="thresh" style="left:65%"></span></span>
+            <span class="gate-val ok">1.000</span>
+            <span class="gate-flag">CLEAR</span>
+          </div>
+          <div class="formula">evidence = 0.50 &times; 1.000 + 0.30 &times; 1.000 + 0.20 &times; 1 = 1.000</div>
+        </div>
+        <div class="gate">
+          <div class="gate-row">
+            <span class="gate-name">consistency</span>
+            <span class="track"><span class="fill hold" style="width:69.4%"></span><span class="thresh" style="left:70%"></span></span>
+            <span class="gate-val hold">0.694</span>
+            <span class="gate-flag">HOLD</span>
+          </div>
+          <div class="formula">consistency = mean(0.667, 0.708, 0.708) = 0.694</div>
+          <p class="gate-ask">Unit-wide operational tempo on all three domains — mass 0.70 each.</p>
+        </div>
+        <div class="gate">
+          <div class="gate-row">
+            <span class="gate-name">persistence</span>
+            <span class="track"><span class="fill ok" style="width:96.5%"></span><span class="thresh" style="left:60%"></span></span>
+            <span class="gate-val ok">0.965</span>
+            <span class="gate-flag">CLEAR</span>
+          </div>
+          <div class="formula">0.20 &times; 1.000 + 0.45 &times; 1.000 + 0.35 &times; 0.900 = 0.965</div>
+        </div>
+        <div class="gate">
+          <div class="gate-row">
+            <span class="gate-name">actionability</span>
+            <span class="track"><span class="fill ok" style="width:100%"></span><span class="thresh" style="left:50%"></span></span>
+            <span class="gate-val ok">1.000</span>
+            <span class="gate-flag">CLEAR</span>
+          </div>
+          <div class="formula">actionability = 1 &times; 1 &times; 1 &times; (0.75 + 0.25 &times; 1) = 1.000</div>
+        </div>
+      </div>
+      <div class="verdict-foot">
+        <span><strong>No name is produced. No alert is raised.</strong></span>
+        <span>The system instead says what would change its mind, and the sentence is computed by inverting the gate — never written by a model:</span>
+        <span style="font-family: var(--mono); font-size: 0.83rem; color: var(--ink);">
+          &ldquo;the duty_roster deviation is still present after the unit's current
+          deployment cycle ends (op-tempo confounder, 0.70)&rdquo;
+        </span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p class="head">This is the moment the whole system exists for.</p>
+      <p>
+        A unit-wide pattern is a <strong>command workload problem</strong>, not an
+        individual welfare concern. Naming this person would have been both wrong
+        and the fastest way to lose the force's confidence. The system stays
+        silent — and it stays silent because the arithmetic said so, not because
+        anybody wrote a rule for the demo.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">One night, end to end</p>
+    <h2>What actually runs at 02:00</h2>
+    <p>
+      Seven stages. Each has its own timing, row counts and status, so a failure
+      is visible rather than silent. These are last night's real figures.
+    </p>
+
+    <div class="pipeline">
+      <div class="stage">
+        <span class="n">01</span>
+        <span class="what">Ingest</span>
+        <span class="does">Seven service-record connectors pull leave, roster, deployment, workload, transfer, training, self-report.</span>
+        <span class="count">456,841 rows</span>
+      </div>
+      <div class="stage">
+        <span class="n">02</span>
+        <span class="what">Protect</span>
+        <span class="does">Service number &rarr; pseudonym, then consent filter. <strong>No identifier goes past this line.</strong></span>
+        <span class="count">456,841 rows</span>
+      </div>
+      <div class="stage">
+        <span class="n">03</span>
+        <span class="what">Features</span>
+        <span class="does">Personal and unit baselines over 7 / 30 / 90 / 180 days.</span>
+        <span class="count">240 people</span>
+      </div>
+      <div class="stage">
+        <span class="n">04</span>
+        <span class="what">Deviate</span>
+        <span class="does">Who has moved from <em>their own</em> baseline — not from a fixed threshold everyone is measured against.</span>
+        <span class="count">128 candidates</span>
+      </div>
+      <div class="stage">
+        <span class="n">05</span>
+        <span class="what">Score</span>
+        <span class="does">The risk model runs. If it's missing, the night continues — the gates don't need it.</span>
+        <span class="count">128 scored</span>
+      </div>
+      <div class="stage">
+        <span class="n">06</span>
+        <span class="what">Review</span>
+        <span class="does">Three reviewers argue in parallel: the case for, the case against, and what was tried before.</span>
+        <span class="count">128 reviewed</span>
+      </div>
+      <div class="stage decides">
+        <span class="n">07</span>
+        <span class="what">Gate</span>
+        <span class="does">Four gates, then the verdict. <strong>This is the only stage that decides anything.</strong></span>
+        <span class="count">3 escalated</span>
+      </div>
+    </div>
+
+    <div class="funnel" style="margin-top:8px">
+      <div class="rung">
+        <span class="label">screened</span>
+        <span class="bar" style="width:100%"></span>
+        <span class="n">240</span>
+      </div>
+      <div class="rung">
+        <span class="label">deviating</span>
+        <span class="bar" style="width:53.3%"></span>
+        <span class="n">128</span>
+      </div>
+      <div class="rung">
+        <span class="label">kept under watch</span>
+        <span class="bar" style="width:52.1%"></span>
+        <span class="n">125</span>
+      </div>
+      <div class="rung">
+        <span class="label">named to an officer</span>
+        <span class="bar final" style="width:1.25%"></span>
+        <span class="n">3</span>
+      </div>
+    </div>
+    <p style="font-size:0.88rem;color:var(--ink-3)">
+      125 people were watched and not named. That is not the system failing to
+      find them — it is the system declining to accuse them on evidence that
+      didn't hold up.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Does it scale</p>
+    <h2>7.7 ms per person, and one honest problem</h2>
+    <p>
+      Measured over cohorts from 240 to 4,000 people — 7.6 million records at the
+      top end — and reproducible with
+      <code style="font-family:var(--mono);font-size:0.9em">tools/benchmark.py</code>.
+      Per-person cost <em>falls</em> as the cohort grows, so the extrapolation is
+      arithmetic rather than optimism: <strong>ten lakh personnel is 2.1 hours on
+      one core, 16 minutes on eight.</strong> One commodity server, no GPU, no
+      distributed system, because every person is scored independently.
+    </p>
+    <div class="callout">
+      <p class="head">And the half that is not good news</p>
+      <p>
+        The escalation rate is stable near <strong>0.8%</strong>. At 240 people
+        that is 3 cases and a good night's work. At ten lakh it is about
+        <strong>8,200 cases a night</strong> — roughly 1,370 welfare officers at
+        six conversations each. That is not a deployable number.
+      </p>
+      <p>
+        It is also not a compute problem. It is an operating-point decision, and
+        the system exposes the dial rather than hiding it: the evidence threshold
+        at 0.65 gives ~1.20%, at 0.70 gives ~0.65%, at 0.80 gives ~0.05%. A
+        deployment sets it against the size of its welfare cell. Quoting the
+        compute figure without this one would be exactly the overclaim the gates
+        exist to prevent.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The disclosure boundary</p>
+    <h2>Who can see what, and who never can</h2>
+    <p>
+      This is enforced in one layer of the software, not in the interface. A bug
+      in the console cannot leak a name, because the API never returned one.
+    </p>
+
+    <div class="roles" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr))">
+      <div class="role">
+        <h3>The jawan</h3>
+        <p class="can"><span class="mark">+</span><span>Their own data, their own drivers, their own consent — in their own language.</span></p>
+        <p class="cannot"><span class="mark">&minus;</span><span>Anyone else's anything.</span></p>
+      </div>
+      <div class="role">
+        <h3>Welfare officer</h3>
+        <p class="can"><span class="mark">+</span><span>Identity, drivers and a recommended action — only for escalated cases in their own unit.</span></p>
+        <p class="cannot"><span class="mark">&minus;</span><span>Raw questionnaire answers. Anyone under MONITOR. Other units.</span></p>
+      </div>
+      <div class="role">
+        <h3>Commanding officer</h3>
+        <p class="can"><span class="mark">+</span><span>Unit aggregates only, covering at least five people, with noise added.</span></p>
+        <p class="cannot"><span class="mark">&minus;</span><span>Any individual, ever. There is no drill-down and no API that would answer one.</span></p>
+      </div>
+      <div class="role">
+        <h3>Auditor</h3>
+        <p class="can"><span class="mark">+</span><span>The full hash-chained ledger — every access, verdict, override and consent change.</span></p>
+        <p class="cannot"><span class="mark">&minus;</span><span>The content of anything. Only that an event occurred.</span></p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p class="head">Two rules that sound small and aren't</p>
+      <p>
+        <strong>A failed ledger write aborts the disclosure.</strong> The audit
+        record is written before the name is looked up, so there is no ordering
+        in which a name exists without a record of it.
+      </p>
+      <p>
+        <strong>Withdrawing consent is never reported.</strong> Not to the
+        commanding officer, not to the welfare officer. There is exactly one way
+        to read revocation events and it is named
+        <code style="font-family:var(--mono);font-size:0.85em">revocations_for_auditor</code>
+        — no count, no rate, no per-unit view exists for a dashboard to group by.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Clearing something up</p>
+    <h2>What TrueVoice has to do with this: nothing</h2>
+    <p>
+      TrueVoice is a different project — real-time voice biomarkers during GP
+      consultations, built at a London hackathon. <strong>None of it is in
+      SAMVEDNA.</strong> Zero imports, zero shared files, zero shared code.
+    </p>
+
+    <div class="scroller">
+      <table class="lineage">
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>What it is</th>
+            <th>Used in SAMVEDNA?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TrueVoice</td>
+            <td>Real-time voice biomarkers and clinical transcript concordance during GP consultations.</td>
+            <td class="no">No — nothing at all</td>
+          </tr>
+          <tr>
+            <td>Prosodia</td>
+            <td>Clinical voice concordance with a pure decision core and exact event replay.</td>
+            <td class="no">No code — <span style="color:var(--ink-2)">architectural patterns only, rewritten from scratch</span></td>
+          </tr>
+          <tr>
+            <td>SAMVEDNA</td>
+            <td>This system. 64 Python modules, 22 web modules, 597 tests, 8 languages.</td>
+            <td class="yes">Stands alone</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      What carried over from Prosodia was <em>how to build</em>, not what was
+      built: keep the deciding layer pure and free of I/O so an auditor can
+      interrogate it; make evidence carry its own numbers so a reader can check
+      the reasoning; report degraded stages instead of faking them. Those are
+      habits a person moves between projects. Every line here is new.
+    </p>
+    <p style="font-size:0.88rem;color:var(--ink-3)">
+      This is enforced, not asserted: the build fails on any import from a
+      neighbouring project, and the archive is unpacked into an unrelated
+      directory and run cold as part of the test suite.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Try it yourself</p>
+    <h2>Three things worth doing in the running system</h2>
+    <div class="stack">
+      <p>
+        <strong>1 · Open a case and click a gate bar</strong> at
+        <code style="font-family:var(--mono);font-size:0.9em">/officer</code>.
+        The formula opens with the real numbers in it. That is what turns &ldquo;the
+        computer says 0.694&rdquo; into something an officer can defend to the person
+        sitting opposite them.
+      </p>
+      <p>
+        <strong>2 · Switch to UNIT-02</strong> at
+        <code style="font-family:var(--mono);font-size:0.9em">/unit</code> while
+        scoped to UNIT-01. You get a refusal, because scope is enforced in the
+        disclosure layer rather than by hiding a button.
+      </p>
+      <p>
+        <strong>3 · Pick हिन्दी</strong> at
+        <code style="font-family:var(--mono);font-size:0.9em">/me</code>, set your
+        toggles, and try to save. It refuses — that translation has not been read
+        by a native speaker, and the system will not record consent against words
+        nobody has verified.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Every figure on this page was read from the running system, not written by hand.</span>
+    <span>Console <code>localhost:3100</code> · API <code>localhost:8090</code> · build log <code>docs/PHASES.md</code></span>
+    <span>Welfare support, never disciplinary action. Outputs are barred in software from ACR, promotion, posting and disciplinary processes.</span>
+  </footer>
+
+</div>

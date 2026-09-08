@@ -1,0 +1,1037 @@
+<title>The Annotated Consoles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  /* ==========================================================================
+     Light palette, complete, on bare :root. Neutrals are biased blue rather
+     than neutral grey — the subject is a navy console, and a true grey beside
+     it reads as an accident.
+     ========================================================================== */
+  :root {
+    --ground:    #EAEEF3;
+    --plate:     #FDFDFE;
+    --plate-2:   #E2E8F0;
+    --rule:      #C3CCDA;
+    --rule-soft: #DAE1EA;
+
+    --ink:    #101828;
+    --ink-2:  #48566C;
+    --ink-3:  #78859A;
+
+    --navy:      #16243D;
+    --navy-ink:  #EDF1F7;
+    --navy-2:    #24406E;
+    --navy-soft: #DEE6F3;
+
+    /* Carried from the system itself, and the reason is in note 4 of plate 1:
+       a gate that does not clear is amber there, so it is amber here. A
+       reference document that recolours the thing it documents is worse than
+       no reference. */
+    --hold:      #A9670A;
+    --hold-soft: #F8EBD4;
+    --pass:      #14724A;
+    --pass-soft: #DCEFE5;
+    --stop:      #A62D22;
+
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body:    "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --measure: 64ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:    #0E1420;
+      --plate:     #161E2C;
+      --plate-2:   #1D2736;
+      --rule:      #2C3848;
+      --rule-soft: #222D3C;
+
+      --ink:    #E6EBF2;
+      --ink-2:  #A5B1C2;
+      --ink-3:  #74818F;
+
+      --navy:      #0A101C;
+      --navy-ink:  #DCE5F2;
+      --navy-2:    #7EA0D8;
+      --navy-soft: #17233A;
+
+      --hold:      #E0A455;
+      --hold-soft: #2B2214;
+      --pass:      #63B893;
+      --pass-soft: #14291F;
+      --stop:      #E08278;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:    #0E1420;
+    --plate:     #161E2C;
+    --plate-2:   #1D2736;
+    --rule:      #2C3848;
+    --rule-soft: #222D3C;
+
+    --ink:    #E6EBF2;
+    --ink-2:  #A5B1C2;
+    --ink-3:  #74818F;
+
+    --navy:      #0A101C;
+    --navy-ink:  #DCE5F2;
+    --navy-2:    #7EA0D8;
+    --navy-soft: #17233A;
+
+    --hold:      #E0A455;
+    --hold-soft: #2B2214;
+    --pass:      #63B893;
+    --pass-soft: #14291F;
+    --stop:      #E08278;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 26px 100px; }
+
+  h1, h2, h3, h4 {
+    font-family: var(--display);
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+    letter-spacing: -0.017em;
+  }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.04; }
+  h2 { font-size: clamp(1.45rem, 3vw, 1.9rem); line-height: 1.14; }
+  h3 { font-size: 1.12rem; line-height: 1.24; letter-spacing: -0.008em; }
+  h4 { font-size: 0.95rem; line-height: 1.3; }
+  p  { margin: 0; max-width: var(--measure); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.69rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0;
+  }
+  .lede { font-size: 1.14rem; color: var(--ink-2); }
+  .fine { font-size: 0.9rem; color: var(--ink-3); }
+  code, .mono { font-family: var(--mono); font-size: 0.87em; }
+
+  /* ---- masthead ------------------------------------------------------- */
+  header {
+    padding: 62px 0 34px;
+    border-bottom: 2px solid var(--ink);
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .stamp {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-2);
+    border: 1px solid var(--rule); border-radius: 2px;
+    padding: 5px 11px; align-self: flex-start;
+  }
+  .stamp b { color: var(--hold); font-weight: 500; }
+  .masthead-meta {
+    display: flex; flex-wrap: wrap; gap: 6px 22px;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  section { padding-top: 58px; display: flex; flex-direction: column; gap: 18px; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+
+  /* ---- the decision block --------------------------------------------- */
+  .decision {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule);
+    border-radius: 3px; overflow: hidden;
+  }
+  .decision > div { background: var(--plate); padding: 20px 22px; display: flex; flex-direction: column; gap: 9px; }
+  .decision .was { background: var(--plate-2); }
+  .decision h4 { color: var(--ink-3); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; }
+  .decision p { font-size: 0.96rem; color: var(--ink-2); max-width: none; }
+  .decision .now h4 { color: var(--hold); }
+
+  /* ---- plates ---------------------------------------------------------
+     A plate is one console. The schematic is not a screenshot — it is the
+     screen's regions in the order they appear, so an annotation number can
+     point at a region rather than at a pixel that will have moved by the
+     time anybody reads this.
+     -------------------------------------------------------------------- */
+  .plate {
+    background: var(--plate); border: 1px solid var(--rule);
+    border-radius: 4px; overflow: hidden;
+    box-shadow: 0 1px 2px rgb(16 24 40 / 0.04);
+  }
+  .plate-head {
+    background: var(--navy); color: var(--navy-ink);
+    padding: 16px 22px;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px;
+  }
+  .plate-head h3 { color: var(--navy-ink); }
+  .plate-head .route {
+    font-family: var(--mono); font-size: 0.8rem;
+    color: var(--navy-ink); opacity: 0.72;
+  }
+  .plate-head .spacer { flex: 1; }
+  .plate-head .who {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.8;
+  }
+
+  .plate-body { display: grid; grid-template-columns: 1.05fr 1fr; gap: 0; }
+  .schematic {
+    padding: 20px 22px; border-right: 1px solid var(--rule-soft);
+    display: flex; flex-direction: column; gap: 7px;
+    background: var(--plate-2);
+    /* The notes column is always the taller of the two, so the regions are
+       spread to meet it rather than stacking at the top over a few hundred
+       pixels of dead tint. It also makes each callout sit roughly level with
+       the note that explains it, which is what an annotated plate is for. */
+    justify-content: space-between;
+  }
+  @media (max-width: 880px) { .schematic { justify-content: flex-start; } }
+  .notes { padding: 20px 22px; display: flex; flex-direction: column; gap: 0; }
+
+  /* a region of the screen */
+  .region {
+    background: var(--plate); border: 1px solid var(--rule-soft);
+    border-radius: 2px; padding: 9px 11px;
+    display: flex; align-items: flex-start; gap: 9px;
+  }
+  .region.emph { border-color: var(--hold); background: var(--hold-soft); }
+  .region.strip { padding: 7px 11px; }
+  .region-label {
+    font-family: var(--display); font-size: 0.82rem; font-weight: 600;
+    color: var(--ink); line-height: 1.3;
+  }
+  .region-sub {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3);
+    display: block; margin-top: 2px; letter-spacing: 0.02em;
+  }
+  /* the callout key */
+  .key {
+    flex-shrink: 0; width: 19px; height: 19px; border-radius: 50%;
+    background: var(--navy-2); color: #FFF;
+    font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+    display: grid; place-items: center; margin-top: 1px;
+  }
+  .region.emph .key { background: var(--hold); }
+  :root[data-theme="dark"] .key,
+  :root:not([data-theme="light"]) .key { color: #0A101C; }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) .key { color: #FFF; }
+  }
+
+  /* a row of fake data, to show density without pretending to be a screenshot */
+  .fauxrow {
+    display: grid; grid-template-columns: 1.1fr 0.6fr 0.7fr 0.5fr;
+    gap: 8px; padding: 5px 11px;
+    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3);
+    border: 1px solid var(--rule-soft); border-radius: 2px;
+    background: var(--plate);
+    font-variant-numeric: tabular-nums;
+  }
+  .fauxrow.head { background: var(--plate-2); color: var(--ink-2); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.63rem; }
+  .fauxrow .amber { color: var(--hold); }
+  .fauxrow .green { color: var(--pass); }
+
+  /* margin notes */
+  .note { padding: 13px 0; border-top: 1px solid var(--rule-soft); display: flex; gap: 11px; }
+  .note:first-child { border-top: none; padding-top: 0; }
+  .note-key {
+    flex-shrink: 0; font-family: var(--mono); font-size: 0.74rem;
+    font-weight: 500; color: var(--navy-2); width: 19px; text-align: center;
+  }
+  .note.emph .note-key { color: var(--hold); }
+  .note-text { font-size: 0.94rem; color: var(--ink-2); }
+  .note-text strong { color: var(--ink); font-weight: 600; }
+  .note-text .whyline {
+    display: block; margin-top: 5px; font-family: var(--mono);
+    font-size: 0.78rem; color: var(--ink-3);
+  }
+
+  /* ---- gate arithmetic strip ------------------------------------------ */
+  .gates { display: flex; flex-direction: column; gap: 0; }
+  .gate {
+    display: grid; grid-template-columns: 112px 1fr 58px 44px;
+    gap: 12px; align-items: center;
+    padding: 11px 0; border-top: 1px solid var(--rule-soft);
+  }
+  .gate:first-child { border-top: none; }
+  .gate-name { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-2); }
+  .track { position: relative; height: 6px; background: var(--plate-2); border-radius: 1px; }
+  .fill { position: absolute; inset: 0 auto 0 0; border-radius: 1px; background: var(--pass); }
+  .fill.hold { background: var(--hold); }
+  .thresh { position: absolute; top: -4px; bottom: -4px; width: 1.5px; background: var(--ink-3); }
+  .gate-val {
+    font-family: var(--mono); font-size: 0.85rem; text-align: right;
+    font-variant-numeric: tabular-nums; color: var(--pass);
+  }
+  .gate-val.hold { color: var(--hold); font-weight: 500; }
+  .gate-flag {
+    font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.08em;
+    text-align: right; color: var(--ink-3);
+  }
+
+  /* ---- generic panels -------------------------------------------------- */
+  .panel {
+    background: var(--plate); border: 1px solid var(--rule);
+    border-radius: 3px; padding: 20px 22px;
+    display: flex; flex-direction: column; gap: 11px;
+  }
+  .panel.quiet { background: var(--plate-2); }
+  .panel.flag { border-left: 3px solid var(--hold); }
+  .panel h3 + p { color: var(--ink-2); }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 14px; }
+
+  ul.tight { margin: 0; padding-inline-start: 20px; color: var(--ink-2); font-size: 0.96rem; }
+  ul.tight li { margin-bottom: 5px; }
+  ul.tight li:last-child { margin-bottom: 0; }
+
+  /* ---- moved-out table ------------------------------------------------- */
+  .scroller { overflow-x: auto; }
+  table.moved { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  table.moved th {
+    text-align: left; font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-3);
+    padding: 0 14px 9px 0; border-bottom: 1px solid var(--rule); font-weight: 500;
+    white-space: nowrap;
+  }
+  table.moved td {
+    padding: 12px 14px 12px 0; border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top; color: var(--ink-2);
+  }
+  table.moved td:first-child { font-family: var(--mono); font-size: 0.82rem; color: var(--ink); white-space: nowrap; }
+
+  footer {
+    margin-top: 76px; padding-top: 26px; border-top: 2px solid var(--ink);
+    display: flex; flex-direction: column; gap: 7px;
+    font-size: 0.88rem; color: var(--ink-3);
+  }
+  a { color: var(--navy-2); }
+
+  @media (max-width: 880px) {
+    .plate-body { grid-template-columns: 1fr; }
+    .schematic { border-right: none; border-bottom: 1px solid var(--rule-soft); }
+    .decision { grid-template-columns: 1fr; }
+    .gate { grid-template-columns: 1fr 52px 40px; }
+    .gate .track { grid-column: 1 / -1; order: 3; margin-top: 5px; }
+    .fauxrow { grid-template-columns: 1.2fr 0.7fr 0.6fr; }
+    .fauxrow span:nth-child(4) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  :focus-visible { outline: 2px solid var(--hold); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <span class="stamp">Displaced from the running system · <b>reference only</b></span>
+    <p class="eyebrow">SAMVEDNA · SIH 2026 · PS 26186 · Team CodeZila</p>
+    <h1>The annotated consoles</h1>
+    <p class="lede">
+      Four screens, explained region by region — and a record of why the
+      explanation is in this document instead of on the screen.
+    </p>
+    <div class="masthead-meta">
+      <span>4 role consoles</span>
+      <span>597 tests</span>
+      <span>8 languages</span>
+      <span>console :3100 · api :8090</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="eyebrow">The decision this document records</p>
+    <h2>A console is operated, not read</h2>
+    <div class="stack">
+      <p>
+        The consoles used to carry their own explanation: paragraphs above each
+        panel saying what the panel was for, a six-card walkthrough telling a
+        presenter what to point at. It was accurate and it read as a description
+        of a system rather than a system.
+      </p>
+      <p>
+        An officer at 07:00 has a queue to clear. A commander at a morning brief
+        has one question. Neither of them is a student of the design. So the
+        explanatory layer was lifted out — into this document — and the screens
+        were rebuilt as dense, scannable, action-first surfaces.
+      </p>
+    </div>
+
+    <div class="decision">
+      <div class="was">
+        <h4>What the screens were</h4>
+        <p>
+          Full-width prose cards. Every panel introduced before it was shown.
+          <code>/demo</code> was six numbered steps of presenter script. A
+          visitor read about what the system would show them.
+        </p>
+      </div>
+      <div class="now">
+        <h4>What the screens are</h4>
+        <p>
+          A filterable queue with a close-out that blocks. A sub-unit matrix with
+          one headline. A tabbed assurance console. <code>/demo</code> is now the
+          control room: live stage timings, funnel counts, four doors.
+        </p>
+      </div>
+    </div>
+
+    <p class="fine">
+      Nothing was deleted. Everything the screens used to say is on this page,
+      and the presenter script survives intact as its own document.
+    </p>
+  </section>
+
+  <!-- ============================ PLATE 1 ============================ -->
+  <section>
+    <p class="eyebrow">Plate 1 of 4</p>
+    <h2>Welfare officer</h2>
+    <p>
+      The only console that ever sees a name. It shows escalated cases and
+      nothing else — the cases the gates declined do not appear here and no
+      identity exists for them.
+    </p>
+
+    <div class="plate">
+      <div class="plate-head">
+        <h3>Today&rsquo;s queue</h3>
+        <span class="route">/officer</span>
+        <span class="spacer"></span>
+        <span class="who">welfare_officer</span>
+      </div>
+      <div class="plate-body">
+        <div class="schematic">
+          <div class="region strip">
+            <span class="key">1</span>
+            <span class="region-label">Shift header
+              <span class="region-sub">3 to review · 1 close-out due · 0.67 precision</span>
+            </span>
+          </div>
+          <div class="region strip">
+            <span class="key">2</span>
+            <span class="region-label">Run-health banner
+              <span class="region-sub">only rendered when something is wrong</span>
+            </span>
+          </div>
+          <div class="fauxrow head">
+            <span>case</span><span>priority</span><span>action</span><span>status</span>
+          </div>
+          <div class="fauxrow">
+            <span>1a120eaf3d…</span><span class="amber">HIGH</span><span>WLF-COUNSEL</span><span>new</span>
+          </div>
+          <div class="fauxrow">
+            <span>7c4e2b91af…</span><span>ROUTINE</span><span>WLF-LEAVE</span><span class="amber">close-out</span>
+          </div>
+          <div class="region">
+            <span class="key">3</span>
+            <span class="region-label">Why now
+              <span class="region-sub">three SHAP drivers, in plain language</span>
+            </span>
+          </div>
+          <div class="region">
+            <span class="key">4</span>
+            <span class="region-label">Gate arithmetic
+              <span class="region-sub">click a bar, the formula opens</span>
+            </span>
+          </div>
+          <div class="region emph">
+            <span class="key">5</span>
+            <span class="region-label">Counter-argument
+              <span class="region-sub">above the buttons, deliberately</span>
+            </span>
+          </div>
+          <div class="region">
+            <span class="key">6</span>
+            <span class="region-label">Reveal identity · contact · defer
+              <span class="region-sub">each writes to the ledger</span>
+            </span>
+          </div>
+          <div class="region emph">
+            <span class="key">7</span>
+            <span class="region-label">Close-out — required
+              <span class="region-sub">four categories, nothing free-text</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="notes">
+          <div class="note">
+            <span class="note-key">1</span>
+            <span class="note-text">
+              <strong>Measured precision, not claimed precision.</strong> The
+              figure comes from closed cases in this officer&rsquo;s own history —
+              how often a contact found a real welfare concern. An officer who
+              can see the system&rsquo;s hit rate can calibrate how much weight to
+              give it.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">2</span>
+            <span class="note-text">
+              <strong>A short queue is reported, never hidden.</strong> If a
+              connector returned partial records, those domains are excluded
+              rather than imputed, and the banner says so. Silence would let a
+              thin night look like a calm one.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">3</span>
+            <span class="note-text">
+              Model attribution translated out of feature names. Not
+              <code>roster_var_30d = 0.41</code> but &ldquo;their shift pattern
+              has been irregular for a month&rdquo;.
+              <span class="whyline">A driver an officer cannot repeat aloud is not an explanation.</span>
+            </span>
+          </div>
+          <div class="note emph">
+            <span class="note-key">4</span>
+            <span class="note-text">
+              <strong>Amber, never red.</strong> A gate that does not clear is
+              usually the correct answer — the machine declining to accuse
+              somebody. Red would tell the reader the opposite of what happened.
+            </span>
+          </div>
+          <div class="note emph">
+            <span class="note-key">5</span>
+            <span class="note-text">
+              <strong>The case against sits above the action buttons.</strong>
+              An officer who clicks &ldquo;contact&rdquo; and then reads that 61%
+              of the unit shows the same pattern has been given an instruction,
+              not decision support. Reading order is the control.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">6</span>
+            <span class="note-text">
+              The audit entry is written <em>before</em> the name is looked up,
+              and a failed write aborts the disclosure.
+              <span class="whyline">There is no ordering in which a name exists without a record of it.</span>
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">7</span>
+            <span class="note-text">
+              <strong>Supported · not supported · already known · declined.</strong>
+              Only the category is stored — never what was said in a welfare
+              conversation. These four answers are also what recalibrates the
+              model, so an officer closing a case is training it.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PLATE 2 ============================ -->
+  <section>
+    <p class="eyebrow">Plate 2 of 4</p>
+    <h2>Commanding officer</h2>
+    <p>
+      A commander is never given a list of people. That is the design, not a
+      permission setting — word that reporting strain is career-limiting is all
+      it takes for the honest answers to stop arriving, and then the system is
+      worth nothing.
+    </p>
+
+    <div class="plate">
+      <div class="plate-head">
+        <h3>Unit strain</h3>
+        <span class="route">/unit</span>
+        <span class="spacer"></span>
+        <span class="who">commander</span>
+      </div>
+      <div class="plate-body">
+        <div class="schematic">
+          <div class="region strip">
+            <span class="key">1</span>
+            <span class="region-label">Header
+              <span class="region-sub">2 cells raised · 10 suppressed · k≥5 · 36.0ε left</span>
+            </span>
+          </div>
+          <div class="region emph">
+            <span class="key">2</span>
+            <span class="region-label">One-sentence headline
+              <span class="region-sub">&ldquo;B Coy — duty roster is high.&rdquo;</span>
+            </span>
+          </div>
+          <div class="fauxrow head">
+            <span>sub-unit</span><span>leave</span><span>roster</span><span>workload</span>
+          </div>
+          <div class="fauxrow">
+            <span>A Coy</span><span class="green">nomi</span><span>low</span><span>low</span>
+          </div>
+          <div class="fauxrow">
+            <span>B Coy</span><span>mode</span><span class="amber">high</span><span>mode</span>
+          </div>
+          <div class="fauxrow">
+            <span>Sig Pl</span><span>—</span><span>—</span><span>—</span>
+          </div>
+          <div class="region">
+            <span class="key">3</span>
+            <span class="region-label">Raised, in order
+              <span class="region-sub">worst first, band as a chip</span>
+            </span>
+          </div>
+          <div class="region emph">
+            <span class="key">4</span>
+            <span class="region-label">Not shown here
+              <span class="region-sub">an explicit list of what is withheld</span>
+            </span>
+          </div>
+          <div class="region">
+            <span class="key">5</span>
+            <span class="region-label">Levers you hold
+              <span class="region-sub">rotation · leave backlog · day-14 relief</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="notes">
+          <div class="note">
+            <span class="note-key">1</span>
+            <span class="note-text">
+              <strong>The privacy budget is on the commander&rsquo;s own header.</strong>
+              One unit heat map costs about 24ε of a 60ε budget. Showing the
+              remaining figure makes the cost of looking visible to the person
+              doing the looking.
+            </span>
+          </div>
+          <div class="note emph">
+            <span class="note-key">2</span>
+            <span class="note-text">
+              <strong>This sentence is the product for this role.</strong> It is
+              what gets repeated at the morning brief, so it names a sub-unit
+              and a domain and stops. Not &ldquo;composite 0.71&rdquo; — a
+              commander cannot act on a composite.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">3</span>
+            <span class="note-text">
+              Bands, not values. A cohort fraction rendered as
+              <code>0.6104</code> invites a commander to compare two sub-units
+              that differ by noise.
+              <span class="whyline">Four bands is the resolution the data actually supports.</span>
+            </span>
+          </div>
+          <div class="note emph">
+            <span class="note-key">4</span>
+            <span class="note-text">
+              <strong>Three protections, and the third is the subtle one.</strong>
+              Cells under k=5 people are <em>suppressed, not rounded</em>. The
+              self-report, biometric and voice domains are withheld from command
+              at any group size. And a repeated view is served from a release
+              cache — fresh noise on every refresh averages back to the truth,
+              so refreshing would otherwise be an attack.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">5</span>
+            <span class="note-text">
+              Every lever listed is one a commander controls without knowing who
+              is affected: rotation, the leave backlog, relief before a
+              consecutive-days run reaches fourteen.
+              <span class="whyline">A finding with no available lever is a worry, not information.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PLATE 3 ============================ -->
+  <section>
+    <p class="eyebrow">Plate 3 of 4</p>
+    <h2>Governance auditor</h2>
+    <p>
+      The only console that sees the refusals — 125 of them on the run these
+      figures come from, against 3 escalations. An auditor is checking whether
+      the machine refuses for defensible reasons, so the near-misses are the
+      whole job.
+    </p>
+
+    <div class="plate">
+      <div class="plate-head">
+        <h3>Assurance</h3>
+        <span class="route">/audit</span>
+        <span class="spacer"></span>
+        <span class="who">auditor</span>
+      </div>
+      <div class="plate-body">
+        <div class="schematic">
+          <div class="region strip">
+            <span class="key">1</span>
+            <span class="region-label">Header
+              <span class="region-sub">125 refused · 125 monitor · chain INTACT</span>
+            </span>
+          </div>
+          <div class="region strip">
+            <span class="key">2</span>
+            <span class="region-label">Refusals / Ledger / Privacy budget
+              <span class="region-sub">three tabs, refusals first</span>
+            </span>
+          </div>
+          <div class="fauxrow head">
+            <span>subject</span><span>verdict</span><span>miss</span><span>recover</span>
+          </div>
+          <div class="fauxrow">
+            <span>pid-mon-0001</span><span class="amber">MONITOR</span><span>0.006</span><span class="amber">yes</span>
+          </div>
+          <div class="fauxrow">
+            <span>4f8ab2c701…</span><span class="amber">MONITOR</span><span>0.041</span><span>structural</span>
+          </div>
+          <div class="region">
+            <span class="key">3</span>
+            <span class="region-label">Gate arithmetic, expanded</span>
+          </div>
+          <div class="region emph">
+            <span class="key">4</span>
+            <span class="region-label">What would change the verdict
+              <span class="region-sub">the gate, run backwards</span>
+            </span>
+          </div>
+          <div class="region">
+            <span class="key">5</span>
+            <span class="region-label">Hash-chained ledger
+              <span class="region-sub">seq · actor · purpose · entry hash</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="notes">
+          <div class="note emph">
+            <span class="note-key">1</span>
+            <span class="note-text">
+              <strong>The refused list is auditor-only, and the API enforces it.</strong>
+              A welfare officer requesting it gets 403. Handing an officer a
+              nearly-flagged queue would mean they work it, which lowers the
+              threshold to zero and undoes the refusal.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">2</span>
+            <span class="note-text">
+              Sorted nearest-miss first. The case that failed by 0.006 is where
+              the thresholds actually did the work; the one that failed by 0.4
+              was never close.
+              <span class="whyline">An auditor with limited time should spend it on the boundary.</span>
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">3</span>
+            <span class="note-text">
+              The same four sums the officer would have seen, with the one that
+              fell short in amber. The published case fails consistency at
+              <code>0.694</code> against a <code>0.700</code> threshold, because
+              45–61% of the unit is deviating the same way and the unit is
+              deployed.
+            </span>
+          </div>
+          <div class="note emph">
+            <span class="note-key">4</span>
+            <span class="note-text">
+              <strong>Computed by inverting the failed gate. Never generated.</strong>
+              It is the threshold arithmetic run backwards, which is why it can
+              be trusted: it cannot describe a route that would not in fact clear
+              the gate. &ldquo;Recoverable&rdquo; distinguishes a case that more
+              evidence could change from one blocked structurally, by a missing
+              consent.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">5</span>
+            <span class="note-text">
+              Append-only, each entry carrying the hash of the one before it, so
+              a deleted or edited row breaks verification for everything after
+              it. The header reads <strong>INTACT</strong> or
+              <strong>BROKEN</strong> and nothing in between.
+              <span class="whyline">Withdrawal of consent is readable here and nowhere else — no count, no rate, no per-unit view exists for a dashboard to group by.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PLATE 4 ============================ -->
+  <section>
+    <p class="eyebrow">Plate 4 of 4</p>
+    <h2>Personnel</h2>
+    <p>
+      This console has to be worth opening for the person&rsquo;s own benefit. If
+      it reads as surveillance, adoption collapses — and a voluntary
+      self-assessment is worth a fifth of the evidence gate on its own, so that
+      channel dying is not a cosmetic loss.
+    </p>
+
+    <div class="plate">
+      <div class="plate-head">
+        <h3>What this system can and cannot see about me</h3>
+        <span class="route">/me</span>
+        <span class="spacer"></span>
+        <span class="who">personnel · 8 locales</span>
+      </div>
+      <div class="plate-body">
+        <div class="schematic">
+          <div class="region strip">
+            <span class="key">1</span>
+            <span class="region-label">Language picker
+              <span class="region-sub">हिन्दी · বাংলা · मराठी · ਪੰਜਾਬੀ · தமிழ் · తెలుగు · اردو</span>
+            </span>
+          </div>
+          <div class="region strip">
+            <span class="key">2</span>
+            <span class="region-label">Status tiles
+              <span class="region-sub">domains allowed · contact · consent recorded</span>
+            </span>
+          </div>
+          <div class="region">
+            <span class="key">3</span>
+            <span class="region-label">It can see / It cannot see
+              <span class="region-sub">two columns, before the toggles</span>
+            </span>
+          </div>
+          <div class="region">
+            <span class="key">4</span>
+            <span class="region-label">What I allow
+              <span class="region-sub">records · self-report · biometric · voice</span>
+            </span>
+          </div>
+          <div class="region">
+            <span class="key">5</span>
+            <span class="region-label">Wellness self-assessment
+              <span class="region-sub">PHQ-9, real items and scoring</span>
+            </span>
+          </div>
+          <div class="region emph">
+            <span class="key">6</span>
+            <span class="region-label">Consent receipt
+              <span class="region-sub">language · text version · timestamp</span>
+            </span>
+          </div>
+          <div class="region emph">
+            <span class="key">7</span>
+            <span class="region-label">If you are struggling right now
+              <span class="region-sub">never folded away</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="notes">
+          <div class="note">
+            <span class="note-key">1</span>
+            <span class="note-text">
+              <strong>Complete, or not offered.</strong> A missing translation key
+              is a build failure, never an English fallback — a consent screen
+              that switches to English halfway through has stopped being a
+              consent screen.
+              <span class="whyline">Script-aware typography: uppercase and letter-spacing are disabled outside Latin.</span>
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">2</span>
+            <span class="note-text">
+              The three things a person needs on opening: what they have allowed,
+              whether a welfare officer may contact them, and whether their
+              consent is on record.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">3</span>
+            <span class="note-text">
+              Deliberately above the toggles. Knowing what becomes visible is a
+              precondition of agreeing to it, so the order is not negotiable
+              even though it costs space above the actions.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">4</span>
+            <span class="note-text">
+              Per-domain, and <strong>voice has its own toggle</strong>. Agreeing
+              to have your leave record read is not agreeing to be recorded, and
+              defaulting it on would make the distinction meaningless. It is off
+              by default.
+            </span>
+          </div>
+          <div class="note">
+            <span class="note-key">5</span>
+            <span class="note-text">
+              Real PHQ-9 items and real scoring. <strong>Item 9 bypasses every
+              gate</strong> — it routes straight to a mental-health authority
+              with an SLA measured from submission, without waiting for a
+              persistence window.
+              <span class="whyline">A validated instrument's translation cannot be invented; the locale files refuse to serve one that has not been supplied.</span>
+            </span>
+          </div>
+          <div class="note emph">
+            <span class="note-key">6</span>
+            <span class="note-text">
+              <strong>Consent is to a specific text, in a specific language, at a
+              specific version.</strong> The receipt records all three. An
+              unreviewed translation cannot ground consent, so saving is refused
+              against draft text rather than accepted quietly.
+            </span>
+          </div>
+          <div class="note emph">
+            <span class="note-key">7</span>
+            <span class="note-text">
+              <strong>The one card on the page that never folds.</strong> Everything
+              else a person reads once on enrolment is behind a disclosure
+              triangle; a person in difficulty should not have to find and click
+              one to reach a helpline number.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ THE CASE ============================ -->
+  <section>
+    <p class="eyebrow">The object every plate is arranged around</p>
+    <h2>One case, refused by 0.006</h2>
+    <p>
+      Both the officer&rsquo;s console and the auditor&rsquo;s render this same
+      object. It is the reason the system exists: every reason to name somebody,
+      and a refusal.
+    </p>
+
+    <div class="panel">
+      <div class="gates">
+        <div class="gate">
+          <span class="gate-name">evidence</span>
+          <span class="track"><span class="fill" style="width:100%"></span><span class="thresh" style="left:65%"></span></span>
+          <span class="gate-val">1.000</span>
+          <span class="gate-flag">CLEAR</span>
+        </div>
+        <div class="gate">
+          <span class="gate-name">consistency</span>
+          <span class="track"><span class="fill hold" style="width:69.4%"></span><span class="thresh" style="left:70%"></span></span>
+          <span class="gate-val hold">0.694</span>
+          <span class="gate-flag">HOLD</span>
+        </div>
+        <div class="gate">
+          <span class="gate-name">persistence</span>
+          <span class="track"><span class="fill" style="width:96.5%"></span><span class="thresh" style="left:60%"></span></span>
+          <span class="gate-val">0.965</span>
+          <span class="gate-flag">CLEAR</span>
+        </div>
+        <div class="gate">
+          <span class="gate-name">actionability</span>
+          <span class="track"><span class="fill" style="width:100%"></span><span class="thresh" style="left:50%"></span></span>
+          <span class="gate-val">1.000</span>
+          <span class="gate-flag">CLEAR</span>
+        </div>
+      </div>
+      <p class="fine" style="font-family: var(--mono); color: var(--ink-2)">
+        consistency = mean(0.667, 0.708, 0.708) = 0.694 &nbsp;·&nbsp; needs 0.700
+      </p>
+    </div>
+
+    <div class="panel flag">
+      <h3>Why this is the moment, and not the escalation</h3>
+      <p>
+        Three domains deviating, sustained across months, evidence at 1.000. On
+        any dashboard built around a risk score this is a flag. But 45–61% of
+        this jawan&rsquo;s unit is deviating the same way, because the unit is
+        deployed — and a unit-wide pattern is a command workload problem, not an
+        individual welfare concern.
+      </p>
+      <p>
+        No name is produced. Instead the system states what would change its
+        mind, computed by inverting the gate that failed:
+      </p>
+      <p style="font-family: var(--mono); font-size: 0.86rem; color: var(--ink);">
+        &ldquo;the duty_roster deviation is still present after the unit&rsquo;s
+        current deployment cycle ends (op-tempo confounder, 0.70)&rdquo;
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ WHAT MOVED ============================ -->
+  <section>
+    <p class="eyebrow">The audit of this change</p>
+    <h2>What moved, and where it went</h2>
+    <div class="scroller">
+      <table class="moved">
+        <thead>
+          <tr>
+            <th>Screen</th>
+            <th>What it used to carry</th>
+            <th>Where that is now</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>/officer</td>
+            <td>Introductory prose per panel; gate explanations inline; close-out categories described before use.</td>
+            <td>Plate 1 above. The screen kept the reading order that matters — counter-argument above the buttons.</td>
+          </tr>
+          <tr>
+            <td>/unit</td>
+            <td>Paragraphs on k-anonymity, differential privacy and the release cache.</td>
+            <td>Plate 2 above. The screen kept a short &ldquo;not shown here&rdquo; list, because a commander should be able to see the limits without leaving.</td>
+          </tr>
+          <tr>
+            <td>/audit</td>
+            <td>Explanation of nearest-miss ordering, chain verification and the epsilon budget.</td>
+            <td>Plate 3 above, and a short version on the budget tab.</td>
+          </tr>
+          <tr>
+            <td>/me</td>
+            <td>&ldquo;And these things never happen&rdquo; — the reassurance list read once at enrolment.</td>
+            <td>Folded into a disclosure on the screen, and Plate 4 above. Not removed: it is what consent is given against.</td>
+          </tr>
+          <tr>
+            <td>/demo</td>
+            <td>Six numbered cards of presenter script: what to say, what to point at, why.</td>
+            <td>Its own document — the demo run-sheet. The screen is now the control room.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-2" style="margin-top: 8px">
+      <div class="panel quiet">
+        <h3>What deliberately stayed on the screens</h3>
+        <ul class="tight">
+          <li>The counter-argument, above the action buttons</li>
+          <li>&ldquo;Not shown here&rdquo; on the commander&rsquo;s view</li>
+          <li>What each role <em>cannot</em> see, on the control-room doors</li>
+          <li>The helpline card, unfolded, on the personnel app</li>
+          <li>Every refusal message — a refused page explains itself rather than disappearing</li>
+        </ul>
+      </div>
+      <div class="panel quiet">
+        <h3>The honest limits</h3>
+        <ul class="tight">
+          <li>There is no real dataset. The cohort is generated from seed 26186, and the training label is circular — the model learns the generator.</li>
+          <li>Voice cannot detect somebody who says &ldquo;I&rsquo;m fine&rdquo; <em>and sounds fine</em>. That limit is written down as a test, not hidden.</li>
+          <li>Compute scales to a national force on one server. The escalation rate does not scale — that is a threshold and staffing decision, and the dial is exposed.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Every figure on these plates was read from the running system, not written by hand.</span>
+    <span>Companion documents: how SAMVEDNA decides &middot; in plain words &middot; the demo run-sheet</span>
+    <span>Welfare support, never disciplinary action. Outputs are barred in software from ACR, promotion, posting and disciplinary processes.</span>
+  </footer>
+
+</div>

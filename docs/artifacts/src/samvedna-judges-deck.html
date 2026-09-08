@@ -1,0 +1,821 @@
+<title>SAMVEDNA Judging Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  /* ==========================================================================
+     SAMVEDNA — judging deck
+     ==========================================================================
+     Brand tokens are the four the console already uses, so the deck and the
+     running system are recognisably the same product. Semantic colour for gate
+     outcomes is kept separate from the accent and never borrowed for emphasis
+     — and a gate that does not clear is AMBER, never red, because in this
+     system a refusal is usually the correct answer.
+
+     One type superfamily (IBM Plex) across display, body and data. For an
+     engineering deck that is a decision rather than a shortcut: the condensed
+     cut carries the hierarchy, and the mono is the same voice as the terminal
+     the judges are about to be shown.
+     ========================================================================== */
+  :root {
+    --deep:       #16243D;
+    --deep-2:     #0E1828;
+    --mid:        #24406E;
+    --accent:     #E0571C;
+    --accent-ink: #B8420F;
+    --tint:       #F0F3F7;
+
+    --paper:    var(--tint);
+    --slide:    #FFFFFF;
+    --slide-2:  #E6EBF3;
+    --rule:     #C6D0DE;
+    --rule-soft:#DCE3ED;
+
+    --ink:   #101B2E;
+    --ink-2: #45536B;
+    --ink-3: #77849A;
+    --on-deep:   #EDF2F9;
+    --on-deep-2: #9FB3D0;
+
+    --pass: #14724A;  --pass-soft: #DDEFE6;
+    --hold: #A9670A;  --hold-soft: #F9ECD6;
+    --stop: #A62D22;  --stop-soft: #F8E3E0;
+
+    --display: "IBM Plex Sans Condensed", "Helvetica Neue", Arial, sans-serif;
+    --body:    "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:    #0B1220;
+      --slide:    #141D2C;
+      --slide-2:  #1B2534;
+      --rule:     #2B3747;
+      --rule-soft:#212C3B;
+      --ink:      #E7ECF3;
+      --ink-2:    #A6B2C4;
+      --ink-3:    #778394;
+      --mid:      #7FA1D9;
+      --accent:   #FF7A3D;
+      --accent-ink:#FFA477;
+      --pass: #5FB68F;  --pass-soft: #13291F;
+      --hold: #DFA455;  --hold-soft: #2A2113;
+      --stop: #E0827A;  --stop-soft: #2B1715;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:    #0B1220;
+    --slide:    #141D2C;
+    --slide-2:  #1B2534;
+    --rule:     #2B3747;
+    --rule-soft:#212C3B;
+    --ink:      #E7ECF3;
+    --ink-2:    #A6B2C4;
+    --ink-3:    #778394;
+    --mid:      #7FA1D9;
+    --accent:   #FF7A3D;
+    --accent-ink:#FFA477;
+    --pass: #5FB68F;  --pass-soft: #13291F;
+    --hold: #DFA455;  --hold-soft: #2A2113;
+    --stop: #E0827A;  --stop-soft: #2B1715;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck { max-width: 1180px; margin: 0 auto; padding: 26px 20px 60px; display: flex; flex-direction: column; gap: 22px; }
+
+  /* ---- a slide ---------------------------------------------------------- */
+  .slide {
+    position: relative;
+    background: var(--slide);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 34px 40px 46px;
+    display: flex; flex-direction: column; gap: 16px;
+    min-height: 0;
+  }
+  .slide.dark {
+    background: var(--deep);
+    border-color: var(--deep);
+    color: var(--on-deep);
+  }
+  .slide.dark h1, .slide.dark h2, .slide.dark h3 { color: var(--on-deep); }
+  .slide.dark .eyebrow { color: var(--on-deep-2); }
+  .slide.dark p { color: var(--on-deep-2); }
+  .slide.dark strong { color: #FFFFFF; }
+
+  .slide-n {
+    position: absolute; bottom: 16px; right: 22px;
+    font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3);
+    letter-spacing: 0.06em;
+  }
+  .slide.dark .slide-n { color: var(--on-deep-2); }
+  .slide-tag {
+    position: absolute; bottom: 16px; left: 40px;
+    font-family: var(--mono); font-size: 0.66rem; color: var(--ink-3);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .slide.dark .slide-tag { color: var(--on-deep-2); }
+
+  h1, h2, h3, h4 {
+    font-family: var(--display); font-weight: 600; margin: 0;
+    text-wrap: balance; letter-spacing: -0.005em; line-height: 1.08;
+  }
+  h1 { font-size: clamp(2.3rem, 4.6vw, 3.5rem); }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); }
+  h3 { font-size: 1.05rem; letter-spacing: 0.005em; }
+  h4 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink-3); }
+  p  { margin: 0; max-width: 68ch; color: var(--ink-2); }
+  .lede { font-size: 1.1rem; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0;
+  }
+  code, .mono { font-family: var(--mono); font-size: 0.88em; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* ---- title slide ------------------------------------------------------ */
+  .title-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; align-items: center; }
+  .thesis {
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(1.25rem, 2.4vw, 1.7rem); line-height: 1.3;
+    border-left: 3px solid var(--accent); padding-left: 20px;
+    color: var(--on-deep);
+  }
+  .thesis em { color: var(--accent); font-style: normal; font-weight: 700; }
+  .meta-list { display: flex; flex-direction: column; gap: 9px; }
+  .meta-row {
+    display: grid; grid-template-columns: 120px 1fr; gap: 12px;
+    font-size: 0.86rem; padding-bottom: 8px;
+    border-bottom: 1px solid rgb(255 255 255 / 0.14);
+  }
+  .meta-row dt { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+                 text-transform: uppercase; color: var(--on-deep-2); }
+  .meta-row dd { margin: 0; color: var(--on-deep); font-weight: 500; }
+
+  /* ---- big number band -------------------------------------------------- */
+  .band { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px;
+          background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  .band > div { background: var(--slide); padding: 16px 18px; display: flex; flex-direction: column; gap: 3px; }
+  .band .n { font-family: var(--display); font-size: 1.9rem; font-weight: 700; line-height: 1;
+             color: var(--ink); font-variant-numeric: tabular-nums; }
+  .band .k { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em;
+             text-transform: uppercase; color: var(--ink-3); }
+  .band .accent .n { color: var(--accent); }
+  .band .amber { background: var(--hold-soft); }
+  .band .amber .n { color: var(--hold); }
+
+  /* ---- gate bars -------------------------------------------------------- */
+  .gates { display: flex; flex-direction: column; }
+  .gate { display: grid; grid-template-columns: 108px 1fr 56px 52px; gap: 14px;
+          align-items: center; padding: 10px 0; border-top: 1px solid var(--rule-soft); }
+  .gate:first-child { border-top: none; }
+  .gate-name { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-2); }
+  .track { position: relative; height: 8px; background: var(--slide-2); border-radius: 1px; }
+  .fill { position: absolute; inset: 0 auto 0 0; border-radius: 1px; background: var(--pass); }
+  .fill.hold { background: var(--hold); }
+  .thresh { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink-3); }
+  .gate-v { font-family: var(--mono); font-size: 0.88rem; text-align: right;
+            font-variant-numeric: tabular-nums; color: var(--pass); font-weight: 500; }
+  .gate-v.hold { color: var(--hold); }
+  .gate-f { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.07em;
+            text-align: right; color: var(--ink-3); }
+
+  /* ---- tables ----------------------------------------------------------- */
+  .scroller { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th {
+    text-align: left; font-family: var(--mono); font-size: 0.63rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+    padding: 0 12px 8px 0; border-bottom: 1px solid var(--rule); font-weight: 500;
+    white-space: nowrap;
+  }
+  td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--rule-soft);
+       vertical-align: top; color: var(--ink-2); }
+  td:first-child { color: var(--ink); font-weight: 500; }
+  td.mono, th.mono { font-family: var(--mono); font-size: 0.8rem; }
+  .st { font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+        padding: 2px 7px; border-radius: 2px; white-space: nowrap; display: inline-block; }
+  .st-run  { background: var(--pass-soft); color: var(--pass); }
+  .st-sub  { background: var(--hold-soft); color: var(--hold); }
+  .st-seam { background: var(--slide-2);  color: var(--ink-2); }
+  .st-no   { background: var(--stop-soft); color: var(--stop); }
+
+  /* ---- two/three column ------------------------------------------------- */
+  .cols  { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 820px) { .cols-2, .title-grid { grid-template-columns: 1fr; gap: 18px; } }
+
+  .card {
+    background: var(--slide-2); border-radius: 4px; padding: 15px 17px;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .card.rail { background: var(--slide); border: 1px solid var(--rule); border-left: 3px solid var(--accent); }
+  .card.amber { background: var(--hold-soft); }
+  .card p { font-size: 0.87rem; max-width: none; }
+
+  ul { margin: 0; padding-inline-start: 19px; color: var(--ink-2); font-size: 0.88rem; }
+  li { margin-bottom: 5px; }
+  li:last-child { margin-bottom: 0; }
+  .slide.dark ul { color: var(--on-deep-2); }
+
+  /* ---- Q&A -------------------------------------------------------------- */
+  .qa { display: flex; flex-direction: column; gap: 0; }
+  .q {
+    padding: 14px 0; border-top: 1px solid var(--rule-soft);
+    display: grid; grid-template-columns: 26px 1fr; gap: 12px;
+  }
+  .q:first-child { border-top: none; }
+  .q-mark { font-family: var(--display); font-weight: 700; font-size: 1rem; color: var(--accent); }
+  .q-body { display: flex; flex-direction: column; gap: 6px; }
+  .q-body .ask { font-family: var(--display); font-weight: 600; font-size: 1rem; color: var(--ink); }
+  .q-body p { font-size: 0.87rem; max-width: none; }
+  .q-body .term {
+    font-family: var(--mono); font-size: 0.76rem; background: var(--deep-2);
+    color: #E4ECF7; padding: 8px 11px; border-radius: 3px; overflow-x: auto;
+    white-space: pre; margin: 0;
+  }
+
+  .kicker {
+    background: var(--accent); color: #FFFFFF; border-radius: 4px;
+    padding: 15px 19px; font-family: var(--display); font-weight: 600;
+    font-size: 1.05rem; line-height: 1.3;
+  }
+  .kicker.quiet { background: var(--mid); }
+
+  a { color: var(--mid); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  /* ==========================================================================
+     PRINT — one slide per landscape page.
+     The deck is read on screen as a scroll and handed over as a PDF, and the
+     PDF is the artefact that ends up in a judge's folder. So the page box is
+     set explicitly rather than left to the browser's letter default, and each
+     slide is told not to split across a page break.
+     ========================================================================== */
+  @page { size: 297mm 167mm; margin: 0; }
+  @media print {
+    body { background: #FFFFFF; font-size: 12.5px; }
+    .deck { max-width: none; margin: 0; padding: 0; gap: 0; }
+    .slide {
+      border: none; border-radius: 0;
+      width: 297mm; height: 167mm;
+      padding: 15mm 17mm 13mm;
+      break-inside: avoid; break-after: page;
+      overflow: hidden;
+      justify-content: flex-start;
+    }
+    .slide:last-child { break-after: auto; }
+    /* Chrome drops backgrounds in print unless asked; the dark slides are
+       structural here, not decorative. */
+    .slide.dark { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h1 { font-size: 2.6rem; }
+    h2 { font-size: 1.75rem; }
+    .band .n { font-size: 1.6rem; }
+  }
+</style>
+
+<div class="deck">
+
+  <!-- ══════════════════════════════ 01 · TITLE ══════════════════════════ -->
+  <section class="slide dark">
+    <div class="title-grid">
+      <div style="display:flex; flex-direction:column; gap:18px">
+        <p class="eyebrow">Smart India Hackathon 2026 · PS 26186</p>
+        <h1 style="letter-spacing:-0.02em">SAMVEDNA</h1>
+        <p class="lede" style="color:var(--on-deep-2); max-width:34ch">
+          Evidence-gated stress and welfare intelligence for uniformed forces.
+        </p>
+        <p class="thesis">
+          The model raises the concern. The evidence must corroborate it.
+          <em>The arithmetic decides.</em> A welfare officer acts.
+        </p>
+      </div>
+      <dl class="meta-list">
+        <div class="meta-row"><dt>Team</dt><dd>CodeZila</dd></div>
+        <div class="meta-row"><dt>Theme</dt><dd>MedTech / BioTech / HealthTech</dd></div>
+        <div class="meta-row"><dt>Category</dt><dd>Software</dd></div>
+        <div class="meta-row"><dt>State</dt><dd>Running end to end, on localhost</dd></div>
+        <div class="meta-row"><dt>Tests</dt><dd class="num">729 passing</dd></div>
+        <div class="meta-row"><dt>Languages</dt><dd class="num">8 Indian languages</dd></div>
+        <div class="meta-row"><dt>Runs</dt><dd>Air-gapped · no GPU · one server</dd></div>
+      </dl>
+    </div>
+    <span class="slide-tag">Title</span><span class="slide-n">01</span>
+  </section>
+
+  <!-- ══════════════════════════ 02 · THE PRODUCT ════════════════════════ -->
+  <section class="slide">
+    <p class="eyebrow">What makes this different</p>
+    <h2>The product is the refusal</h2>
+    <p class="lede">
+      Every system in this category flags too many people, officers stop
+      trusting it, and personnel learn that answering honestly gets them
+      watched. So this one is built to shut up.
+    </p>
+
+    <div class="band">
+      <div><span class="n">240</span><span class="k">screened</span></div>
+      <div><span class="n">128</span><span class="k">deviating</span></div>
+      <div><span class="n">125</span><span class="k">watched, not named</span></div>
+      <div class="accent"><span class="n">3</span><span class="k">reached a human</span></div>
+    </div>
+
+    <div class="cols-2" style="margin-top:6px">
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <h3>One real case, refused by 0.006</h3>
+        <div class="gates">
+          <div class="gate">
+            <span class="gate-name">evidence</span>
+            <span class="track"><span class="fill" style="width:100%"></span><span class="thresh" style="left:65%"></span></span>
+            <span class="gate-v">1.000</span><span class="gate-f">CLEAR</span>
+          </div>
+          <div class="gate">
+            <span class="gate-name">consistency</span>
+            <span class="track"><span class="fill hold" style="width:69.4%"></span><span class="thresh" style="left:70%"></span></span>
+            <span class="gate-v hold">0.694</span><span class="gate-f">HOLD</span>
+          </div>
+          <div class="gate">
+            <span class="gate-name">persistence</span>
+            <span class="track"><span class="fill" style="width:96.5%"></span><span class="thresh" style="left:60%"></span></span>
+            <span class="gate-v">0.965</span><span class="gate-f">CLEAR</span>
+          </div>
+          <div class="gate">
+            <span class="gate-name">actionability</span>
+            <span class="track"><span class="fill" style="width:100%"></span><span class="thresh" style="left:50%"></span></span>
+            <span class="gate-v">1.000</span><span class="gate-f">CLEAR</span>
+          </div>
+        </div>
+        <p class="mono" style="font-size:0.78rem; color:var(--ink-3)">
+          consistency = mean(0.667, 0.708, 0.708) = 0.694 · needs 0.700
+        </p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px">
+        <div class="card amber">
+          <h4 style="color:var(--hold)">Why it refused</h4>
+          <p>
+            45&ndash;61% of this jawan&rsquo;s unit is deviating the same way,
+            because the unit is deployed. A unit-wide pattern is a
+            <strong>command workload problem</strong>, not an individual welfare
+            concern. Naming this person would have been wrong <em>and</em> the
+            fastest way to lose the force&rsquo;s confidence.
+          </p>
+        </div>
+        <div class="card rail">
+          <h4>And it says what would change its mind</h4>
+          <p class="mono" style="font-size:0.78rem; color:var(--ink)">
+            &ldquo;the duty_roster deviation is still present after the
+            unit&rsquo;s current deployment cycle ends (op-tempo confounder,
+            0.70)&rdquo;
+          </p>
+          <p style="font-size:0.82rem">
+            Computed by inverting the failed gate &mdash; never generated. It
+            cannot describe a route that would not in fact clear the gate.
+          </p>
+        </div>
+      </div>
+    </div>
+    <span class="slide-tag">The product</span><span class="slide-n">02</span>
+  </section>
+
+  <!-- ═══════════════════════ 03 · STACK: DATA & MODELS ══════════════════ -->
+  <section class="slide">
+    <p class="eyebrow">Tech stack · 1 of 2 &mdash; declared vs. running</p>
+    <h2>Data, backend and models</h2>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th style="width:20%">Declared</th><th style="width:13%">Status</th><th>Where it runs, and why</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FastAPI · Python</td>
+            <td><span class="st st-run">running</span></td>
+            <td class="mono">api/app.py &mdash; 21 routes · api/voice_routes.py &mdash; 5 more</td>
+          </tr>
+          <tr>
+            <td>PostgreSQL + TimescaleDB</td>
+            <td><span class="st st-seam">seam</span></td>
+            <td><span class="mono">db/store.py</span> &mdash; SQLAlchemy 2.0. Same schema on SQLite or Postgres; change one URL. SQLite is the default so the demo travels.</td>
+          </tr>
+          <tr>
+            <td>Apache Airflow</td>
+            <td><span class="st st-sub">substituted</span></td>
+            <td><span class="mono">pipeline/dag.py</span> &mdash; 9 stages with timings, row counts and visible failure. Airflow needs a scheduler, a metadata DB and a webserver; this is one nightly batch, triggered by cron.</td>
+          </tr>
+          <tr>
+            <td>Redis</td>
+            <td><span class="st st-sub">substituted</span></td>
+            <td><span class="mono">disclosure/dpcache.py</span> &mdash; and it is a <strong>security control, not a cache</strong>: fresh DP noise per refresh averages back to the truth, so a repeated view is served from cache and charged once.</td>
+          </tr>
+          <tr>
+            <td>XGBoost / LightGBM</td>
+            <td><span class="st st-run">supported</span></td>
+            <td><span class="mono">train_tabular.py --backend auto</span> prefers LightGBM when it <em>loads</em>, falls back to scikit-learn. Default sklearn: LightGBM dies on <span class="mono">libomp</span>, which a pendrive copy will not have.</td>
+          </tr>
+          <tr>
+            <td>Temporal Transformer</td>
+            <td><span class="st st-sub">substituted</span></td>
+            <td><span class="mono">models/sequence.py</span> &mdash; explicit roster-rhythm features separating <em>predictable</em> from <em>sustainable</em>. torch is ~2 GB and cannot be emailed.</td>
+          </tr>
+          <tr>
+            <td>Survival analysis</td>
+            <td><span class="st st-run">running</span></td>
+            <td><span class="mono">models/survival.py</span> &mdash; discrete-time hazard. Gives a &ldquo;by when&rdquo;, which is what makes a case schedulable.</td>
+          </tr>
+          <tr>
+            <td>SHAP</td>
+            <td><span class="st st-run">running</span></td>
+            <td><span class="mono">analytics/attribution.py</span> &mdash; TreeExplainer, translated into a sentence an officer can repeat aloud.</td>
+          </tr>
+          <tr>
+            <td>Deterministic gate engine</td>
+            <td><span class="st st-run">running</span></td>
+            <td><span class="mono">core/gates.py</span> &mdash; pure. An AST test fails the build on I/O, a clock, <span class="mono">random</span> or <span class="mono">numpy</span>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <span class="slide-tag">Stack 1/2</span><span class="slide-n">03</span>
+  </section>
+
+  <!-- ═══════════════════ 04 · STACK: PRIVACY & ACCESS ═══════════════════ -->
+  <section class="slide">
+    <p class="eyebrow">Tech stack · 2 of 2</p>
+    <h2>Privacy, storage and access</h2>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th style="width:20%">Declared</th><th style="width:13%">Status</th><th>Where it runs, and why</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AES-256 + HSM</td>
+            <td><span class="st st-run">AES running</span></td>
+            <td><span class="mono">db/crypto.py</span> &mdash; AES-256-GCM, one sealed blob per identity, <strong>bound to its pid as AAD</strong>. HSM is a declared seam that <em>refuses rather than faking it</em>.</td>
+          </tr>
+          <tr>
+            <td>k-anonymity</td>
+            <td><span class="st st-run">running</span></td>
+            <td><span class="mono">disclosure/kanon.py</span> &mdash; k&ge;5, <strong>suppress not round</strong>.</td>
+          </tr>
+          <tr>
+            <td>Opacus (DP)</td>
+            <td><span class="st st-sub">substituted</span></td>
+            <td><span class="mono">ingest/dp.py</span> &mdash; calibrated noise, finite &epsilon; budget (60&epsilon;; ~24&epsilon; per unit heat map). Opacus pulls torch.</td>
+          </tr>
+          <tr>
+            <td>Flower (federated)</td>
+            <td><span class="st st-sub">substituted</span></td>
+            <td><span class="mono">models/federated.py</span> &mdash; FedAvg, clip-then-noise ordering. <span class="mono">--extra federated</span> installs Flower; the aggregation seam is a Protocol.</td>
+          </tr>
+          <tr>
+            <td>Keycloak RBAC</td>
+            <td><span class="st st-sub">substituted</span></td>
+            <td><span class="mono">disclosure/rbac.py</span> &mdash; 5 roles, purpose binding, unit scope, enforced in the API not the UI. Keycloak issues tokens; <strong>the grant table still decides</strong>.</td>
+          </tr>
+          <tr>
+            <td>Flutter (Android/iOS)</td>
+            <td><span class="st st-sub">substituted</span></td>
+            <td><span class="mono">web/app/manifest.ts</span> &mdash; installable PWA. The force hosts it end to end, and there is <strong>one consent text</strong> rather than three.</td>
+          </tr>
+          <tr>
+            <td>React + TypeScript</td>
+            <td><span class="st st-run">running</span></td>
+            <td><span class="mono">web/</span> &mdash; React 19, TypeScript, Next.js 15.5.4. Four role consoles.</td>
+          </tr>
+          <tr>
+            <td>On-prem Kubernetes</td>
+            <td><span class="st st-no">not built</span></td>
+            <td>One process, two ports. 7.7 ms/person means a national force fits on one server &mdash; and a Helm chart nobody has run against a real cluster is a liability, not a feature.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="kicker quiet" style="margin-top:4px">
+      9 running · 5 substituted with the seam intact · 2 seams awaiting a deployment · 1 not built.
+      Every substitution is the same constraint: <strong>it had to survive being copied onto a pendrive and emailed.</strong>
+    </div>
+    <span class="slide-tag">Stack 2/2</span><span class="slide-n">04</span>
+  </section>
+
+  <!-- ══════════════════════ 05 · PRIVACY & STORAGE ══════════════════════ -->
+  <section class="slide">
+    <p class="eyebrow">The problem statement asks for privacy and secure storage</p>
+    <h2>What is on disk, and what an attacker gets</h2>
+
+    <div class="cols">
+      <div class="card">
+        <h4>identities</h4>
+        <p>
+          The only real PII. <strong>AES-256-GCM sealed</strong>, one blob per
+          row, bound to its pid. With the database file an attacker gets
+          pseudonyms and ciphertext.
+        </p>
+      </div>
+      <div class="card">
+        <h4>ledger_entries</h4>
+        <p>
+          Hash-chained, <strong>in the clear on purpose</strong>. An audit
+          ledger nobody can read is not an audit ledger &mdash; its integrity
+          matters, its confidentiality does not.
+        </p>
+      </div>
+      <div class="card">
+        <h4>consent_records</h4>
+        <p>
+          Keyed by pid, so no identifier. <strong>There is no
+          <span class="mono">withdrawn_at</span> column</strong> &mdash; a
+          nullable timestamp is something a dashboard can count.
+        </p>
+      </div>
+    </div>
+
+    <div class="cols-2" style="margin-top:6px">
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <h3>Three findings from our own tests</h3>
+        <ul>
+          <li><strong>A ciphertext moved to another pid</strong> would have disclosed
+              the wrong person &mdash; with no key at all. Fixed by binding the pid
+              as additional authenticated data.</li>
+          <li><strong>SQLite's DELETE does not erase.</strong> A purged pid was still
+              greppable out of the file. Now <span class="mono">secure_delete</span>
+              + VACUUM.</li>
+          <li><strong>The write-ahead log still held it</strong> after that. Purge now
+              also runs <span class="mono">wal_checkpoint(TRUNCATE)</span>. Under
+              the DPDP Act erasure has to mean erasure.</li>
+        </ul>
+      </div>
+      <div class="card rail">
+        <h4>The test that proves it</h4>
+        <p class="mono" style="font-size:0.76rem">
+          tests/storage/test_secure_store.py::<br>test_no_personal_data_appears_in_the_database_file
+        </p>
+        <p>
+          It greps the raw <span class="mono">.db</span>,
+          <span class="mono">-wal</span> and <span class="mono">-shm</span> for
+          the plaintext name, service number and contact &mdash; and asserts the
+          pid <em>is</em> present, because a scan that finds nothing proves
+          nothing if the row never reached the file. That version of the test
+          nearly shipped.
+        </p>
+      </div>
+    </div>
+    <span class="slide-tag">Privacy &amp; storage</span><span class="slide-n">05</span>
+  </section>
+
+  <!-- ═══════════════════════════ 06 · FALLBACKS ═════════════════════════ -->
+  <section class="slide">
+    <p class="eyebrow">Resilience</p>
+    <h2>What happens when something fails</h2>
+    <p class="lede">
+      The governing rule is the opposite of most systems: it fails
+      <strong>towards silence, never towards accusation</strong> &mdash; and no
+      fallback is silent.
+    </p>
+
+    <div class="cols-2">
+      <div style="display:flex; flex-direction:column; gap:9px">
+        <h3 style="color:var(--hold)">Degrades &mdash; the run continues, and says so</h3>
+        <div class="scroller">
+          <table>
+            <tbody>
+              <tr><td style="width:44%">Risk model missing</td><td>Stage 5 degrades. The gates never needed a score. Proven in CI with <span class="mono">--model-dir /nonexistent</span></td></tr>
+              <tr><td>LightGBM won't load</td><td>Falls back to scikit-learn, prints why</td></tr>
+              <tr><td>HRMS export short</td><td>Domain <strong>excluded, never imputed</strong>; data-gap confounder fires; run marked PARTIAL</td></tr>
+              <tr><td>Export file absent</td><td><span class="mono">unavailable</span>, not ok-with-zero-rows</td></tr>
+              <tr><td>Malformed row</td><td>Counted and dropped, never coerced</td></tr>
+              <tr><td>A reviewer times out</td><td>Named in <span class="mono">unavailable_reviewers</span> on the case card</td></tr>
+              <tr><td>Model drift exceeds PSI</td><td><strong>Escalation freezes entirely</strong> until a board reviews</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:9px">
+        <h3 style="color:var(--stop)">Fails closed &mdash; no degraded mode, on purpose</h3>
+        <div class="scroller">
+          <table>
+            <tbody>
+              <tr><td style="width:44%">Ledger write fails</td><td>The disclosure <strong>aborts</strong>. No ordering exists in which a name exists without a record of it</td></tr>
+              <tr><td>Encryption key missing</td><td>Refuses to start. A store that degrades to plaintext is worse than one that stops</td></tr>
+              <tr><td>Dev key in live mode</td><td>Refused &mdash; checked twice</td></tr>
+              <tr><td>Keyfile in the tree, or 0644</td><td>Refused. It would be emailed inside the archive</td></tr>
+              <tr><td>Ciphertext on the wrong pid</td><td><span class="mono">InvalidTag</span></td></tr>
+              <tr><td>Rotated-out salt epoch</td><td>Resolves to <span class="mono">None</span>, never a stranger</td></tr>
+              <tr><td>DP budget exhausted</td><td>Aggregates stop. <strong>Welfare decisions unaffected</strong></td></tr>
+              <tr><td>Consent absent</td><td><span class="mono">NO_FLAG</span>, before any gate runs</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <span class="slide-tag">Fallbacks</span><span class="slide-n">06</span>
+  </section>
+
+  <!-- ══════════════════════════ 07 · SCALABILITY ════════════════════════ -->
+  <section class="slide">
+    <p class="eyebrow">Measured, reproducible with tools/benchmark.py</p>
+    <h2>It scales. The caseload does not.</h2>
+
+    <div class="band">
+      <div><span class="n">7.7 ms</span><span class="k">per person</span></div>
+      <div><span class="n">16.7&times;</span><span class="k">range, sub-linear</span></div>
+      <div><span class="n">2.1 h</span><span class="k">10 lakh, one core</span></div>
+      <div><span class="n">16 min</span><span class="k">10 lakh, 8 cores</span></div>
+    </div>
+
+    <div class="cols-2" style="margin-top:6px">
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <p>
+          Measured over cohorts from 240 to 4,000 people &mdash; 7.6 million
+          records at the top end. Per-person cost <em>falls</em> as the cohort
+          grows, so the extrapolation is arithmetic rather than optimism. One
+          commodity server, no GPU, no distributed system, because every person
+          is scored independently of every other.
+        </p>
+        <div class="card">
+          <h4>Getting here found four quadratic paths</h4>
+          <p>
+            Consent scope at enrolment, <span class="mono">unit_of</span>,
+            <span class="mono">domains_for</span>, and the cohort baseline
+            recomputed once per member of the cohort. Before the fixes,
+            per-person cost <em>grew</em> from 22 ms to 41 ms. Escalation counts
+            are byte-identical before and after &mdash; the fixes changed no
+            decision, and the suite asserts it.
+          </p>
+        </div>
+      </div>
+      <div class="card amber">
+        <h4 style="color:var(--hold)">The half that is not good news</h4>
+        <p>
+          The escalation rate is stable near <strong>0.8%</strong>. At 240
+          people that is 3 cases and a good night's work. At ten lakh it is
+          <strong>~8,200 cases a night</strong> &mdash; about 1,370 welfare
+          officers at six conversations each. <strong>That is not a deployable
+          number.</strong>
+        </p>
+        <p>
+          It is also not a compute problem. It is an operating-point decision,
+          and the dial is exposed and measured:
+        </p>
+        <div class="scroller">
+          <table>
+            <thead><tr><th>Evidence threshold</th><th>Rate</th><th>Cases at 10 lakh</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">0.65 (current)</td><td class="mono">~1.20%</td><td class="mono">~12,000</td></tr>
+              <tr><td class="mono">0.70</td><td class="mono">~0.65%</td><td class="mono">~6,500</td></tr>
+              <tr><td class="mono">0.80</td><td class="mono">~0.05%</td><td class="mono">~500</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.82rem">
+          Quoting the compute figure without this one would be exactly the
+          overclaim the gates exist to prevent.
+        </p>
+      </div>
+    </div>
+    <span class="slide-tag">Scalability</span><span class="slide-n">07</span>
+  </section>
+
+  <!-- ═══════════════════════════ 08 · Q&A PART 1 ════════════════════════ -->
+  <section class="slide">
+    <p class="eyebrow">Backup &mdash; tech stack questions</p>
+    <h2>Answers we already have</h2>
+    <div class="qa">
+      <div class="q">
+        <span class="q-mark">Q</span>
+        <div class="q-body">
+          <span class="ask">Your deck says LightGBM. Why is scikit-learn installed?</span>
+          <p>Both. <span class="mono">--backend auto</span> prefers LightGBM and falls back. Here is the actual reason, from this machine:</p>
+          <p class="term">dlopen(lib_lightgbm.dylib): Library not loaded: @rpath/libomp.dylib</p>
+          <p>The wheel installs cleanly and dies at <em>load</em>, because libomp is a separate Homebrew package. That is an <span class="mono">OSError</span>, not an <span class="mono">ImportError</span> &mdash; so the naive fallback does not catch it, which we found by writing it wrong first. On a provisioned server, <span class="mono">--extra fast</span> and you get LightGBM.</p>
+        </div>
+      </div>
+      <div class="q">
+        <span class="q-mark">Q</span>
+        <div class="q-body">
+          <span class="ask">Where is Airflow? Where is Redis?</span>
+          <p><span class="mono">pipeline/dag.py</span> and <span class="mono">disclosure/dpcache.py</span>. Airflow's value is scheduling many interdependent DAGs across a cluster; this is one nightly batch. What was needed from it &mdash; per-stage status, row counts, timings, visible failure &mdash; is on the control room screen. Redis would hold the same structure if this ran multi-node; the release cache is a security control, not a speed-up.</p>
+        </div>
+      </div>
+      <div class="q">
+        <span class="q-mark">Q</span>
+        <div class="q-body">
+          <span class="ask">Flutter was declared. This is a web app.</span>
+          <p>An installable PWA. Two reasons, and the second is the real one: a store app's binary and update channel sit outside the organisation, and consent is recorded against a <strong>specific text in a specific language at a specific version</strong>. Maintaining that screen three times is three chances for them to disagree about what somebody agreed to.</p>
+        </div>
+      </div>
+      <div class="q">
+        <span class="q-mark">Q</span>
+        <div class="q-body">
+          <span class="ask">Do you actually have an HSM?</span>
+          <p>No, and <span class="mono">HsmKeyProvider.key()</span> raises rather than pretending: <em>&ldquo;HSM support is a seam, not an implementation.&rdquo;</em> Every module answers a different protocol, and a stub that quietly returned a locally-derived key while calling itself an HSM provider would be the most dangerous class in the codebase. Until a force names its module, the keyfile provider demands 0600 and a path outside the project tree &mdash; and refuses both otherwise.</p>
+        </div>
+      </div>
+    </div>
+    <span class="slide-tag">Q&amp;A 1/2</span><span class="slide-n">08</span>
+  </section>
+
+  <!-- ═══════════════════════════ 09 · Q&A PART 2 ════════════════════════ -->
+  <section class="slide">
+    <p class="eyebrow">Backup &mdash; the harder questions</p>
+    <h2>Including the ones we would rather be asked</h2>
+    <div class="qa">
+      <div class="q">
+        <span class="q-mark">Q</span>
+        <div class="q-body">
+          <span class="ask">How do I know the demo isn't hardcoded?</span>
+          <p><span class="mono">uv run samvedna cohorts</span> runs all three fixture cohorts through the real engine, and the interesting one <strong>refuses</strong> &mdash; by 0.006. A hardcoded demo does not fail by 0.006. <span class="mono">./check.sh</span> also asserts the fixtures reproduce byte-for-byte from the seed.</p>
+        </div>
+      </div>
+      <div class="q">
+        <span class="q-mark">Q</span>
+        <div class="q-body">
+          <span class="ask">Which parts are AI, and which parts decide?</span>
+          <p><strong>AI:</strong> gradient-boosted risk score, SHAP, survival hazard, roster rhythm, three reviewers. <strong>Decides:</strong> <span class="mono">core/gates.py</span> &mdash; four sums against four thresholds. No model, LLM or heuristic may emit a gate value, a verdict or a confidence. There is no LLM in the decision path and no external endpoint anywhere; the build fails on one.</p>
+        </div>
+      </div>
+      <div class="q">
+        <span class="q-mark">Q</span>
+        <div class="q-body">
+          <span class="ask">What about false negatives? Everything here is about not over-flagging.</span>
+          <p>Fair, and it was a real gap. <span class="mono">pipeline/missed.py</span>: when a concern surfaces through another channel, it is registered with the verdict we had and the gate that declined it &mdash; and above a 0.30 missed-case ceiling the loop proposes <em>loosening</em>. Before it existed, the system could only ever raise a threshold, which converges on naming nobody. <strong>It is surfaced-case recall, not recall</strong> &mdash; a concern nobody ever raised is invisible to it, and that limit is a named constant in the code.</p>
+        </div>
+      </div>
+      <div class="q">
+        <span class="q-mark">Q</span>
+        <div class="q-body">
+          <span class="ask">What is your biggest weakness?</span>
+          <p><strong>There is no real dataset.</strong> The cohort is generated from seed 26186 and the training label is <span class="mono">strain &ge; 0.55</span>, which is circular &mdash; the model learns the generator. The model card is stamped <span class="mono">synthetic: true</span>. Any accuracy figure from it measures the generator, not the world. Every architectural claim on these slides is testable today; the accuracy claims need an ethics approval and a data-sharing agreement, not an afternoon.</p>
+        </div>
+      </div>
+    </div>
+    <span class="slide-tag">Q&amp;A 2/2</span><span class="slide-n">09</span>
+  </section>
+
+  <!-- ═══════════════════════════ 10 · CLOSE ═════════════════════════════ -->
+  <section class="slide dark">
+    <p class="eyebrow">Close on this, not on the escalation</p>
+    <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem); max-width:30ch">
+      It did not stay silent because we told it to.
+    </h2>
+    <p class="lede" style="max-width:52ch; color:var(--on-deep-2)">
+      It stayed silent because the evidence failed the gates &mdash; and it told
+      us exactly what would change its mind.
+    </p>
+
+    <div class="cols" style="margin-top:14px">
+      <div class="card" style="background:rgb(255 255 255 / 0.07)">
+        <h4 style="color:var(--on-deep-2)">See it yourself</h4>
+        <p class="mono" style="font-size:0.78rem; color:var(--on-deep)">
+          ./run.sh<br>localhost:3100/demo<br>localhost:8090/api-console
+        </p>
+        <p style="color:var(--on-deep-2)">
+          Four consoles, plus the API console &mdash; every route with the role
+          it needs. Switch role, re-send, watch it turn 403. No CDN, so it
+          works on venue wifi that doesn't.
+        </p>
+      </div>
+      <div class="card" style="background:rgb(255 255 255 / 0.07)">
+        <h4 style="color:var(--on-deep-2)">Verify it yourself</h4>
+        <p class="mono" style="font-size:0.78rem; color:var(--on-deep)">
+          ./check.sh<br>./check.sh --transfer
+        </p>
+        <p style="color:var(--on-deep-2)">
+          729 tests, L3 purity, portability, packaging &mdash; and it unzips into
+          a temp directory and runs cold.
+        </p>
+      </div>
+      <div class="card" style="background:rgb(255 255 255 / 0.07)">
+        <h4 style="color:var(--on-deep-2)">Read the limits</h4>
+        <p class="mono" style="font-size:0.78rem; color:var(--on-deep)">
+          docs/PS_COMPLIANCE.md<br>docs/TECH_STACK.md
+        </p>
+        <p style="color:var(--on-deep-2)">
+          Every requirement, and every gap, stated rather than buried.
+        </p>
+      </div>
+    </div>
+
+    <div class="kicker" style="margin-top:16px">
+      Welfare support, never disciplinary action. Outputs are barred
+      <em>in software</em> from ACR, posting, promotion and disciplinary processes.
+    </div>
+    <span class="slide-tag">SAMVEDNA · Team CodeZila · PS 26186</span><span class="slide-n">10</span>
+  </section>
+
+</div>

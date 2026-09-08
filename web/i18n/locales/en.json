@@ -1,0 +1,137 @@
+{
+  "_meta": {
+    "locale": "en",
+    "name": "English",
+    "englishName": "English",
+    "direction": "ltr",
+    "textVersion": "2026.09.07-1",
+    "reviewStatus": "source",
+    "reviewedBy": "authoring team",
+    "reviewedOn": "2026-09-05"
+  },
+  "picker": {
+    "label": "Language",
+    "help": "Choose the language you read most easily. Your choice is stored on this device only.",
+    "draftWarning": "This translation has not yet been checked by a native speaker. You can read it, but consent cannot be recorded against it until it is reviewed. Please use English or Hindi to give consent for now."
+  },
+  "transparency": {
+    "title": "What this system can and cannot see about me",
+    "lead": "Read this before you decide anything. It is the whole of what the system does with your records.",
+    "canSeeTitle": "It can see",
+    "cannotSeeTitle": "It cannot see",
+    "canSee": [
+      "That your leave was denied four times in the last ninety days.",
+      "That your duty roster shows more consecutive days than your own usual pattern.",
+      "That you filled in a self-assessment, and the score band it fell into.",
+      "Whether the pattern held for a week, a month or three months."
+    ],
+    "cannotSee": [
+      "Your individual answers to any assessment question.",
+      "Anything you say to a welfare officer in conversation.",
+      "Your location, your messages, your calls, or anything on your phone.",
+      "Anything at all, if you have not consented to that source."
+    ],
+    "neverTitle": "And these things never happen",
+    "never": [
+      "This is never used for your ACR, promotion, posting or any disciplinary process. That is barred in the software for every role, not by policy alone.",
+      "Your commanding officer never sees anything about you as an individual — only unit totals covering at least five people.",
+      "If you withdraw consent, nobody is told. Not your commanding officer, not your welfare officer. Only the auditor sees that an event occurred.",
+      "If the system raises a concern about you, you can ask why, see the same reasons the officer saw, and disagree with them."
+    ]
+  },
+  "allow": {
+    "title": "What I allow",
+    "lead": "Each of these is separate. Refusing one does not affect the others, and refusing all of them is allowed.",
+    "allowed": "allowed",
+    "notAllowed": "not allowed"
+  },
+  "domains": {
+    "records": {
+      "label": "Service records",
+      "what": "Leave applications and denials, duty roster, deployment history, workload against establishment.",
+      "tier": "Objective unit record"
+    },
+    "selfReport": {
+      "label": "Wellness self-assessment",
+      "what": "A validated questionnaire, when you choose to fill one in. Your individual answers are never shown to your welfare officer or your commanding officer.",
+      "tier": "The strongest signal, and the only one you control"
+    },
+    "biometric": {
+      "label": "Wearable trend",
+      "what": "Resting heart-rate trend only. No location, and no continuous monitoring.",
+      "tier": "Weak, and easily explained by other things"
+    },
+    "voice": {
+      "label": "Voice sitting (add-on)",
+      "what": "A short conversation, measured while you speak. The recording is discarded as soon as it is measured — it is never stored and never leaves this machine. What you type is destroyed when the sitting ends.",
+      "tier": "An extra way of listening. Weak on its own, and never used alone"
+    }
+  },
+  "welfareContact": {
+    "question": "May a welfare officer approach me?",
+    "explain": "This is a separate question on purpose. You may allow the analysis and still refuse to be approached.",
+    "warningOff": "With this off, the system will analyse your records but will never surface you to anybody. No officer will be shown your name, whatever the analysis finds. That is the correct behaviour and it is stated here rather than buried."
+  },
+  "instrument": {
+    "title": "Wellness self-assessment",
+    "available": "Available in this language, using the officially validated translation.",
+    "unavailable": "This questionnaire is not yet available in this language. We will not show you our own translation of it: the scores of a validated questionnaire only mean what they are supposed to mean in the exact wording it was validated in, and an unofficial translation would look normal and score wrong. You can take it in a language listed below, or skip it — it is voluntary either way.",
+    "validatedAs": "Validation",
+    "takeIn": "Take it in",
+    "start": "Take the assessment",
+    "intro": "Nine questions about the last two weeks. Voluntary, and you can stop at any point. Your individual answers are never shown to your welfare officer or your commanding officer — only the score band reaches the system.",
+    "lead": "Over the last two weeks, how often have you been bothered by the following?",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Finish",
+    "cancel": "Stop and discard",
+    "progress": "Question",
+    "of": "of",
+    "done": "Thank you. Your assessment has been recorded.",
+    "bandLabel": "Score band",
+    "privacyNote": "Your individual answers were discarded. Only the band above was kept, and only that reaches the system."
+  },
+  "receipt": {
+    "title": "What you agreed to",
+    "lead": "Your consent is recorded against the exact text you read, in the language you read it in. If this wording changes later, you will be asked again rather than carried over.",
+    "language": "Language",
+    "version": "Text version",
+    "recordedAt": "Recorded",
+    "notRecorded": "Not yet recorded"
+  },
+  "withdraw": {
+    "title": "Withdraw",
+    "body": "One tap. Within one cycle your self-assessment and wearable records are purged, you are dropped from any watchlist, and any alert that has not yet been delivered is cancelled. Nobody is told, and there is no penalty.",
+    "button": "Withdraw my consent",
+    "doneTitle": "Consent withdrawn",
+    "doneLead": "It is done.",
+    "doneBody": "Your self-assessment and wearable records have been purged. You have been removed from any watchlist and any alert that had not yet been delivered has been cancelled. Only the ledger entry recording that this happened is kept, and it contains no content.",
+    "doneNobodyTold": "Nobody has been told. This is not reported to your commanding officer or your welfare officer, and there is no screen anywhere in this system that lists people who have withdrawn.",
+    "reEnrol": "Enrol again"
+  },
+  "help": {
+    "title": "If you are struggling right now",
+    "lead": "You do not have to wait for this system, or for anybody to contact you.",
+    "items": [
+      "Unit medical officer — through the unit exchange, at any hour.",
+      "Designated mental-health authority — directly, without going through the unit.",
+      "The colleague you would tell first, if you were going to tell anyone."
+    ]
+  },
+  "save": {
+    "button": "Save my choices",
+    "saved": "Saved",
+    "blockedDraft": "Consent cannot be recorded against a translation that has not been reviewed."
+  },
+  "drivers": {
+    "title": "Why the system looked at me",
+    "lead": "The same reasons a welfare officer would have been shown, in the same words. Not a summary written for you — the account that was actually used.",
+    "none": "Nothing was raised about you in the most recent run. That is the ordinary result.",
+    "namedYes": "A welfare officer was given your name, along with these reasons.",
+    "namedNo": "No name was released. These are the reasons the system weighed, and the gate that stopped it.",
+    "gatesTitle": "The arithmetic",
+    "driversTitle": "What it looked at",
+    "disagree": "I disagree with this",
+    "contestTitle": "If this is wrong"
+  }
+}

@@ -1,0 +1,652 @@
+{
+  "cohort": "monitor",
+  "description": "Strong signal, defeated by confounders or breadth. No name.",
+  "as_of": "2026-09-05",
+  "seed": 26186,
+  "personnel": [
+    {
+      "pid": "pid-mon-0001",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {
+          "self_report": 0.45,
+          "leave": 0.52,
+          "duty_roster": 0.61,
+          "workload": 0.58
+        },
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "self_report",
+          "z_self": 3.0,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.0
+        },
+        {
+          "domain": "leave",
+          "z_self": 2.9,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.0
+        },
+        {
+          "domain": "duty_roster",
+          "z_self": 2.7,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "MONITOR",
+      "note": "THE demo case: strong, sustained, three domains \u2014 but 45-61% of the unit deviates the same way. Consistency 0.694 against 0.700. No name."
+    },
+    {
+      "pid": "pid-mon-0002",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "workload",
+          "z_self": 3.6,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "MONITOR",
+      "note": "strong single-domain spike; evidence 0.246 \u2014 one domain never escalates"
+    },
+    {
+      "pid": "pid-mon-0003",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "leave",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 0.233333,
+            "90": 0.077778
+          },
+          "missing_fraction": 0.0
+        },
+        {
+          "domain": "duty_roster",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 0.233333,
+            "90": 0.077778
+          },
+          "missing_fraction": 0.0
+        },
+        {
+          "domain": "self_report",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 0.233333,
+            "90": 0.077778
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "MONITOR",
+      "note": "broad and consented, but one bad week \u2014 persistence 0.332"
+    },
+    {
+      "pid": "pid-mon-0004",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "leave",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.34
+        },
+        {
+          "domain": "duty_roster",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.34
+        },
+        {
+          "domain": "workload",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.34
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "MONITOR",
+      "note": "a connector failed: 34% of records missing, data-gap confounder 0.80"
+    },
+    {
+      "pid": "pid-mon-0005",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [
+          "leave"
+        ],
+        "training_domains": [
+          "duty_roster"
+        ],
+        "seasonal_domains": [
+          "leave",
+          "workload"
+        ],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "leave",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.0
+        },
+        {
+          "domain": "duty_roster",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.0
+        },
+        {
+          "domain": "workload",
+          "z_self": 2.8,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 1.0,
+            "30": 1.0,
+            "90": 0.9
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "MONITOR",
+      "note": "benign explanations stack: sanctioned leave AND a prior-year seasonal pattern on the same leave signal (0.60 + 0.45), a scheduled course on the roster, seasonal on workload. Consistency 0.688. One confounder per domain would NOT have been enough \u2014 three corroborating domains are hard to defeat, which is the point."
+    },
+    {
+      "pid": "pid-mon-0006",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "biometric",
+          "z_self": 1.0,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 0.0,
+            "30": 0.05,
+            "90": 0.02
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "NO_FLAG",
+      "note": "background cohort: a lone opt-in biometric trend matches no welfare action, so actionability vetoes and the cycle closes. A flag nobody can act on is noise."
+    },
+    {
+      "pid": "pid-mon-0007",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "biometric",
+          "z_self": 1.0,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 0.0,
+            "30": 0.05,
+            "90": 0.02
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "NO_FLAG",
+      "note": "background cohort: a lone opt-in biometric trend matches no welfare action, so actionability vetoes and the cycle closes. A flag nobody can act on is noise."
+    },
+    {
+      "pid": "pid-mon-0008",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "biometric",
+          "z_self": 1.0,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 0.0,
+            "30": 0.05,
+            "90": 0.02
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "NO_FLAG",
+      "note": "background cohort: a lone opt-in biometric trend matches no welfare action, so actionability vetoes and the cycle closes. A flag nobody can act on is noise."
+    },
+    {
+      "pid": "pid-mon-0009",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "workload",
+          "z_self": 1.2,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 0.0,
+            "30": 0.05,
+            "90": 0.02
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "MONITOR",
+      "note": "background cohort: actionable domain, nothing sustained"
+    },
+    {
+      "pid": "pid-mon-0010",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "workload",
+          "z_self": 1.2,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 0.0,
+            "30": 0.05,
+            "90": 0.02
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "MONITOR",
+      "note": "background cohort: actionable domain, nothing sustained"
+    },
+    {
+      "pid": "pid-mon-0011",
+      "unit_id": "UNIT-3BN",
+      "consent": {
+        "scope": [
+          "leave",
+          "deployment",
+          "duty_roster",
+          "transfer",
+          "training",
+          "workload",
+          "self_report",
+          "biometric"
+        ],
+        "welfare_contact": true,
+        "status": "ACTIVE"
+      },
+      "unit": {
+        "unit_id": "UNIT-3BN",
+        "cohort_size": 94,
+        "cohort_deviating_fraction": {},
+        "sanctioned_leave_domains": [],
+        "training_domains": [],
+        "seasonal_domains": [],
+        "welfare_capacity_available": true
+      },
+      "deviations": [
+        {
+          "domain": "workload",
+          "z_self": 1.2,
+          "z_unit": 2.2,
+          "direction": "elevated",
+          "windows_breached": 3,
+          "daily_breach": {
+            "7": 0.0,
+            "30": 0.05,
+            "90": 0.02
+          },
+          "missing_fraction": 0.0
+        }
+      ],
+      "active_interventions": [],
+      "suppressed_drivers": [],
+      "acute_items": [],
+      "clinician_concern": false,
+      "expected": "MONITOR",
+      "note": "background cohort: actionable domain, nothing sustained"
+    }
+  ]
+}
