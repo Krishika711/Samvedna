@@ -1,10 +1,8 @@
 # Agent handoff brief — SAMVEDNA
 
-**Paste this whole file as your first message to an agent opening this repository
-on a new machine.** It is written to be read by an agent, not a person, and it is
-deliberately blunt about what is fragile.
 
----
+
+
 
 You are picking up SAMVEDNA, a working system built for Smart India Hackathon
 2026, problem statement **PS 26186** — AI-based predictive personnel stress and
