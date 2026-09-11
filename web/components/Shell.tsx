@@ -21,7 +21,8 @@ import { useSession } from "@/lib/session";
  */
 
 const PUBLIC = [
-  { href: "/", label: "Overview" },
+  { href: "/", label: "Dashboard" },
+  { href: "/about", label: "About" },
 ];
 
 const ADDON = { href: "/voice", label: "Voice" };
@@ -125,12 +126,18 @@ export function Guard({
   need,
   children,
 }: {
-  need: string;
+  /** One role, or any of several. The officer console is worked by both the
+   *  welfare officer and the mental-health authority — they get different
+   *  caseloads from the API and different controls, but the same screen. */
+  need: string | string[];
   children: React.ReactNode;
 }) {
   const { actor, ready, actors, signIn } = useSession();
   const router = useRouter();
-  const wanted = actors.find((a) => a.role === need);
+  const allowed = Array.isArray(need) ? need : [need];
+  // The first named role is the one the refusal message offers, since it is
+  // the console's primary occupant.
+  const wanted = actors.find((a) => a.role === allowed[0]);
 
   if (!ready) return <p className="faint" style={{ paddingTop: 34 }}>…</p>;
 
@@ -152,7 +159,7 @@ export function Guard({
     );
   }
 
-  if (actor.role !== need) {
+  if (!allowed.includes(actor.role)) {
     return (
       <>
         <div className="page-head">

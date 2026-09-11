@@ -14,7 +14,7 @@ from dataclasses import dataclass, field
 from datetime import UTC, date, datetime
 from typing import Literal
 
-from samvedna.core.types import Decision, ReviewerFinding, Verdict
+from samvedna.core.types import CaseContext, Decision, ReviewerFinding, Verdict
 
 __all__ = ["CaseRecord", "RunRecord", "StageRecord", "RunStatus"]
 
@@ -58,6 +58,18 @@ class CaseRecord:
     # What the *order* of duty days says that their average does not.
     rhythm_phrase: str = ""
     rhythm: dict[str, float] = field(default_factory=dict)
+    # The exact facts that produced `verdict`, kept so the case can be decided
+    # again when new evidence arrives during the day.
+    #
+    # A nightly batch was the only thing that ever created a verdict, so the
+    # inputs could be thrown away once it had. Then a jawan submitted a
+    # self-assessment at 11:00 and there was no way to reconsider their case
+    # until 02:00 the next morning — which is a strange thing for a system whose
+    # whole purpose is noticing sooner. Holding the context makes an intra-day
+    # re-decision possible without re-running the pipeline for 240 people.
+    #
+    # It carries no identity. See `CaseContext` — that is the point of it.
+    ctx: CaseContext | None = None
 
     @property
     def decision(self) -> Decision | Literal["CLEARED"]:
@@ -144,6 +156,17 @@ class RunRecord:
             "as_of": self.as_of.isoformat(),
             "mode": self.mode,
             "status": self.status,
+            # The units this run covers. Organisational structure, not personal
+            # data — the same identifiers already appear in the audit ledger and
+            # on the commander's heat map.
+            #
+            # It is here because the console needs it and had been guessing.
+            # The role scopes were hardcoded to "UNIT-01,UNIT-02"; units were
+            # later renamed to carry their service abbreviation (CRPF-01), and
+            # the welfare officer console silently showed an empty caseload
+            # because it was asking about units that no longer existed. Deriving
+            # the scope from the run means the two cannot drift apart again.
+            "units": sorted({c.unit_id for c in self.cases if c.unit_id}),
             "config_version": self.config_version,
             "model_version": self.model_version,
             "escalation_frozen": self.escalation_frozen,

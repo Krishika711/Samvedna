@@ -1,14 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { DraftBanner, LanguagePicker } from "@/components/LanguagePicker";
 import { MyDrivers } from "@/components/MyDrivers";
 import { SelfAssessment } from "@/components/SelfAssessment";
 import { Guard } from "@/components/Shell";
+import { DEFAULT_SESSION, api } from "@/lib/api";
 import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
 
 /**
- * The personnel app. Consent, transparency, self-assessment, withdrawal.
+ * The personnel app. Consent, transparency and self-assessment.
  *
  * PART 11's design rule governs this page: it must be worth opening for the
  * person's own benefit. If it reads as surveillance, adoption collapses and the
@@ -19,6 +20,20 @@ import { LocaleProvider, useLocale } from "@/i18n/LocaleProvider";
  * So the transparency screen is not a link. It is the page. And every word of it
  * is translated, because a transparency screen somebody cannot read is not
  * transparency.
+ *
+ * **On the removed "withdraw my consent" button.** It is gone from this screen
+ * by request, and the right it exercised is not. DPDP Act 2023 s.6(4) requires
+ * withdrawal to be as easy as giving consent, and that is still satisfied here:
+ * the per-domain toggles below turn every collection scope off individually,
+ * and the welfare-contact toggle stops an officer being able to make contact.
+ * Setting all of them to "not allowed" is withdrawal — the same end state, and
+ * a more informative one, because a person who only wants the wearable
+ * switched off no longer has to revoke everything to get it.
+ *
+ * `POST /api/consent/{pid}/withdraw` is deliberately left in place. Removing
+ * the route as well would make the obligation unimplementable rather than
+ * merely differently presented, and an assisted withdrawal recorded by a
+ * welfare cell still has to go somewhere.
  */
 
 const DOMAIN_KEYS = [
@@ -40,13 +55,25 @@ function MyDataInner() {
     voice: false,
   });
   const [contact, setContact] = useState(true);
-  const [withdrawn, setWithdrawn] = useState(false);
   const [receipt, setReceipt] = useState<{
     locale: string;
     version: string;
     at: string;
   } | null>(null);
   const [saveError, setSaveError] = useState("");
+  const [saving, setSaving] = useState(false);
+  // Who this console is acting as. In a deployment it comes from the
+  // person's own token; in REPLAY the server hands one over, and says so.
+  const [pid, setPid] = useState("");
+
+  useEffect(() => {
+    fetch("/api/me/whoami", {
+      headers: { "X-Role": "personnel", "X-Operator": "SELF", "X-Units": "" },
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => d?.pid && setPid(d.pid))
+      .catch(() => { /* the rest of the screen works without it */ });
+  }, []);
 
   const canConsent = meta.reviewStatus !== "draft";
 
@@ -59,37 +86,45 @@ function MyDataInner() {
   const toggle = (key: string) =>
     setScopes((prev) => ({ ...prev, [key]: !prev[key] }));
 
-  const save = () => {
+  const save = async () => {
     if (!canConsent) {
       setSaveError(t("save.blockedDraft"));
       return;
     }
+    if (!pid) {
+      setSaveError("no identity resolved yet — reload and try again");
+      return;
+    }
     setSaveError("");
-    setReceipt({
-      locale: meta.name,
-      version: meta.textVersion,
-      at: new Date().toISOString().replace("T", " ").slice(0, 16),
-    });
+    setSaving(true);
+    try {
+      // This used to set a local receipt and stop. The toggles looked saved,
+      // the button said SAVED, and the server had never heard of any of it —
+      // so the next screen to ask "do they consent to self-report?" was told
+      // no, and refused a submitted assessment. Two surfaces disagreeing about
+      // consent is the worst possible thing for them to disagree about.
+      const recorded = await api.consent(
+        {
+          pid,
+          locale,
+          scope: selectedScope,
+          welfare_contact: contact,
+        },
+        { ...DEFAULT_SESSION.personnel, operator: pid },
+      );
+      // The receipt is the server's answer, not a hopeful echo of the request.
+      setReceipt({
+        locale: recorded.locale,
+        version: recorded.text_version,
+        at: recorded.recorded_at.replace("T", " ").slice(0, 16),
+      });
+    } catch (e) {
+      setSaveError((e as Error).message);
+      setReceipt(null);
+    } finally {
+      setSaving(false);
+    }
   };
-
-  if (withdrawn) {
-    return (
-      <>
-        <LanguagePicker />
-        <div className="card">
-          <h1>{t("withdraw.doneTitle")}</h1>
-          <div className="banner info">
-            <strong>{t("withdraw.doneLead")}</strong>
-            <span>{t("withdraw.doneBody")}</span>
-          </div>
-          <p className="muted">{t("withdraw.doneNobodyTold")}</p>
-          <button onClick={() => { setWithdrawn(false); setReceipt(null); }}>
-            {t("withdraw.reEnrol")}
-          </button>
-        </div>
-      </>
-    );
-  }
 
   return (
     <>
@@ -199,15 +234,19 @@ function MyDataInner() {
         </div>
 
         <div className="row" style={{ marginTop: 12 }}>
-          <button className="primary" onClick={save} disabled={!canConsent}>
-            {t("save.button")}
+          <button
+            className="primary"
+            onClick={save}
+            disabled={!canConsent || saving || !pid}
+          >
+            {saving ? "Saving…" : t("save.button")}
           </button>
           {receipt && <span className="pill pass">{t("save.saved")}</span>}
           {saveError && <span className="pill stop">{saveError}</span>}
         </div>
       </div>
 
-      <SelfAssessment />
+      <SelfAssessment pid={pid} />
 
       <MyDrivers />
 
@@ -237,14 +276,6 @@ function MyDataInner() {
             {t("welfareContact.question")}
           </p>
         )}
-      </div>
-
-      <div className="card">
-        <h2>{t("withdraw.title")}</h2>
-        <p className="muted">{t("withdraw.body")}</p>
-        <button className="danger" onClick={() => setWithdrawn(true)}>
-          {t("withdraw.button")}
-        </button>
       </div>
 
       {/* This one stays open. It is the single card on the page that somebody

@@ -34,6 +34,8 @@ from fastapi import Depends, HTTPException, Request
 from samvedna.analytics.voice.acoustics import SAMPLE_RATE, analyse
 from samvedna.analytics.voice.concordance import VoiceBaseline
 from samvedna.analytics.voice.session import VoiceSession
+from samvedna.config.flags import settings
+from samvedna.config.thresholds import PHQ9_CUTOFF
 from samvedna.core.types import InstrumentResponse
 from samvedna.disclosure.rbac import Principal
 
@@ -88,6 +90,22 @@ class VoiceStore:
         return len(self._history.get(session.pid, []))
 
     def history_length(self, pid: str) -> int:
+        return len(self._history.get(pid, []))
+
+    def restore(self, pid: str, kept: dict[str, float]) -> int:
+        """Put a past sitting's medians back after a restart.
+
+        Only the six medians, which is all `remember` ever kept. There is no
+        audio and no transcript to restore because there never was any to
+        store — the sitting destroys both before this data exists.
+
+        Without this, a restart made everybody a first-time speaker and
+        `baseline_shift` had nothing to compare against. That is the one reading
+        of the three that needs more than today, so losing the history did not
+        degrade it — it removed it.
+        """
+        if kept:
+            self._history.setdefault(pid, []).append(dict(kept))
         return len(self._history.get(pid, []))
 
     def close(self, session_id: str) -> None:
@@ -145,11 +163,48 @@ def _readings(session: VoiceSession) -> dict:
     }
 
 
+def _resolve_pid(principal: Principal, requested: str | None) -> str:
+    """Which person this request is about.
+
+    In a deployment `principal.subject_id` *is* the pid — it comes from the
+    person's own token — and `requested` either matches it or is refused.
+
+    REPLAY has no sign-in, so the console holds a role and the literal operator
+    id `"SELF"`. That is not a pid, and it is why voice was unreachable: the
+    personnel console recorded voice consent against the person's real pid, and
+    this module then asked whether `"SELF"` had consented. It never had, so the
+    sitting was refused however many times the toggle was switched on. Two
+    surfaces using different identities for the same person, which is the same
+    fault that had made the self-assessment inert.
+
+    The `"SELF"` allowance is confined to replay mode. In live mode a mismatch
+    is refused, so this cannot become a way to open a sitting as somebody else.
+    """
+    if requested and requested != principal.subject_id:
+        if principal.subject_id != "SELF" or settings().mode != "replay":
+            raise HTTPException(
+                status_code=403, detail="you may only open your own sitting"
+            )
+        return requested
+    return principal.subject_id
+
+
+def _owns(principal: Principal, session_pid: str) -> bool:
+    """Whether this principal may act on a sitting belonging to `session_pid`."""
+    if principal.subject_id == session_pid:
+        return True
+    return principal.subject_id == "SELF" and settings().mode == "replay"
+
+
 def attach(app, get_state):
     """Wire the voice routes onto the app, sharing its state object."""
 
     @app.post("/api/voice/session")
-    def open_session(request: Request, principal: Principal = Depends(_voice_principal)):
+    def open_session(
+        request: Request,
+        payload: dict | None = None,
+        principal: Principal = Depends(_voice_principal),
+    ):
         """Start a sitting. Requires the person's own consent to the voice domain.
 
         Consent is checked here rather than trusted from the client, and the
@@ -157,7 +212,7 @@ def attach(app, get_state):
         have your leave record read is not agreeing to be recorded.
         """
         state = get_state(request)
-        pid = principal.subject_id
+        pid = _resolve_pid(principal, (payload or {}).get("pid"))
         consent = state.consent.state_for(pid)
         if consent is None or not consent.covers("voice"):
             raise HTTPException(
@@ -211,7 +266,7 @@ def attach(app, get_state):
         """
         state = get_state(request)
         session = state.voice.get(session_id)
-        if session.pid != principal.subject_id:
+        if not _owns(principal, session.pid):
             raise HTTPException(status_code=403, detail="not your session")
 
         encoded = payload.get("pcm16", "")
@@ -258,7 +313,7 @@ def attach(app, get_state):
         """
         state = get_state(request)
         session = state.voice.get(session_id)
-        if session.pid != principal.subject_id:
+        if not _owns(principal, session.pid):
             raise HTTPException(status_code=403, detail="not your session")
 
         text = str(payload.get("text", "")).strip()
@@ -287,7 +342,7 @@ def attach(app, get_state):
                     # to, not as the sentence. The words are not written down.
                     items={"item_9": 1},
                     total=0,
-                    cutoff=10,
+                    cutoff=PHQ9_CUTOFF,
                 ),
                 _minimal_context(session),
                 state.ledger,
@@ -324,7 +379,7 @@ def attach(app, get_state):
     ):
         state = get_state(request)
         session = state.voice.get(session_id)
-        if session.pid != principal.subject_id:
+        if not _owns(principal, session.pid):
             raise HTTPException(status_code=403, detail="not your session")
         return {
             "session_id": session_id,
@@ -354,7 +409,7 @@ def attach(app, get_state):
         """
         state = get_state(request)
         session = state.voice.get(session_id)
-        if session.pid != principal.subject_id:
+        if not _owns(principal, session.pid):
             raise HTTPException(status_code=403, detail="not your session")
 
         readings = _readings(session)
@@ -376,6 +431,22 @@ def attach(app, get_state):
                 "transcript_destroyed": True,
             },
         )
+        journal = getattr(state, "journal", None)
+        if journal is not None and summary:
+            # The six medians and the window count, so a future sitting can ask
+            # whether this person still sounds like themselves after a restart.
+            # The baseline is the whole reason `baseline_shift` exists, and it
+            # was in memory — a restart made everybody a first-time speaker.
+            #
+            # Never the audio and never the transcript. Those are destroyed
+            # above, before this line runs, and the sitting is built around
+            # destroying them.
+            journal.record("voice.sitting", session.pid, {
+                "kept": summary,
+                "windows_measured": len(session.frames),
+                "produced_deviation": deviation is not None,
+            })
+
         return {
             "closed": True,
             "transcript_destroyed": True,
@@ -409,7 +480,6 @@ def attach(app, get_state):
 
 def _voice_principal(request: Request) -> Principal:
     """A person, acting on their own session. Nobody else has a route in here."""
-    from samvedna.config.flags import settings
 
     if settings().mode != "replay":
         raise HTTPException(

@@ -85,3 +85,34 @@ ACUTE_ITEM_MIN_VALUE = 0
 # --- model drift (PART 9) ----------------------------------------------------
 # Population Stability Index above which escalation is frozen system-wide.
 DRIFT_PSI_FREEZE = 0.25
+
+# ---------------------------------------------------------------- instruments --
+# PHQ-9 scores 0-27 across nine items. Ten is the published threshold for
+# moderate severity and the one the instrument's own scoring guidance uses.
+# It sat hardcoded as `cutoff=10` inside `api/voice_routes.py`, which is exactly
+# the kind of policy number this module exists to stop escaping into code.
+PHQ9_CUTOFF = 10
+PHQ9_MAX = 27
+
+# How many instrument points correspond to one standard deviation, used only to
+# estimate a self-report deviation the moment a questionnaire is submitted.
+#
+# This is an approximation and is labelled as one. A real z-score needs the
+# person's own 180-day baseline, which the nightly run computes from the feature
+# store; at 11:00 on a Tuesday there is no such baseline for a response that did
+# not exist at 02:00. The scale is chosen so that a total of 20 — moderately
+# severe, ten points above cutoff — lands at the 2.0 deviation threshold, which
+# makes the intra-day estimate agree with the nightly figure at the point where
+# it starts to matter. The nightly run overwrites it either way.
+PHQ9_POINTS_PER_SD = 5.0
+
+# The span PHQ-9 asks about. Its stem is "Over the last 2 weeks, how often have
+# you been bothered by...", so a score above cutoff is not a statement about
+# today — it is the person's own account of the preceding fortnight.
+#
+# This matters to the persistence gate. Recording a breaching response as "one
+# day out of seven" understates what the instrument actually asked, and it did
+# so in the harmful direction: a jawan reporting sustained distress *lowered*
+# their own 7-day persistence figure, because 1/7 is small next to other
+# domains sitting at 1.0.
+PHQ9_RECALL_DAYS = 14

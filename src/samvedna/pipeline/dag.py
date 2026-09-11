@@ -271,6 +271,10 @@ class NightlyRun:
                     unit_id=ctx.unit_id,
                     state=self._states[pid],
                     verdict=verdict,
+                    # Kept so a self-assessment submitted during the day can be
+                    # decided against the same evidence the night used, rather
+                    # than waiting for the next run.
+                    ctx=ctx,
                     reviewers=findings[pid].findings,
                     risk_score=scores[pid].score if scores.get(pid) else None,
                     model_version=scores[pid].model_version if scores.get(pid) else "",

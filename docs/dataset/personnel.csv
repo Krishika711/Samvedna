@@ -1,0 +1,1681 @@
+service_number,unit_id,unit_posting,service,rank,age,years_of_service,surge_exposure,latent_strain,label_positive
+SYNTH-CRPF-01-455510,CRPF-01,internal security duty,crpf,Constable,28,4,0.8802,0.206431,0
+SYNTH-CRPF-01-465274,CRPF-01,internal security duty,crpf,Inspector,46,24,0.7544,0.106881,0
+SYNTH-CRPF-01-998057,CRPF-01,internal security duty,crpf,Head Constable,31,7,0.4887,0.090259,0
+SYNTH-CRPF-01-704953,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,37,13,0.5354,0.244315,0
+SYNTH-CRPF-01-548760,CRPF-01,internal security duty,crpf,Sub-Inspector,41,18,0.1075,0.092117,0
+SYNTH-CRPF-01-631837,CRPF-01,internal security duty,crpf,Constable,23,1,0.5111,0.068825,0
+SYNTH-CRPF-01-583055,CRPF-01,internal security duty,crpf,Inspector,45,21,0.4418,0.298238,0
+SYNTH-CRPF-01-800162,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,36,14,0.5972,0.207509,0
+SYNTH-CRPF-01-473091,CRPF-01,internal security duty,crpf,Assistant Commandant,48,27,0.5891,0.730098,1
+SYNTH-CRPF-01-124771,CRPF-01,internal security duty,crpf,Head Constable,32,9,0.3453,0.251178,0
+SYNTH-CRPF-01-976873,CRPF-01,internal security duty,crpf,Sub-Inspector,40,19,0.5929,0.060726,0
+SYNTH-CRPF-01-507676,CRPF-01,internal security duty,crpf,Head Constable,31,8,0.4462,0.109369,0
+SYNTH-CRPF-01-239213,CRPF-01,internal security duty,crpf,Inspector,47,23,0.6289,0.158863,0
+SYNTH-CRPF-01-552876,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,32,10,0.7561,0.146625,0
+SYNTH-CRPF-01-582851,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,36,13,0.7612,0.217778,0
+SYNTH-CRPF-01-719618,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,33,10,0.4276,0.033294,0
+SYNTH-CRPF-01-451473,CRPF-01,internal security duty,crpf,Constable,24,2,0.7906,0.198693,0
+SYNTH-CRPF-01-873879,CRPF-01,internal security duty,crpf,Head Constable,29,7,0.4458,0.100367,0
+SYNTH-CRPF-01-362120,CRPF-01,internal security duty,crpf,Constable,25,2,0.9354,0.324619,0
+SYNTH-CRPF-01-736301,CRPF-01,internal security duty,crpf,Head Constable,29,5,0.7419,0.205315,0
+SYNTH-CRPF-01-128836,CRPF-01,internal security duty,crpf,Sub-Inspector,37,15,0.6515,0.237464,0
+SYNTH-CRPF-01-445316,CRPF-01,internal security duty,crpf,Constable,27,4,0.6153,0.419609,0
+SYNTH-CRPF-01-669793,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,30,10,0.5047,0.369532,0
+SYNTH-CRPF-01-367039,CRPF-01,internal security duty,crpf,Constable,24,1,0.4317,0.367299,0
+SYNTH-CRPF-01-117930,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,33,11,0.6823,0.347143,0
+SYNTH-CRPF-01-655590,CRPF-01,internal security duty,crpf,Assistant Commandant,50,28,0.6763,0.208612,0
+SYNTH-CRPF-01-307014,CRPF-01,internal security duty,crpf,Head Constable,32,8,0.7653,0.117014,0
+SYNTH-CRPF-01-750550,CRPF-01,internal security duty,crpf,Head Constable,31,8,0.6124,0.093322,0
+SYNTH-CRPF-01-865717,CRPF-01,internal security duty,crpf,Inspector,46,22,0.4522,0.298586,0
+SYNTH-CRPF-01-515732,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,36,13,0.7314,0.208238,0
+SYNTH-CRPF-01-628006,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,32,12,0.3405,0.252977,0
+SYNTH-CRPF-01-102589,CRPF-01,internal security duty,crpf,Inspector,42,22,0.8277,0.236776,0
+SYNTH-CRPF-01-188067,CRPF-01,internal security duty,crpf,Constable,22,2,0.695,0.265966,0
+SYNTH-CRPF-01-123713,CRPF-01,internal security duty,crpf,Assistant Commandant,46,25,0.7071,0.037109,0
+SYNTH-CRPF-01-270345,CRPF-01,internal security duty,crpf,Head Constable,28,6,0.4595,0.429809,0
+SYNTH-CRPF-01-736632,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,33,12,0.7192,0.258007,0
+SYNTH-CRPF-01-767254,CRPF-01,internal security duty,crpf,Constable,24,4,0.8107,0.094582,0
+SYNTH-CRPF-01-147693,CRPF-01,internal security duty,crpf,Sub-Inspector,39,16,0.6625,0.287134,0
+SYNTH-CRPF-01-621214,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,33,13,0.5548,0.310194,0
+SYNTH-CRPF-01-567283,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,33,11,0.955,0.518471,0
+SYNTH-CRPF-01-831045,CRPF-01,internal security duty,crpf,Inspector,44,20,0.8051,0.258516,0
+SYNTH-CRPF-01-472623,CRPF-01,internal security duty,crpf,Head Constable,29,9,0.6912,0.281718,0
+SYNTH-CRPF-01-126603,CRPF-01,internal security duty,crpf,Inspector,48,24,0.7431,0.551459,1
+SYNTH-CRPF-01-647178,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,32,11,0.4948,0.36313,0
+SYNTH-CRPF-01-515490,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,34,13,0.6061,0.503707,0
+SYNTH-CRPF-01-582304,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,34,12,0.928,0.513836,0
+SYNTH-CRPF-01-205605,CRPF-01,internal security duty,crpf,Inspector,48,24,0.1986,0.121971,0
+SYNTH-CRPF-01-206423,CRPF-01,internal security duty,crpf,Assistant Commandant,51,27,0.8207,0.060312,0
+SYNTH-CRPF-01-925617,CRPF-01,internal security duty,crpf,Assistant Commandant,47,26,0.6988,0.184647,0
+SYNTH-CRPF-01-563937,CRPF-01,internal security duty,crpf,Head Constable,25,5,0.3772,0.053552,0
+SYNTH-CRPF-01-738803,CRPF-01,internal security duty,crpf,Head Constable,31,7,0.9093,0.04732,0
+SYNTH-CRPF-01-432300,CRPF-01,internal security duty,crpf,Head Constable,26,6,0.8962,0.216985,0
+SYNTH-CRPF-01-771702,CRPF-01,internal security duty,crpf,Constable,21,1,0.5273,0.065413,0
+SYNTH-CRPF-01-673781,CRPF-01,internal security duty,crpf,Assistant Commandant,48,28,0.4113,0.218227,0
+SYNTH-CRPF-01-937377,CRPF-01,internal security duty,crpf,Sub-Inspector,40,18,0.7006,0.417135,0
+SYNTH-CRPF-01-879734,CRPF-01,internal security duty,crpf,Constable,22,1,0.9113,0.119947,0
+SYNTH-CRPF-01-817677,CRPF-01,internal security duty,crpf,Sub-Inspector,37,17,0.7695,0.172417,0
+SYNTH-CRPF-01-616611,CRPF-01,internal security duty,crpf,Inspector,47,23,0.188,0.252459,0
+SYNTH-CRPF-01-991356,CRPF-01,internal security duty,crpf,Inspector,46,23,0.4398,0.138371,0
+SYNTH-CRPF-01-910652,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,34,12,0.12,0.108046,0
+SYNTH-CRPF-01-303119,CRPF-01,internal security duty,crpf,Constable,26,2,0.8461,0.530539,0
+SYNTH-CRPF-01-248032,CRPF-01,internal security duty,crpf,Sub-Inspector,39,16,0.9288,0.126303,0
+SYNTH-CRPF-01-506241,CRPF-01,internal security duty,crpf,Assistant Commandant,47,26,0.6135,0.221215,0
+SYNTH-CRPF-01-709263,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,36,12,0.4739,0.098608,0
+SYNTH-CRPF-01-491622,CRPF-01,internal security duty,crpf,Assistant Commandant,47,26,0.8896,0.08272,0
+SYNTH-CRPF-01-624777,CRPF-01,internal security duty,crpf,Constable,25,4,0.8386,0.222961,0
+SYNTH-CRPF-01-394415,CRPF-01,internal security duty,crpf,Inspector,44,23,0.68,0.459652,0
+SYNTH-CRPF-01-695998,CRPF-01,internal security duty,crpf,Head Constable,26,5,0.7505,0.329246,0
+SYNTH-CRPF-01-159950,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,34,14,0.1546,0.249118,0
+SYNTH-CRPF-01-622107,CRPF-01,internal security duty,crpf,Head Constable,30,8,0.3187,0.316561,0
+SYNTH-CRPF-01-199856,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,37,13,0.8816,0.156652,0
+SYNTH-CRPF-01-151155,CRPF-01,internal security duty,crpf,Assistant Commandant,49,26,0.9666,0.076333,0
+SYNTH-CRPF-01-962635,CRPF-01,internal security duty,crpf,Head Constable,29,7,0.7743,0.37686,0
+SYNTH-CRPF-01-132189,CRPF-01,internal security duty,crpf,Head Constable,25,5,0.841,0.396939,0
+SYNTH-CRPF-01-338645,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,35,12,0.9076,0.095676,0
+SYNTH-CRPF-01-243191,CRPF-01,internal security duty,crpf,Head Constable,31,7,0.7611,0.097138,0
+SYNTH-CRPF-01-636757,CRPF-01,internal security duty,crpf,Inspector,43,20,0.6232,0.386631,0
+SYNTH-CRPF-01-574283,CRPF-01,internal security duty,crpf,Assistant Commandant,51,28,0.9274,0.009183,0
+SYNTH-CRPF-01-644727,CRPF-01,internal security duty,crpf,Inspector,43,20,0.9696,0.043309,0
+SYNTH-CRPF-01-715262,CRPF-01,internal security duty,crpf,Sub-Inspector,38,15,0.4621,0.087327,0
+SYNTH-CRPF-01-358656,CRPF-01,internal security duty,crpf,Constable,26,3,0.8628,0.468756,0
+SYNTH-CRPF-01-656700,CRPF-01,internal security duty,crpf,Sub-Inspector,38,15,0.4955,0.257478,0
+SYNTH-CRPF-01-593651,CRPF-01,internal security duty,crpf,Assistant Commandant,49,26,0.4468,0.054577,0
+SYNTH-CRPF-01-216293,CRPF-01,internal security duty,crpf,Assistant Commandant,50,27,0.2562,0.182265,0
+SYNTH-CRPF-01-527314,CRPF-01,internal security duty,crpf,Constable,26,3,0.7572,0.200257,0
+SYNTH-CRPF-01-474667,CRPF-01,internal security duty,crpf,Assistant Commandant,48,26,0.7691,0.211403,0
+SYNTH-CRPF-01-832372,CRPF-01,internal security duty,crpf,Inspector,40,20,0.842,0.300132,0
+SYNTH-CRPF-01-815310,CRPF-01,internal security duty,crpf,Assistant Commandant,49,27,0.8656,0.168142,0
+SYNTH-CRPF-01-754761,CRPF-01,internal security duty,crpf,Constable,24,1,0.6992,0.348539,0
+SYNTH-CRPF-01-167629,CRPF-01,internal security duty,crpf,Head Constable,33,9,0.6594,0.22306,0
+SYNTH-CRPF-01-718427,CRPF-01,internal security duty,crpf,Sub-Inspector,42,19,0.8792,0.140464,0
+SYNTH-CRPF-01-604773,CRPF-01,internal security duty,crpf,Assistant Commandant,47,25,0.9015,0.358627,0
+SYNTH-CRPF-01-729938,CRPF-01,internal security duty,crpf,Sub-Inspector,42,18,0.7621,0.16909,0
+SYNTH-CRPF-01-756224,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,32,12,0.7304,0.365416,0
+SYNTH-CRPF-01-451738,CRPF-01,internal security duty,crpf,Sub-Inspector,38,18,0.4171,0.134245,0
+SYNTH-CRPF-01-844162,CRPF-01,internal security duty,crpf,Sub-Inspector,38,16,0.6806,0.167196,0
+SYNTH-CRPF-01-580653,CRPF-01,internal security duty,crpf,Head Constable,29,6,0.596,0.057235,0
+SYNTH-CRPF-01-284719,CRPF-01,internal security duty,crpf,Assistant Commandant,48,26,0.6831,0.220419,0
+SYNTH-CRPF-01-762754,CRPF-01,internal security duty,crpf,Inspector,46,24,0.7939,0.482954,0
+SYNTH-CRPF-01-795642,CRPF-01,internal security duty,crpf,Constable,27,3,0.8788,0.164556,0
+SYNTH-CRPF-01-325702,CRPF-01,internal security duty,crpf,Head Constable,29,6,0.5624,0.393635,0
+SYNTH-CRPF-01-141467,CRPF-01,internal security duty,crpf,Head Constable,27,7,0.6451,0.126063,0
+SYNTH-CRPF-01-897343,CRPF-01,internal security duty,crpf,Assistant Commandant,48,25,0.8357,0.048426,0
+SYNTH-CRPF-01-469842,CRPF-01,internal security duty,crpf,Assistant Commandant,50,26,0.5754,0.267085,0
+SYNTH-CRPF-01-807326,CRPF-01,internal security duty,crpf,Assistant Commandant,47,25,0.3716,0.151661,0
+SYNTH-CRPF-01-609082,CRPF-01,internal security duty,crpf,Head Constable,28,6,0.5127,0.342358,0
+SYNTH-CRPF-01-106660,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,35,14,0.1944,0.166179,0
+SYNTH-CRPF-01-705651,CRPF-01,internal security duty,crpf,Sub-Inspector,39,19,0.6876,0.231862,0
+SYNTH-CRPF-01-611475,CRPF-01,internal security duty,crpf,Assistant Commandant,45,25,0.61,0.318062,0
+SYNTH-CRPF-01-108044,CRPF-01,internal security duty,crpf,Inspector,46,23,0.6483,0.403096,0
+SYNTH-CRPF-01-222999,CRPF-01,internal security duty,crpf,Assistant Commandant,48,27,0.7491,0.454762,0
+SYNTH-CRPF-01-577281,CRPF-01,internal security duty,crpf,Head Constable,32,9,0.7772,0.19923,0
+SYNTH-CRPF-01-918975,CRPF-01,internal security duty,crpf,Sub-Inspector,39,17,0.2311,0.286328,0
+SYNTH-CRPF-01-649813,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,34,13,0.2673,0.177041,0
+SYNTH-CRPF-01-484140,CRPF-01,internal security duty,crpf,Sub-Inspector,38,17,0.7429,0.343574,0
+SYNTH-CRPF-01-104245,CRPF-01,internal security duty,crpf,Head Constable,26,6,0.2236,0.082766,0
+SYNTH-CRPF-01-569243,CRPF-01,internal security duty,crpf,Assistant Commandant,51,28,0.8113,0.218553,0
+SYNTH-CRPF-01-854607,CRPF-01,internal security duty,crpf,Inspector,47,23,0.4133,0.130589,0
+SYNTH-CRPF-01-110151,CRPF-01,internal security duty,crpf,Assistant Commandant,47,25,0.5537,0.080324,0
+SYNTH-CRPF-01-930909,CRPF-01,internal security duty,crpf,Head Constable,29,8,0.7051,0.469501,0
+SYNTH-CRPF-01-273415,CRPF-01,internal security duty,crpf,Assistant Commandant,49,25,0.844,0.432526,0
+SYNTH-CRPF-01-861647,CRPF-01,internal security duty,crpf,Sub-Inspector,41,17,0.5418,0.133366,0
+SYNTH-CRPF-01-470063,CRPF-01,internal security duty,crpf,Constable,23,2,0.9171,0.209551,0
+SYNTH-CRPF-01-597353,CRPF-01,internal security duty,crpf,Inspector,42,22,0.7406,0.078411,0
+SYNTH-CRPF-01-398737,CRPF-01,internal security duty,crpf,Constable,24,3,0.2572,0.033935,0
+SYNTH-CRPF-01-717918,CRPF-01,internal security duty,crpf,Sub-Inspector,43,19,0.947,0.339912,0
+SYNTH-CRPF-01-246532,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,32,12,0.8944,0.119059,0
+SYNTH-CRPF-01-742992,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,30,10,0.2736,0.123739,0
+SYNTH-CRPF-01-865163,CRPF-01,internal security duty,crpf,Assistant Commandant,49,26,0.5305,0.09817,0
+SYNTH-CRPF-01-966380,CRPF-01,internal security duty,crpf,Inspector,45,24,0.8869,0.363245,0
+SYNTH-CRPF-01-391839,CRPF-01,internal security duty,crpf,Assistant Commandant,50,28,0.1194,0.242174,0
+SYNTH-CRPF-01-668662,CRPF-01,internal security duty,crpf,Head Constable,27,7,0.3087,0.350989,0
+SYNTH-CRPF-01-472369,CRPF-01,internal security duty,crpf,Constable,28,4,0.5278,0.215832,0
+SYNTH-CRPF-01-128517,CRPF-01,internal security duty,crpf,Sub-Inspector,41,17,0.7463,0.491337,0
+SYNTH-CRPF-01-948893,CRPF-01,internal security duty,crpf,Sub-Inspector,35,15,0.7401,0.19128,0
+SYNTH-CRPF-01-916568,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,36,12,0.8951,0.299833,0
+SYNTH-CRPF-01-430355,CRPF-01,internal security duty,crpf,Sub-Inspector,39,17,0.7991,0.056994,0
+SYNTH-CRPF-01-446360,CRPF-01,internal security duty,crpf,Assistant Sub-Inspector,34,11,0.2122,0.025465,0
+SYNTH-CRPF-01-917928,CRPF-01,internal security duty,crpf,Sub-Inspector,43,19,0.5209,0.342435,0
+SYNTH-CRPF-01-375001,CRPF-01,internal security duty,crpf,Inspector,45,21,0.8757,0.170203,0
+SYNTH-CRPF-02-955601,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,52,28,0.7472,0.331668,0
+SYNTH-CRPF-02-914543,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,37,16,0.5172,0.34393,0
+SYNTH-CRPF-02-833152,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,37,14,0.3979,0.377016,0
+SYNTH-CRPF-02-121608,CRPF-02,left-wing extremism area,crpf,Inspector,47,24,0.3871,0.535568,0
+SYNTH-CRPF-02-286210,CRPF-02,left-wing extremism area,crpf,Inspector,44,21,0.6536,0.343216,0
+SYNTH-CRPF-02-669780,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,48,26,0.7557,0.098413,0
+SYNTH-CRPF-02-834387,CRPF-02,left-wing extremism area,crpf,Inspector,43,21,0.8501,0.030151,0
+SYNTH-CRPF-02-411604,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,50,28,0.4414,0.318585,0
+SYNTH-CRPF-02-885542,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,41,19,0.5107,0.163151,0
+SYNTH-CRPF-02-427317,CRPF-02,left-wing extremism area,crpf,Constable,24,4,0.636,0.185157,0
+SYNTH-CRPF-02-875772,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,31,11,0.9021,0.344593,0
+SYNTH-CRPF-02-686807,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,49,27,0.7072,0.153387,0
+SYNTH-CRPF-02-811029,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,50,28,0.3772,0.123312,0
+SYNTH-CRPF-02-578970,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,46,25,0.5041,0.15553,0
+SYNTH-CRPF-02-899264,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,36,13,0.4136,0.358991,0
+SYNTH-CRPF-02-262322,CRPF-02,left-wing extremism area,crpf,Constable,21,1,0.9426,0.283642,0
+SYNTH-CRPF-02-814594,CRPF-02,left-wing extremism area,crpf,Inspector,45,23,0.9737,0.064143,0
+SYNTH-CRPF-02-144854,CRPF-02,left-wing extremism area,crpf,Inspector,44,20,0.8272,0.231798,0
+SYNTH-CRPF-02-314995,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,37,13,0.9509,0.100449,0
+SYNTH-CRPF-02-112879,CRPF-02,left-wing extremism area,crpf,Inspector,44,21,0.4781,0.242719,0
+SYNTH-CRPF-02-837976,CRPF-02,left-wing extremism area,crpf,Inspector,43,21,0.9114,0.423323,0
+SYNTH-CRPF-02-941792,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,41,19,0.8561,0.352677,0
+SYNTH-CRPF-02-811748,CRPF-02,left-wing extremism area,crpf,Head Constable,33,9,0.8711,0.388498,0
+SYNTH-CRPF-02-233273,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,49,28,0.6037,0.061119,0
+SYNTH-CRPF-02-869928,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,33,11,0.2064,0.121124,0
+SYNTH-CRPF-02-984838,CRPF-02,left-wing extremism area,crpf,Inspector,43,22,0.6282,0.203235,0
+SYNTH-CRPF-02-307254,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,37,13,0.623,0.026684,0
+SYNTH-CRPF-02-282035,CRPF-02,left-wing extremism area,crpf,Head Constable,31,8,0.5327,0.230266,0
+SYNTH-CRPF-02-170131,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,34,13,0.6252,0.099549,0
+SYNTH-CRPF-02-454665,CRPF-02,left-wing extremism area,crpf,Constable,24,3,0.8574,0.418443,0
+SYNTH-CRPF-02-614034,CRPF-02,left-wing extremism area,crpf,Constable,24,2,0.453,0.273109,0
+SYNTH-CRPF-02-849301,CRPF-02,left-wing extremism area,crpf,Inspector,43,21,0.9654,0.14253,0
+SYNTH-CRPF-02-231950,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,40,19,0.7345,0.089072,0
+SYNTH-CRPF-02-299529,CRPF-02,left-wing extremism area,crpf,Head Constable,32,8,0.7445,0.151768,0
+SYNTH-CRPF-02-929844,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,50,26,0.4631,0.247472,0
+SYNTH-CRPF-02-773479,CRPF-02,left-wing extremism area,crpf,Constable,25,1,0.7769,0.273008,0
+SYNTH-CRPF-02-119979,CRPF-02,left-wing extremism area,crpf,Head Constable,29,6,0.8627,0.240839,0
+SYNTH-CRPF-02-402076,CRPF-02,left-wing extremism area,crpf,Inspector,45,24,0.6766,0.441995,0
+SYNTH-CRPF-02-606685,CRPF-02,left-wing extremism area,crpf,Inspector,44,23,0.5458,0.572162,1
+SYNTH-CRPF-02-698051,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,47,26,0.5463,0.460273,0
+SYNTH-CRPF-02-660762,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,32,11,0.6589,0.373182,0
+SYNTH-CRPF-02-429203,CRPF-02,left-wing extremism area,crpf,Constable,28,4,0.831,0.039132,0
+SYNTH-CRPF-02-184189,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,48,26,0.5409,0.243535,0
+SYNTH-CRPF-02-314519,CRPF-02,left-wing extremism area,crpf,Constable,26,3,0.5474,0.183527,0
+SYNTH-CRPF-02-318387,CRPF-02,left-wing extremism area,crpf,Constable,24,2,0.5104,0.313547,0
+SYNTH-CRPF-02-569561,CRPF-02,left-wing extremism area,crpf,Inspector,45,22,0.7653,0.173083,0
+SYNTH-CRPF-02-140985,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,32,11,0.6195,0.038256,0
+SYNTH-CRPF-02-967106,CRPF-02,left-wing extremism area,crpf,Inspector,45,24,0.7568,0.249801,0
+SYNTH-CRPF-02-964137,CRPF-02,left-wing extremism area,crpf,Constable,23,1,0.3923,0.272282,0
+SYNTH-CRPF-02-914838,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,39,19,0.5501,0.214919,0
+SYNTH-CRPF-02-682669,CRPF-02,left-wing extremism area,crpf,Constable,25,3,0.99,0.101361,0
+SYNTH-CRPF-02-803630,CRPF-02,left-wing extremism area,crpf,Inspector,47,23,0.8351,0.417485,0
+SYNTH-CRPF-02-895316,CRPF-02,left-wing extremism area,crpf,Head Constable,29,7,0.6725,0.204953,0
+SYNTH-CRPF-02-364953,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,39,17,0.786,0.328878,0
+SYNTH-CRPF-02-195934,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,49,26,0.8445,0.158629,0
+SYNTH-CRPF-02-183965,CRPF-02,left-wing extremism area,crpf,Constable,22,1,0.8087,0.46428,0
+SYNTH-CRPF-02-538073,CRPF-02,left-wing extremism area,crpf,Inspector,44,24,0.7295,0.018132,0
+SYNTH-CRPF-02-740368,CRPF-02,left-wing extremism area,crpf,Inspector,44,20,0.4183,0.245718,0
+SYNTH-CRPF-02-411884,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,39,15,0.8009,0.159169,0
+SYNTH-CRPF-02-106079,CRPF-02,left-wing extremism area,crpf,Inspector,44,23,0.8717,0.325163,0
+SYNTH-CRPF-02-525001,CRPF-02,left-wing extremism area,crpf,Head Constable,30,7,0.4801,0.232136,0
+SYNTH-CRPF-02-436084,CRPF-02,left-wing extremism area,crpf,Head Constable,31,9,0.702,0.24373,0
+SYNTH-CRPF-02-751816,CRPF-02,left-wing extremism area,crpf,Constable,27,3,0.2857,0.076505,0
+SYNTH-CRPF-02-318665,CRPF-02,left-wing extremism area,crpf,Inspector,48,24,0.6452,0.451176,0
+SYNTH-CRPF-02-317252,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,38,18,0.3418,0.210463,0
+SYNTH-CRPF-02-981081,CRPF-02,left-wing extremism area,crpf,Inspector,43,21,0.8162,0.285334,0
+SYNTH-CRPF-02-911461,CRPF-02,left-wing extremism area,crpf,Constable,23,1,0.4499,0.082345,0
+SYNTH-CRPF-02-138572,CRPF-02,left-wing extremism area,crpf,Inspector,46,23,0.5745,0.431877,0
+SYNTH-CRPF-02-641091,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,39,18,0.7402,0.214494,0
+SYNTH-CRPF-02-807695,CRPF-02,left-wing extremism area,crpf,Head Constable,26,6,0.6719,0.348682,0
+SYNTH-CRPF-02-936203,CRPF-02,left-wing extremism area,crpf,Head Constable,27,6,0.4666,0.090033,0
+SYNTH-CRPF-02-411330,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,45,25,0.7181,0.323397,0
+SYNTH-CRPF-02-867353,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,45,25,0.6256,0.168418,0
+SYNTH-CRPF-02-922817,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,49,25,0.8445,0.057731,0
+SYNTH-CRPF-02-983164,CRPF-02,left-wing extremism area,crpf,Head Constable,29,6,0.7741,0.489288,0
+SYNTH-CRPF-02-156283,CRPF-02,left-wing extremism area,crpf,Inspector,42,22,0.7137,0.276722,0
+SYNTH-CRPF-02-765672,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,41,18,0.874,0.255682,0
+SYNTH-CRPF-02-565824,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,39,17,0.8676,0.436123,0
+SYNTH-CRPF-02-420633,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,36,14,0.7753,0.236226,0
+SYNTH-CRPF-02-314310,CRPF-02,left-wing extremism area,crpf,Inspector,41,21,0.9831,0.176043,0
+SYNTH-CRPF-02-683178,CRPF-02,left-wing extremism area,crpf,Constable,26,3,0.5118,0.20142,0
+SYNTH-CRPF-02-280883,CRPF-02,left-wing extremism area,crpf,Inspector,45,23,0.5707,0.303164,0
+SYNTH-CRPF-02-336716,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,38,14,0.9403,0.062426,0
+SYNTH-CRPF-02-664594,CRPF-02,left-wing extremism area,crpf,Constable,25,2,0.6138,0.338265,0
+SYNTH-CRPF-02-573319,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,36,16,0.4067,0.099719,0
+SYNTH-CRPF-02-634566,CRPF-02,left-wing extremism area,crpf,Inspector,44,23,0.6273,0.156785,0
+SYNTH-CRPF-02-131556,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,49,25,0.8964,0.159819,0
+SYNTH-CRPF-02-726588,CRPF-02,left-wing extremism area,crpf,Head Constable,30,9,0.1711,0.358088,0
+SYNTH-CRPF-02-790009,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,48,27,0.7466,0.067449,0
+SYNTH-CRPF-02-924051,CRPF-02,left-wing extremism area,crpf,Head Constable,25,5,0.9567,0.10288,0
+SYNTH-CRPF-02-657647,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,35,12,0.5665,0.571891,1
+SYNTH-CRPF-02-346225,CRPF-02,left-wing extremism area,crpf,Constable,26,2,0.458,0.464263,0
+SYNTH-CRPF-02-762775,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,48,25,0.5047,0.22744,0
+SYNTH-CRPF-02-107431,CRPF-02,left-wing extremism area,crpf,Inspector,45,23,0.5962,0.376483,0
+SYNTH-CRPF-02-671267,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,34,14,0.7043,0.094122,0
+SYNTH-CRPF-02-183674,CRPF-02,left-wing extremism area,crpf,Inspector,44,22,0.5715,0.154565,0
+SYNTH-CRPF-02-313777,CRPF-02,left-wing extremism area,crpf,Head Constable,28,8,0.7551,0.247484,0
+SYNTH-CRPF-02-657875,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,48,25,0.8511,0.135627,0
+SYNTH-CRPF-02-518920,CRPF-02,left-wing extremism area,crpf,Constable,26,3,0.8248,0.424807,0
+SYNTH-CRPF-02-193527,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,41,19,0.6088,0.243811,0
+SYNTH-CRPF-02-279868,CRPF-02,left-wing extremism area,crpf,Inspector,46,24,0.3738,0.372469,0
+SYNTH-CRPF-02-453449,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,42,18,0.9518,0.156287,0
+SYNTH-CRPF-02-668207,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,41,18,0.8762,0.575695,1
+SYNTH-CRPF-02-242129,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,49,28,0.449,0.338508,0
+SYNTH-CRPF-02-108881,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,36,15,0.9691,0.27132,0
+SYNTH-CRPF-02-965034,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,39,17,0.5431,0.09183,0
+SYNTH-CRPF-02-269856,CRPF-02,left-wing extremism area,crpf,Inspector,43,22,0.6505,0.060554,0
+SYNTH-CRPF-02-665838,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,41,17,0.6213,0.23447,0
+SYNTH-CRPF-02-926416,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,36,13,0.255,0.202448,0
+SYNTH-CRPF-02-103960,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,40,18,0.6523,0.348678,0
+SYNTH-CRPF-02-167814,CRPF-02,left-wing extremism area,crpf,Constable,23,1,0.4907,0.089755,0
+SYNTH-CRPF-02-308691,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,51,28,0.6707,0.312801,0
+SYNTH-CRPF-02-158018,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,38,16,0.7524,0.429985,0
+SYNTH-CRPF-02-925105,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,40,17,0.4355,0.180802,0
+SYNTH-CRPF-02-102494,CRPF-02,left-wing extremism area,crpf,Inspector,47,24,0.6438,0.477391,0
+SYNTH-CRPF-02-283405,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,51,27,0.6765,0.247501,0
+SYNTH-CRPF-02-258738,CRPF-02,left-wing extremism area,crpf,Head Constable,30,6,0.5715,0.096287,0
+SYNTH-CRPF-02-874894,CRPF-02,left-wing extremism area,crpf,Constable,25,3,0.935,0.336919,0
+SYNTH-CRPF-02-643903,CRPF-02,left-wing extremism area,crpf,Head Constable,33,9,0.8912,0.403301,0
+SYNTH-CRPF-02-359189,CRPF-02,left-wing extremism area,crpf,Head Constable,28,5,0.4048,0.454234,0
+SYNTH-CRPF-02-210630,CRPF-02,left-wing extremism area,crpf,Constable,24,1,0.8686,0.330677,0
+SYNTH-CRPF-02-166627,CRPF-02,left-wing extremism area,crpf,Head Constable,30,6,0.5453,0.256145,0
+SYNTH-CRPF-02-232443,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,51,28,0.1449,0.319502,0
+SYNTH-CRPF-02-937740,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,40,19,0.8545,0.553955,1
+SYNTH-CRPF-02-416560,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,37,13,0.5186,0.069484,0
+SYNTH-CRPF-02-998605,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,38,14,0.4254,0.364307,0
+SYNTH-CRPF-02-103787,CRPF-02,left-wing extremism area,crpf,Sub-Inspector,42,18,0.7402,0.127464,0
+SYNTH-CRPF-02-789760,CRPF-02,left-wing extremism area,crpf,Head Constable,26,6,0.7208,0.312548,0
+SYNTH-CRPF-02-327991,CRPF-02,left-wing extremism area,crpf,Head Constable,30,6,0.526,0.021703,0
+SYNTH-CRPF-02-821671,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,35,11,0.7137,0.133309,0
+SYNTH-CRPF-02-146517,CRPF-02,left-wing extremism area,crpf,Head Constable,33,9,0.5271,0.39846,0
+SYNTH-CRPF-02-654792,CRPF-02,left-wing extremism area,crpf,Inspector,46,22,0.6617,0.312699,0
+SYNTH-CRPF-02-738384,CRPF-02,left-wing extremism area,crpf,Constable,27,3,0.474,0.398334,0
+SYNTH-CRPF-02-501159,CRPF-02,left-wing extremism area,crpf,Head Constable,30,6,0.7377,0.103464,0
+SYNTH-CRPF-02-903243,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,51,27,0.6662,0.080112,0
+SYNTH-CRPF-02-643385,CRPF-02,left-wing extremism area,crpf,Constable,25,3,0.4977,0.236259,0
+SYNTH-CRPF-02-351896,CRPF-02,left-wing extremism area,crpf,Assistant Commandant,49,25,0.4793,0.202479,0
+SYNTH-CRPF-02-732206,CRPF-02,left-wing extremism area,crpf,Head Constable,29,5,0.2703,0.057162,0
+SYNTH-CRPF-02-791769,CRPF-02,left-wing extremism area,crpf,Inspector,42,21,0.5907,0.383977,0
+SYNTH-CRPF-02-592982,CRPF-02,left-wing extremism area,crpf,Assistant Sub-Inspector,35,11,0.3878,0.122655,0
+SYNTH-CRPF-03-503545,CRPF-03,election duty,crpf,Inspector,47,24,0.9778,0.24017,0
+SYNTH-CRPF-03-310009,CRPF-03,election duty,crpf,Head Constable,30,9,0.9396,0.085708,0
+SYNTH-CRPF-03-151438,CRPF-03,election duty,crpf,Inspector,45,23,0.9048,0.361666,0
+SYNTH-CRPF-03-314555,CRPF-03,election duty,crpf,Assistant Sub-Inspector,36,13,0.3102,0.07633,0
+SYNTH-CRPF-03-778563,CRPF-03,election duty,crpf,Sub-Inspector,39,15,0.9518,0.083069,0
+SYNTH-CRPF-03-618684,CRPF-03,election duty,crpf,Assistant Commandant,48,25,0.4172,0.209324,0
+SYNTH-CRPF-03-786473,CRPF-03,election duty,crpf,Assistant Commandant,51,28,0.733,0.283135,0
+SYNTH-CRPF-03-744944,CRPF-03,election duty,crpf,Head Constable,30,6,0.7795,0.213421,0
+SYNTH-CRPF-03-484908,CRPF-03,election duty,crpf,Assistant Commandant,46,26,0.7921,0.101949,0
+SYNTH-CRPF-03-614293,CRPF-03,election duty,crpf,Assistant Sub-Inspector,35,12,0.9261,0.408175,0
+SYNTH-CRPF-03-698669,CRPF-03,election duty,crpf,Constable,21,1,0.4226,0.395326,0
+SYNTH-CRPF-03-920459,CRPF-03,election duty,crpf,Inspector,44,23,0.7731,0.251597,0
+SYNTH-CRPF-03-335838,CRPF-03,election duty,crpf,Constable,26,4,0.8661,0.586598,1
+SYNTH-CRPF-03-267902,CRPF-03,election duty,crpf,Assistant Sub-Inspector,35,14,0.5539,0.422949,0
+SYNTH-CRPF-03-486692,CRPF-03,election duty,crpf,Sub-Inspector,42,19,0.9029,0.391669,0
+SYNTH-CRPF-03-476190,CRPF-03,election duty,crpf,Head Constable,31,8,0.3404,0.11707,0
+SYNTH-CRPF-03-491311,CRPF-03,election duty,crpf,Head Constable,27,5,0.558,0.42231,0
+SYNTH-CRPF-03-484392,CRPF-03,election duty,crpf,Constable,26,3,0.7625,0.275982,0
+SYNTH-CRPF-03-765796,CRPF-03,election duty,crpf,Inspector,40,20,0.5915,0.066976,0
+SYNTH-CRPF-03-138822,CRPF-03,election duty,crpf,Inspector,42,22,0.9723,0.280508,0
+SYNTH-CRPF-03-249421,CRPF-03,election duty,crpf,Assistant Commandant,51,27,0.6954,0.102986,0
+SYNTH-CRPF-03-865645,CRPF-03,election duty,crpf,Inspector,41,21,0.8913,0.215744,0
+SYNTH-CRPF-03-669256,CRPF-03,election duty,crpf,Sub-Inspector,41,18,0.9328,0.065809,0
+SYNTH-CRPF-03-759247,CRPF-03,election duty,crpf,Assistant Sub-Inspector,33,11,0.8596,0.103225,0
+SYNTH-CRPF-03-990476,CRPF-03,election duty,crpf,Head Constable,28,7,0.6936,0.36239,0
+SYNTH-CRPF-03-721292,CRPF-03,election duty,crpf,Constable,27,4,0.8851,0.495272,0
+SYNTH-CRPF-03-652884,CRPF-03,election duty,crpf,Inspector,45,22,0.3992,0.439185,0
+SYNTH-CRPF-03-663741,CRPF-03,election duty,crpf,Constable,26,4,0.3801,0.097095,0
+SYNTH-CRPF-03-553058,CRPF-03,election duty,crpf,Assistant Sub-Inspector,37,13,0.8197,0.0841,0
+SYNTH-CRPF-03-629184,CRPF-03,election duty,crpf,Head Constable,30,6,0.6786,0.256319,0
+SYNTH-CRPF-03-806708,CRPF-03,election duty,crpf,Sub-Inspector,37,15,0.6303,0.197816,0
+SYNTH-CRPF-03-798371,CRPF-03,election duty,crpf,Assistant Commandant,49,25,0.7809,0.310022,0
+SYNTH-CRPF-03-982503,CRPF-03,election duty,crpf,Sub-Inspector,37,16,0.9121,0.27535,0
+SYNTH-CRPF-03-976987,CRPF-03,election duty,crpf,Constable,23,1,0.8781,0.089055,0
+SYNTH-CRPF-03-727498,CRPF-03,election duty,crpf,Sub-Inspector,38,18,0.9764,0.335047,0
+SYNTH-CRPF-03-823175,CRPF-03,election duty,crpf,Assistant Commandant,49,27,0.9453,0.140369,0
+SYNTH-CRPF-03-831640,CRPF-03,election duty,crpf,Head Constable,30,9,0.465,0.218704,0
+SYNTH-CRPF-03-728735,CRPF-03,election duty,crpf,Head Constable,29,8,0.7323,0.652706,1
+SYNTH-CRPF-03-768502,CRPF-03,election duty,crpf,Constable,25,1,0.8124,0.134824,0
+SYNTH-CRPF-03-609351,CRPF-03,election duty,crpf,Head Constable,33,9,0.672,0.427867,0
+SYNTH-CRPF-03-907982,CRPF-03,election duty,crpf,Assistant Sub-Inspector,35,11,0.3604,0.705983,1
+SYNTH-CRPF-03-522254,CRPF-03,election duty,crpf,Head Constable,25,5,0.7258,0.093702,0
+SYNTH-CRPF-03-541931,CRPF-03,election duty,crpf,Inspector,45,24,0.6644,0.194912,0
+SYNTH-CRPF-03-140950,CRPF-03,election duty,crpf,Assistant Commandant,47,27,0.3022,0.532042,0
+SYNTH-CRPF-03-244752,CRPF-03,election duty,crpf,Assistant Sub-Inspector,35,12,0.5776,0.142281,0
+SYNTH-CRPF-03-357572,CRPF-03,election duty,crpf,Inspector,47,24,0.558,0.141403,0
+SYNTH-CRPF-03-665237,CRPF-03,election duty,crpf,Sub-Inspector,39,17,0.7119,0.117121,0
+SYNTH-CRPF-03-660218,CRPF-03,election duty,crpf,Assistant Sub-Inspector,32,11,0.7754,0.335993,0
+SYNTH-CRPF-03-316917,CRPF-03,election duty,crpf,Inspector,45,22,0.8579,0.429247,0
+SYNTH-CRPF-03-500188,CRPF-03,election duty,crpf,Sub-Inspector,36,16,0.7834,0.259389,0
+SYNTH-CRPF-03-312636,CRPF-03,election duty,crpf,Sub-Inspector,39,17,0.4615,0.152247,0
+SYNTH-CRPF-03-288325,CRPF-03,election duty,crpf,Constable,23,1,0.3453,0.476601,0
+SYNTH-CRPF-03-651214,CRPF-03,election duty,crpf,Assistant Commandant,46,25,0.8278,0.156415,0
+SYNTH-CRPF-03-905455,CRPF-03,election duty,crpf,Head Constable,31,9,0.1636,0.282366,0
+SYNTH-CRPF-03-461846,CRPF-03,election duty,crpf,Head Constable,29,8,0.5096,0.157128,0
+SYNTH-CRPF-03-730262,CRPF-03,election duty,crpf,Inspector,46,22,0.5745,0.118314,0
+SYNTH-CRPF-03-131822,CRPF-03,election duty,crpf,Sub-Inspector,40,18,0.4436,0.348649,0
+SYNTH-CRPF-03-657645,CRPF-03,election duty,crpf,Assistant Sub-Inspector,31,10,0.2753,0.331177,0
+SYNTH-CRPF-03-103886,CRPF-03,election duty,crpf,Head Constable,26,5,0.5851,0.290994,0
+SYNTH-CRPF-03-961499,CRPF-03,election duty,crpf,Assistant Sub-Inspector,33,13,0.9567,0.401851,0
+SYNTH-CRPF-03-753128,CRPF-03,election duty,crpf,Assistant Commandant,49,26,0.9608,0.043217,0
+SYNTH-CRPF-03-953259,CRPF-03,election duty,crpf,Constable,25,2,0.3077,0.629994,1
+SYNTH-CRPF-03-653875,CRPF-03,election duty,crpf,Assistant Sub-Inspector,37,14,0.7606,0.325305,0
+SYNTH-CRPF-03-173206,CRPF-03,election duty,crpf,Constable,26,2,0.9042,0.19183,0
+SYNTH-CRPF-03-222379,CRPF-03,election duty,crpf,Inspector,41,21,0.6022,0.345477,0
+SYNTH-CRPF-03-735459,CRPF-03,election duty,crpf,Head Constable,25,5,0.6737,0.473084,0
+SYNTH-CRPF-03-997253,CRPF-03,election duty,crpf,Inspector,45,21,0.7409,0.222047,0
+SYNTH-CRPF-03-173988,CRPF-03,election duty,crpf,Head Constable,29,5,0.6248,0.241029,0
+SYNTH-CRPF-03-746266,CRPF-03,election duty,crpf,Head Constable,28,8,0.8251,0.30872,0
+SYNTH-CRPF-03-653743,CRPF-03,election duty,crpf,Constable,27,4,0.8875,0.244994,0
+SYNTH-CRPF-03-871204,CRPF-03,election duty,crpf,Inspector,47,23,0.361,0.18739,0
+SYNTH-CRPF-03-579302,CRPF-03,election duty,crpf,Head Constable,26,6,0.3812,0.275588,0
+SYNTH-CRPF-03-433387,CRPF-03,election duty,crpf,Assistant Commandant,49,28,0.145,0.526553,0
+SYNTH-CRPF-03-618148,CRPF-03,election duty,crpf,Assistant Sub-Inspector,36,14,0.6302,0.119671,0
+SYNTH-CRPF-03-633722,CRPF-03,election duty,crpf,Sub-Inspector,35,15,0.8533,0.370839,0
+SYNTH-CRPF-03-442364,CRPF-03,election duty,crpf,Assistant Sub-Inspector,34,13,0.6468,0.135101,0
+SYNTH-CRPF-03-159288,CRPF-03,election duty,crpf,Sub-Inspector,42,18,0.9036,0.223891,0
+SYNTH-CRPF-03-928758,CRPF-03,election duty,crpf,Assistant Sub-Inspector,35,11,0.3457,0.045446,0
+SYNTH-CRPF-03-275196,CRPF-03,election duty,crpf,Sub-Inspector,41,18,0.2257,0.094167,0
+SYNTH-CRPF-03-632721,CRPF-03,election duty,crpf,Assistant Commandant,48,26,0.5161,0.313788,0
+SYNTH-CRPF-03-294179,CRPF-03,election duty,crpf,Head Constable,33,9,0.8148,0.088056,0
+SYNTH-CRPF-03-815668,CRPF-03,election duty,crpf,Assistant Sub-Inspector,34,12,0.1364,0.381281,0
+SYNTH-CRPF-03-146812,CRPF-03,election duty,crpf,Assistant Commandant,47,27,0.6175,0.34314,0
+SYNTH-CRPF-03-890218,CRPF-03,election duty,crpf,Sub-Inspector,39,19,0.6744,0.180396,0
+SYNTH-CRPF-03-235882,CRPF-03,election duty,crpf,Head Constable,30,8,0.6896,0.251229,0
+SYNTH-CRPF-03-257699,CRPF-03,election duty,crpf,Sub-Inspector,38,17,0.8522,0.175332,0
+SYNTH-CRPF-03-523600,CRPF-03,election duty,crpf,Inspector,44,24,0.8205,0.681108,1
+SYNTH-CRPF-03-941941,CRPF-03,election duty,crpf,Head Constable,25,5,0.9722,0.116219,0
+SYNTH-CRPF-03-891064,CRPF-03,election duty,crpf,Assistant Sub-Inspector,32,12,0.5283,0.479093,0
+SYNTH-CRPF-03-158431,CRPF-03,election duty,crpf,Inspector,40,20,0.3625,0.460393,0
+SYNTH-CRPF-03-698269,CRPF-03,election duty,crpf,Assistant Commandant,48,25,0.5418,0.054887,0
+SYNTH-CRPF-03-473416,CRPF-03,election duty,crpf,Sub-Inspector,40,18,0.6256,0.097264,0
+SYNTH-CRPF-03-156352,CRPF-03,election duty,crpf,Constable,21,1,0.8971,0.288492,0
+SYNTH-CRPF-03-148135,CRPF-03,election duty,crpf,Head Constable,32,9,0.9249,0.13013,0
+SYNTH-CRPF-03-444015,CRPF-03,election duty,crpf,Constable,26,3,0.6923,0.172951,0
+SYNTH-CRPF-03-410908,CRPF-03,election duty,crpf,Sub-Inspector,37,16,0.7314,0.140385,0
+SYNTH-CRPF-03-346597,CRPF-03,election duty,crpf,Inspector,46,23,0.6335,0.205761,0
+SYNTH-CRPF-03-386779,CRPF-03,election duty,crpf,Assistant Sub-Inspector,35,13,0.5328,0.190862,0
+SYNTH-CRPF-03-906890,CRPF-03,election duty,crpf,Sub-Inspector,42,18,0.9274,0.102817,0
+SYNTH-CRPF-03-195684,CRPF-03,election duty,crpf,Head Constable,31,8,0.3929,0.224701,0
+SYNTH-CRPF-03-213909,CRPF-03,election duty,crpf,Assistant Sub-Inspector,33,12,0.3042,0.209703,0
+SYNTH-CRPF-03-405553,CRPF-03,election duty,crpf,Assistant Sub-Inspector,30,10,0.2241,0.150789,0
+SYNTH-CRPF-03-354447,CRPF-03,election duty,crpf,Inspector,40,20,0.771,0.220554,0
+SYNTH-CRPF-03-791489,CRPF-03,election duty,crpf,Inspector,47,23,0.3788,0.105175,0
+SYNTH-CRPF-03-605052,CRPF-03,election duty,crpf,Assistant Commandant,48,27,0.8122,0.521121,0
+SYNTH-CRPF-03-789451,CRPF-03,election duty,crpf,Head Constable,30,8,0.4682,0.029202,0
+SYNTH-CRPF-03-728476,CRPF-03,election duty,crpf,Inspector,43,23,0.6062,0.224652,0
+SYNTH-CRPF-03-646479,CRPF-03,election duty,crpf,Assistant Commandant,46,26,0.4761,0.287959,0
+SYNTH-CRPF-03-849469,CRPF-03,election duty,crpf,Constable,27,4,0.4231,0.284331,0
+SYNTH-CRPF-03-676901,CRPF-03,election duty,crpf,Constable,23,3,0.9064,0.160494,0
+SYNTH-CRPF-03-767332,CRPF-03,election duty,crpf,Assistant Sub-Inspector,33,12,0.7044,0.200575,0
+SYNTH-CRPF-03-676912,CRPF-03,election duty,crpf,Head Constable,29,6,0.4886,0.142947,0
+SYNTH-CRPF-03-345906,CRPF-03,election duty,crpf,Head Constable,28,5,0.9775,0.105637,0
+SYNTH-CRPF-03-606709,CRPF-03,election duty,crpf,Head Constable,29,8,0.5148,0.348774,0
+SYNTH-CRPF-03-819490,CRPF-03,election duty,crpf,Head Constable,27,7,0.9252,0.458187,0
+SYNTH-CRPF-03-364736,CRPF-03,election duty,crpf,Assistant Sub-Inspector,33,13,0.9783,0.393534,0
+SYNTH-CRPF-03-900584,CRPF-03,election duty,crpf,Sub-Inspector,38,15,0.5115,0.16036,0
+SYNTH-CRPF-03-391659,CRPF-03,election duty,crpf,Head Constable,30,7,0.6897,0.045954,0
+SYNTH-CRPF-03-940555,CRPF-03,election duty,crpf,Assistant Commandant,51,27,0.6268,0.191499,0
+SYNTH-CRPF-03-847335,CRPF-03,election duty,crpf,Assistant Commandant,49,28,0.3689,0.081017,0
+SYNTH-CRPF-03-821953,CRPF-03,election duty,crpf,Inspector,42,20,0.829,0.133278,0
+SYNTH-CRPF-03-864357,CRPF-03,election duty,crpf,Inspector,48,24,0.6665,0.461923,0
+SYNTH-CRPF-03-617420,CRPF-03,election duty,crpf,Inspector,42,21,0.5804,0.553621,1
+SYNTH-CRPF-03-849353,CRPF-03,election duty,crpf,Head Constable,26,5,0.4359,0.291412,0
+SYNTH-CRPF-03-798677,CRPF-03,election duty,crpf,Inspector,46,22,0.3427,0.169934,0
+SYNTH-CRPF-03-797725,CRPF-03,election duty,crpf,Inspector,44,23,0.4876,0.0682,0
+SYNTH-CRPF-03-578147,CRPF-03,election duty,crpf,Inspector,45,22,0.2446,0.146923,0
+SYNTH-CRPF-03-662063,CRPF-03,election duty,crpf,Assistant Commandant,48,26,0.5955,0.227169,0
+SYNTH-CRPF-03-433985,CRPF-03,election duty,crpf,Assistant Sub-Inspector,34,10,0.3616,0.052388,0
+SYNTH-CRPF-03-802698,CRPF-03,election duty,crpf,Sub-Inspector,36,16,0.8528,0.305971,0
+SYNTH-CRPF-03-581648,CRPF-03,election duty,crpf,Assistant Commandant,47,27,0.7224,0.216036,0
+SYNTH-CRPF-03-427040,CRPF-03,election duty,crpf,Constable,24,3,0.7326,0.458994,0
+SYNTH-CRPF-03-605222,CRPF-03,election duty,crpf,Inspector,43,23,0.6544,0.269853,0
+SYNTH-CRPF-03-874592,CRPF-03,election duty,crpf,Sub-Inspector,38,16,0.4131,0.230013,0
+SYNTH-CRPF-03-609075,CRPF-03,election duty,crpf,Head Constable,26,6,0.5316,0.271635,0
+SYNTH-CRPF-03-394210,CRPF-03,election duty,crpf,Sub-Inspector,43,19,0.6748,0.336816,0
+SYNTH-CRPF-03-867370,CRPF-03,election duty,crpf,Head Constable,30,9,0.9667,0.281304,0
+SYNTH-CRPF-03-472241,CRPF-03,election duty,crpf,Constable,26,3,0.6925,0.114998,0
+SYNTH-CRPF-03-919381,CRPF-03,election duty,crpf,Constable,26,4,0.802,0.123009,0
+SYNTH-CRPF-03-259910,CRPF-03,election duty,crpf,Assistant Sub-Inspector,33,12,0.4865,0.448473,0
+SYNTH-CRPF-04-438847,CRPF-04,law and order deployment,crpf,Sub-Inspector,40,16,0.5822,0.033245,0
+SYNTH-CRPF-04-832365,CRPF-04,law and order deployment,crpf,Inspector,46,24,0.7525,0.283037,0
+SYNTH-CRPF-04-344530,CRPF-04,law and order deployment,crpf,Head Constable,32,9,0.7369,0.591704,1
+SYNTH-CRPF-04-938386,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,34,13,0.8099,0.160446,0
+SYNTH-CRPF-04-659869,CRPF-04,law and order deployment,crpf,Assistant Commandant,46,25,0.6537,0.072815,0
+SYNTH-CRPF-04-630176,CRPF-04,law and order deployment,crpf,Sub-Inspector,38,18,0.4391,0.086606,0
+SYNTH-CRPF-04-921833,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,34,11,0.3065,0.096261,0
+SYNTH-CRPF-04-228029,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,35,11,0.6069,0.416937,0
+SYNTH-CRPF-04-649574,CRPF-04,law and order deployment,crpf,Head Constable,29,8,0.7877,0.015854,0
+SYNTH-CRPF-04-545118,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,35,12,0.9136,0.119812,0
+SYNTH-CRPF-04-127295,CRPF-04,law and order deployment,crpf,Constable,24,3,0.2838,0.279805,0
+SYNTH-CRPF-04-650628,CRPF-04,law and order deployment,crpf,Head Constable,29,7,0.9554,0.506556,0
+SYNTH-CRPF-04-883779,CRPF-04,law and order deployment,crpf,Inspector,43,23,0.9551,0.229352,0
+SYNTH-CRPF-04-613916,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,36,14,0.8085,0.389435,0
+SYNTH-CRPF-04-158986,CRPF-04,law and order deployment,crpf,Assistant Commandant,50,28,0.7078,0.21636,0
+SYNTH-CRPF-04-158604,CRPF-04,law and order deployment,crpf,Head Constable,29,5,0.6427,0.145758,0
+SYNTH-CRPF-04-783234,CRPF-04,law and order deployment,crpf,Assistant Commandant,52,28,0.2477,0.366766,0
+SYNTH-CRPF-04-719753,CRPF-04,law and order deployment,crpf,Inspector,45,23,0.6612,0.141758,0
+SYNTH-CRPF-04-528264,CRPF-04,law and order deployment,crpf,Constable,25,2,0.8744,0.274262,0
+SYNTH-CRPF-04-184996,CRPF-04,law and order deployment,crpf,Head Constable,33,9,0.9082,0.453912,0
+SYNTH-CRPF-04-737978,CRPF-04,law and order deployment,crpf,Constable,21,1,0.7615,0.051828,0
+SYNTH-CRPF-04-867513,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,34,14,0.8654,0.362042,0
+SYNTH-CRPF-04-210658,CRPF-04,law and order deployment,crpf,Inspector,40,20,0.5741,0.174519,0
+SYNTH-CRPF-04-248428,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,37,14,0.8565,0.174835,0
+SYNTH-CRPF-04-529835,CRPF-04,law and order deployment,crpf,Assistant Commandant,49,27,0.9866,0.294164,0
+SYNTH-CRPF-04-407079,CRPF-04,law and order deployment,crpf,Assistant Commandant,49,28,0.7837,0.396181,0
+SYNTH-CRPF-04-448975,CRPF-04,law and order deployment,crpf,Inspector,42,22,0.7312,0.094433,0
+SYNTH-CRPF-04-892417,CRPF-04,law and order deployment,crpf,Constable,24,4,0.9067,0.02973,0
+SYNTH-CRPF-04-127941,CRPF-04,law and order deployment,crpf,Head Constable,26,5,0.7,0.232847,0
+SYNTH-CRPF-04-552372,CRPF-04,law and order deployment,crpf,Head Constable,30,7,0.3108,0.338644,0
+SYNTH-CRPF-04-467841,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,31,11,0.522,0.112105,0
+SYNTH-CRPF-04-627595,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,38,14,0.7217,0.198601,0
+SYNTH-CRPF-04-846771,CRPF-04,law and order deployment,crpf,Constable,26,2,0.5327,0.226779,0
+SYNTH-CRPF-04-676293,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,37,14,0.4596,0.216598,0
+SYNTH-CRPF-04-980391,CRPF-04,law and order deployment,crpf,Head Constable,29,7,0.921,0.395293,0
+SYNTH-CRPF-04-218795,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,33,13,0.82,0.210921,0
+SYNTH-CRPF-04-422255,CRPF-04,law and order deployment,crpf,Inspector,45,22,0.5865,0.084807,0
+SYNTH-CRPF-04-945724,CRPF-04,law and order deployment,crpf,Inspector,47,23,0.5732,0.183338,0
+SYNTH-CRPF-04-852699,CRPF-04,law and order deployment,crpf,Constable,25,4,0.6813,0.1402,0
+SYNTH-CRPF-04-922450,CRPF-04,law and order deployment,crpf,Sub-Inspector,41,18,0.6437,0.416241,0
+SYNTH-CRPF-04-874836,CRPF-04,law and order deployment,crpf,Sub-Inspector,39,15,0.9631,0.084889,0
+SYNTH-CRPF-04-464874,CRPF-04,law and order deployment,crpf,Constable,21,1,0.5049,0.10527,0
+SYNTH-CRPF-04-575745,CRPF-04,law and order deployment,crpf,Assistant Commandant,51,27,0.9178,0.277562,0
+SYNTH-CRPF-04-648453,CRPF-04,law and order deployment,crpf,Sub-Inspector,39,18,0.8755,0.202992,0
+SYNTH-CRPF-04-317751,CRPF-04,law and order deployment,crpf,Sub-Inspector,38,17,0.4637,0.179032,0
+SYNTH-CRPF-04-181372,CRPF-04,law and order deployment,crpf,Head Constable,29,8,0.992,0.010474,0
+SYNTH-CRPF-04-594408,CRPF-04,law and order deployment,crpf,Head Constable,30,9,0.4909,0.710665,1
+SYNTH-CRPF-04-987768,CRPF-04,law and order deployment,crpf,Head Constable,30,6,0.3201,0.255026,0
+SYNTH-CRPF-04-419945,CRPF-04,law and order deployment,crpf,Head Constable,30,9,0.1028,0.166547,0
+SYNTH-CRPF-04-401388,CRPF-04,law and order deployment,crpf,Assistant Commandant,46,25,0.851,0.1077,0
+SYNTH-CRPF-04-440160,CRPF-04,law and order deployment,crpf,Inspector,48,24,0.8411,0.252374,0
+SYNTH-CRPF-04-273873,CRPF-04,law and order deployment,crpf,Assistant Commandant,48,27,0.77,0.372364,0
+SYNTH-CRPF-04-676111,CRPF-04,law and order deployment,crpf,Sub-Inspector,38,15,0.4784,0.261727,0
+SYNTH-CRPF-04-259403,CRPF-04,law and order deployment,crpf,Sub-Inspector,37,15,0.8219,0.267747,0
+SYNTH-CRPF-04-828181,CRPF-04,law and order deployment,crpf,Assistant Commandant,51,28,0.2076,0.54197,0
+SYNTH-CRPF-04-227165,CRPF-04,law and order deployment,crpf,Head Constable,30,9,0.955,0.17317,0
+SYNTH-CRPF-04-392301,CRPF-04,law and order deployment,crpf,Assistant Commandant,47,26,0.6936,0.133783,0
+SYNTH-CRPF-04-270063,CRPF-04,law and order deployment,crpf,Sub-Inspector,36,15,0.3922,0.463349,0
+SYNTH-CRPF-04-290507,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,35,14,0.9383,0.1452,0
+SYNTH-CRPF-04-346321,CRPF-04,law and order deployment,crpf,Sub-Inspector,39,18,0.4738,0.205524,0
+SYNTH-CRPF-04-461604,CRPF-04,law and order deployment,crpf,Head Constable,28,7,0.9048,0.242772,0
+SYNTH-CRPF-04-903058,CRPF-04,law and order deployment,crpf,Constable,25,4,0.6838,0.186416,0
+SYNTH-CRPF-04-543797,CRPF-04,law and order deployment,crpf,Head Constable,30,8,0.8434,0.260731,0
+SYNTH-CRPF-04-432653,CRPF-04,law and order deployment,crpf,Constable,25,2,0.6544,0.121129,0
+SYNTH-CRPF-04-452339,CRPF-04,law and order deployment,crpf,Assistant Commandant,47,27,0.5014,0.232109,0
+SYNTH-CRPF-04-705876,CRPF-04,law and order deployment,crpf,Assistant Commandant,47,27,0.8149,0.228236,0
+SYNTH-CRPF-04-252968,CRPF-04,law and order deployment,crpf,Head Constable,29,8,0.9906,0.218073,0
+SYNTH-CRPF-04-606954,CRPF-04,law and order deployment,crpf,Assistant Commandant,49,25,0.6965,0.270152,0
+SYNTH-CRPF-04-655915,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,33,11,0.7475,0.045216,0
+SYNTH-CRPF-04-908940,CRPF-04,law and order deployment,crpf,Sub-Inspector,40,19,0.6246,0.340479,0
+SYNTH-CRPF-04-581917,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,30,10,0.4106,0.345624,0
+SYNTH-CRPF-04-922543,CRPF-04,law and order deployment,crpf,Constable,23,2,0.298,0.230502,0
+SYNTH-CRPF-04-495773,CRPF-04,law and order deployment,crpf,Assistant Commandant,52,28,0.6944,0.296184,0
+SYNTH-CRPF-04-643676,CRPF-04,law and order deployment,crpf,Head Constable,29,6,0.8294,0.278898,0
+SYNTH-CRPF-04-739946,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,32,11,0.2291,0.240003,0
+SYNTH-CRPF-04-987416,CRPF-04,law and order deployment,crpf,Inspector,47,23,0.7174,0.167412,0
+SYNTH-CRPF-04-655096,CRPF-04,law and order deployment,crpf,Head Constable,30,7,0.5066,0.29605,0
+SYNTH-CRPF-04-846959,CRPF-04,law and order deployment,crpf,Inspector,41,20,0.3407,0.05565,0
+SYNTH-CRPF-04-515110,CRPF-04,law and order deployment,crpf,Head Constable,32,9,0.6893,0.362134,0
+SYNTH-CRPF-04-618418,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,31,10,0.9621,0.034602,0
+SYNTH-CRPF-04-920137,CRPF-04,law and order deployment,crpf,Constable,25,3,0.5725,0.350908,0
+SYNTH-CRPF-04-131040,CRPF-04,law and order deployment,crpf,Constable,26,4,0.8991,0.175304,0
+SYNTH-CRPF-04-851599,CRPF-04,law and order deployment,crpf,Sub-Inspector,42,19,0.5141,0.218283,0
+SYNTH-CRPF-04-377191,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,36,13,0.5179,0.125557,0
+SYNTH-CRPF-04-965440,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,35,11,0.832,0.518938,0
+SYNTH-CRPF-04-229883,CRPF-04,law and order deployment,crpf,Assistant Commandant,48,26,0.8806,0.164297,0
+SYNTH-CRPF-04-503264,CRPF-04,law and order deployment,crpf,Assistant Commandant,49,25,0.6113,0.371036,0
+SYNTH-CRPF-04-427896,CRPF-04,law and order deployment,crpf,Head Constable,30,7,0.9163,0.162541,0
+SYNTH-CRPF-04-689218,CRPF-04,law and order deployment,crpf,Inspector,42,20,0.7435,0.275349,0
+SYNTH-CRPF-04-282186,CRPF-04,law and order deployment,crpf,Assistant Commandant,51,28,0.9108,0.091393,0
+SYNTH-CRPF-04-137828,CRPF-04,law and order deployment,crpf,Inspector,44,22,0.635,0.291323,0
+SYNTH-CRPF-04-473396,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,34,12,0.5266,0.558863,1
+SYNTH-CRPF-04-773084,CRPF-04,law and order deployment,crpf,Head Constable,31,8,0.9427,0.155311,0
+SYNTH-CRPF-04-112118,CRPF-04,law and order deployment,crpf,Head Constable,30,7,0.8471,0.113147,0
+SYNTH-CRPF-04-885691,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,36,12,0.8913,0.289142,0
+SYNTH-CRPF-04-231678,CRPF-04,law and order deployment,crpf,Head Constable,31,8,0.5708,0.587012,1
+SYNTH-CRPF-04-468840,CRPF-04,law and order deployment,crpf,Head Constable,31,8,0.6532,0.443926,0
+SYNTH-CRPF-04-912102,CRPF-04,law and order deployment,crpf,Head Constable,27,5,0.7443,0.112559,0
+SYNTH-CRPF-04-168058,CRPF-04,law and order deployment,crpf,Inspector,40,20,0.6441,0.318525,0
+SYNTH-CRPF-04-928526,CRPF-04,law and order deployment,crpf,Sub-Inspector,39,18,0.6351,0.279425,0
+SYNTH-CRPF-04-783312,CRPF-04,law and order deployment,crpf,Inspector,45,21,0.5533,0.273483,0
+SYNTH-CRPF-04-540931,CRPF-04,law and order deployment,crpf,Inspector,45,22,0.5574,0.246249,0
+SYNTH-CRPF-04-222430,CRPF-04,law and order deployment,crpf,Inspector,45,24,0.6193,0.404974,0
+SYNTH-CRPF-04-944149,CRPF-04,law and order deployment,crpf,Head Constable,31,7,0.4839,0.574663,1
+SYNTH-CRPF-04-252852,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,31,11,0.5426,0.374478,0
+SYNTH-CRPF-04-208468,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,32,11,0.8305,0.326197,0
+SYNTH-CRPF-04-512743,CRPF-04,law and order deployment,crpf,Sub-Inspector,42,18,0.8358,0.087097,0
+SYNTH-CRPF-04-468426,CRPF-04,law and order deployment,crpf,Head Constable,28,8,0.1828,0.107687,0
+SYNTH-CRPF-04-808332,CRPF-04,law and order deployment,crpf,Head Constable,29,9,0.7848,0.070552,0
+SYNTH-CRPF-04-836907,CRPF-04,law and order deployment,crpf,Head Constable,27,5,0.4439,0.211874,0
+SYNTH-CRPF-04-177041,CRPF-04,law and order deployment,crpf,Head Constable,28,8,0.8606,0.219139,0
+SYNTH-CRPF-04-358646,CRPF-04,law and order deployment,crpf,Sub-Inspector,36,15,0.1459,0.212999,0
+SYNTH-CRPF-04-221141,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,37,14,0.4027,0.232767,0
+SYNTH-CRPF-04-388205,CRPF-04,law and order deployment,crpf,Assistant Commandant,50,27,0.5566,0.366914,0
+SYNTH-CRPF-04-203472,CRPF-04,law and order deployment,crpf,Sub-Inspector,36,16,0.9253,0.16177,0
+SYNTH-CRPF-04-732549,CRPF-04,law and order deployment,crpf,Assistant Commandant,47,25,0.1512,0.060409,0
+SYNTH-CRPF-04-280363,CRPF-04,law and order deployment,crpf,Constable,27,4,0.8116,0.281746,0
+SYNTH-CRPF-04-621737,CRPF-04,law and order deployment,crpf,Inspector,46,22,0.6886,0.375452,0
+SYNTH-CRPF-04-115724,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,34,14,0.7342,0.501597,0
+SYNTH-CRPF-04-860089,CRPF-04,law and order deployment,crpf,Inspector,44,22,0.7219,0.289109,0
+SYNTH-CRPF-04-310230,CRPF-04,law and order deployment,crpf,Inspector,43,20,0.1632,0.200697,0
+SYNTH-CRPF-04-506090,CRPF-04,law and order deployment,crpf,Constable,22,1,0.7014,0.625723,1
+SYNTH-CRPF-04-315833,CRPF-04,law and order deployment,crpf,Assistant Commandant,50,26,0.1474,0.239433,0
+SYNTH-CRPF-04-655672,CRPF-04,law and order deployment,crpf,Head Constable,28,8,0.6828,0.098872,0
+SYNTH-CRPF-04-202670,CRPF-04,law and order deployment,crpf,Inspector,44,20,0.6978,0.477108,0
+SYNTH-CRPF-04-716770,CRPF-04,law and order deployment,crpf,Sub-Inspector,41,18,0.8466,0.352537,0
+SYNTH-CRPF-04-828891,CRPF-04,law and order deployment,crpf,Inspector,47,23,0.4427,0.09495,0
+SYNTH-CRPF-04-239097,CRPF-04,law and order deployment,crpf,Assistant Commandant,49,26,0.3653,0.066655,0
+SYNTH-CRPF-04-394184,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,38,14,0.4441,0.2912,0
+SYNTH-CRPF-04-432465,CRPF-04,law and order deployment,crpf,Sub-Inspector,41,17,0.7093,0.126018,0
+SYNTH-CRPF-04-170068,CRPF-04,law and order deployment,crpf,Head Constable,27,6,0.7743,0.155433,0
+SYNTH-CRPF-04-267866,CRPF-04,law and order deployment,crpf,Sub-Inspector,39,17,0.9343,0.403559,0
+SYNTH-CRPF-04-965026,CRPF-04,law and order deployment,crpf,Assistant Commandant,49,26,0.5031,0.278426,0
+SYNTH-CRPF-04-898326,CRPF-04,law and order deployment,crpf,Constable,26,2,0.8884,0.499193,0
+SYNTH-CRPF-04-131001,CRPF-04,law and order deployment,crpf,Assistant Commandant,50,26,0.7119,0.018683,0
+SYNTH-CRPF-04-586213,CRPF-04,law and order deployment,crpf,Inspector,43,23,0.9647,0.168943,0
+SYNTH-CRPF-04-201449,CRPF-04,law and order deployment,crpf,Inspector,45,21,0.5534,0.495791,0
+SYNTH-CRPF-04-865125,CRPF-04,law and order deployment,crpf,Inspector,47,24,0.5241,0.114553,0
+SYNTH-CRPF-04-462169,CRPF-04,law and order deployment,crpf,Assistant Sub-Inspector,30,10,0.6686,0.137462,0
+SYNTH-CRPF-04-362807,CRPF-04,law and order deployment,crpf,Inspector,44,23,0.6527,0.362282,0
+SYNTH-CRPF-05-620940,CRPF-05,group centre,crpf,Assistant Sub-Inspector,34,13,0.6317,0.095645,0
+SYNTH-CRPF-05-368424,CRPF-05,group centre,crpf,Inspector,43,20,0.6954,0.128819,0
+SYNTH-CRPF-05-677314,CRPF-05,group centre,crpf,Assistant Sub-Inspector,35,14,0.5708,0.466082,0
+SYNTH-CRPF-05-627823,CRPF-05,group centre,crpf,Sub-Inspector,38,15,0.7612,0.207175,0
+SYNTH-CRPF-05-600848,CRPF-05,group centre,crpf,Sub-Inspector,43,19,0.6063,0.436227,0
+SYNTH-CRPF-05-815495,CRPF-05,group centre,crpf,Inspector,43,21,0.8016,0.488249,0
+SYNTH-CRPF-05-307586,CRPF-05,group centre,crpf,Sub-Inspector,39,16,0.4586,0.389552,0
+SYNTH-CRPF-05-653343,CRPF-05,group centre,crpf,Assistant Sub-Inspector,33,11,0.7499,0.12756,0
+SYNTH-CRPF-05-478252,CRPF-05,group centre,crpf,Assistant Commandant,48,27,0.7211,0.2571,0
+SYNTH-CRPF-05-550965,CRPF-05,group centre,crpf,Assistant Sub-Inspector,32,12,0.532,0.085906,0
+SYNTH-CRPF-05-170998,CRPF-05,group centre,crpf,Inspector,42,20,0.582,0.348272,0
+SYNTH-CRPF-05-251616,CRPF-05,group centre,crpf,Head Constable,28,8,0.6521,0.20119,0
+SYNTH-CRPF-05-129345,CRPF-05,group centre,crpf,Constable,27,4,0.2228,0.042194,0
+SYNTH-CRPF-05-315047,CRPF-05,group centre,crpf,Assistant Sub-Inspector,33,10,0.4201,0.241452,0
+SYNTH-CRPF-05-228468,CRPF-05,group centre,crpf,Assistant Commandant,50,27,0.6873,0.22211,0
+SYNTH-CRPF-05-928333,CRPF-05,group centre,crpf,Sub-Inspector,41,17,0.2128,0.15083,0
+SYNTH-CRPF-05-934969,CRPF-05,group centre,crpf,Inspector,46,24,0.9486,0.389988,0
+SYNTH-CRPF-05-813955,CRPF-05,group centre,crpf,Head Constable,30,8,0.5898,0.194974,0
+SYNTH-CRPF-05-732417,CRPF-05,group centre,crpf,Constable,25,2,0.8377,0.112712,0
+SYNTH-CRPF-05-185165,CRPF-05,group centre,crpf,Inspector,46,22,0.4838,0.196091,0
+SYNTH-CRPF-05-376445,CRPF-05,group centre,crpf,Inspector,41,21,0.5803,0.159953,0
+SYNTH-CRPF-05-744251,CRPF-05,group centre,crpf,Assistant Commandant,51,28,0.3563,0.100068,0
+SYNTH-CRPF-05-976714,CRPF-05,group centre,crpf,Assistant Sub-Inspector,30,10,0.8112,0.067733,0
+SYNTH-CRPF-05-580277,CRPF-05,group centre,crpf,Assistant Sub-Inspector,36,12,0.77,0.192338,0
+SYNTH-CRPF-05-943246,CRPF-05,group centre,crpf,Assistant Commandant,48,27,0.6192,0.095554,0
+SYNTH-CRPF-05-654584,CRPF-05,group centre,crpf,Assistant Commandant,48,27,0.4427,0.327069,0
+SYNTH-CRPF-05-381145,CRPF-05,group centre,crpf,Sub-Inspector,35,15,0.9734,0.112401,0
+SYNTH-CRPF-05-337334,CRPF-05,group centre,crpf,Head Constable,27,5,0.6309,0.418976,0
+SYNTH-CRPF-05-870416,CRPF-05,group centre,crpf,Head Constable,26,6,0.9862,0.388775,0
+SYNTH-CRPF-05-209918,CRPF-05,group centre,crpf,Assistant Commandant,51,27,0.748,0.191184,0
+SYNTH-CRPF-05-600758,CRPF-05,group centre,crpf,Head Constable,28,7,0.965,0.290543,0
+SYNTH-CRPF-05-319724,CRPF-05,group centre,crpf,Head Constable,28,7,0.4987,0.146353,0
+SYNTH-CRPF-05-813726,CRPF-05,group centre,crpf,Inspector,41,20,0.4123,0.423248,0
+SYNTH-CRPF-05-879232,CRPF-05,group centre,crpf,Assistant Commandant,51,27,0.937,0.515426,0
+SYNTH-CRPF-05-604191,CRPF-05,group centre,crpf,Inspector,45,21,0.1863,0.083921,0
+SYNTH-CRPF-05-693174,CRPF-05,group centre,crpf,Head Constable,26,5,0.6994,0.258416,0
+SYNTH-CRPF-05-251336,CRPF-05,group centre,crpf,Constable,24,4,0.3609,0.173861,0
+SYNTH-CRPF-05-916239,CRPF-05,group centre,crpf,Head Constable,28,5,0.5495,0.261988,0
+SYNTH-CRPF-05-726472,CRPF-05,group centre,crpf,Inspector,41,20,0.7317,0.396453,0
+SYNTH-CRPF-05-331242,CRPF-05,group centre,crpf,Head Constable,32,8,0.8611,0.397892,0
+SYNTH-CRPF-05-451435,CRPF-05,group centre,crpf,Sub-Inspector,41,17,0.248,0.08148,0
+SYNTH-CRPF-05-949005,CRPF-05,group centre,crpf,Inspector,44,21,0.5934,0.056527,0
+SYNTH-CRPF-05-227438,CRPF-05,group centre,crpf,Head Constable,30,8,0.5681,0.233559,0
+SYNTH-CRPF-05-612914,CRPF-05,group centre,crpf,Head Constable,29,8,0.4295,0.059368,0
+SYNTH-CRPF-05-278434,CRPF-05,group centre,crpf,Head Constable,25,5,0.4615,0.070549,0
+SYNTH-CRPF-05-552164,CRPF-05,group centre,crpf,Constable,26,2,0.1156,0.124033,0
+SYNTH-CRPF-05-224470,CRPF-05,group centre,crpf,Assistant Commandant,49,27,0.6732,0.224997,0
+SYNTH-CRPF-05-630875,CRPF-05,group centre,crpf,Assistant Sub-Inspector,36,13,0.3547,0.04853,0
+SYNTH-CRPF-05-732380,CRPF-05,group centre,crpf,Assistant Sub-Inspector,33,12,0.4258,0.150154,0
+SYNTH-CRPF-05-801906,CRPF-05,group centre,crpf,Assistant Sub-Inspector,34,11,0.7345,0.11055,0
+SYNTH-CRPF-05-950355,CRPF-05,group centre,crpf,Constable,22,1,0.5757,0.082823,0
+SYNTH-CRPF-05-214847,CRPF-05,group centre,crpf,Assistant Sub-Inspector,35,14,0.8015,0.431539,0
+SYNTH-CRPF-05-961916,CRPF-05,group centre,crpf,Inspector,46,24,0.8323,0.392765,0
+SYNTH-CRPF-05-331908,CRPF-05,group centre,crpf,Sub-Inspector,37,15,0.8157,0.085965,0
+SYNTH-CRPF-05-492160,CRPF-05,group centre,crpf,Sub-Inspector,38,15,0.4472,0.185524,0
+SYNTH-CRPF-05-295533,CRPF-05,group centre,crpf,Head Constable,33,9,0.8138,0.098294,0
+SYNTH-CRPF-05-195787,CRPF-05,group centre,crpf,Assistant Commandant,46,25,0.1006,0.15646,0
+SYNTH-CRPF-05-122186,CRPF-05,group centre,crpf,Assistant Sub-Inspector,38,14,0.7727,0.105995,0
+SYNTH-CRPF-05-195537,CRPF-05,group centre,crpf,Assistant Sub-Inspector,32,11,0.7782,0.047257,0
+SYNTH-CRPF-05-468318,CRPF-05,group centre,crpf,Inspector,47,23,0.7824,0.0649,0
+SYNTH-CRPF-05-686807,CRPF-05,group centre,crpf,Sub-Inspector,41,18,0.6928,0.222832,0
+SYNTH-CRPF-05-692937,CRPF-05,group centre,crpf,Head Constable,33,9,0.8435,0.038098,0
+SYNTH-CRPF-05-766170,CRPF-05,group centre,crpf,Head Constable,30,7,0.486,0.10236,0
+SYNTH-CRPF-05-112607,CRPF-05,group centre,crpf,Assistant Sub-Inspector,32,11,0.8788,0.21883,0
+SYNTH-CRPF-05-709632,CRPF-05,group centre,crpf,Sub-Inspector,39,16,0.9739,0.27471,0
+SYNTH-CRPF-05-346788,CRPF-05,group centre,crpf,Inspector,45,24,0.4886,0.373105,0
+SYNTH-CRPF-05-545482,CRPF-05,group centre,crpf,Constable,22,2,0.7296,0.742258,1
+SYNTH-CRPF-05-725756,CRPF-05,group centre,crpf,Assistant Sub-Inspector,36,12,0.9204,0.271776,0
+SYNTH-CRPF-05-236302,CRPF-05,group centre,crpf,Inspector,41,20,0.8493,0.406598,0
+SYNTH-CRPF-05-871423,CRPF-05,group centre,crpf,Assistant Sub-Inspector,35,13,0.8813,0.184639,0
+SYNTH-CRPF-05-354956,CRPF-05,group centre,crpf,Constable,22,1,0.4863,0.142263,0
+SYNTH-CRPF-05-765808,CRPF-05,group centre,crpf,Inspector,44,22,0.309,0.311418,0
+SYNTH-CRPF-05-622117,CRPF-05,group centre,crpf,Assistant Commandant,46,25,0.4333,0.326648,0
+SYNTH-CRPF-05-203105,CRPF-05,group centre,crpf,Assistant Sub-Inspector,35,11,0.4833,0.541802,0
+SYNTH-CRPF-05-631746,CRPF-05,group centre,crpf,Sub-Inspector,39,16,0.9243,0.179723,0
+SYNTH-CRPF-05-125622,CRPF-05,group centre,crpf,Assistant Sub-Inspector,35,11,0.2617,0.370177,0
+SYNTH-CRPF-05-888509,CRPF-05,group centre,crpf,Constable,27,4,0.6993,0.067147,0
+SYNTH-CRPF-05-376295,CRPF-05,group centre,crpf,Assistant Commandant,50,27,0.89,0.054441,0
+SYNTH-CRPF-05-941561,CRPF-05,group centre,crpf,Assistant Sub-Inspector,34,14,0.9464,0.069433,0
+SYNTH-CRPF-05-962552,CRPF-05,group centre,crpf,Sub-Inspector,38,15,0.6745,0.174574,0
+SYNTH-CRPF-05-629978,CRPF-05,group centre,crpf,Inspector,45,24,0.9788,0.193321,0
+SYNTH-CRPF-05-445709,CRPF-05,group centre,crpf,Sub-Inspector,41,19,0.8346,0.523219,0
+SYNTH-CRPF-05-407950,CRPF-05,group centre,crpf,Sub-Inspector,38,18,0.8602,0.363304,0
+SYNTH-CRPF-05-324814,CRPF-05,group centre,crpf,Sub-Inspector,35,15,0.5586,0.091361,0
+SYNTH-CRPF-05-875022,CRPF-05,group centre,crpf,Inspector,47,24,0.8098,0.387039,0
+SYNTH-CRPF-05-636603,CRPF-05,group centre,crpf,Sub-Inspector,37,16,0.5608,0.089077,0
+SYNTH-CRPF-05-357413,CRPF-05,group centre,crpf,Sub-Inspector,36,16,0.8786,0.197823,0
+SYNTH-CRPF-05-413008,CRPF-05,group centre,crpf,Assistant Sub-Inspector,34,10,0.3998,0.094356,0
+SYNTH-CRPF-05-697480,CRPF-05,group centre,crpf,Constable,23,3,0.3256,0.287036,0
+SYNTH-CRPF-05-335657,CRPF-05,group centre,crpf,Assistant Sub-Inspector,33,10,0.8473,0.249023,0
+SYNTH-CRPF-05-157871,CRPF-05,group centre,crpf,Assistant Sub-Inspector,36,14,0.7367,0.022588,0
+SYNTH-CRPF-05-247156,CRPF-05,group centre,crpf,Assistant Sub-Inspector,34,14,0.9004,0.291719,0
+SYNTH-CRPF-05-965718,CRPF-05,group centre,crpf,Assistant Commandant,47,27,0.5602,0.233626,0
+SYNTH-CRPF-05-370953,CRPF-05,group centre,crpf,Constable,23,2,0.5816,0.028712,0
+SYNTH-CRPF-05-777941,CRPF-05,group centre,crpf,Sub-Inspector,41,17,0.6717,0.133961,0
+SYNTH-CRPF-05-403697,CRPF-05,group centre,crpf,Assistant Commandant,47,25,0.5295,0.103769,0
+SYNTH-CRPF-05-714557,CRPF-05,group centre,crpf,Constable,23,3,0.3893,0.498572,0
+SYNTH-CRPF-05-873332,CRPF-05,group centre,crpf,Sub-Inspector,42,19,0.7477,0.285135,0
+SYNTH-CRPF-05-480905,CRPF-05,group centre,crpf,Sub-Inspector,36,15,0.9898,0.157622,0
+SYNTH-CRPF-05-135124,CRPF-05,group centre,crpf,Sub-Inspector,40,16,0.6425,0.315519,0
+SYNTH-CRPF-05-363400,CRPF-05,group centre,crpf,Head Constable,27,5,0.3652,0.468093,0
+SYNTH-CRPF-05-159234,CRPF-05,group centre,crpf,Assistant Sub-Inspector,36,14,0.8022,0.088224,0
+SYNTH-CRPF-05-482274,CRPF-05,group centre,crpf,Sub-Inspector,38,16,0.727,0.047958,0
+SYNTH-CRPF-05-159446,CRPF-05,group centre,crpf,Head Constable,31,7,0.7216,0.111422,0
+SYNTH-CRPF-05-640060,CRPF-05,group centre,crpf,Head Constable,28,6,0.9002,0.506836,0
+SYNTH-CRPF-05-654938,CRPF-05,group centre,crpf,Inspector,40,20,0.7532,0.38894,0
+SYNTH-CRPF-05-992601,CRPF-05,group centre,crpf,Constable,24,1,0.8448,0.570804,1
+SYNTH-CRPF-05-953687,CRPF-05,group centre,crpf,Inspector,46,24,0.9749,0.682804,1
+SYNTH-CRPF-05-325458,CRPF-05,group centre,crpf,Assistant Commandant,48,27,0.3622,0.156224,0
+SYNTH-CRPF-05-220848,CRPF-05,group centre,crpf,Head Constable,29,7,0.5909,0.353873,0
+SYNTH-CRPF-05-660833,CRPF-05,group centre,crpf,Constable,25,2,0.8863,0.388378,0
+SYNTH-CRPF-05-502198,CRPF-05,group centre,crpf,Sub-Inspector,37,15,0.8436,0.540796,0
+SYNTH-CRPF-05-134905,CRPF-05,group centre,crpf,Inspector,44,23,0.7765,0.346594,0
+SYNTH-CRPF-05-897448,CRPF-05,group centre,crpf,Assistant Commandant,47,25,0.8157,0.331853,0
+SYNTH-CRPF-05-335167,CRPF-05,group centre,crpf,Head Constable,25,5,0.809,0.370002,0
+SYNTH-CRPF-05-781485,CRPF-05,group centre,crpf,Sub-Inspector,35,15,0.8779,0.330969,0
+SYNTH-CRPF-05-493446,CRPF-05,group centre,crpf,Assistant Commandant,48,28,0.7493,0.215841,0
+SYNTH-CRPF-05-923755,CRPF-05,group centre,crpf,Sub-Inspector,39,19,0.2494,0.326991,0
+SYNTH-CRPF-05-654969,CRPF-05,group centre,crpf,Head Constable,30,7,0.5573,0.151363,0
+SYNTH-CRPF-05-279655,CRPF-05,group centre,crpf,Assistant Commandant,47,26,0.9465,0.293449,0
+SYNTH-CRPF-05-709362,CRPF-05,group centre,crpf,Constable,28,4,0.8074,0.294441,0
+SYNTH-CRPF-05-538076,CRPF-05,group centre,crpf,Constable,27,4,0.6115,0.209334,0
+SYNTH-CRPF-05-520999,CRPF-05,group centre,crpf,Inspector,46,22,0.9994,0.237475,0
+SYNTH-CRPF-05-199689,CRPF-05,group centre,crpf,Assistant Commandant,46,26,0.5807,0.78417,1
+SYNTH-CRPF-05-389884,CRPF-05,group centre,crpf,Head Constable,28,7,0.9713,0.104588,0
+SYNTH-CRPF-05-869570,CRPF-05,group centre,crpf,Inspector,43,23,0.4029,0.35579,0
+SYNTH-CRPF-05-274332,CRPF-05,group centre,crpf,Inspector,42,20,0.7617,0.187943,0
+SYNTH-CRPF-05-107949,CRPF-05,group centre,crpf,Inspector,44,20,0.5362,0.130264,0
+SYNTH-CRPF-05-692997,CRPF-05,group centre,crpf,Sub-Inspector,37,16,0.9058,0.291081,0
+SYNTH-CRPF-05-967733,CRPF-05,group centre,crpf,Inspector,44,21,0.8774,0.118072,0
+SYNTH-CRPF-05-610460,CRPF-05,group centre,crpf,Inspector,41,20,0.4765,0.158844,0
+SYNTH-CRPF-05-910873,CRPF-05,group centre,crpf,Head Constable,33,9,0.4611,0.057209,0
+SYNTH-CRPF-05-454121,CRPF-05,group centre,crpf,Assistant Commandant,49,28,0.9396,0.171126,0
+SYNTH-CRPF-05-173315,CRPF-05,group centre,crpf,Assistant Commandant,48,27,0.6836,0.269263,0
+SYNTH-CRPF-05-417277,CRPF-05,group centre,crpf,Sub-Inspector,38,16,0.7198,0.171686,0
+SYNTH-CRPF-05-953681,CRPF-05,group centre,crpf,Head Constable,28,7,0.1883,0.505654,0
+SYNTH-CRPF-05-153520,CRPF-05,group centre,crpf,Constable,25,4,0.9723,0.18529,0
+SYNTH-CRPF-05-119766,CRPF-05,group centre,crpf,Constable,24,1,0.8121,0.337814,0
+SYNTH-CRPF-05-675005,CRPF-05,group centre,crpf,Head Constable,32,8,0.1829,0.210985,0
+SYNTH-CRPF-05-496204,CRPF-05,group centre,crpf,Assistant Commandant,47,25,0.6505,0.326364,0
+SYNTH-CRPF-06-875131,CRPF-06,internal security duty,crpf,Assistant Commandant,51,27,0.9742,0.198633,0
+SYNTH-CRPF-06-975781,CRPF-06,internal security duty,crpf,Inspector,43,22,0.6465,0.264773,0
+SYNTH-CRPF-06-445859,CRPF-06,internal security duty,crpf,Assistant Commandant,48,28,0.6354,0.076412,0
+SYNTH-CRPF-06-467776,CRPF-06,internal security duty,crpf,Inspector,43,22,0.9638,0.250613,0
+SYNTH-CRPF-06-932117,CRPF-06,internal security duty,crpf,Assistant Commandant,48,28,0.6349,0.259098,0
+SYNTH-CRPF-06-589133,CRPF-06,internal security duty,crpf,Assistant Commandant,48,27,0.5256,0.189429,0
+SYNTH-CRPF-06-256046,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,31,11,0.5228,0.465728,0
+SYNTH-CRPF-06-487881,CRPF-06,internal security duty,crpf,Sub-Inspector,38,16,0.8582,0.311295,0
+SYNTH-CRPF-06-538945,CRPF-06,internal security duty,crpf,Constable,24,4,0.5708,0.460303,0
+SYNTH-CRPF-06-151190,CRPF-06,internal security duty,crpf,Head Constable,29,9,0.5031,0.066969,0
+SYNTH-CRPF-06-504431,CRPF-06,internal security duty,crpf,Assistant Commandant,46,25,0.706,0.185974,0
+SYNTH-CRPF-06-325390,CRPF-06,internal security duty,crpf,Sub-Inspector,39,16,0.8249,0.153257,0
+SYNTH-CRPF-06-504459,CRPF-06,internal security duty,crpf,Sub-Inspector,41,19,0.6198,0.256319,0
+SYNTH-CRPF-06-281239,CRPF-06,internal security duty,crpf,Inspector,45,21,0.3953,0.159325,0
+SYNTH-CRPF-06-661144,CRPF-06,internal security duty,crpf,Constable,26,2,0.4111,0.400159,0
+SYNTH-CRPF-06-980506,CRPF-06,internal security duty,crpf,Sub-Inspector,36,15,0.5614,0.381395,0
+SYNTH-CRPF-06-261506,CRPF-06,internal security duty,crpf,Sub-Inspector,38,15,0.8693,0.334784,0
+SYNTH-CRPF-06-645567,CRPF-06,internal security duty,crpf,Constable,24,4,0.6823,0.208312,0
+SYNTH-CRPF-06-202767,CRPF-06,internal security duty,crpf,Constable,26,2,0.7037,0.150281,0
+SYNTH-CRPF-06-916736,CRPF-06,internal security duty,crpf,Head Constable,29,5,0.7455,0.095131,0
+SYNTH-CRPF-06-865047,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,33,13,0.7186,0.078863,0
+SYNTH-CRPF-06-887065,CRPF-06,internal security duty,crpf,Head Constable,30,8,0.6901,0.242279,0
+SYNTH-CRPF-06-172555,CRPF-06,internal security duty,crpf,Inspector,44,23,0.9842,0.398846,0
+SYNTH-CRPF-06-766691,CRPF-06,internal security duty,crpf,Constable,23,3,0.6676,0.061743,0
+SYNTH-CRPF-06-750708,CRPF-06,internal security duty,crpf,Inspector,43,21,0.3572,0.065507,0
+SYNTH-CRPF-06-529507,CRPF-06,internal security duty,crpf,Sub-Inspector,39,15,0.3818,0.392042,0
+SYNTH-CRPF-06-756404,CRPF-06,internal security duty,crpf,Assistant Commandant,50,28,0.6872,0.124467,0
+SYNTH-CRPF-06-258932,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,37,13,0.8464,0.244112,0
+SYNTH-CRPF-06-989933,CRPF-06,internal security duty,crpf,Inspector,45,21,0.8126,0.242891,0
+SYNTH-CRPF-06-667579,CRPF-06,internal security duty,crpf,Inspector,43,23,0.6882,0.251459,0
+SYNTH-CRPF-06-383554,CRPF-06,internal security duty,crpf,Head Constable,25,5,0.4935,0.21197,0
+SYNTH-CRPF-06-111956,CRPF-06,internal security duty,crpf,Constable,23,2,0.5248,0.275198,0
+SYNTH-CRPF-06-181998,CRPF-06,internal security duty,crpf,Constable,26,2,0.4741,0.162484,0
+SYNTH-CRPF-06-809300,CRPF-06,internal security duty,crpf,Assistant Commandant,45,25,0.8588,0.303287,0
+SYNTH-CRPF-06-142146,CRPF-06,internal security duty,crpf,Assistant Commandant,51,27,0.8289,0.498814,0
+SYNTH-CRPF-06-983882,CRPF-06,internal security duty,crpf,Assistant Commandant,48,26,0.7091,0.302793,0
+SYNTH-CRPF-06-830072,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,31,11,0.7354,0.208135,0
+SYNTH-CRPF-06-180031,CRPF-06,internal security duty,crpf,Constable,26,2,0.3688,0.433963,0
+SYNTH-CRPF-06-977441,CRPF-06,internal security duty,crpf,Head Constable,29,7,0.5666,0.324242,0
+SYNTH-CRPF-06-129535,CRPF-06,internal security duty,crpf,Head Constable,28,7,0.5357,0.3783,0
+SYNTH-CRPF-06-917673,CRPF-06,internal security duty,crpf,Inspector,45,21,0.4601,0.176136,0
+SYNTH-CRPF-06-975810,CRPF-06,internal security duty,crpf,Constable,22,1,0.6294,0.058099,0
+SYNTH-CRPF-06-291534,CRPF-06,internal security duty,crpf,Head Constable,29,8,0.6087,0.226488,0
+SYNTH-CRPF-06-483502,CRPF-06,internal security duty,crpf,Inspector,43,20,0.6531,0.053879,0
+SYNTH-CRPF-06-820018,CRPF-06,internal security duty,crpf,Constable,27,4,0.6199,0.236223,0
+SYNTH-CRPF-06-837159,CRPF-06,internal security duty,crpf,Head Constable,29,6,0.368,0.175918,0
+SYNTH-CRPF-06-934040,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,37,13,0.569,0.219843,0
+SYNTH-CRPF-06-721954,CRPF-06,internal security duty,crpf,Assistant Commandant,47,26,0.8484,0.25581,0
+SYNTH-CRPF-06-610171,CRPF-06,internal security duty,crpf,Assistant Commandant,50,26,0.332,0.192992,0
+SYNTH-CRPF-06-522821,CRPF-06,internal security duty,crpf,Constable,23,1,0.8342,0.373279,0
+SYNTH-CRPF-06-677094,CRPF-06,internal security duty,crpf,Head Constable,31,9,0.7324,0.021931,0
+SYNTH-CRPF-06-272311,CRPF-06,internal security duty,crpf,Sub-Inspector,37,17,0.7161,0.208333,0
+SYNTH-CRPF-06-347492,CRPF-06,internal security duty,crpf,Inspector,47,24,0.8233,0.154508,0
+SYNTH-CRPF-06-734813,CRPF-06,internal security duty,crpf,Sub-Inspector,35,15,0.5916,0.40523,0
+SYNTH-CRPF-06-879967,CRPF-06,internal security duty,crpf,Constable,25,1,0.6885,0.076854,0
+SYNTH-CRPF-06-116334,CRPF-06,internal security duty,crpf,Head Constable,29,8,0.4698,0.031659,0
+SYNTH-CRPF-06-778404,CRPF-06,internal security duty,crpf,Constable,25,1,0.9228,0.198295,0
+SYNTH-CRPF-06-121560,CRPF-06,internal security duty,crpf,Assistant Commandant,45,25,0.5972,0.121859,0
+SYNTH-CRPF-06-814620,CRPF-06,internal security duty,crpf,Assistant Commandant,51,28,0.3977,0.277609,0
+SYNTH-CRPF-06-728729,CRPF-06,internal security duty,crpf,Inspector,46,22,0.6721,0.16312,0
+SYNTH-CRPF-06-763402,CRPF-06,internal security duty,crpf,Head Constable,26,5,0.2362,0.040293,0
+SYNTH-CRPF-06-271546,CRPF-06,internal security duty,crpf,Sub-Inspector,40,18,0.8611,0.348535,0
+SYNTH-CRPF-06-278926,CRPF-06,internal security duty,crpf,Inspector,42,20,0.5103,0.350707,0
+SYNTH-CRPF-06-182238,CRPF-06,internal security duty,crpf,Head Constable,30,8,0.3755,0.051571,0
+SYNTH-CRPF-06-160041,CRPF-06,internal security duty,crpf,Head Constable,29,7,0.4188,0.36618,0
+SYNTH-CRPF-06-463255,CRPF-06,internal security duty,crpf,Head Constable,33,9,0.8094,0.477483,0
+SYNTH-CRPF-06-949762,CRPF-06,internal security duty,crpf,Inspector,44,24,0.5601,0.12609,0
+SYNTH-CRPF-06-836679,CRPF-06,internal security duty,crpf,Constable,25,2,0.7474,0.153705,0
+SYNTH-CRPF-06-276304,CRPF-06,internal security duty,crpf,Constable,26,4,0.7469,0.210012,0
+SYNTH-CRPF-06-865994,CRPF-06,internal security duty,crpf,Sub-Inspector,41,19,0.8285,0.054852,0
+SYNTH-CRPF-06-506978,CRPF-06,internal security duty,crpf,Assistant Commandant,45,25,0.1893,0.321949,0
+SYNTH-CRPF-06-942324,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,34,11,0.6717,0.193885,0
+SYNTH-CRPF-06-858211,CRPF-06,internal security duty,crpf,Constable,22,2,0.6208,0.25335,0
+SYNTH-CRPF-06-714448,CRPF-06,internal security duty,crpf,Inspector,44,24,0.7375,0.287396,0
+SYNTH-CRPF-06-492821,CRPF-06,internal security duty,crpf,Sub-Inspector,39,19,0.9517,0.237102,0
+SYNTH-CRPF-06-486839,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,37,14,0.9592,0.233899,0
+SYNTH-CRPF-06-558667,CRPF-06,internal security duty,crpf,Constable,23,3,0.5113,0.28492,0
+SYNTH-CRPF-06-760151,CRPF-06,internal security duty,crpf,Head Constable,30,7,0.2616,0.214599,0
+SYNTH-CRPF-06-522818,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,36,14,0.57,0.228829,0
+SYNTH-CRPF-06-330684,CRPF-06,internal security duty,crpf,Head Constable,32,9,0.8052,0.312261,0
+SYNTH-CRPF-06-111782,CRPF-06,internal security duty,crpf,Constable,22,1,0.5754,0.135438,0
+SYNTH-CRPF-06-291652,CRPF-06,internal security duty,crpf,Head Constable,31,8,0.8756,0.346061,0
+SYNTH-CRPF-06-951911,CRPF-06,internal security duty,crpf,Inspector,45,23,0.8174,0.204402,0
+SYNTH-CRPF-06-497971,CRPF-06,internal security duty,crpf,Head Constable,26,6,0.2843,0.326293,0
+SYNTH-CRPF-06-141622,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,33,12,0.4842,0.480381,0
+SYNTH-CRPF-06-230119,CRPF-06,internal security duty,crpf,Assistant Commandant,48,27,0.5613,0.19651,0
+SYNTH-CRPF-06-121714,CRPF-06,internal security duty,crpf,Head Constable,30,7,0.7478,0.463673,0
+SYNTH-CRPF-06-984564,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,35,12,0.629,0.074222,0
+SYNTH-CRPF-06-126622,CRPF-06,internal security duty,crpf,Assistant Commandant,49,27,0.913,0.095273,0
+SYNTH-CRPF-06-447187,CRPF-06,internal security duty,crpf,Constable,24,2,0.2725,0.352645,0
+SYNTH-CRPF-06-415463,CRPF-06,internal security duty,crpf,Inspector,44,20,0.5066,0.199201,0
+SYNTH-CRPF-06-603953,CRPF-06,internal security duty,crpf,Assistant Commandant,49,27,0.7289,0.542568,0
+SYNTH-CRPF-06-300257,CRPF-06,internal security duty,crpf,Inspector,42,20,0.8693,0.356425,0
+SYNTH-CRPF-06-659832,CRPF-06,internal security duty,crpf,Assistant Commandant,48,28,0.6245,0.452845,0
+SYNTH-CRPF-06-805028,CRPF-06,internal security duty,crpf,Assistant Commandant,49,25,0.8607,0.078281,0
+SYNTH-CRPF-06-504571,CRPF-06,internal security duty,crpf,Constable,22,1,0.7647,0.28255,0
+SYNTH-CRPF-06-764367,CRPF-06,internal security duty,crpf,Constable,25,1,0.4272,0.38036,0
+SYNTH-CRPF-06-780020,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,35,12,0.5982,0.300798,0
+SYNTH-CRPF-06-645046,CRPF-06,internal security duty,crpf,Inspector,42,22,0.8604,0.140244,0
+SYNTH-CRPF-06-717736,CRPF-06,internal security duty,crpf,Head Constable,33,9,0.2535,0.285952,0
+SYNTH-CRPF-06-556620,CRPF-06,internal security duty,crpf,Constable,21,1,0.4092,0.572095,1
+SYNTH-CRPF-06-681546,CRPF-06,internal security duty,crpf,Head Constable,31,7,0.209,0.280793,0
+SYNTH-CRPF-06-842709,CRPF-06,internal security duty,crpf,Assistant Commandant,47,26,0.8865,0.165854,0
+SYNTH-CRPF-06-405954,CRPF-06,internal security duty,crpf,Inspector,40,20,0.399,0.2608,0
+SYNTH-CRPF-06-103617,CRPF-06,internal security duty,crpf,Head Constable,25,5,0.7056,0.085897,0
+SYNTH-CRPF-06-333920,CRPF-06,internal security duty,crpf,Head Constable,32,8,0.3901,0.282554,0
+SYNTH-CRPF-06-656524,CRPF-06,internal security duty,crpf,Head Constable,28,6,0.4549,0.102145,0
+SYNTH-CRPF-06-221921,CRPF-06,internal security duty,crpf,Assistant Commandant,50,28,0.4435,0.205562,0
+SYNTH-CRPF-06-820853,CRPF-06,internal security duty,crpf,Head Constable,31,9,0.8172,0.201361,0
+SYNTH-CRPF-06-849377,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,36,14,0.9673,0.521847,0
+SYNTH-CRPF-06-810335,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,34,12,0.8823,0.417408,0
+SYNTH-CRPF-06-176690,CRPF-06,internal security duty,crpf,Assistant Commandant,48,27,0.724,0.291208,0
+SYNTH-CRPF-06-237947,CRPF-06,internal security duty,crpf,Constable,22,1,0.8393,0.19108,0
+SYNTH-CRPF-06-471245,CRPF-06,internal security duty,crpf,Constable,26,3,0.7857,0.394258,0
+SYNTH-CRPF-06-443091,CRPF-06,internal security duty,crpf,Assistant Commandant,51,27,0.2657,0.224902,0
+SYNTH-CRPF-06-843265,CRPF-06,internal security duty,crpf,Assistant Commandant,46,25,0.3452,0.251046,0
+SYNTH-CRPF-06-571375,CRPF-06,internal security duty,crpf,Sub-Inspector,41,17,0.8486,0.194826,0
+SYNTH-CRPF-06-634909,CRPF-06,internal security duty,crpf,Constable,25,4,0.5826,0.259632,0
+SYNTH-CRPF-06-767723,CRPF-06,internal security duty,crpf,Assistant Commandant,45,25,0.8976,0.288141,0
+SYNTH-CRPF-06-222803,CRPF-06,internal security duty,crpf,Inspector,43,22,0.0866,0.23039,0
+SYNTH-CRPF-06-178949,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,36,12,0.6691,0.196998,0
+SYNTH-CRPF-06-579631,CRPF-06,internal security duty,crpf,Inspector,41,20,0.7061,0.295003,0
+SYNTH-CRPF-06-344831,CRPF-06,internal security duty,crpf,Head Constable,29,6,0.5824,0.547788,0
+SYNTH-CRPF-06-572078,CRPF-06,internal security duty,crpf,Assistant Commandant,46,26,0.838,0.124505,0
+SYNTH-CRPF-06-351045,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,36,14,0.6966,0.180042,0
+SYNTH-CRPF-06-235279,CRPF-06,internal security duty,crpf,Inspector,44,23,0.8354,0.286383,0
+SYNTH-CRPF-06-986427,CRPF-06,internal security duty,crpf,Sub-Inspector,40,19,0.9474,0.264106,0
+SYNTH-CRPF-06-149047,CRPF-06,internal security duty,crpf,Head Constable,28,6,0.3888,0.072372,0
+SYNTH-CRPF-06-798154,CRPF-06,internal security duty,crpf,Assistant Sub-Inspector,33,11,0.9042,0.216988,0
+SYNTH-CRPF-06-860559,CRPF-06,internal security duty,crpf,Constable,25,4,0.7728,0.315492,0
+SYNTH-CRPF-06-559848,CRPF-06,internal security duty,crpf,Inspector,41,21,0.8776,0.297188,0
+SYNTH-CRPF-06-736077,CRPF-06,internal security duty,crpf,Inspector,43,23,0.8284,0.360405,0
+SYNTH-CRPF-06-629715,CRPF-06,internal security duty,crpf,Constable,24,3,0.6915,0.243746,0
+SYNTH-CRPF-06-112493,CRPF-06,internal security duty,crpf,Assistant Commandant,46,26,0.6162,0.44768,0
+SYNTH-CRPF-06-150935,CRPF-06,internal security duty,crpf,Assistant Commandant,45,25,0.6475,0.205774,0
+SYNTH-CRPF-06-776898,CRPF-06,internal security duty,crpf,Head Constable,31,7,0.7327,0.344469,0
+SYNTH-CRPF-06-908152,CRPF-06,internal security duty,crpf,Head Constable,31,8,0.6903,0.035912,0
+SYNTH-CRPF-06-354838,CRPF-06,internal security duty,crpf,Head Constable,25,5,0.5657,0.377532,0
+SYNTH-CRPF-06-990188,CRPF-06,internal security duty,crpf,Sub-Inspector,41,17,0.9095,0.245849,0
+SYNTH-CRPF-06-168569,CRPF-06,internal security duty,crpf,Assistant Commandant,46,25,0.8051,0.447388,0
+SYNTH-CRPF-07-332172,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,31,10,0.9174,0.3461,0
+SYNTH-CRPF-07-274350,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,47,25,0.7261,0.325178,0
+SYNTH-CRPF-07-457345,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,35,11,0.8143,0.254923,0
+SYNTH-CRPF-07-907967,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,42,19,0.5121,0.266479,0
+SYNTH-CRPF-07-299702,CRPF-07,left-wing extremism area,crpf,Constable,24,4,0.6888,0.028313,0
+SYNTH-CRPF-07-973310,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,38,15,0.7708,0.217057,0
+SYNTH-CRPF-07-688501,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,41,19,0.5965,0.483453,0
+SYNTH-CRPF-07-816093,CRPF-07,left-wing extremism area,crpf,Constable,27,3,0.929,0.290516,0
+SYNTH-CRPF-07-637083,CRPF-07,left-wing extremism area,crpf,Head Constable,29,8,0.7557,0.359717,0
+SYNTH-CRPF-07-855817,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,50,26,0.5638,0.196616,0
+SYNTH-CRPF-07-216850,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,42,19,0.6368,0.028062,0
+SYNTH-CRPF-07-485690,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,50,26,0.5914,0.286686,0
+SYNTH-CRPF-07-405465,CRPF-07,left-wing extremism area,crpf,Constable,24,1,0.6037,0.096759,0
+SYNTH-CRPF-07-489861,CRPF-07,left-wing extremism area,crpf,Head Constable,28,8,0.2719,0.338771,0
+SYNTH-CRPF-07-821082,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,36,13,0.4086,0.271397,0
+SYNTH-CRPF-07-717807,CRPF-07,left-wing extremism area,crpf,Head Constable,30,9,0.7765,0.478492,0
+SYNTH-CRPF-07-344325,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,36,13,0.835,0.101062,0
+SYNTH-CRPF-07-815061,CRPF-07,left-wing extremism area,crpf,Head Constable,27,5,0.7522,0.37547,0
+SYNTH-CRPF-07-161556,CRPF-07,left-wing extremism area,crpf,Constable,27,3,0.8179,0.057822,0
+SYNTH-CRPF-07-875168,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,36,15,0.8465,0.638839,1
+SYNTH-CRPF-07-130675,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,34,12,0.5669,0.191196,0
+SYNTH-CRPF-07-325115,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,42,19,0.2264,0.333567,0
+SYNTH-CRPF-07-224454,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,49,25,0.7162,0.120725,0
+SYNTH-CRPF-07-543365,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,33,12,0.7898,0.248931,0
+SYNTH-CRPF-07-763270,CRPF-07,left-wing extremism area,crpf,Head Constable,27,5,0.5216,0.160208,0
+SYNTH-CRPF-07-732382,CRPF-07,left-wing extremism area,crpf,Inspector,46,23,0.4406,0.159128,0
+SYNTH-CRPF-07-624055,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,48,25,0.6848,0.118688,0
+SYNTH-CRPF-07-208422,CRPF-07,left-wing extremism area,crpf,Constable,27,4,0.4651,0.293434,0
+SYNTH-CRPF-07-754188,CRPF-07,left-wing extremism area,crpf,Head Constable,27,6,0.6915,0.062893,0
+SYNTH-CRPF-07-572994,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,33,13,0.4976,0.454066,0
+SYNTH-CRPF-07-797132,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,39,15,0.5776,0.337207,0
+SYNTH-CRPF-07-213694,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,36,16,0.8278,0.579099,1
+SYNTH-CRPF-07-530627,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,36,13,0.6122,0.086037,0
+SYNTH-CRPF-07-987700,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,49,26,0.7621,0.042709,0
+SYNTH-CRPF-07-289542,CRPF-07,left-wing extremism area,crpf,Inspector,44,24,0.8187,0.217268,0
+SYNTH-CRPF-07-579940,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,35,15,0.5176,0.213076,0
+SYNTH-CRPF-07-303798,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,41,19,0.7272,0.260911,0
+SYNTH-CRPF-07-518849,CRPF-07,left-wing extremism area,crpf,Inspector,41,20,0.2378,0.285597,0
+SYNTH-CRPF-07-787592,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,35,15,0.6585,0.557427,1
+SYNTH-CRPF-07-557768,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,36,14,0.586,0.388263,0
+SYNTH-CRPF-07-754574,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,38,16,0.5517,0.321108,0
+SYNTH-CRPF-07-160678,CRPF-07,left-wing extremism area,crpf,Head Constable,29,8,0.721,0.508696,0
+SYNTH-CRPF-07-721309,CRPF-07,left-wing extremism area,crpf,Inspector,42,22,0.2097,0.379561,0
+SYNTH-CRPF-07-869901,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,34,12,0.5223,0.105018,0
+SYNTH-CRPF-07-790662,CRPF-07,left-wing extremism area,crpf,Head Constable,32,9,0.9484,0.223919,0
+SYNTH-CRPF-07-573199,CRPF-07,left-wing extremism area,crpf,Inspector,41,21,0.764,0.01927,0
+SYNTH-CRPF-07-326287,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,47,27,0.9597,0.048773,0
+SYNTH-CRPF-07-228929,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,37,15,0.8162,0.285542,0
+SYNTH-CRPF-07-291432,CRPF-07,left-wing extremism area,crpf,Constable,27,4,0.8793,0.098506,0
+SYNTH-CRPF-07-314601,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,31,11,0.3539,0.169126,0
+SYNTH-CRPF-07-117755,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,41,19,0.2961,0.186776,0
+SYNTH-CRPF-07-705578,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,46,26,0.329,0.225621,0
+SYNTH-CRPF-07-389154,CRPF-07,left-wing extremism area,crpf,Head Constable,27,7,0.7988,0.129626,0
+SYNTH-CRPF-07-297620,CRPF-07,left-wing extremism area,crpf,Head Constable,28,8,0.5806,0.497469,0
+SYNTH-CRPF-07-381982,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,49,25,0.3834,0.308927,0
+SYNTH-CRPF-07-358970,CRPF-07,left-wing extremism area,crpf,Head Constable,29,5,0.5889,0.245428,0
+SYNTH-CRPF-07-533709,CRPF-07,left-wing extremism area,crpf,Head Constable,33,9,0.9474,0.257353,0
+SYNTH-CRPF-07-291288,CRPF-07,left-wing extremism area,crpf,Constable,26,3,0.8699,0.308597,0
+SYNTH-CRPF-07-655303,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,39,18,0.6817,0.0518,0
+SYNTH-CRPF-07-108971,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,34,10,0.5959,0.260903,0
+SYNTH-CRPF-07-827417,CRPF-07,left-wing extremism area,crpf,Head Constable,29,8,0.4727,0.500887,0
+SYNTH-CRPF-07-370576,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,38,18,0.5061,0.29588,0
+SYNTH-CRPF-07-325006,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,33,11,0.7008,0.413238,0
+SYNTH-CRPF-07-556282,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,48,28,0.9602,0.561133,1
+SYNTH-CRPF-07-387743,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,38,17,0.3802,0.422338,0
+SYNTH-CRPF-07-776873,CRPF-07,left-wing extremism area,crpf,Constable,25,1,0.4689,0.172235,0
+SYNTH-CRPF-07-965369,CRPF-07,left-wing extremism area,crpf,Constable,25,1,0.7206,0.341704,0
+SYNTH-CRPF-07-723633,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,31,10,0.9284,0.124636,0
+SYNTH-CRPF-07-821996,CRPF-07,left-wing extremism area,crpf,Head Constable,33,9,0.355,0.217516,0
+SYNTH-CRPF-07-911996,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,33,13,0.504,0.193218,0
+SYNTH-CRPF-07-277993,CRPF-07,left-wing extremism area,crpf,Inspector,42,21,0.6004,0.122039,0
+SYNTH-CRPF-07-237908,CRPF-07,left-wing extremism area,crpf,Head Constable,28,6,0.4346,0.150273,0
+SYNTH-CRPF-07-428557,CRPF-07,left-wing extremism area,crpf,Inspector,47,23,0.7516,0.327828,0
+SYNTH-CRPF-07-970368,CRPF-07,left-wing extremism area,crpf,Head Constable,25,5,0.7573,0.3848,0
+SYNTH-CRPF-07-938310,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,49,26,0.7694,0.25213,0
+SYNTH-CRPF-07-648727,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,41,17,0.5168,0.045148,0
+SYNTH-CRPF-07-611584,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,36,16,0.5264,0.329491,0
+SYNTH-CRPF-07-633380,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,31,10,0.4477,0.28709,0
+SYNTH-CRPF-07-330403,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,41,18,0.8467,0.096959,0
+SYNTH-CRPF-07-796858,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,50,27,0.795,0.092985,0
+SYNTH-CRPF-07-939057,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,36,12,0.6067,0.123606,0
+SYNTH-CRPF-07-800319,CRPF-07,left-wing extremism area,crpf,Constable,27,3,0.5716,0.052017,0
+SYNTH-CRPF-07-346724,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,32,11,0.2269,0.140732,0
+SYNTH-CRPF-07-528091,CRPF-07,left-wing extremism area,crpf,Inspector,47,23,0.9895,0.128298,0
+SYNTH-CRPF-07-189758,CRPF-07,left-wing extremism area,crpf,Inspector,45,24,0.5074,0.169162,0
+SYNTH-CRPF-07-692240,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,37,14,0.4437,0.24765,0
+SYNTH-CRPF-07-804734,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,39,17,0.5248,0.079037,0
+SYNTH-CRPF-07-873529,CRPF-07,left-wing extremism area,crpf,Inspector,41,21,0.74,0.465211,0
+SYNTH-CRPF-07-426286,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,41,18,0.7991,0.245809,0
+SYNTH-CRPF-07-241907,CRPF-07,left-wing extremism area,crpf,Head Constable,27,6,0.2743,0.581955,1
+SYNTH-CRPF-07-128000,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,34,11,0.6449,0.366338,0
+SYNTH-CRPF-07-525292,CRPF-07,left-wing extremism area,crpf,Constable,23,2,0.87,0.270347,0
+SYNTH-CRPF-07-169806,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,49,28,0.4309,0.614183,1
+SYNTH-CRPF-07-907404,CRPF-07,left-wing extremism area,crpf,Constable,23,3,0.7831,0.15053,0
+SYNTH-CRPF-07-500529,CRPF-07,left-wing extremism area,crpf,Head Constable,27,7,0.532,0.39352,0
+SYNTH-CRPF-07-370445,CRPF-07,left-wing extremism area,crpf,Inspector,43,20,0.859,0.309434,0
+SYNTH-CRPF-07-579609,CRPF-07,left-wing extremism area,crpf,Constable,23,1,0.6485,0.123543,0
+SYNTH-CRPF-07-101284,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,40,17,0.6439,0.389691,0
+SYNTH-CRPF-07-985534,CRPF-07,left-wing extremism area,crpf,Constable,28,4,0.3098,0.409965,0
+SYNTH-CRPF-07-484559,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,32,10,0.4617,0.046336,0
+SYNTH-CRPF-07-530287,CRPF-07,left-wing extremism area,crpf,Inspector,46,24,0.8508,0.659662,1
+SYNTH-CRPF-07-378360,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,49,28,0.8045,0.353154,0
+SYNTH-CRPF-07-461688,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,34,10,0.6027,0.188067,0
+SYNTH-CRPF-07-944399,CRPF-07,left-wing extremism area,crpf,Inspector,45,24,0.7411,0.237308,0
+SYNTH-CRPF-07-656630,CRPF-07,left-wing extremism area,crpf,Inspector,46,24,0.3685,0.195494,0
+SYNTH-CRPF-07-487127,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,39,17,0.4033,0.313044,0
+SYNTH-CRPF-07-723548,CRPF-07,left-wing extremism area,crpf,Head Constable,28,5,0.6822,0.152775,0
+SYNTH-CRPF-07-118709,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,52,28,0.5126,0.430195,0
+SYNTH-CRPF-07-168160,CRPF-07,left-wing extremism area,crpf,Head Constable,29,6,0.2741,0.343262,0
+SYNTH-CRPF-07-871666,CRPF-07,left-wing extremism area,crpf,Head Constable,31,8,0.8193,0.149079,0
+SYNTH-CRPF-07-814960,CRPF-07,left-wing extremism area,crpf,Inspector,45,23,0.6576,0.247522,0
+SYNTH-CRPF-07-850509,CRPF-07,left-wing extremism area,crpf,Constable,24,2,0.6327,0.302748,0
+SYNTH-CRPF-07-955589,CRPF-07,left-wing extremism area,crpf,Inspector,43,21,0.4561,0.089791,0
+SYNTH-CRPF-07-564477,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,42,19,0.8138,0.080178,0
+SYNTH-CRPF-07-524094,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,48,25,0.7568,0.061806,0
+SYNTH-CRPF-07-466076,CRPF-07,left-wing extremism area,crpf,Inspector,41,21,0.3541,0.266821,0
+SYNTH-CRPF-07-432492,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,31,11,0.9144,0.05726,0
+SYNTH-CRPF-07-329437,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,38,15,0.8804,0.251486,0
+SYNTH-CRPF-07-355271,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,39,19,0.9321,0.046394,0
+SYNTH-CRPF-07-188611,CRPF-07,left-wing extremism area,crpf,Head Constable,25,5,0.6772,0.080989,0
+SYNTH-CRPF-07-971732,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,39,19,0.5986,0.495738,0
+SYNTH-CRPF-07-199354,CRPF-07,left-wing extremism area,crpf,Constable,24,4,0.7546,0.465547,0
+SYNTH-CRPF-07-457645,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,41,19,0.7966,0.154009,0
+SYNTH-CRPF-07-474026,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,35,15,0.6801,0.120572,0
+SYNTH-CRPF-07-445820,CRPF-07,left-wing extremism area,crpf,Inspector,44,23,0.8446,0.125403,0
+SYNTH-CRPF-07-440605,CRPF-07,left-wing extremism area,crpf,Head Constable,27,7,0.6318,0.148944,0
+SYNTH-CRPF-07-624557,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,31,11,0.4538,0.200435,0
+SYNTH-CRPF-07-298413,CRPF-07,left-wing extremism area,crpf,Inspector,45,23,0.3709,0.160591,0
+SYNTH-CRPF-07-194346,CRPF-07,left-wing extremism area,crpf,Inspector,45,22,0.7957,0.374077,0
+SYNTH-CRPF-07-953782,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,32,12,0.7051,0.195518,0
+SYNTH-CRPF-07-288582,CRPF-07,left-wing extremism area,crpf,Head Constable,28,6,0.6217,0.145445,0
+SYNTH-CRPF-07-310098,CRPF-07,left-wing extremism area,crpf,Inspector,46,22,0.4047,0.254294,0
+SYNTH-CRPF-07-947122,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,36,15,0.6377,0.297696,0
+SYNTH-CRPF-07-630647,CRPF-07,left-wing extremism area,crpf,Assistant Commandant,52,28,0.8243,0.203027,0
+SYNTH-CRPF-07-108075,CRPF-07,left-wing extremism area,crpf,Inspector,42,22,0.6471,0.12727,0
+SYNTH-CRPF-07-432158,CRPF-07,left-wing extremism area,crpf,Constable,24,1,0.5784,0.298426,0
+SYNTH-CRPF-07-520768,CRPF-07,left-wing extremism area,crpf,Assistant Sub-Inspector,34,11,0.4143,0.274498,0
+SYNTH-CRPF-07-347608,CRPF-07,left-wing extremism area,crpf,Sub-Inspector,39,17,0.4336,0.03265,0
+SYNTH-CRPF-07-623683,CRPF-07,left-wing extremism area,crpf,Constable,25,1,0.7453,0.200903,0
+SYNTH-CRPF-07-319777,CRPF-07,left-wing extremism area,crpf,Constable,26,3,0.7051,0.364558,0
+SYNTH-CRPF-08-304446,CRPF-08,election duty,crpf,Inspector,44,21,0.6498,0.202822,0
+SYNTH-CRPF-08-223868,CRPF-08,election duty,crpf,Head Constable,29,6,0.4657,0.016546,0
+SYNTH-CRPF-08-339074,CRPF-08,election duty,crpf,Inspector,44,21,0.5442,0.278798,0
+SYNTH-CRPF-08-724632,CRPF-08,election duty,crpf,Assistant Sub-Inspector,36,13,0.5881,0.249933,0
+SYNTH-CRPF-08-816395,CRPF-08,election duty,crpf,Assistant Sub-Inspector,31,10,0.6505,0.25489,0
+SYNTH-CRPF-08-935105,CRPF-08,election duty,crpf,Constable,24,4,0.8708,0.243787,0
+SYNTH-CRPF-08-473789,CRPF-08,election duty,crpf,Head Constable,32,8,0.6807,0.349308,0
+SYNTH-CRPF-08-964142,CRPF-08,election duty,crpf,Head Constable,28,7,0.7863,0.306596,0
+SYNTH-CRPF-08-874619,CRPF-08,election duty,crpf,Head Constable,32,9,0.796,0.215846,0
+SYNTH-CRPF-08-355788,CRPF-08,election duty,crpf,Inspector,41,21,0.4807,0.153341,0
+SYNTH-CRPF-08-954076,CRPF-08,election duty,crpf,Sub-Inspector,41,18,0.942,0.350478,0
+SYNTH-CRPF-08-178189,CRPF-08,election duty,crpf,Head Constable,29,8,0.8167,0.164499,0
+SYNTH-CRPF-08-721172,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,13,0.3859,0.628413,1
+SYNTH-CRPF-08-845399,CRPF-08,election duty,crpf,Constable,24,2,0.7078,0.647954,1
+SYNTH-CRPF-08-172793,CRPF-08,election duty,crpf,Inspector,44,22,0.6943,0.45244,0
+SYNTH-CRPF-08-218186,CRPF-08,election duty,crpf,Assistant Commandant,51,28,0.6696,0.100763,0
+SYNTH-CRPF-08-190383,CRPF-08,election duty,crpf,Assistant Sub-Inspector,36,12,0.0956,0.21007,0
+SYNTH-CRPF-08-236650,CRPF-08,election duty,crpf,Head Constable,27,5,0.5921,0.332932,0
+SYNTH-CRPF-08-343601,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,11,0.7538,0.32481,0
+SYNTH-CRPF-08-638672,CRPF-08,election duty,crpf,Head Constable,28,8,0.6183,0.367205,0
+SYNTH-CRPF-08-641639,CRPF-08,election duty,crpf,Inspector,43,21,0.7697,0.040454,0
+SYNTH-CRPF-08-253237,CRPF-08,election duty,crpf,Sub-Inspector,35,15,0.5359,0.218645,0
+SYNTH-CRPF-08-825969,CRPF-08,election duty,crpf,Constable,24,3,0.6783,0.110036,0
+SYNTH-CRPF-08-378036,CRPF-08,election duty,crpf,Constable,26,3,0.7653,0.216683,0
+SYNTH-CRPF-08-295736,CRPF-08,election duty,crpf,Assistant Sub-Inspector,33,10,0.7989,0.057714,0
+SYNTH-CRPF-08-249714,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,12,0.8613,0.377023,0
+SYNTH-CRPF-08-596432,CRPF-08,election duty,crpf,Assistant Sub-Inspector,37,14,0.7298,0.331416,0
+SYNTH-CRPF-08-792502,CRPF-08,election duty,crpf,Assistant Commandant,52,28,0.6446,0.18718,0
+SYNTH-CRPF-08-151548,CRPF-08,election duty,crpf,Sub-Inspector,39,15,0.6601,0.138947,0
+SYNTH-CRPF-08-605432,CRPF-08,election duty,crpf,Head Constable,32,9,0.5281,0.334599,0
+SYNTH-CRPF-08-726909,CRPF-08,election duty,crpf,Constable,24,2,0.5708,0.268221,0
+SYNTH-CRPF-08-687063,CRPF-08,election duty,crpf,Head Constable,30,9,0.9513,0.238328,0
+SYNTH-CRPF-08-751959,CRPF-08,election duty,crpf,Constable,26,4,0.7061,0.303088,0
+SYNTH-CRPF-08-261783,CRPF-08,election duty,crpf,Constable,24,1,0.5699,0.299335,0
+SYNTH-CRPF-08-271507,CRPF-08,election duty,crpf,Inspector,44,20,0.4221,0.07306,0
+SYNTH-CRPF-08-758170,CRPF-08,election duty,crpf,Head Constable,27,5,0.8447,0.080875,0
+SYNTH-CRPF-08-871903,CRPF-08,election duty,crpf,Assistant Sub-Inspector,32,10,0.4651,0.713087,1
+SYNTH-CRPF-08-417006,CRPF-08,election duty,crpf,Sub-Inspector,38,17,0.8253,0.113468,0
+SYNTH-CRPF-08-902244,CRPF-08,election duty,crpf,Constable,24,4,0.9181,0.186475,0
+SYNTH-CRPF-08-949889,CRPF-08,election duty,crpf,Constable,27,3,0.9412,0.357674,0
+SYNTH-CRPF-08-864458,CRPF-08,election duty,crpf,Head Constable,29,8,0.8552,0.350261,0
+SYNTH-CRPF-08-370448,CRPF-08,election duty,crpf,Constable,26,2,0.4956,0.234649,0
+SYNTH-CRPF-08-776043,CRPF-08,election duty,crpf,Inspector,45,24,0.6114,0.348681,0
+SYNTH-CRPF-08-967761,CRPF-08,election duty,crpf,Inspector,46,24,0.5755,0.115335,0
+SYNTH-CRPF-08-973570,CRPF-08,election duty,crpf,Constable,25,3,0.2226,0.148198,0
+SYNTH-CRPF-08-267006,CRPF-08,election duty,crpf,Head Constable,30,9,0.8678,0.380884,0
+SYNTH-CRPF-08-306269,CRPF-08,election duty,crpf,Assistant Commandant,50,26,0.7389,0.436746,0
+SYNTH-CRPF-08-875233,CRPF-08,election duty,crpf,Head Constable,28,7,0.9485,0.373605,0
+SYNTH-CRPF-08-766503,CRPF-08,election duty,crpf,Head Constable,30,6,0.4347,0.010224,0
+SYNTH-CRPF-08-767717,CRPF-08,election duty,crpf,Sub-Inspector,40,19,0.9174,0.077884,0
+SYNTH-CRPF-08-406368,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,12,0.9328,0.229295,0
+SYNTH-CRPF-08-538950,CRPF-08,election duty,crpf,Assistant Commandant,46,25,0.905,0.179441,0
+SYNTH-CRPF-08-175128,CRPF-08,election duty,crpf,Inspector,42,20,0.4381,0.38934,0
+SYNTH-CRPF-08-801363,CRPF-08,election duty,crpf,Assistant Sub-Inspector,36,14,0.7496,0.29796,0
+SYNTH-CRPF-08-982459,CRPF-08,election duty,crpf,Constable,21,1,0.8029,0.275076,0
+SYNTH-CRPF-08-549748,CRPF-08,election duty,crpf,Head Constable,30,6,0.2281,0.464563,0
+SYNTH-CRPF-08-455873,CRPF-08,election duty,crpf,Sub-Inspector,36,16,0.2294,0.453765,0
+SYNTH-CRPF-08-348125,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,11,0.5198,0.423528,0
+SYNTH-CRPF-08-928285,CRPF-08,election duty,crpf,Constable,28,4,0.7223,0.427308,0
+SYNTH-CRPF-08-886691,CRPF-08,election duty,crpf,Constable,26,3,0.2571,0.352469,0
+SYNTH-CRPF-08-716355,CRPF-08,election duty,crpf,Inspector,45,24,0.1842,0.281394,0
+SYNTH-CRPF-08-527245,CRPF-08,election duty,crpf,Head Constable,30,6,0.6387,0.32224,0
+SYNTH-CRPF-08-663501,CRPF-08,election duty,crpf,Assistant Sub-Inspector,33,11,0.4708,0.464424,0
+SYNTH-CRPF-08-437996,CRPF-08,election duty,crpf,Head Constable,25,5,0.469,0.099516,0
+SYNTH-CRPF-08-400814,CRPF-08,election duty,crpf,Inspector,44,20,0.7257,0.222329,0
+SYNTH-CRPF-08-671423,CRPF-08,election duty,crpf,Inspector,42,21,0.5846,0.377007,0
+SYNTH-CRPF-08-237019,CRPF-08,election duty,crpf,Sub-Inspector,42,18,0.8542,0.057638,0
+SYNTH-CRPF-08-176318,CRPF-08,election duty,crpf,Inspector,45,24,0.7503,0.238654,0
+SYNTH-CRPF-08-713521,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,11,0.7663,0.293976,0
+SYNTH-CRPF-08-723482,CRPF-08,election duty,crpf,Assistant Commandant,48,25,0.634,0.459326,0
+SYNTH-CRPF-08-786655,CRPF-08,election duty,crpf,Head Constable,29,7,0.9506,0.559081,1
+SYNTH-CRPF-08-961312,CRPF-08,election duty,crpf,Head Constable,29,7,0.4482,0.057192,0
+SYNTH-CRPF-08-523815,CRPF-08,election duty,crpf,Assistant Commandant,50,26,0.8056,0.087257,0
+SYNTH-CRPF-08-793344,CRPF-08,election duty,crpf,Assistant Sub-Inspector,36,13,0.601,0.186052,0
+SYNTH-CRPF-08-390789,CRPF-08,election duty,crpf,Constable,24,2,0.4943,0.269735,0
+SYNTH-CRPF-08-982752,CRPF-08,election duty,crpf,Assistant Commandant,52,28,0.4672,0.280095,0
+SYNTH-CRPF-08-268123,CRPF-08,election duty,crpf,Constable,23,1,0.9624,0.159915,0
+SYNTH-CRPF-08-961606,CRPF-08,election duty,crpf,Assistant Sub-Inspector,33,11,0.9374,0.281869,0
+SYNTH-CRPF-08-626496,CRPF-08,election duty,crpf,Head Constable,30,6,0.0996,0.120286,0
+SYNTH-CRPF-08-168287,CRPF-08,election duty,crpf,Inspector,43,23,0.7065,0.248598,0
+SYNTH-CRPF-08-768885,CRPF-08,election duty,crpf,Assistant Commandant,50,27,0.6401,0.213239,0
+SYNTH-CRPF-08-869454,CRPF-08,election duty,crpf,Assistant Sub-Inspector,32,10,0.6874,0.154471,0
+SYNTH-CRPF-08-372567,CRPF-08,election duty,crpf,Head Constable,29,5,0.9536,0.366631,0
+SYNTH-CRPF-08-420128,CRPF-08,election duty,crpf,Constable,21,1,0.8222,0.203288,0
+SYNTH-CRPF-08-628274,CRPF-08,election duty,crpf,Inspector,43,20,0.1722,0.307097,0
+SYNTH-CRPF-08-846184,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,11,0.5472,0.307764,0
+SYNTH-CRPF-08-517784,CRPF-08,election duty,crpf,Constable,22,1,0.8904,0.165347,0
+SYNTH-CRPF-08-187878,CRPF-08,election duty,crpf,Assistant Sub-Inspector,33,10,0.3507,0.290649,0
+SYNTH-CRPF-08-193510,CRPF-08,election duty,crpf,Head Constable,26,5,0.9856,0.255319,0
+SYNTH-CRPF-08-129488,CRPF-08,election duty,crpf,Sub-Inspector,38,17,0.2525,0.649912,1
+SYNTH-CRPF-08-227058,CRPF-08,election duty,crpf,Assistant Commandant,47,25,0.2153,0.520172,0
+SYNTH-CRPF-08-187100,CRPF-08,election duty,crpf,Head Constable,29,9,0.6454,0.138058,0
+SYNTH-CRPF-08-954526,CRPF-08,election duty,crpf,Inspector,44,21,0.646,0.054268,0
+SYNTH-CRPF-08-678038,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,14,0.6401,0.218907,0
+SYNTH-CRPF-08-108925,CRPF-08,election duty,crpf,Assistant Commandant,51,28,0.6292,0.226026,0
+SYNTH-CRPF-08-655033,CRPF-08,election duty,crpf,Sub-Inspector,37,16,0.5513,0.25552,0
+SYNTH-CRPF-08-930094,CRPF-08,election duty,crpf,Constable,26,2,0.8688,0.143597,0
+SYNTH-CRPF-08-952975,CRPF-08,election duty,crpf,Head Constable,32,9,0.8818,0.146402,0
+SYNTH-CRPF-08-273008,CRPF-08,election duty,crpf,Head Constable,30,7,0.7087,0.194085,0
+SYNTH-CRPF-08-900207,CRPF-08,election duty,crpf,Sub-Inspector,40,19,0.4267,0.579147,1
+SYNTH-CRPF-08-901860,CRPF-08,election duty,crpf,Sub-Inspector,39,15,0.8143,0.472357,0
+SYNTH-CRPF-08-279721,CRPF-08,election duty,crpf,Constable,25,4,0.9096,0.122597,0
+SYNTH-CRPF-08-111384,CRPF-08,election duty,crpf,Inspector,47,23,0.6257,0.399846,0
+SYNTH-CRPF-08-184260,CRPF-08,election duty,crpf,Sub-Inspector,40,18,0.5511,0.242425,0
+SYNTH-CRPF-08-399319,CRPF-08,election duty,crpf,Assistant Sub-Inspector,31,10,0.8011,0.027736,0
+SYNTH-CRPF-08-309681,CRPF-08,election duty,crpf,Head Constable,29,9,0.6323,0.064152,0
+SYNTH-CRPF-08-769188,CRPF-08,election duty,crpf,Assistant Commandant,46,26,0.485,0.050465,0
+SYNTH-CRPF-08-558941,CRPF-08,election duty,crpf,Sub-Inspector,39,17,0.6214,0.404775,0
+SYNTH-CRPF-08-234511,CRPF-08,election duty,crpf,Head Constable,29,6,0.7669,0.383291,0
+SYNTH-CRPF-08-136335,CRPF-08,election duty,crpf,Sub-Inspector,40,18,0.3666,0.248706,0
+SYNTH-CRPF-08-347500,CRPF-08,election duty,crpf,Constable,24,3,0.7425,0.378851,0
+SYNTH-CRPF-08-241646,CRPF-08,election duty,crpf,Inspector,45,22,0.4349,0.052044,0
+SYNTH-CRPF-08-618241,CRPF-08,election duty,crpf,Assistant Commandant,49,25,0.9405,0.230522,0
+SYNTH-CRPF-08-696433,CRPF-08,election duty,crpf,Constable,26,2,0.7929,0.210713,0
+SYNTH-CRPF-08-469121,CRPF-08,election duty,crpf,Assistant Sub-Inspector,35,11,0.2231,0.13086,0
+SYNTH-CRPF-08-924259,CRPF-08,election duty,crpf,Assistant Commandant,48,26,0.3423,0.670841,1
+SYNTH-CRPF-08-661669,CRPF-08,election duty,crpf,Head Constable,30,6,0.5808,0.371722,0
+SYNTH-CRPF-08-484775,CRPF-08,election duty,crpf,Assistant Commandant,51,28,0.71,0.041344,0
+SYNTH-CRPF-08-786650,CRPF-08,election duty,crpf,Assistant Sub-Inspector,31,11,0.38,0.068997,0
+SYNTH-CRPF-08-433348,CRPF-08,election duty,crpf,Head Constable,32,9,0.238,0.236675,0
+SYNTH-CRPF-08-376888,CRPF-08,election duty,crpf,Assistant Commandant,52,28,0.8162,0.092429,0
+SYNTH-CRPF-08-405783,CRPF-08,election duty,crpf,Head Constable,28,5,0.7102,0.222351,0
+SYNTH-CRPF-08-487823,CRPF-08,election duty,crpf,Assistant Sub-Inspector,34,14,0.5036,0.084073,0
+SYNTH-CRPF-08-124070,CRPF-08,election duty,crpf,Assistant Sub-Inspector,34,12,0.9038,0.455611,0
+SYNTH-CRPF-08-343982,CRPF-08,election duty,crpf,Inspector,42,22,0.4928,0.086482,0
+SYNTH-CRPF-08-161305,CRPF-08,election duty,crpf,Head Constable,28,7,0.6698,0.168844,0
+SYNTH-CRPF-08-907217,CRPF-08,election duty,crpf,Assistant Commandant,46,25,0.9855,0.18684,0
+SYNTH-CRPF-08-132936,CRPF-08,election duty,crpf,Assistant Commandant,48,25,0.9354,0.048929,0
+SYNTH-CRPF-08-300068,CRPF-08,election duty,crpf,Assistant Commandant,46,25,0.1362,0.123738,0
+SYNTH-CRPF-08-755817,CRPF-08,election duty,crpf,Assistant Commandant,50,27,0.8051,0.446189,0
+SYNTH-CRPF-08-467490,CRPF-08,election duty,crpf,Sub-Inspector,41,17,0.6319,0.056396,0
+SYNTH-CRPF-08-187396,CRPF-08,election duty,crpf,Constable,25,1,0.5151,0.382111,0
+SYNTH-CRPF-08-263588,CRPF-08,election duty,crpf,Sub-Inspector,39,17,0.6291,0.076372,0
+SYNTH-CRPF-08-286424,CRPF-08,election duty,crpf,Constable,25,3,0.9925,0.223808,0
+SYNTH-CRPF-08-657280,CRPF-08,election duty,crpf,Inspector,46,24,0.3431,0.385641,0
+SYNTH-CRPF-08-235156,CRPF-08,election duty,crpf,Constable,22,1,0.9682,0.360239,0
+SYNTH-CRPF-08-190567,CRPF-08,election duty,crpf,Head Constable,29,5,0.4681,0.211121,0
+SYNTH-CRPF-08-703161,CRPF-08,election duty,crpf,Head Constable,25,5,0.4834,0.259986,0
+SYNTH-CRPF-08-749260,CRPF-08,election duty,crpf,Assistant Commandant,48,26,0.6849,0.410319,0
+SYNTH-CRPF-08-830991,CRPF-08,election duty,crpf,Constable,27,4,0.6491,0.362801,0
+SYNTH-CRPF-09-869062,CRPF-09,law and order deployment,crpf,Sub-Inspector,40,16,0.365,0.226531,0
+SYNTH-CRPF-09-573143,CRPF-09,law and order deployment,crpf,Inspector,46,23,0.6364,0.105619,0
+SYNTH-CRPF-09-237740,CRPF-09,law and order deployment,crpf,Head Constable,26,5,0.5804,0.208659,0
+SYNTH-CRPF-09-677008,CRPF-09,law and order deployment,crpf,Head Constable,29,8,0.5293,0.08858,0
+SYNTH-CRPF-09-399094,CRPF-09,law and order deployment,crpf,Inspector,43,20,0.8291,0.218282,0
+SYNTH-CRPF-09-425150,CRPF-09,law and order deployment,crpf,Constable,24,3,0.6416,0.238223,0
+SYNTH-CRPF-09-377958,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,32,10,0.7818,0.312536,0
+SYNTH-CRPF-09-401439,CRPF-09,law and order deployment,crpf,Sub-Inspector,37,16,0.8729,0.208914,0
+SYNTH-CRPF-09-464467,CRPF-09,law and order deployment,crpf,Inspector,42,21,0.7138,0.453937,0
+SYNTH-CRPF-09-175314,CRPF-09,law and order deployment,crpf,Inspector,48,24,0.755,0.158409,0
+SYNTH-CRPF-09-797357,CRPF-09,law and order deployment,crpf,Sub-Inspector,41,18,0.9547,0.390543,0
+SYNTH-CRPF-09-559110,CRPF-09,law and order deployment,crpf,Assistant Commandant,48,27,0.7926,0.060111,0
+SYNTH-CRPF-09-946698,CRPF-09,law and order deployment,crpf,Constable,28,4,0.3286,0.130298,0
+SYNTH-CRPF-09-522176,CRPF-09,law and order deployment,crpf,Head Constable,29,6,0.9843,0.116531,0
+SYNTH-CRPF-09-463301,CRPF-09,law and order deployment,crpf,Head Constable,29,8,0.7501,0.283178,0
+SYNTH-CRPF-09-788736,CRPF-09,law and order deployment,crpf,Constable,26,2,0.5683,0.030974,0
+SYNTH-CRPF-09-891191,CRPF-09,law and order deployment,crpf,Assistant Commandant,48,27,0.7937,0.133839,0
+SYNTH-CRPF-09-740479,CRPF-09,law and order deployment,crpf,Constable,23,3,0.8283,0.0751,0
+SYNTH-CRPF-09-566238,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,31,10,0.9078,0.305356,0
+SYNTH-CRPF-09-332191,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,36,14,0.1243,0.375641,0
+SYNTH-CRPF-09-244312,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,34,13,0.6778,0.152622,0
+SYNTH-CRPF-09-644778,CRPF-09,law and order deployment,crpf,Constable,27,4,0.4569,0.507341,0
+SYNTH-CRPF-09-122437,CRPF-09,law and order deployment,crpf,Sub-Inspector,37,17,0.3231,0.246232,0
+SYNTH-CRPF-09-350565,CRPF-09,law and order deployment,crpf,Constable,25,3,0.801,0.323344,0
+SYNTH-CRPF-09-423698,CRPF-09,law and order deployment,crpf,Constable,26,3,0.8312,0.157587,0
+SYNTH-CRPF-09-980380,CRPF-09,law and order deployment,crpf,Head Constable,29,9,0.3513,0.540271,0
+SYNTH-CRPF-09-716107,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,34,10,0.7501,0.282596,0
+SYNTH-CRPF-09-381489,CRPF-09,law and order deployment,crpf,Head Constable,29,5,0.6496,0.329575,0
+SYNTH-CRPF-09-645437,CRPF-09,law and order deployment,crpf,Assistant Commandant,49,28,0.171,0.336713,0
+SYNTH-CRPF-09-907511,CRPF-09,law and order deployment,crpf,Assistant Commandant,45,25,0.5045,0.519528,0
+SYNTH-CRPF-09-497581,CRPF-09,law and order deployment,crpf,Sub-Inspector,37,16,0.5141,0.112529,0
+SYNTH-CRPF-09-557696,CRPF-09,law and order deployment,crpf,Constable,24,4,0.3609,0.408321,0
+SYNTH-CRPF-09-102676,CRPF-09,law and order deployment,crpf,Assistant Commandant,48,28,0.3846,0.136375,0
+SYNTH-CRPF-09-169635,CRPF-09,law and order deployment,crpf,Inspector,44,22,0.8289,0.435602,0
+SYNTH-CRPF-09-308068,CRPF-09,law and order deployment,crpf,Sub-Inspector,43,19,0.7261,0.05093,0
+SYNTH-CRPF-09-655391,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,33,10,0.588,0.515981,0
+SYNTH-CRPF-09-784379,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,35,11,0.492,0.156892,0
+SYNTH-CRPF-09-196950,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,34,13,0.7485,0.101172,0
+SYNTH-CRPF-09-806040,CRPF-09,law and order deployment,crpf,Inspector,40,20,0.1762,0.215091,0
+SYNTH-CRPF-09-982713,CRPF-09,law and order deployment,crpf,Sub-Inspector,38,18,0.7862,0.335728,0
+SYNTH-CRPF-09-386797,CRPF-09,law and order deployment,crpf,Inspector,42,22,0.438,0.188277,0
+SYNTH-CRPF-09-829217,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,31,11,0.4518,0.112309,0
+SYNTH-CRPF-09-607402,CRPF-09,law and order deployment,crpf,Assistant Commandant,48,27,0.8364,0.275417,0
+SYNTH-CRPF-09-994414,CRPF-09,law and order deployment,crpf,Constable,24,4,0.6772,0.452023,0
+SYNTH-CRPF-09-773645,CRPF-09,law and order deployment,crpf,Constable,21,1,0.685,0.403411,0
+SYNTH-CRPF-09-638623,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,34,10,0.6358,0.407587,0
+SYNTH-CRPF-09-738080,CRPF-09,law and order deployment,crpf,Assistant Commandant,48,25,0.3864,0.223688,0
+SYNTH-CRPF-09-716384,CRPF-09,law and order deployment,crpf,Assistant Commandant,47,26,0.7575,0.197375,0
+SYNTH-CRPF-09-366301,CRPF-09,law and order deployment,crpf,Sub-Inspector,38,15,0.6086,0.075662,0
+SYNTH-CRPF-09-195221,CRPF-09,law and order deployment,crpf,Constable,27,3,0.9126,0.556444,1
+SYNTH-CRPF-09-667582,CRPF-09,law and order deployment,crpf,Constable,28,4,0.5226,0.47718,0
+SYNTH-CRPF-09-797861,CRPF-09,law and order deployment,crpf,Constable,21,1,0.8642,0.60751,1
+SYNTH-CRPF-09-106974,CRPF-09,law and order deployment,crpf,Inspector,44,23,0.8698,0.227036,0
+SYNTH-CRPF-09-302398,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,34,12,0.9505,0.201068,0
+SYNTH-CRPF-09-166090,CRPF-09,law and order deployment,crpf,Assistant Commandant,51,27,0.9086,0.359156,0
+SYNTH-CRPF-09-705630,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,36,12,0.3362,0.094261,0
+SYNTH-CRPF-09-986816,CRPF-09,law and order deployment,crpf,Sub-Inspector,39,15,0.7319,0.344768,0
+SYNTH-CRPF-09-476569,CRPF-09,law and order deployment,crpf,Inspector,41,20,0.6323,0.439972,0
+SYNTH-CRPF-09-851860,CRPF-09,law and order deployment,crpf,Constable,24,4,0.6961,0.239134,0
+SYNTH-CRPF-09-653859,CRPF-09,law and order deployment,crpf,Assistant Commandant,49,28,0.6322,0.320534,0
+SYNTH-CRPF-09-205996,CRPF-09,law and order deployment,crpf,Constable,24,1,0.2774,0.126318,0
+SYNTH-CRPF-09-668100,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,32,12,0.2613,0.222242,0
+SYNTH-CRPF-09-147280,CRPF-09,law and order deployment,crpf,Assistant Commandant,48,26,0.8391,0.189341,0
+SYNTH-CRPF-09-422895,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,37,13,0.4596,0.035137,0
+SYNTH-CRPF-09-853666,CRPF-09,law and order deployment,crpf,Constable,27,3,0.7057,0.084652,0
+SYNTH-CRPF-09-578588,CRPF-09,law and order deployment,crpf,Constable,23,2,0.8502,0.298241,0
+SYNTH-CRPF-09-733305,CRPF-09,law and order deployment,crpf,Inspector,46,23,0.9012,0.318605,0
+SYNTH-CRPF-09-399519,CRPF-09,law and order deployment,crpf,Assistant Commandant,47,27,0.8928,0.419756,0
+SYNTH-CRPF-09-136069,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,35,12,0.4234,0.559274,1
+SYNTH-CRPF-09-256482,CRPF-09,law and order deployment,crpf,Constable,21,1,0.5798,0.18199,0
+SYNTH-CRPF-09-464622,CRPF-09,law and order deployment,crpf,Constable,23,2,0.6135,0.214747,0
+SYNTH-CRPF-09-125979,CRPF-09,law and order deployment,crpf,Sub-Inspector,37,17,0.9232,0.173138,0
+SYNTH-CRPF-09-632853,CRPF-09,law and order deployment,crpf,Sub-Inspector,39,19,0.3165,0.182454,0
+SYNTH-CRPF-09-338268,CRPF-09,law and order deployment,crpf,Sub-Inspector,39,19,0.5547,0.162536,0
+SYNTH-CRPF-09-389546,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,34,10,0.8166,0.383743,0
+SYNTH-CRPF-09-139130,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,34,12,0.8865,0.54095,0
+SYNTH-CRPF-09-969877,CRPF-09,law and order deployment,crpf,Head Constable,30,8,0.6225,0.405087,0
+SYNTH-CRPF-09-808151,CRPF-09,law and order deployment,crpf,Sub-Inspector,36,15,0.5514,0.450692,0
+SYNTH-CRPF-09-750822,CRPF-09,law and order deployment,crpf,Assistant Commandant,50,27,0.6091,0.171106,0
+SYNTH-CRPF-09-100031,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,36,13,0.6951,0.427006,0
+SYNTH-CRPF-09-756458,CRPF-09,law and order deployment,crpf,Sub-Inspector,39,16,0.9273,0.385285,0
+SYNTH-CRPF-09-354432,CRPF-09,law and order deployment,crpf,Sub-Inspector,38,15,0.5764,0.254758,0
+SYNTH-CRPF-09-698568,CRPF-09,law and order deployment,crpf,Inspector,41,20,0.448,0.419125,0
+SYNTH-CRPF-09-533987,CRPF-09,law and order deployment,crpf,Constable,24,3,0.5672,0.117461,0
+SYNTH-CRPF-09-271976,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,31,11,0.2895,0.05845,0
+SYNTH-CRPF-09-306364,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,35,14,0.417,0.095146,0
+SYNTH-CRPF-09-347895,CRPF-09,law and order deployment,crpf,Head Constable,28,8,0.6302,0.356036,0
+SYNTH-CRPF-09-237704,CRPF-09,law and order deployment,crpf,Constable,27,4,0.7703,0.144375,0
+SYNTH-CRPF-09-188801,CRPF-09,law and order deployment,crpf,Inspector,43,23,0.6964,0.262797,0
+SYNTH-CRPF-09-813217,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,35,13,0.7898,0.218326,0
+SYNTH-CRPF-09-146362,CRPF-09,law and order deployment,crpf,Head Constable,32,8,0.1179,0.194652,0
+SYNTH-CRPF-09-886388,CRPF-09,law and order deployment,crpf,Sub-Inspector,38,16,0.4698,0.083026,0
+SYNTH-CRPF-09-461199,CRPF-09,law and order deployment,crpf,Constable,23,3,0.8291,0.444358,0
+SYNTH-CRPF-09-501446,CRPF-09,law and order deployment,crpf,Sub-Inspector,38,16,0.4161,0.22924,0
+SYNTH-CRPF-09-919446,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,33,13,0.7686,0.098886,0
+SYNTH-CRPF-09-709861,CRPF-09,law and order deployment,crpf,Head Constable,25,5,0.4276,0.308114,0
+SYNTH-CRPF-09-657183,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,33,13,0.9808,0.098406,0
+SYNTH-CRPF-09-124996,CRPF-09,law and order deployment,crpf,Assistant Commandant,46,25,0.8178,0.060717,0
+SYNTH-CRPF-09-570129,CRPF-09,law and order deployment,crpf,Sub-Inspector,36,16,0.6898,0.194127,0
+SYNTH-CRPF-09-819969,CRPF-09,law and order deployment,crpf,Inspector,45,23,0.9348,0.222724,0
+SYNTH-CRPF-09-315308,CRPF-09,law and order deployment,crpf,Sub-Inspector,40,16,0.9622,0.086886,0
+SYNTH-CRPF-09-510418,CRPF-09,law and order deployment,crpf,Constable,27,3,0.8173,0.385267,0
+SYNTH-CRPF-09-355515,CRPF-09,law and order deployment,crpf,Sub-Inspector,36,15,0.8596,0.219941,0
+SYNTH-CRPF-09-904402,CRPF-09,law and order deployment,crpf,Constable,27,3,0.851,0.233985,0
+SYNTH-CRPF-09-246363,CRPF-09,law and order deployment,crpf,Inspector,47,24,0.2989,0.287123,0
+SYNTH-CRPF-09-643961,CRPF-09,law and order deployment,crpf,Assistant Commandant,45,25,0.8317,0.248571,0
+SYNTH-CRPF-09-449880,CRPF-09,law and order deployment,crpf,Inspector,44,22,0.7198,0.186305,0
+SYNTH-CRPF-09-761531,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,37,13,0.907,0.143237,0
+SYNTH-CRPF-09-533988,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,34,10,0.9533,0.551383,1
+SYNTH-CRPF-09-185261,CRPF-09,law and order deployment,crpf,Constable,26,3,0.9887,0.599449,1
+SYNTH-CRPF-09-467132,CRPF-09,law and order deployment,crpf,Head Constable,30,6,0.6182,0.134224,0
+SYNTH-CRPF-09-744064,CRPF-09,law and order deployment,crpf,Constable,26,3,0.3367,0.24903,0
+SYNTH-CRPF-09-510858,CRPF-09,law and order deployment,crpf,Head Constable,31,8,0.811,0.662382,1
+SYNTH-CRPF-09-775551,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,30,10,0.4618,0.177507,0
+SYNTH-CRPF-09-959578,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,33,13,0.7093,0.091287,0
+SYNTH-CRPF-09-147812,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,35,12,0.3945,0.22535,0
+SYNTH-CRPF-09-856343,CRPF-09,law and order deployment,crpf,Head Constable,25,5,0.7322,0.173827,0
+SYNTH-CRPF-09-476742,CRPF-09,law and order deployment,crpf,Constable,26,4,0.9546,0.03614,0
+SYNTH-CRPF-09-434970,CRPF-09,law and order deployment,crpf,Constable,24,1,0.9658,0.434737,0
+SYNTH-CRPF-09-135191,CRPF-09,law and order deployment,crpf,Assistant Commandant,48,25,0.6032,0.215896,0
+SYNTH-CRPF-09-783791,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,32,12,0.9699,0.125298,0
+SYNTH-CRPF-09-683996,CRPF-09,law and order deployment,crpf,Sub-Inspector,40,17,0.9357,0.394756,0
+SYNTH-CRPF-09-940990,CRPF-09,law and order deployment,crpf,Head Constable,27,7,0.863,0.042989,0
+SYNTH-CRPF-09-501776,CRPF-09,law and order deployment,crpf,Sub-Inspector,39,18,0.6523,0.043888,0
+SYNTH-CRPF-09-525292,CRPF-09,law and order deployment,crpf,Assistant Commandant,46,25,0.5917,0.079776,0
+SYNTH-CRPF-09-695493,CRPF-09,law and order deployment,crpf,Head Constable,26,5,0.8071,0.496914,0
+SYNTH-CRPF-09-575194,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,32,10,0.4926,0.058797,0
+SYNTH-CRPF-09-982626,CRPF-09,law and order deployment,crpf,Head Constable,27,6,0.4027,0.200319,0
+SYNTH-CRPF-09-222730,CRPF-09,law and order deployment,crpf,Assistant Sub-Inspector,35,11,0.4634,0.196932,0
+SYNTH-CRPF-09-367715,CRPF-09,law and order deployment,crpf,Head Constable,27,5,0.2006,0.048636,0
+SYNTH-CRPF-09-217493,CRPF-09,law and order deployment,crpf,Inspector,45,21,0.7376,0.483331,0
+SYNTH-CRPF-09-265450,CRPF-09,law and order deployment,crpf,Sub-Inspector,42,19,0.7956,0.257973,0
+SYNTH-CRPF-09-421937,CRPF-09,law and order deployment,crpf,Sub-Inspector,37,15,0.9301,0.056211,0
+SYNTH-CRPF-09-588557,CRPF-09,law and order deployment,crpf,Inspector,46,24,0.5681,0.149562,0
+SYNTH-CRPF-09-889664,CRPF-09,law and order deployment,crpf,Sub-Inspector,36,16,0.763,0.261811,0
+SYNTH-CRPF-09-124549,CRPF-09,law and order deployment,crpf,Sub-Inspector,36,15,0.7336,0.39411,0
+SYNTH-CRPF-09-596067,CRPF-09,law and order deployment,crpf,Head Constable,28,8,0.1643,0.198091,0
+SYNTH-CRPF-09-526535,CRPF-09,law and order deployment,crpf,Sub-Inspector,42,18,0.6678,0.154561,0
+SYNTH-CRPF-09-540844,CRPF-09,law and order deployment,crpf,Assistant Commandant,49,26,0.9463,0.083414,0
+SYNTH-CRPF-09-120453,CRPF-09,law and order deployment,crpf,Head Constable,29,6,0.8123,0.164005,0
+SYNTH-CRPF-10-686652,CRPF-10,group centre,crpf,Head Constable,30,8,0.4532,0.057394,0
+SYNTH-CRPF-10-268826,CRPF-10,group centre,crpf,Constable,24,3,0.5736,0.248339,0
+SYNTH-CRPF-10-615040,CRPF-10,group centre,crpf,Assistant Sub-Inspector,34,11,0.7097,0.114631,0
+SYNTH-CRPF-10-976735,CRPF-10,group centre,crpf,Head Constable,26,5,0.8361,0.154464,0
+SYNTH-CRPF-10-864480,CRPF-10,group centre,crpf,Assistant Commandant,48,27,0.6013,0.185338,0
+SYNTH-CRPF-10-488212,CRPF-10,group centre,crpf,Constable,28,4,0.7721,0.218331,0
+SYNTH-CRPF-10-575996,CRPF-10,group centre,crpf,Constable,27,4,0.5047,0.371156,0
+SYNTH-CRPF-10-856204,CRPF-10,group centre,crpf,Inspector,42,20,0.813,0.057761,0
+SYNTH-CRPF-10-803098,CRPF-10,group centre,crpf,Sub-Inspector,39,19,0.8356,0.501039,0
+SYNTH-CRPF-10-890574,CRPF-10,group centre,crpf,Constable,24,3,0.6732,0.172292,0
+SYNTH-CRPF-10-312667,CRPF-10,group centre,crpf,Inspector,46,22,0.8986,0.163236,0
+SYNTH-CRPF-10-508477,CRPF-10,group centre,crpf,Inspector,44,24,0.7118,0.028821,0
+SYNTH-CRPF-10-747144,CRPF-10,group centre,crpf,Constable,25,1,0.6287,0.548679,0
+SYNTH-CRPF-10-182542,CRPF-10,group centre,crpf,Sub-Inspector,39,18,0.5047,0.21638,0
+SYNTH-CRPF-10-826745,CRPF-10,group centre,crpf,Assistant Sub-Inspector,36,14,0.6757,0.386122,0
+SYNTH-CRPF-10-613878,CRPF-10,group centre,crpf,Inspector,40,20,0.6559,0.035372,0
+SYNTH-CRPF-10-249285,CRPF-10,group centre,crpf,Sub-Inspector,37,16,0.231,0.076258,0
+SYNTH-CRPF-10-700699,CRPF-10,group centre,crpf,Head Constable,30,9,0.129,0.234163,0
+SYNTH-CRPF-10-978188,CRPF-10,group centre,crpf,Assistant Sub-Inspector,38,14,0.863,0.313732,0
+SYNTH-CRPF-10-742535,CRPF-10,group centre,crpf,Sub-Inspector,38,18,0.6893,0.181034,0
+SYNTH-CRPF-10-769436,CRPF-10,group centre,crpf,Sub-Inspector,41,17,0.6519,0.338427,0
+SYNTH-CRPF-10-400534,CRPF-10,group centre,crpf,Inspector,45,21,0.8295,0.017942,0
+SYNTH-CRPF-10-107473,CRPF-10,group centre,crpf,Head Constable,28,7,0.6839,0.197102,0
+SYNTH-CRPF-10-175372,CRPF-10,group centre,crpf,Sub-Inspector,40,16,0.6133,0.459403,0
+SYNTH-CRPF-10-575314,CRPF-10,group centre,crpf,Assistant Sub-Inspector,34,13,0.3037,0.234938,0
+SYNTH-CRPF-10-197800,CRPF-10,group centre,crpf,Assistant Commandant,49,28,0.8037,0.072334,0
+SYNTH-CRPF-10-888609,CRPF-10,group centre,crpf,Assistant Commandant,48,28,0.9202,0.156116,0
+SYNTH-CRPF-10-354261,CRPF-10,group centre,crpf,Sub-Inspector,36,16,0.3984,0.134535,0
+SYNTH-CRPF-10-748632,CRPF-10,group centre,crpf,Head Constable,28,6,0.7823,0.15717,0
+SYNTH-CRPF-10-617103,CRPF-10,group centre,crpf,Head Constable,30,6,0.931,0.185708,0
+SYNTH-CRPF-10-818155,CRPF-10,group centre,crpf,Sub-Inspector,40,17,0.8673,0.371199,0
+SYNTH-CRPF-10-232459,CRPF-10,group centre,crpf,Sub-Inspector,38,17,0.8006,0.197344,0
+SYNTH-CRPF-10-605830,CRPF-10,group centre,crpf,Assistant Sub-Inspector,33,13,0.979,0.303628,0
+SYNTH-CRPF-10-845831,CRPF-10,group centre,crpf,Assistant Sub-Inspector,35,14,0.8777,0.384594,0
+SYNTH-CRPF-10-184012,CRPF-10,group centre,crpf,Assistant Sub-Inspector,36,12,0.6943,0.256045,0
+SYNTH-CRPF-10-148583,CRPF-10,group centre,crpf,Assistant Sub-Inspector,36,14,0.7822,0.198853,0
+SYNTH-CRPF-10-236266,CRPF-10,group centre,crpf,Assistant Commandant,50,26,0.3413,0.700153,1
+SYNTH-CRPF-10-901840,CRPF-10,group centre,crpf,Constable,23,1,0.8281,0.188423,0
+SYNTH-CRPF-10-715569,CRPF-10,group centre,crpf,Assistant Sub-Inspector,36,12,0.6343,0.134633,0
+SYNTH-CRPF-10-886297,CRPF-10,group centre,crpf,Assistant Sub-Inspector,37,14,0.6331,0.10658,0
+SYNTH-CRPF-10-110169,CRPF-10,group centre,crpf,Constable,25,2,0.7676,0.385599,0
+SYNTH-CRPF-10-366449,CRPF-10,group centre,crpf,Constable,25,4,0.586,0.143256,0
+SYNTH-CRPF-10-775141,CRPF-10,group centre,crpf,Assistant Commandant,48,28,0.5495,0.147561,0
+SYNTH-CRPF-10-476628,CRPF-10,group centre,crpf,Assistant Commandant,46,26,0.9221,0.017507,0
+SYNTH-CRPF-10-560191,CRPF-10,group centre,crpf,Assistant Sub-Inspector,33,12,0.2044,0.112728,0
+SYNTH-CRPF-10-345146,CRPF-10,group centre,crpf,Sub-Inspector,38,17,0.8838,0.126333,0
+SYNTH-CRPF-10-539351,CRPF-10,group centre,crpf,Sub-Inspector,38,18,0.8603,0.321825,0
+SYNTH-CRPF-10-917461,CRPF-10,group centre,crpf,Assistant Sub-Inspector,32,10,0.6548,0.389655,0
+SYNTH-CRPF-10-960108,CRPF-10,group centre,crpf,Assistant Sub-Inspector,34,14,0.401,0.073179,0
+SYNTH-CRPF-10-644112,CRPF-10,group centre,crpf,Assistant Sub-Inspector,35,12,0.6731,0.314492,0
+SYNTH-CRPF-10-694144,CRPF-10,group centre,crpf,Inspector,42,20,0.2521,0.173648,0
+SYNTH-CRPF-10-765219,CRPF-10,group centre,crpf,Sub-Inspector,38,18,0.2084,0.230822,0
+SYNTH-CRPF-10-694914,CRPF-10,group centre,crpf,Sub-Inspector,40,19,0.3343,0.297923,0
+SYNTH-CRPF-10-625108,CRPF-10,group centre,crpf,Sub-Inspector,37,17,0.3831,0.113924,0
+SYNTH-CRPF-10-457987,CRPF-10,group centre,crpf,Inspector,44,21,0.5505,0.306672,0
+SYNTH-CRPF-10-526541,CRPF-10,group centre,crpf,Assistant Sub-Inspector,34,12,0.8926,0.472827,0
+SYNTH-CRPF-10-531444,CRPF-10,group centre,crpf,Sub-Inspector,39,15,0.9618,0.371875,0
+SYNTH-CRPF-10-505114,CRPF-10,group centre,crpf,Head Constable,28,5,0.5762,0.188954,0
+SYNTH-CRPF-10-154751,CRPF-10,group centre,crpf,Constable,24,2,0.6557,0.407825,0
+SYNTH-CRPF-10-449911,CRPF-10,group centre,crpf,Inspector,43,21,0.8226,0.062621,0
+SYNTH-CRPF-10-543272,CRPF-10,group centre,crpf,Assistant Sub-Inspector,30,10,0.8992,0.251001,0
+SYNTH-CRPF-10-554450,CRPF-10,group centre,crpf,Assistant Sub-Inspector,33,13,0.3625,0.10223,0
+SYNTH-CRPF-10-962980,CRPF-10,group centre,crpf,Inspector,42,22,0.3986,0.231326,0
+SYNTH-CRPF-10-924032,CRPF-10,group centre,crpf,Assistant Commandant,46,25,0.3441,0.308498,0
+SYNTH-CRPF-10-444003,CRPF-10,group centre,crpf,Assistant Commandant,46,26,0.951,0.034687,0
+SYNTH-CRPF-10-676484,CRPF-10,group centre,crpf,Assistant Sub-Inspector,33,13,0.2244,0.289744,0
+SYNTH-CRPF-10-225689,CRPF-10,group centre,crpf,Constable,27,3,0.7464,0.172505,0
+SYNTH-CRPF-10-418782,CRPF-10,group centre,crpf,Sub-Inspector,40,19,0.2765,0.37545,0
+SYNTH-CRPF-10-874330,CRPF-10,group centre,crpf,Constable,24,4,0.3813,0.08703,0
+SYNTH-CRPF-10-702374,CRPF-10,group centre,crpf,Inspector,42,22,0.9124,0.141233,0
+SYNTH-CRPF-10-483966,CRPF-10,group centre,crpf,Sub-Inspector,42,19,0.8298,0.132339,0
+SYNTH-CRPF-10-430641,CRPF-10,group centre,crpf,Head Constable,26,5,0.3094,0.27728,0
+SYNTH-CRPF-10-352345,CRPF-10,group centre,crpf,Sub-Inspector,39,19,0.769,0.03662,0
+SYNTH-CRPF-10-275445,CRPF-10,group centre,crpf,Assistant Sub-Inspector,34,12,0.7348,0.277405,0
+SYNTH-CRPF-10-552361,CRPF-10,group centre,crpf,Assistant Commandant,48,27,0.3583,0.217398,0
+SYNTH-CRPF-10-575326,CRPF-10,group centre,crpf,Head Constable,26,5,0.4638,0.164014,0
+SYNTH-CRPF-10-563185,CRPF-10,group centre,crpf,Assistant Commandant,45,25,0.1665,0.195719,0
+SYNTH-CRPF-10-425805,CRPF-10,group centre,crpf,Inspector,41,20,0.5075,0.065039,0
+SYNTH-CRPF-10-320965,CRPF-10,group centre,crpf,Assistant Sub-Inspector,33,13,0.6434,0.723308,1
+SYNTH-CRPF-10-256397,CRPF-10,group centre,crpf,Constable,23,3,0.3046,0.176601,0
+SYNTH-CRPF-10-339345,CRPF-10,group centre,crpf,Assistant Commandant,48,26,0.8092,0.176966,0
+SYNTH-CRPF-10-514971,CRPF-10,group centre,crpf,Constable,24,1,0.289,0.149183,0
+SYNTH-CRPF-10-880007,CRPF-10,group centre,crpf,Constable,26,2,0.38,0.542176,0
+SYNTH-CRPF-10-133177,CRPF-10,group centre,crpf,Head Constable,27,6,0.4859,0.123225,0
+SYNTH-CRPF-10-864607,CRPF-10,group centre,crpf,Assistant Sub-Inspector,34,10,0.6403,0.24458,0
+SYNTH-CRPF-10-582785,CRPF-10,group centre,crpf,Constable,25,4,0.9587,0.025094,0
+SYNTH-CRPF-10-486113,CRPF-10,group centre,crpf,Sub-Inspector,38,15,0.9903,0.313324,0
+SYNTH-CRPF-10-436082,CRPF-10,group centre,crpf,Sub-Inspector,37,16,0.6997,0.159996,0
+SYNTH-CRPF-10-885794,CRPF-10,group centre,crpf,Head Constable,28,8,0.7578,0.089953,0
+SYNTH-CRPF-10-451824,CRPF-10,group centre,crpf,Inspector,42,21,0.2102,0.084629,0
+SYNTH-CRPF-10-836588,CRPF-10,group centre,crpf,Assistant Sub-Inspector,34,11,0.1489,0.316974,0
+SYNTH-CRPF-10-528591,CRPF-10,group centre,crpf,Sub-Inspector,40,16,0.8459,0.010196,0
+SYNTH-CRPF-10-687471,CRPF-10,group centre,crpf,Sub-Inspector,42,18,0.6878,0.375649,0
+SYNTH-CRPF-10-196066,CRPF-10,group centre,crpf,Assistant Commandant,52,28,0.9012,0.155823,0
+SYNTH-CRPF-10-362391,CRPF-10,group centre,crpf,Assistant Commandant,47,25,0.4878,0.078923,0
+SYNTH-CRPF-10-447562,CRPF-10,group centre,crpf,Assistant Commandant,46,26,0.7178,0.176394,0
+SYNTH-CRPF-10-292318,CRPF-10,group centre,crpf,Inspector,41,21,0.7147,0.02757,0
+SYNTH-CRPF-10-308766,CRPF-10,group centre,crpf,Sub-Inspector,42,19,0.44,0.224624,0
+SYNTH-CRPF-10-211408,CRPF-10,group centre,crpf,Sub-Inspector,37,17,0.6975,0.268015,0
+SYNTH-CRPF-10-220997,CRPF-10,group centre,crpf,Constable,21,1,0.7108,0.316887,0
+SYNTH-CRPF-10-491904,CRPF-10,group centre,crpf,Inspector,45,23,0.7819,0.438889,0
+SYNTH-CRPF-10-139798,CRPF-10,group centre,crpf,Inspector,47,23,0.8532,0.350397,0
+SYNTH-CRPF-10-456890,CRPF-10,group centre,crpf,Assistant Commandant,49,25,0.8737,0.332775,0
+SYNTH-CRPF-10-390672,CRPF-10,group centre,crpf,Assistant Sub-Inspector,35,13,0.9145,0.258201,0
+SYNTH-CRPF-10-587897,CRPF-10,group centre,crpf,Head Constable,26,5,0.9275,0.072151,0
+SYNTH-CRPF-10-803866,CRPF-10,group centre,crpf,Head Constable,27,6,0.5071,0.064976,0
+SYNTH-CRPF-10-614482,CRPF-10,group centre,crpf,Head Constable,30,8,0.8715,0.457242,0
+SYNTH-CRPF-10-691188,CRPF-10,group centre,crpf,Assistant Commandant,52,28,0.65,0.170209,0
+SYNTH-CRPF-10-447310,CRPF-10,group centre,crpf,Inspector,44,22,0.8682,0.255606,0
+SYNTH-CRPF-10-504112,CRPF-10,group centre,crpf,Sub-Inspector,39,15,0.3701,0.624734,1
+SYNTH-CRPF-10-759638,CRPF-10,group centre,crpf,Constable,23,1,0.891,0.4154,0
+SYNTH-CRPF-10-881503,CRPF-10,group centre,crpf,Constable,26,2,0.61,0.360505,0
+SYNTH-CRPF-10-165219,CRPF-10,group centre,crpf,Head Constable,30,8,0.403,0.225601,0
+SYNTH-CRPF-10-800952,CRPF-10,group centre,crpf,Assistant Commandant,51,28,0.8295,0.07731,0
+SYNTH-CRPF-10-167006,CRPF-10,group centre,crpf,Constable,27,3,0.1349,0.273557,0
+SYNTH-CRPF-10-319632,CRPF-10,group centre,crpf,Sub-Inspector,40,19,0.3888,0.045913,0
+SYNTH-CRPF-10-866956,CRPF-10,group centre,crpf,Inspector,46,23,0.6547,0.246889,0
+SYNTH-CRPF-10-803891,CRPF-10,group centre,crpf,Assistant Sub-Inspector,31,11,0.2717,0.271805,0
+SYNTH-CRPF-10-119382,CRPF-10,group centre,crpf,Head Constable,27,5,0.6015,0.053228,0
+SYNTH-CRPF-10-883931,CRPF-10,group centre,crpf,Sub-Inspector,36,15,0.34,0.363162,0
+SYNTH-CRPF-10-629835,CRPF-10,group centre,crpf,Head Constable,31,7,0.6714,0.18456,0
+SYNTH-CRPF-10-449584,CRPF-10,group centre,crpf,Sub-Inspector,35,15,0.9038,0.430133,0
+SYNTH-CRPF-10-178462,CRPF-10,group centre,crpf,Constable,23,3,0.9226,0.201497,0
+SYNTH-CRPF-10-167522,CRPF-10,group centre,crpf,Constable,25,3,0.7441,0.212245,0
+SYNTH-CRPF-10-998796,CRPF-10,group centre,crpf,Inspector,47,23,0.7373,0.325463,0
+SYNTH-CRPF-10-244866,CRPF-10,group centre,crpf,Sub-Inspector,38,17,0.6709,0.146948,0
+SYNTH-CRPF-10-883134,CRPF-10,group centre,crpf,Assistant Sub-Inspector,34,14,0.7575,0.277505,0
+SYNTH-CRPF-10-516873,CRPF-10,group centre,crpf,Inspector,44,24,0.5828,0.247933,0
+SYNTH-CRPF-10-318457,CRPF-10,group centre,crpf,Head Constable,26,6,0.513,0.055938,0
+SYNTH-CRPF-10-799111,CRPF-10,group centre,crpf,Assistant Sub-Inspector,35,11,0.8748,0.21692,0
+SYNTH-CRPF-10-254481,CRPF-10,group centre,crpf,Inspector,45,23,0.4633,0.173797,0
+SYNTH-CRPF-10-531914,CRPF-10,group centre,crpf,Constable,25,1,0.5214,0.533588,0
+SYNTH-CRPF-10-554170,CRPF-10,group centre,crpf,Head Constable,30,8,0.8687,0.362466,0
+SYNTH-CRPF-10-348926,CRPF-10,group centre,crpf,Sub-Inspector,39,16,0.8752,0.168499,0
+SYNTH-CRPF-10-764016,CRPF-10,group centre,crpf,Assistant Commandant,48,26,0.7463,0.178279,0
+SYNTH-CRPF-10-706491,CRPF-10,group centre,crpf,Head Constable,29,7,0.5518,0.099506,0
+SYNTH-CRPF-10-874209,CRPF-10,group centre,crpf,Assistant Sub-Inspector,31,10,0.4518,0.146827,0
+SYNTH-CRPF-10-646858,CRPF-10,group centre,crpf,Constable,26,2,0.5128,0.478468,0
+SYNTH-CRPF-10-673217,CRPF-10,group centre,crpf,Assistant Commandant,50,27,0.4985,0.295893,0
+SYNTH-CRPF-10-363675,CRPF-10,group centre,crpf,Sub-Inspector,39,19,0.2845,0.469688,0
+SYNTH-CRPF-11-787603,CRPF-11,internal security duty,crpf,Constable,24,3,0.7088,0.293196,0
+SYNTH-CRPF-11-533664,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,38,14,0.8514,0.127931,0
+SYNTH-CRPF-11-442440,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,32,12,0.2831,0.189005,0
+SYNTH-CRPF-11-142941,CRPF-11,internal security duty,crpf,Inspector,45,21,0.872,0.459329,0
+SYNTH-CRPF-11-878477,CRPF-11,internal security duty,crpf,Inspector,45,21,0.5149,0.50189,0
+SYNTH-CRPF-11-813658,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,35,13,0.7375,0.289916,0
+SYNTH-CRPF-11-799778,CRPF-11,internal security duty,crpf,Inspector,44,23,0.9384,0.367002,0
+SYNTH-CRPF-11-861170,CRPF-11,internal security duty,crpf,Assistant Commandant,50,28,0.5664,0.250438,0
+SYNTH-CRPF-11-369015,CRPF-11,internal security duty,crpf,Head Constable,31,8,0.8694,0.087183,0
+SYNTH-CRPF-11-465419,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,34,12,0.9539,0.199421,0
+SYNTH-CRPF-11-324842,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,36,12,0.6781,0.416401,0
+SYNTH-CRPF-11-599347,CRPF-11,internal security duty,crpf,Assistant Commandant,47,25,0.4784,0.319657,0
+SYNTH-CRPF-11-543922,CRPF-11,internal security duty,crpf,Sub-Inspector,39,18,0.9639,0.120295,0
+SYNTH-CRPF-11-676835,CRPF-11,internal security duty,crpf,Inspector,41,20,0.7903,0.268316,0
+SYNTH-CRPF-11-141255,CRPF-11,internal security duty,crpf,Sub-Inspector,39,15,0.8711,0.273025,0
+SYNTH-CRPF-11-472063,CRPF-11,internal security duty,crpf,Inspector,48,24,0.9719,0.056118,0
+SYNTH-CRPF-11-726288,CRPF-11,internal security duty,crpf,Inspector,44,21,0.7354,0.23918,0
+SYNTH-CRPF-11-209702,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,34,14,0.5844,0.31443,0
+SYNTH-CRPF-11-561751,CRPF-11,internal security duty,crpf,Assistant Commandant,48,27,0.753,0.087635,0
+SYNTH-CRPF-11-803159,CRPF-11,internal security duty,crpf,Constable,25,4,0.6795,0.092943,0
+SYNTH-CRPF-11-983912,CRPF-11,internal security duty,crpf,Constable,23,3,0.8495,0.219138,0
+SYNTH-CRPF-11-155807,CRPF-11,internal security duty,crpf,Inspector,44,20,0.9983,0.325862,0
+SYNTH-CRPF-11-753005,CRPF-11,internal security duty,crpf,Inspector,44,20,0.5085,0.125038,0
+SYNTH-CRPF-11-890814,CRPF-11,internal security duty,crpf,Sub-Inspector,39,18,0.8767,0.031077,0
+SYNTH-CRPF-11-438363,CRPF-11,internal security duty,crpf,Assistant Commandant,48,27,0.5016,0.233739,0
+SYNTH-CRPF-11-471562,CRPF-11,internal security duty,crpf,Head Constable,25,5,0.6462,0.501862,0
+SYNTH-CRPF-11-280106,CRPF-11,internal security duty,crpf,Constable,23,3,0.8334,0.09585,0
+SYNTH-CRPF-11-995251,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,31,10,0.91,0.079978,0
+SYNTH-CRPF-11-278123,CRPF-11,internal security duty,crpf,Assistant Commandant,49,27,0.7157,0.372081,0
+SYNTH-CRPF-11-440461,CRPF-11,internal security duty,crpf,Sub-Inspector,39,17,0.8064,0.265042,0
+SYNTH-CRPF-11-995240,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,31,11,0.2587,0.432425,0
+SYNTH-CRPF-11-883621,CRPF-11,internal security duty,crpf,Head Constable,28,6,0.6298,0.336122,0
+SYNTH-CRPF-11-715872,CRPF-11,internal security duty,crpf,Constable,26,3,0.6849,0.406136,0
+SYNTH-CRPF-11-206203,CRPF-11,internal security duty,crpf,Constable,23,1,0.613,0.28712,0
+SYNTH-CRPF-11-845895,CRPF-11,internal security duty,crpf,Head Constable,27,5,0.2401,0.09704,0
+SYNTH-CRPF-11-831259,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,34,14,0.8899,0.366262,0
+SYNTH-CRPF-11-690612,CRPF-11,internal security duty,crpf,Inspector,45,24,0.7,0.210357,0
+SYNTH-CRPF-11-849107,CRPF-11,internal security duty,crpf,Head Constable,31,8,0.783,0.166685,0
+SYNTH-CRPF-11-282937,CRPF-11,internal security duty,crpf,Head Constable,30,7,0.3457,0.222815,0
+SYNTH-CRPF-11-775979,CRPF-11,internal security duty,crpf,Constable,23,1,0.6557,0.16073,0
+SYNTH-CRPF-11-233185,CRPF-11,internal security duty,crpf,Constable,24,2,0.3236,0.46253,0
+SYNTH-CRPF-11-310099,CRPF-11,internal security duty,crpf,Inspector,44,23,0.8225,0.429456,0
+SYNTH-CRPF-11-626024,CRPF-11,internal security duty,crpf,Inspector,42,20,0.6285,0.224248,0
+SYNTH-CRPF-11-914495,CRPF-11,internal security duty,crpf,Constable,24,1,0.5676,0.12602,0
+SYNTH-CRPF-11-774937,CRPF-11,internal security duty,crpf,Constable,23,3,0.8236,0.231145,0
+SYNTH-CRPF-11-195993,CRPF-11,internal security duty,crpf,Inspector,46,23,0.7668,0.345556,0
+SYNTH-CRPF-11-573043,CRPF-11,internal security duty,crpf,Head Constable,33,9,0.8519,0.253255,0
+SYNTH-CRPF-11-596626,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,36,13,0.5806,0.174765,0
+SYNTH-CRPF-11-150052,CRPF-11,internal security duty,crpf,Inspector,44,23,0.8388,0.092462,0
+SYNTH-CRPF-11-984558,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,31,11,0.4384,0.463708,0
+SYNTH-CRPF-11-644024,CRPF-11,internal security duty,crpf,Inspector,42,21,0.5896,0.167077,0
+SYNTH-CRPF-11-954144,CRPF-11,internal security duty,crpf,Assistant Commandant,48,25,0.8137,0.255932,0
+SYNTH-CRPF-11-650141,CRPF-11,internal security duty,crpf,Head Constable,31,8,0.883,0.077027,0
+SYNTH-CRPF-11-531713,CRPF-11,internal security duty,crpf,Inspector,47,24,0.9534,0.336,0
+SYNTH-CRPF-11-815761,CRPF-11,internal security duty,crpf,Sub-Inspector,41,17,0.5292,0.225037,0
+SYNTH-CRPF-11-938059,CRPF-11,internal security duty,crpf,Head Constable,31,7,0.5923,0.475978,0
+SYNTH-CRPF-11-816020,CRPF-11,internal security duty,crpf,Inspector,44,22,0.8717,0.124344,0
+SYNTH-CRPF-11-696796,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,33,11,0.7668,0.229405,0
+SYNTH-CRPF-11-161072,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,35,12,0.9558,0.322077,0
+SYNTH-CRPF-11-912473,CRPF-11,internal security duty,crpf,Sub-Inspector,41,17,0.6764,0.196959,0
+SYNTH-CRPF-11-299921,CRPF-11,internal security duty,crpf,Sub-Inspector,37,15,0.6446,0.045628,0
+SYNTH-CRPF-11-712273,CRPF-11,internal security duty,crpf,Inspector,42,20,0.4685,0.114829,0
+SYNTH-CRPF-11-924819,CRPF-11,internal security duty,crpf,Sub-Inspector,39,15,0.804,0.336814,0
+SYNTH-CRPF-11-729505,CRPF-11,internal security duty,crpf,Sub-Inspector,38,16,0.6825,0.179118,0
+SYNTH-CRPF-11-372105,CRPF-11,internal security duty,crpf,Assistant Commandant,48,28,0.6762,0.162632,0
+SYNTH-CRPF-11-572958,CRPF-11,internal security duty,crpf,Inspector,45,21,0.2526,0.073672,0
+SYNTH-CRPF-11-484403,CRPF-11,internal security duty,crpf,Head Constable,29,6,0.8232,0.465161,0
+SYNTH-CRPF-11-902977,CRPF-11,internal security duty,crpf,Sub-Inspector,40,19,0.8114,0.100099,0
+SYNTH-CRPF-11-684648,CRPF-11,internal security duty,crpf,Sub-Inspector,40,18,0.4259,0.017876,0
+SYNTH-CRPF-11-523827,CRPF-11,internal security duty,crpf,Sub-Inspector,41,17,0.1138,0.176119,0
+SYNTH-CRPF-11-854703,CRPF-11,internal security duty,crpf,Sub-Inspector,37,17,0.517,0.268981,0
+SYNTH-CRPF-11-549686,CRPF-11,internal security duty,crpf,Constable,21,1,0.5143,0.45031,0
+SYNTH-CRPF-11-860939,CRPF-11,internal security duty,crpf,Constable,22,1,0.943,0.241624,0
+SYNTH-CRPF-11-833721,CRPF-11,internal security duty,crpf,Constable,25,4,0.6153,0.211827,0
+SYNTH-CRPF-11-941580,CRPF-11,internal security duty,crpf,Assistant Commandant,49,27,0.5163,0.444072,0
+SYNTH-CRPF-11-556830,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,31,10,0.1455,0.227278,0
+SYNTH-CRPF-11-990367,CRPF-11,internal security duty,crpf,Sub-Inspector,39,18,0.4328,0.248429,0
+SYNTH-CRPF-11-754477,CRPF-11,internal security duty,crpf,Constable,26,2,0.8958,0.274683,0
+SYNTH-CRPF-11-836264,CRPF-11,internal security duty,crpf,Assistant Commandant,48,25,0.7489,0.397252,0
+SYNTH-CRPF-11-966694,CRPF-11,internal security duty,crpf,Head Constable,28,5,0.7827,0.095532,0
+SYNTH-CRPF-11-856294,CRPF-11,internal security duty,crpf,Sub-Inspector,39,15,0.9325,0.150063,0
+SYNTH-CRPF-11-413603,CRPF-11,internal security duty,crpf,Constable,24,3,0.8528,0.213497,0
+SYNTH-CRPF-11-387117,CRPF-11,internal security duty,crpf,Sub-Inspector,38,16,0.5052,0.49796,0
+SYNTH-CRPF-11-149873,CRPF-11,internal security duty,crpf,Inspector,44,20,0.9087,0.261377,0
+SYNTH-CRPF-11-375950,CRPF-11,internal security duty,crpf,Sub-Inspector,37,17,0.9858,0.362252,0
+SYNTH-CRPF-11-516489,CRPF-11,internal security duty,crpf,Inspector,44,23,0.5431,0.572906,1
+SYNTH-CRPF-11-286633,CRPF-11,internal security duty,crpf,Assistant Commandant,51,28,0.7188,0.110757,0
+SYNTH-CRPF-11-635385,CRPF-11,internal security duty,crpf,Head Constable,32,9,0.8998,0.422902,0
+SYNTH-CRPF-11-519260,CRPF-11,internal security duty,crpf,Head Constable,28,6,0.3466,0.351206,0
+SYNTH-CRPF-11-741573,CRPF-11,internal security duty,crpf,Sub-Inspector,40,18,0.7846,0.159167,0
+SYNTH-CRPF-11-968572,CRPF-11,internal security duty,crpf,Head Constable,30,7,0.4627,0.161492,0
+SYNTH-CRPF-11-630306,CRPF-11,internal security duty,crpf,Assistant Commandant,49,26,0.4363,0.158798,0
+SYNTH-CRPF-11-774412,CRPF-11,internal security duty,crpf,Sub-Inspector,40,17,0.6034,0.145534,0
+SYNTH-CRPF-11-944339,CRPF-11,internal security duty,crpf,Inspector,46,24,0.7751,0.491415,0
+SYNTH-CRPF-11-743581,CRPF-11,internal security duty,crpf,Constable,24,2,0.5286,0.041873,0
+SYNTH-CRPF-11-156473,CRPF-11,internal security duty,crpf,Assistant Commandant,49,25,0.5148,0.195442,0
+SYNTH-CRPF-11-930692,CRPF-11,internal security duty,crpf,Constable,26,3,0.4929,0.046519,0
+SYNTH-CRPF-11-178355,CRPF-11,internal security duty,crpf,Inspector,45,24,0.5095,0.430667,0
+SYNTH-CRPF-11-820653,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,32,10,0.7474,0.390954,0
+SYNTH-CRPF-11-209308,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,34,14,0.6464,0.115071,0
+SYNTH-CRPF-11-760248,CRPF-11,internal security duty,crpf,Inspector,45,23,0.8353,0.433372,0
+SYNTH-CRPF-11-329842,CRPF-11,internal security duty,crpf,Inspector,41,20,0.7148,0.405726,0
+SYNTH-CRPF-11-461530,CRPF-11,internal security duty,crpf,Sub-Inspector,38,18,0.2436,0.073922,0
+SYNTH-CRPF-11-362050,CRPF-11,internal security duty,crpf,Head Constable,28,8,0.7908,0.40493,0
+SYNTH-CRPF-11-345358,CRPF-11,internal security duty,crpf,Head Constable,30,6,0.4607,0.009067,0
+SYNTH-CRPF-11-102768,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,38,14,0.2521,0.292782,0
+SYNTH-CRPF-11-794960,CRPF-11,internal security duty,crpf,Head Constable,27,7,0.2748,0.120154,0
+SYNTH-CRPF-11-424989,CRPF-11,internal security duty,crpf,Head Constable,31,7,0.5921,0.311091,0
+SYNTH-CRPF-11-175268,CRPF-11,internal security duty,crpf,Sub-Inspector,36,16,0.4468,0.423458,0
+SYNTH-CRPF-11-445539,CRPF-11,internal security duty,crpf,Constable,25,4,0.2012,0.178089,0
+SYNTH-CRPF-11-919612,CRPF-11,internal security duty,crpf,Inspector,42,20,0.8518,0.18005,0
+SYNTH-CRPF-11-618376,CRPF-11,internal security duty,crpf,Assistant Commandant,48,26,0.0757,0.159697,0
+SYNTH-CRPF-11-825019,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,34,10,0.5851,0.47547,0
+SYNTH-CRPF-11-104642,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,33,10,0.9662,0.42474,0
+SYNTH-CRPF-11-712923,CRPF-11,internal security duty,crpf,Inspector,43,23,0.7309,0.162644,0
+SYNTH-CRPF-11-793001,CRPF-11,internal security duty,crpf,Inspector,44,22,0.5338,0.504584,0
+SYNTH-CRPF-11-690023,CRPF-11,internal security duty,crpf,Constable,24,3,0.4047,0.194629,0
+SYNTH-CRPF-11-628841,CRPF-11,internal security duty,crpf,Constable,25,2,0.7764,0.166543,0
+SYNTH-CRPF-11-226345,CRPF-11,internal security duty,crpf,Head Constable,32,8,0.6473,0.350383,0
+SYNTH-CRPF-11-402803,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,31,10,0.666,0.198987,0
+SYNTH-CRPF-11-439270,CRPF-11,internal security duty,crpf,Sub-Inspector,37,15,0.4453,0.23139,0
+SYNTH-CRPF-11-843638,CRPF-11,internal security duty,crpf,Assistant Commandant,48,26,0.963,0.24425,0
+SYNTH-CRPF-11-526023,CRPF-11,internal security duty,crpf,Constable,27,3,0.8075,0.367016,0
+SYNTH-CRPF-11-254422,CRPF-11,internal security duty,crpf,Constable,23,2,0.8097,0.120043,0
+SYNTH-CRPF-11-958718,CRPF-11,internal security duty,crpf,Assistant Commandant,45,25,0.7163,0.233817,0
+SYNTH-CRPF-11-366763,CRPF-11,internal security duty,crpf,Inspector,45,22,0.7507,0.213863,0
+SYNTH-CRPF-11-730482,CRPF-11,internal security duty,crpf,Assistant Commandant,49,28,0.9194,0.270987,0
+SYNTH-CRPF-11-796343,CRPF-11,internal security duty,crpf,Sub-Inspector,40,18,0.2286,0.42269,0
+SYNTH-CRPF-11-313643,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,35,12,0.8473,0.48035,0
+SYNTH-CRPF-11-883268,CRPF-11,internal security duty,crpf,Inspector,43,20,0.9203,0.575853,1
+SYNTH-CRPF-11-326221,CRPF-11,internal security duty,crpf,Constable,24,3,0.1676,0.17533,0
+SYNTH-CRPF-11-164951,CRPF-11,internal security duty,crpf,Head Constable,32,9,0.787,0.107239,0
+SYNTH-CRPF-11-548009,CRPF-11,internal security duty,crpf,Head Constable,26,5,0.4319,0.508995,0
+SYNTH-CRPF-11-610564,CRPF-11,internal security duty,crpf,Sub-Inspector,37,16,0.7327,0.136411,0
+SYNTH-CRPF-11-563424,CRPF-11,internal security duty,crpf,Assistant Commandant,50,26,0.6944,0.374671,0
+SYNTH-CRPF-11-624597,CRPF-11,internal security duty,crpf,Inspector,43,23,0.6217,0.4184,0
+SYNTH-CRPF-11-988054,CRPF-11,internal security duty,crpf,Constable,23,2,0.8171,0.012849,0
+SYNTH-CRPF-11-154349,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,36,12,0.6699,0.035149,0
+SYNTH-CRPF-11-300402,CRPF-11,internal security duty,crpf,Assistant Sub-Inspector,34,11,0.6519,0.335097,0
+SYNTH-CRPF-11-622394,CRPF-11,internal security duty,crpf,Head Constable,33,9,0.1776,0.148095,0
+SYNTH-CRPF-12-279058,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,38,15,0.5995,0.107075,0
+SYNTH-CRPF-12-818838,CRPF-12,left-wing extremism area,crpf,Inspector,43,21,0.2126,0.131262,0
+SYNTH-CRPF-12-144328,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,32,12,0.6203,0.498475,0
+SYNTH-CRPF-12-158291,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,31,11,0.2957,0.062565,0
+SYNTH-CRPF-12-540412,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,38,15,0.8255,0.253776,0
+SYNTH-CRPF-12-748575,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,34,11,0.5289,0.331978,0
+SYNTH-CRPF-12-862674,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,36,12,0.7918,0.063694,0
+SYNTH-CRPF-12-506511,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,37,13,0.78,0.157218,0
+SYNTH-CRPF-12-793200,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,46,25,0.7725,0.14789,0
+SYNTH-CRPF-12-797364,CRPF-12,left-wing extremism area,crpf,Inspector,43,20,0.9589,0.355962,0
+SYNTH-CRPF-12-521652,CRPF-12,left-wing extremism area,crpf,Head Constable,31,8,0.5437,0.657421,1
+SYNTH-CRPF-12-898107,CRPF-12,left-wing extremism area,crpf,Head Constable,31,7,0.7547,0.528367,0
+SYNTH-CRPF-12-266179,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,37,13,0.9116,0.265284,0
+SYNTH-CRPF-12-604771,CRPF-12,left-wing extremism area,crpf,Constable,25,2,0.6955,0.218078,0
+SYNTH-CRPF-12-631318,CRPF-12,left-wing extremism area,crpf,Head Constable,27,5,0.7345,0.205265,0
+SYNTH-CRPF-12-725104,CRPF-12,left-wing extremism area,crpf,Inspector,43,22,0.8714,0.194035,0
+SYNTH-CRPF-12-300096,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,48,28,0.6626,0.491728,0
+SYNTH-CRPF-12-971906,CRPF-12,left-wing extremism area,crpf,Inspector,43,21,0.5638,0.218419,0
+SYNTH-CRPF-12-368027,CRPF-12,left-wing extremism area,crpf,Inspector,43,22,0.2603,0.285266,0
+SYNTH-CRPF-12-544933,CRPF-12,left-wing extremism area,crpf,Inspector,46,22,0.7756,0.39833,0
+SYNTH-CRPF-12-999071,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,31,11,0.5921,0.13884,0
+SYNTH-CRPF-12-147812,CRPF-12,left-wing extremism area,crpf,Constable,24,3,0.4549,0.464735,0
+SYNTH-CRPF-12-807700,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,49,25,0.8718,0.414341,0
+SYNTH-CRPF-12-492910,CRPF-12,left-wing extremism area,crpf,Constable,25,1,0.473,0.201405,0
+SYNTH-CRPF-12-803994,CRPF-12,left-wing extremism area,crpf,Inspector,42,20,0.8771,0.393866,0
+SYNTH-CRPF-12-249608,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,40,17,0.5531,0.197526,0
+SYNTH-CRPF-12-305533,CRPF-12,left-wing extremism area,crpf,Inspector,44,21,0.6334,0.074816,0
+SYNTH-CRPF-12-379352,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,34,11,0.7352,0.592443,1
+SYNTH-CRPF-12-498588,CRPF-12,left-wing extremism area,crpf,Inspector,43,23,0.7835,0.133264,0
+SYNTH-CRPF-12-156517,CRPF-12,left-wing extremism area,crpf,Inspector,44,23,0.799,0.459857,0
+SYNTH-CRPF-12-607416,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,33,12,0.5111,0.14056,0
+SYNTH-CRPF-12-969225,CRPF-12,left-wing extremism area,crpf,Constable,24,2,0.717,0.082473,0
+SYNTH-CRPF-12-944702,CRPF-12,left-wing extremism area,crpf,Inspector,44,21,0.2216,0.316054,0
+SYNTH-CRPF-12-352690,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,36,12,0.9588,0.332866,0
+SYNTH-CRPF-12-900122,CRPF-12,left-wing extremism area,crpf,Inspector,41,21,0.6378,0.237549,0
+SYNTH-CRPF-12-991417,CRPF-12,left-wing extremism area,crpf,Head Constable,25,5,0.8069,0.026606,0
+SYNTH-CRPF-12-347870,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,48,28,0.7032,0.312678,0
+SYNTH-CRPF-12-480462,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,32,12,0.7698,0.171731,0
+SYNTH-CRPF-12-222459,CRPF-12,left-wing extremism area,crpf,Constable,26,2,0.3241,0.109466,0
+SYNTH-CRPF-12-226383,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,49,28,0.325,0.187877,0
+SYNTH-CRPF-12-329919,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,47,25,0.6847,0.047823,0
+SYNTH-CRPF-12-246288,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,37,16,0.1928,0.554924,1
+SYNTH-CRPF-12-571141,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,40,17,0.9241,0.288743,0
+SYNTH-CRPF-12-222239,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,50,28,0.1991,0.162931,0
+SYNTH-CRPF-12-832476,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,39,19,0.9875,0.215443,0
+SYNTH-CRPF-12-301194,CRPF-12,left-wing extremism area,crpf,Constable,26,2,0.8635,0.187088,0
+SYNTH-CRPF-12-878657,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,41,18,0.4211,0.331178,0
+SYNTH-CRPF-12-641300,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,31,10,0.7717,0.38974,0
+SYNTH-CRPF-12-604276,CRPF-12,left-wing extremism area,crpf,Head Constable,29,8,0.622,0.078621,0
+SYNTH-CRPF-12-444065,CRPF-12,left-wing extremism area,crpf,Inspector,45,24,0.2654,0.188011,0
+SYNTH-CRPF-12-306366,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,41,17,0.5794,0.011282,0
+SYNTH-CRPF-12-391465,CRPF-12,left-wing extremism area,crpf,Inspector,47,23,0.9181,0.184407,0
+SYNTH-CRPF-12-194233,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,38,16,0.5946,0.125293,0
+SYNTH-CRPF-12-775832,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,35,15,0.4812,0.362622,0
+SYNTH-CRPF-12-812143,CRPF-12,left-wing extremism area,crpf,Constable,23,1,0.35,0.259823,0
+SYNTH-CRPF-12-449031,CRPF-12,left-wing extremism area,crpf,Head Constable,30,7,0.7515,0.208823,0
+SYNTH-CRPF-12-424447,CRPF-12,left-wing extremism area,crpf,Inspector,44,22,0.6175,0.073881,0
+SYNTH-CRPF-12-359262,CRPF-12,left-wing extremism area,crpf,Head Constable,28,8,0.6384,0.523772,0
+SYNTH-CRPF-12-310611,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,47,27,0.5723,0.373764,0
+SYNTH-CRPF-12-708061,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,42,18,0.2191,0.264094,0
+SYNTH-CRPF-12-700728,CRPF-12,left-wing extremism area,crpf,Constable,24,2,0.746,0.20354,0
+SYNTH-CRPF-12-263403,CRPF-12,left-wing extremism area,crpf,Inspector,47,24,0.8503,0.118335,0
+SYNTH-CRPF-12-597576,CRPF-12,left-wing extremism area,crpf,Head Constable,29,9,0.8668,0.13768,0
+SYNTH-CRPF-12-911312,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,49,28,0.4114,0.198148,0
+SYNTH-CRPF-12-944719,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,36,15,0.5757,0.168374,0
+SYNTH-CRPF-12-513646,CRPF-12,left-wing extremism area,crpf,Head Constable,29,5,0.2615,0.197865,0
+SYNTH-CRPF-12-276955,CRPF-12,left-wing extremism area,crpf,Inspector,40,20,0.7657,0.049486,0
+SYNTH-CRPF-12-819980,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,34,10,0.6858,0.290956,0
+SYNTH-CRPF-12-121057,CRPF-12,left-wing extremism area,crpf,Constable,26,2,0.3741,0.047627,0
+SYNTH-CRPF-12-780053,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,38,18,0.3679,0.154774,0
+SYNTH-CRPF-12-308327,CRPF-12,left-wing extremism area,crpf,Inspector,45,22,0.4911,0.387804,0
+SYNTH-CRPF-12-827611,CRPF-12,left-wing extremism area,crpf,Inspector,45,23,0.6122,0.235119,0
+SYNTH-CRPF-12-383804,CRPF-12,left-wing extremism area,crpf,Constable,24,2,0.5324,0.068334,0
+SYNTH-CRPF-12-590333,CRPF-12,left-wing extremism area,crpf,Constable,24,2,0.5856,0.578412,1
+SYNTH-CRPF-12-669471,CRPF-12,left-wing extremism area,crpf,Inspector,47,24,0.4378,0.272919,0
+SYNTH-CRPF-12-883018,CRPF-12,left-wing extremism area,crpf,Inspector,43,23,0.6246,0.171661,0
+SYNTH-CRPF-12-795538,CRPF-12,left-wing extremism area,crpf,Head Constable,27,6,0.6076,0.160455,0
+SYNTH-CRPF-12-291777,CRPF-12,left-wing extremism area,crpf,Head Constable,32,9,0.9992,0.194088,0
+SYNTH-CRPF-12-688186,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,38,17,0.4018,0.197442,0
+SYNTH-CRPF-12-615629,CRPF-12,left-wing extremism area,crpf,Head Constable,29,7,0.9058,0.72788,1
+SYNTH-CRPF-12-328788,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,37,13,0.8227,0.216638,0
+SYNTH-CRPF-12-310739,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,34,13,0.871,0.19785,0
+SYNTH-CRPF-12-431180,CRPF-12,left-wing extremism area,crpf,Head Constable,27,5,0.8925,0.102856,0
+SYNTH-CRPF-12-448961,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,39,17,0.6993,0.213958,0
+SYNTH-CRPF-12-459071,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,40,17,0.115,0.283536,0
+SYNTH-CRPF-12-756620,CRPF-12,left-wing extremism area,crpf,Inspector,46,24,0.6623,0.075292,0
+SYNTH-CRPF-12-680103,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,46,26,0.8587,0.186981,0
+SYNTH-CRPF-12-233250,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,49,27,0.6676,0.193325,0
+SYNTH-CRPF-12-654811,CRPF-12,left-wing extremism area,crpf,Constable,24,1,0.5441,0.378002,0
+SYNTH-CRPF-12-270460,CRPF-12,left-wing extremism area,crpf,Constable,25,2,0.8089,0.185284,0
+SYNTH-CRPF-12-274849,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,32,10,0.9471,0.176064,0
+SYNTH-CRPF-12-319883,CRPF-12,left-wing extremism area,crpf,Head Constable,29,9,0.9415,0.332201,0
+SYNTH-CRPF-12-980960,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,45,25,0.4193,0.112616,0
+SYNTH-CRPF-12-332268,CRPF-12,left-wing extremism area,crpf,Constable,24,1,0.3195,0.332098,0
+SYNTH-CRPF-12-843550,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,33,11,0.3941,0.241164,0
+SYNTH-CRPF-12-821148,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,39,16,0.8403,0.046459,0
+SYNTH-CRPF-12-506440,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,39,16,0.334,0.122393,0
+SYNTH-CRPF-12-175471,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,36,14,0.8628,0.303267,0
+SYNTH-CRPF-12-785949,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,40,19,0.7197,0.183976,0
+SYNTH-CRPF-12-751219,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,41,18,0.5005,0.136871,0
+SYNTH-CRPF-12-705318,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,38,16,0.7262,0.11914,0
+SYNTH-CRPF-12-932665,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,38,16,0.6663,0.321425,0
+SYNTH-CRPF-12-743366,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,37,17,0.8919,0.070976,0
+SYNTH-CRPF-12-811910,CRPF-12,left-wing extremism area,crpf,Inspector,40,20,0.9171,0.274046,0
+SYNTH-CRPF-12-218004,CRPF-12,left-wing extremism area,crpf,Constable,21,1,0.6702,0.133725,0
+SYNTH-CRPF-12-849182,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,50,26,0.7921,0.045134,0
+SYNTH-CRPF-12-405231,CRPF-12,left-wing extremism area,crpf,Inspector,44,24,0.6175,0.215077,0
+SYNTH-CRPF-12-941933,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,31,10,0.8545,0.104071,0
+SYNTH-CRPF-12-244485,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,45,25,0.6176,0.158099,0
+SYNTH-CRPF-12-975005,CRPF-12,left-wing extremism area,crpf,Constable,23,1,0.3943,0.122763,0
+SYNTH-CRPF-12-611026,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,50,27,0.8542,0.111568,0
+SYNTH-CRPF-12-359448,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,34,11,0.8988,0.106098,0
+SYNTH-CRPF-12-308888,CRPF-12,left-wing extremism area,crpf,Inspector,43,21,0.2662,0.235903,0
+SYNTH-CRPF-12-993178,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,33,13,0.3906,0.258883,0
+SYNTH-CRPF-12-534720,CRPF-12,left-wing extremism area,crpf,Inspector,44,23,0.7038,0.157288,0
+SYNTH-CRPF-12-138265,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,47,25,0.9441,0.135406,0
+SYNTH-CRPF-12-190556,CRPF-12,left-wing extremism area,crpf,Inspector,42,21,0.4262,0.296008,0
+SYNTH-CRPF-12-935148,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,39,16,0.9278,0.149295,0
+SYNTH-CRPF-12-671927,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,49,27,0.9622,0.046536,0
+SYNTH-CRPF-12-696985,CRPF-12,left-wing extremism area,crpf,Head Constable,31,7,0.9218,0.271343,0
+SYNTH-CRPF-12-820600,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,35,15,0.9005,0.16665,0
+SYNTH-CRPF-12-136098,CRPF-12,left-wing extremism area,crpf,Head Constable,29,5,0.4909,0.291232,0
+SYNTH-CRPF-12-363911,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,33,12,0.5969,0.428425,0
+SYNTH-CRPF-12-888809,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,48,27,0.3849,0.101286,0
+SYNTH-CRPF-12-224709,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,35,14,0.3165,0.350005,0
+SYNTH-CRPF-12-154248,CRPF-12,left-wing extremism area,crpf,Constable,22,2,0.7469,0.093478,0
+SYNTH-CRPF-12-102373,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,34,13,0.6364,0.309817,0
+SYNTH-CRPF-12-315614,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,38,18,0.2973,0.186386,0
+SYNTH-CRPF-12-817060,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,34,10,0.9459,0.352167,0
+SYNTH-CRPF-12-319400,CRPF-12,left-wing extremism area,crpf,Inspector,41,20,0.5808,0.004254,0
+SYNTH-CRPF-12-905533,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,31,11,0.6953,0.386002,0
+SYNTH-CRPF-12-167561,CRPF-12,left-wing extremism area,crpf,Assistant Sub-Inspector,35,11,0.4219,0.057464,0
+SYNTH-CRPF-12-465668,CRPF-12,left-wing extremism area,crpf,Assistant Commandant,47,25,0.8615,0.025441,0
+SYNTH-CRPF-12-162505,CRPF-12,left-wing extremism area,crpf,Sub-Inspector,41,17,0.5002,0.140547,0
+SYNTH-CRPF-12-249544,CRPF-12,left-wing extremism area,crpf,Inspector,43,20,0.7914,0.328569,0
+SYNTH-CRPF-12-233601,CRPF-12,left-wing extremism area,crpf,Head Constable,28,5,0.8856,0.247101,0
+SYNTH-CRPF-12-259872,CRPF-12,left-wing extremism area,crpf,Head Constable,29,7,0.2875,0.220388,0
+SYNTH-CRPF-12-746116,CRPF-12,left-wing extremism area,crpf,Head Constable,29,6,0.6367,0.261069,0
+SYNTH-CRPF-12-308336,CRPF-12,left-wing extremism area,crpf,Constable,23,1,0.2491,0.5954,1
+SYNTH-CRPF-12-114825,CRPF-12,left-wing extremism area,crpf,Inspector,44,20,0.831,0.257072,0

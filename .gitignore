@@ -8,3 +8,6 @@ __pycache__/
 node_modules/
 .next/
 artefacts/
+.DS_Store
+samvedna.db-shm
+samvedna.db-wal

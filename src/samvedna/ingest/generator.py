@@ -21,6 +21,12 @@ import random
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 
+from samvedna.config.forces import (
+    DEFAULT_SERVICE,
+    Service,
+    profile,
+    rank_for,
+)
 from samvedna.config.weights import CONNECTOR_DOMAINS, DomainName
 from samvedna.config.windows import BASELINE_WINDOW_DAYS
 from samvedna.core.types import SignalRecord
@@ -43,10 +49,15 @@ RAW_KIND: dict[DomainName, str] = {
     # and the generator must not invent one.
 }
 
-RANKS = ("Constable", "Head Constable", "ASI", "SI", "Inspector", "Assistant Commandant")
+# Ranks and unit nomenclature are per-service and live in `config/forces.py`.
+# This module used to hold one flat CAPF ladder, which quietly asserted that
+# every cohort the system might assess belongs to a CAPF. PS 26186 covers the
+# Armed Forces and other uniformed services too, and a welfare officer shown
+# "Head Constable" against one of their own Army soldiers has been shown
+# something obviously wrong.
+
 # How far an operational surge lifts a domain for somebody fully exposed to it.
 SURGE_LIFT = 0.34
-UNIT_KINDS = ("battalion", "training centre", "border post", "static guard")
 
 
 @dataclass(frozen=True, slots=True)
@@ -78,6 +89,11 @@ class Unit:
     # the op-tempo confounder fire, and it is a property of the unit, not of any
     # person in it.
     surge_days: frozenset[date]
+    # Which service this unit belongs to. Drives the rank ladder its people are
+    # given and the words the console uses for its echelons — an Air Force
+    # flight and a BSF company are not the same thing and must not be labelled
+    # as though they were. Defaulted, so every existing caller keeps working.
+    service: Service = DEFAULT_SERVICE
 
 
 @dataclass(frozen=True, slots=True)
@@ -87,14 +103,32 @@ class Force:
     records: tuple[SignalRecord, ...]
     as_of: date
     seed: int
+    service: Service = DEFAULT_SERVICE
 
     def by_unit(self, unit_id: str) -> tuple[Personnel, ...]:
         return tuple(p for p in self.personnel if p.unit_id == unit_id)
 
 
+#: Every synthetic service number starts with this. It is not a real prefix in
+#: any Indian service and is not meant to be.
+SYNTHETIC_PREFIX = "SYNTH"
+
+
 def _stable_number(rng: random.Random, unit_id: str, index: int) -> str:
+    """A stable, obviously fake service number.
+
+    The prefix is load-bearing. These used to be built from the unit id, which
+    read as `UNIT-01-455510` and was self-evidently invented. Giving units
+    their real service abbreviations turned the same string into
+    `CRPF-01-455510` — which looks like a service number a real jawan might
+    carry, and a generator that produces plausible real identifiers is a
+    liability the first time a fixture file leaves the building.
+
+    So the unit naming stayed realistic, because a welfare officer needs to
+    read it, and the identifier was made unmistakable instead.
+    """
     digest = hashlib.sha256(f"{unit_id}:{index}:{rng.random()}".encode()).hexdigest()
-    return f"{unit_id}-{int(digest[:8], 16) % 900000 + 100000}"
+    return f"{SYNTHETIC_PREFIX}-{unit_id}-{int(digest[:8], 16) % 900000 + 100000}"
 
 
 def _clamp01(x: float) -> float:
@@ -190,6 +224,7 @@ def generate_force(
     as_of: date | None = None,
     seed: int = 26186,
     surge_unit_index: int | None = 0,
+    service: Service = DEFAULT_SERVICE,
 ) -> Force:
     """A synthetic force with `units` units of roughly `strength` personnel each.
 
@@ -198,6 +233,9 @@ def generate_force(
     fixture having to assert it.
     """
     rng = random.Random(seed)
+    # Resolved once and eagerly, so an unknown service code fails here rather
+    # than after a full cohort has been built against the wrong ladder.
+    svc = profile(service)
     as_of = as_of or date(2026, 9, 5)
     start = as_of - timedelta(days=days - 1)
 
@@ -209,12 +247,21 @@ def generate_force(
             surge = frozenset(
                 start + timedelta(days=d) for d in range(surge_start, days)
             )
+        # The unit id carries the service abbreviation, because "UNIT-01" on
+        # an officer's screen says nothing about whose unit it is, and the id
+        # is what appears in the audit ledger where it has to still mean
+        # something years later.
         unit_list.append(
             Unit(
-                unit_id=f"UNIT-{i + 1:02d}",
-                kind=UNIT_KINDS[i % len(UNIT_KINDS)],
+                unit_id=f"{svc.abbr}-{i + 1:02d}",
+                # A real posting from that service rather than a generic word.
+                # Posting pattern is what the deployment and duty-roster
+                # domains actually measure, and an ITBP glacier post does not
+                # produce the strain signature of a CISF airport detachment.
+                kind=svc.postings[i % len(svc.postings)],
                 strength=strength,
                 surge_days=surge,
+                service=service,
             )
         )
 
@@ -226,7 +273,7 @@ def generate_force(
                 Personnel(
                     service_number=_stable_number(rng, unit.unit_id, index),
                     unit_id=unit.unit_id,
-                    rank=RANKS[min(len(RANKS) - 1, years // 5)],
+                    rank=rank_for(service, years),
                     age=20 + years + rng.randint(0, 4),
                     years_of_service=years,
                     # Most people are fine. A long right tail, because that is
@@ -279,4 +326,5 @@ def generate_force(
         records=tuple(records),
         as_of=as_of,
         seed=seed,
+        service=service,
     )

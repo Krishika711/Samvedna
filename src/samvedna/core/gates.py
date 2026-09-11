@@ -204,15 +204,39 @@ def persistence(ctx: CaseContext) -> Gate:
     one. With a single domain this reduces exactly to that domain's fractions.
     """
     devs = consented_deviations(ctx)
-    total_weight = sum(d.weight for d in devs)
     windows: dict[int, float] = {}
     for days in PERSISTENCE_WINDOWS_DAYS:
-        if total_weight == 0:
+        # Only domains that were actually observed over this window. A domain
+        # with no entry for a window is *unknown* there, not zero, and the
+        # difference is the whole of this loop.
+        #
+        # This used to read `d.daily_breach.get(days, 0.0)` over every domain,
+        # so a domain with no 30-day history contributed nothing to the
+        # numerator while still contributing its full weight to the
+        # denominator — diluting every domain that *did* have history. The
+        # effect was backwards in the worst possible way: a jawan who submitted
+        # a severe self-assessment, which is one day old by definition and
+        # carries the highest tier weight, pushed their own persistence from
+        # 0.650 (passing) to 0.505 (failing). Reporting distress made the system
+        # less likely to act.
+        #
+        # This is the same rule the ingest layer already states: a connector
+        # that returns nothing must not read as a low value, and
+        # `breach_fraction` divides by the window length rather than the row
+        # count for exactly this reason. Persistence was the one place it was
+        # not applied.
+        observed = [d for d in devs if days in d.daily_breach]
+        observed_weight = sum(d.weight for d in observed)
+        if observed_weight == 0:
+            # Nothing was observed over this window by any domain. Zero is the
+            # honest value: there is no evidence of persistence at this length,
+            # which is different from evidence of its absence but produces the
+            # same — conservative — answer.
             windows[days] = 0.0
             continue
         windows[days] = sum(
-            d.weight * _clamp(d.daily_breach.get(days, 0.0)) for d in devs
-        ) / total_weight
+            d.weight * _clamp(d.daily_breach[days]) for d in observed
+        ) / observed_weight
 
     value = _clamp(sum(PERSISTENCE_WEIGHTS[d] * windows[d] for d in PERSISTENCE_WINDOWS_DAYS))
     threshold = GATE_THRESHOLDS["persistence"]

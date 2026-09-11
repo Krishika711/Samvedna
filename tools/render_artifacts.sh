@@ -51,3 +51,5 @@ render samvedna-annotated-consoles "4-the-annotated-consoles"
 # The deck sets its own @page size (297x167mm landscape) and breaks after
 # every slide, so no extra flags are needed here — Chrome honours it.
 render samvedna-judges-deck        "5-judging-deck"
+# A4 portrait, set by the document itself.
+render samvedna-what-runs-where    "6-what-runs-where"

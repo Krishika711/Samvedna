@@ -80,7 +80,7 @@ function headers(session: Session): Record<string, string> {
   };
 }
 
-export function useVoiceSession(session: Session | null) {
+export function useVoiceSession(session: Session | null, pid = "") {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const [level, setLevel] = useState(0);
@@ -159,10 +159,15 @@ export function useVoiceSession(session: Session | null) {
     setReadings(null);
 
     try {
+      // The pid travels with the request. Without it the route fell back to
+      // the console's operator id, `"SELF"`, and asked whether *that* had
+      // consented to the voice domain — it never had, so a sitting was refused
+      // however many times the toggle was switched on. The consent had been
+      // recorded against the person's real pid all along.
       const opened = await fetch("/api/voice/session", {
         method: "POST",
         headers: headers(session),
-        body: "{}",
+        body: JSON.stringify(pid ? { pid } : {}),
       });
       const body = await opened.json();
       if (!opened.ok) throw new Error(body.detail ?? "could not open a sitting");
@@ -208,7 +213,7 @@ export function useVoiceSession(session: Session | null) {
       );
       setStatus("error");
     }
-  }, [session, pushWindow, teardown]);
+  }, [session, pid, pushWindow, teardown]);
 
   const say = useCallback(
     async (text: string, source: "typed" | "on_device_stt" = "typed") => {

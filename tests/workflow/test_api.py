@@ -18,6 +18,19 @@ def hdr(role, operator="OP-1", units=""):
     return {"X-Role": role, "X-Operator": operator, "X-Units": units}
 
 
+def officer(state, operator="WO-1"):
+    """Headers for an officer scoped to the units this run actually covers.
+
+    Tests used to pass `X-Units:` empty here, which authorised every unit —
+    the fail-open `UNIT_SCOPED_ROLES` closes. Deriving the scope from the run
+    also means a unit rename cannot silently empty a caseload, which is exactly
+    how this was found: units were given service abbreviations (CRPF-01) and
+    the console kept asking about UNIT-01.
+    """
+    units = sorted({c.unit_id for c in state.run.cases if c.unit_id})
+    return hdr("welfare_officer", operator, ",".join(units))
+
+
 def an_escalated_pid(state):
     caseload = state.run.caseload()
     if not caseload:
@@ -57,7 +70,7 @@ def test_a_commander_cannot_read_the_caseload(world):
 
 def test_the_caseload_is_escalate_only_and_carries_no_name(world):
     client, state, force = world
-    body = client.get("/api/caseload", headers=hdr("welfare_officer", "WO-1")).json()
+    body = client.get("/api/caseload", headers=officer(state)).json()
     assert "screened" in body["headline"]
     for case in body["cases"]:
         assert case["decision"] in ("ESCALATE", "IMMEDIATE_ESCALATE")
@@ -71,7 +84,7 @@ def test_the_caseload_is_escalate_only_and_carries_no_name(world):
 def test_every_case_carries_its_gate_formulas_with_the_numbers_substituted(world):
     client, state, _ = world
     an_escalated_pid(state)
-    body = client.get("/api/caseload", headers=hdr("welfare_officer", "WO-1")).json()
+    body = client.get("/api/caseload", headers=officer(state)).json()
     case = body["cases"][0]
     assert len(case["gates"]) == 4
     for gate in case["gates"]:
@@ -118,7 +131,11 @@ def test_disclosing_an_escalated_case_returns_a_name_and_logs_it(world):
     case = an_escalated_pid(state)
     before = len(state.ledger)
     body = client.post(
-        f"/api/case/{case.pid}/disclose", headers=hdr("welfare_officer", "WO-1")
+        f"/api/case/{case.pid}/disclose",
+        # The officer's own unit, not an empty scope. These two tests used to
+        # pass with `X-Units:` empty, which authorised every unit in the force —
+        # the fail-open that `UNIT_SCOPED_ROLES` now closes.
+        headers=hdr("welfare_officer", "WO-1", case.unit_id),
     ).json()
     assert body["identity"]["name"]
     assert body["identity"]["service_number"]
@@ -132,7 +149,8 @@ def test_disclosing_a_monitor_case_is_refused(world):
     if not monitored:
         pytest.skip("no monitored cases")
     response = client.post(
-        f"/api/case/{monitored[0].pid}/disclose", headers=hdr("welfare_officer", "WO-1")
+        f"/api/case/{monitored[0].pid}/disclose",
+        headers=hdr("welfare_officer", "WO-1", monitored[0].unit_id),
     )
     assert response.status_code == 403
     assert "MONITOR" in response.json()["detail"]
@@ -466,28 +484,29 @@ def test_a_withdrawal_ledger_entry_carries_no_detail_at_all(world):
 def test_the_officer_loop_runs_end_to_end(world):
     """caseload → contact → close-out, with the list blocking in between."""
     client, state, _ = world
-    officer = hdr("welfare_officer", "WO-12")
+    # Named `who` rather than `officer`, which is now a module-level helper.
+    who = officer(state, "WO-12")
     caseload = state.run.caseload()
     if not caseload:
         pytest.skip("this run produced no escalations")
     pid = caseload[0].pid
 
-    body = client.post(f"/api/case/{pid}/contact", headers=officer).json()
+    body = client.post(f"/api/case/{pid}/contact", headers=who).json()
     assert body["close_out_required"] is True
     assert set(body["outcomes"]) == {
         "supported", "not_supported", "already_known", "declined_contact"
     }
 
-    after = client.get("/api/caseload", headers=officer).json()
+    after = client.get("/api/caseload", headers=who).json()
     assert pid in after["blocking"], "a contacted case must block the list"
 
     closed = client.post(
-        f"/api/case/{pid}/close", headers=officer, json={"outcome": "supported"}
+        f"/api/case/{pid}/close", headers=who, json={"outcome": "supported"}
     ).json()
     assert closed["outcome"] == "supported"
     assert closed["judged_cases"] >= 1
 
-    final = client.get("/api/caseload", headers=officer).json()
+    final = client.get("/api/caseload", headers=who).json()
     assert pid not in final["blocking"]
     assert final["closed"][pid] == "supported"
 
@@ -661,3 +680,44 @@ def test_every_refusal_says_what_would_have_changed_it(world):
         for item in case["mind_change"]:
             assert item["would_change_if"]
             assert item["current"] <= item["required"]
+
+
+def test_an_officer_with_no_unit_scope_is_refused_not_given_everything(world):
+    """An empty scope is no authority, not universal authority.
+
+    `check()` used to skip the unit comparison whenever `unit_scope` was empty,
+    so a welfare officer who declared no units could read every unit in the
+    force. It was found by noticing that a caseload request with `X-Units:`
+    empty returned four cases while the same request naming two units returned
+    two — the broader answer being the unauthorised one.
+    """
+    client, state, _ = world
+
+    unscoped = client.get("/api/caseload", headers=hdr("welfare_officer", "WO-1"))
+    assert unscoped.status_code == 403
+    assert "no unit scope" in unscoped.json()["detail"]
+
+    case = an_escalated_pid(state)
+    scoped = client.get(
+        "/api/caseload", headers=hdr("welfare_officer", "WO-1", case.unit_id)
+    )
+    assert scoped.status_code == 200
+
+
+def test_a_commander_with_no_unit_scope_is_refused(world):
+    client, state, _ = world
+    r = client.get("/api/unit/UNIT-01/heatmap", headers=hdr("commander", "CO-1"))
+    assert r.status_code == 403
+    assert "no unit scope" in r.json()["detail"]
+
+
+def test_an_auditor_still_reads_force_wide(world):
+    """The ledger is force-wide by design, so an auditor keeps an empty scope.
+
+    They are excluded from `UNIT_SCOPED_ROLES` deliberately: their authority is
+    not bounded by unit, and the grant table already forbids them from
+    re-identifying anybody.
+    """
+    client, _, _ = world
+    assert client.get("/api/audit", headers=hdr("auditor", "AU-1")).status_code == 200
+    assert client.get("/api/refused", headers=hdr("auditor", "AU-1")).status_code == 200

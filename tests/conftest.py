@@ -115,3 +115,44 @@ def case(
 @pytest.fixture
 def build():
     return case
+
+
+@pytest.fixture(scope="session", autouse=True)
+def _no_shared_journal(tmp_path_factory):
+    """Persistence is off for the suite. The journal tests turn it on.
+
+    Two attempts got this wrong in instructive ways.
+
+    Pointing every test at one temp database still shared state — a
+    walk-through test failed because an earlier test's assessment had already
+    escalated its subject. Pointing each test at its *own* temp database cannot
+    work either: `tests/workflow/test_api.py` builds its world with
+    `@pytest.fixture(scope="module")`, and pytest sets function-scoped fixtures
+    up after higher-scoped ones, so the module fixture ran before any
+    per-test patch existed and opened the real database in the repository root.
+
+    So persistence is simply off here. It is a feature of a running deployment,
+    not a property the rest of the suite is testing, and every test that does
+    not care about it should behave exactly as it did before the journal
+    existed. `tests/storage/test_journal.py` enables it against a temp database
+    of its own.
+    """
+    import samvedna.api.app as app_mod
+    import samvedna.api.bootstrap as bootstrap
+    import samvedna.api.voice_routes as voice_mod
+    import samvedna.config.flags as flags
+
+    off = flags.settings().model_copy(
+        update={
+            "persist_state": False,
+            # Belt and braces: if something opens a store despite the flag, it
+            # must not be the repository's database.
+            "database_url": (
+                f"sqlite+aiosqlite:///{tmp_path_factory.mktemp('journal')}/unused.db"
+            ),
+        }
+    )
+    with pytest.MonkeyPatch.context() as patch:
+        for module in (flags, bootstrap, app_mod, voice_mod):
+            patch.setattr(module, "settings", lambda: off, raising=False)
+        yield

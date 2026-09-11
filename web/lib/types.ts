@@ -152,5 +152,8 @@ export interface RunSummary {
   no_flag: number;
   cleared: number;
   ledger_head: string;
+  /** Units this run covers. The console derives role scopes from these
+   *  rather than hardcoding them — see the note in `record.py`. */
+  units: string[];
   stages: RunStage[];
 }

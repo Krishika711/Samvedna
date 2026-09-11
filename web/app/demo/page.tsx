@@ -60,7 +60,7 @@ const DOORS: Door[] = [
     role: "personnel",
     route: "/me",
     label: "Personnel",
-    sees: "Own consent, own drivers, own check-in, withdrawal",
+    sees: "Own consent per domain, own drivers, own check-in",
     cannot: "Anyone else, at any aggregation",
   },
 ];

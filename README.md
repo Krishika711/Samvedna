@@ -520,6 +520,8 @@ actually made while building it, and where the work stands.
 Read in this order:
 
 1. [`HANDOFF_PROMPT.md`](HANDOFF_PROMPT.md) — the agent brief. Start here.
+1. [`TRANSFER.md`](TRANSFER.md) — sending it, receiving it, merging a split
+   transfer, and briefing an AI assistant on it.
 2. [`docs/PS_COMPLIANCE.md`](docs/PS_COMPLIANCE.md) — every line of the
    problem statement against what is actually in the tree, with the limits
    stated rather than buried.
@@ -551,4 +553,3 @@ Read in this order:
 Build log with evidence for every phase: [`docs/PHASES.md`](docs/PHASES.md).
 Reconciliation against PART 18 of the master prompt:
 [`docs/RECONCILIATION.md`](docs/RECONCILIATION.md).
-# Samvedna
