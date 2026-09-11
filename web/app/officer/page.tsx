@@ -39,7 +39,11 @@ type Filter = "open" | "contacted" | "closed" | "all";
 
 export default function OfficerConsolePage() {
   return (
-    <Guard need="welfare_officer">
+    // Both roles work this console. They see different caseloads — the API
+    // gives the mental-health authority only the acute referrals, force-wide —
+    // and the reveal control differs, because only one of them holds the
+    // purpose under which an acute identity resolves.
+    <Guard need={["welfare_officer", "mental_health_authority"]}>
       <OfficerConsole />
     </Guard>
   );
@@ -126,8 +130,16 @@ function OfficerConsole() {
       {/* ---------------- header strip: the shift at a glance ---------------- */}
       <div className="console-head">
         <div>
-          <p className="eyebrow">Welfare caseload · {run.as_of}</p>
-          <h1 style={{ fontSize: "1.85rem" }}>Today&rsquo;s queue</h1>
+          <p className="eyebrow">
+            {actor?.role === "mental_health_authority"
+              ? `Acute referrals · force-wide · ${run.as_of}`
+              : `Welfare caseload · ${actor?.units ?? ""} · ${run.as_of}`}
+          </p>
+          <h1 style={{ fontSize: "1.85rem" }}>
+            {actor?.role === "mental_health_authority"
+              ? "Acute referrals"
+              : "Today\u2019s queue"}
+          </h1>
         </div>
         <div className="spacer" />
         <div className="kpi-row">
@@ -343,7 +355,16 @@ function OfficerConsole() {
 
                     {/* actions */}
                     <section className="action-bar">
-                      {!revealed ? (
+                      {c.override && actor?.role !== "mental_health_authority" ? (
+                        // An acute case resolves only under `welfare:acute`,
+                        // which the welfare officer does not hold. Offering the
+                        // button anyway produced a 403 and an officer with no
+                        // idea why — the case was on their screen with an
+                        // urgent recommendation and no way to act on it.
+                        <span className="pill stop">
+                          identity held by the mental-health authority
+                        </span>
+                      ) : !revealed ? (
                         <button
                           className="primary" disabled={!!busy}
                           onClick={() => act("Identity disclosure", async () => {

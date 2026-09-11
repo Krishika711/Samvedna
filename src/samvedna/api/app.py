@@ -12,12 +12,28 @@ so it cannot survive being pointed at live records.
 """
 from __future__ import annotations
 
+from dataclasses import replace
+from datetime import UTC, datetime
+
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from samvedna.api import api_console, voice_routes
+from samvedna.config import forces
 from samvedna.config.flags import settings
-from samvedna.config.thresholds import CONFIG_VERSION, GATE_THRESHOLDS
+from samvedna.config.forces import DEFAULT_SERVICE
+from samvedna.config.thresholds import (
+    CONFIG_VERSION,
+    GATE_THRESHOLDS,
+    PHQ9_CUTOFF,
+    PHQ9_POINTS_PER_SD,
+    PHQ9_RECALL_DAYS,
+)
+from samvedna.config.weights import tier_of, weight_of
+from samvedna.config.windows import PERSISTENCE_WINDOWS_DAYS
+from samvedna.core.types import CaseContext, DomainDeviation, InstrumentResponse
+from samvedna.core.verdict import acute_items_in, decide
+from samvedna.db.journal import Journal
 from samvedna.disclosure.audit import Ledger
 from samvedna.disclosure.commander import heat_map, unit_view
 from samvedna.disclosure.consent import ConsentRegistry
@@ -27,8 +43,10 @@ from samvedna.disclosure.consent_text import (
 )
 from samvedna.disclosure.dpcache import ReleaseCache
 from samvedna.disclosure.rbac import Denied, Principal
+from samvedna.disclosure.rbac import check as rbac_check
 from samvedna.disclosure.reidentify import Identity, try_disclose
 from samvedna.ingest.dp import Budget
+from samvedna.pipeline import acute
 from samvedna.pipeline.alerts import AlertQueue
 from samvedna.pipeline.outcomes import OUTCOMES, CaseBook, OutcomeRequired
 from samvedna.pipeline.record import RunRecord
@@ -58,6 +76,10 @@ class AppState:
         # persisting the transcript, which is the thing this design is
         # most careful to destroy.
         self.voice = voice_routes.VoiceStore()
+        # Optional. None means the system runs exactly as it did before the
+        # journal existed: in memory, losing what a person did on restart.
+        # Persistence is a feature to have, not a dependency to fail on.
+        self.journal: Journal | None = None
         self.directory: dict[str, Identity] = {}
         self.contacts: dict[str, dict] = {}
         self.annotations: dict[str, list[dict]] = {}
@@ -88,6 +110,153 @@ def _principal(
     )
 
 
+def _with_self_report(ctx: CaseContext, response: InstrumentResponse) -> CaseContext:
+    """Fold a just-submitted self-assessment into a case's evidence.
+
+    **Today's answers are added to the person's self-report history, not
+    substituted for it.** The first version of this replaced any existing
+    `self_report` deviation outright, and the consequence was as bad as it
+    sounds: somebody carrying months of reported distress —
+    `{7: 1.0, 30: 1.0, 90: 0.656}` — who filled in one more questionnaire had
+    all of it discarded and replaced with a single day, dropping their
+    persistence from 0.879 (passing) to 0.200 (failing). Twelve of the 125
+    monitored cases flipped that way. Reporting distress made the system less
+    likely to act, which is the exact opposite of what the T1 tier is for.
+
+    So each window's breach fraction takes a **floor** from today rather than a
+    value: one breaching day guarantees at least `1/window` of that window
+    breached, and anything already established stands. Tonight's run recomputes
+    every window exactly from the feature store; this only has to be honest
+    until then, and honest here means monotonic — a fresh report can raise the
+    picture and must never lower it.
+
+    The z-score is an estimate for the same reason. A real `z_self` compares the
+    person against their own 180-day baseline, which does not exist for a
+    response that was not there at 02:00. Where the nightly run already computed
+    one it is kept if it is higher, because it rests on a real baseline and this
+    does not.
+    """
+    breaching = response.above_cutoff
+    estimated_z = max(
+        0.0,
+        (response.total - response.cutoff) / PHQ9_POINTS_PER_SD,
+    )
+
+    existing = next((d for d in ctx.deviations if d.domain == "self_report"), None)
+
+    # Start from what is already known, then raise floors with today.
+    breach: dict[int, float] = dict(existing.daily_breach) if existing else {}
+    if breaching:
+        # Today raises a floor on the **shortest** window, and on any longer
+        # window the nightly run already established. It does not introduce a
+        # longer window that was absent.
+        #
+        # That distinction is the difference between the two wrong versions of
+        # this. Adding `1/90` for a window with no history makes the domain
+        # *participate* in the 90-day average at 0.011, which drags it down for
+        # every domain that does have ninety days of evidence — the same
+        # dilution the persistence gate was just fixed for, reintroduced from
+        # the other side. It flipped 18 cases from passing to failing.
+        #
+        # One day out of seven is a real fraction. One day out of ninety
+        # characterises nothing, and a number that characterises nothing is
+        # worse than an absence, because an absence is excluded and a number is
+        # believed.
+        # A breaching response asserts distress across the instrument's own
+        # recall window, so it covers any persistence window no longer than
+        # that outright, and floors a longer one at the fraction it speaks to.
+        #
+        # Longer windows are only *raised*, never introduced. A fortnight is
+        # 16% of ninety days; letting that create a 90-day figure where none
+        # existed would make the domain participate in an average it cannot
+        # characterise, which is the dilution this whole function has now been
+        # wrong about twice — once by discarding history, once by inventing a
+        # near-zero floor.
+        recall = PHQ9_RECALL_DAYS
+        for window in {min(PERSISTENCE_WINDOWS_DAYS), *breach}:
+            asserted = 1.0 if window <= recall else recall / window
+            breach[window] = max(breach.get(window, 0.0), asserted)
+
+    fresh = DomainDeviation(
+        domain="self_report",
+        # The nightly figure wins when it is larger: it is computed against a
+        # real 180-day baseline, and this is arithmetic on a questionnaire.
+        z_self=round(max(estimated_z, existing.z_self if existing else 0.0), 4),
+        # No cohort figure for a response nobody else submitted today, so the
+        # nightly one is kept where it exists. Inventing a number here would
+        # feed the op-tempo confounder something never observed.
+        z_unit=existing.z_unit if existing else 0.0,
+        direction="elevated",
+        windows_breached=sum(1 for v in breach.values() if v > 0.0),
+        tier=tier_of("self_report"),
+        weight=weight_of("self_report"),
+        daily_breach=breach,
+        missing_fraction=existing.missing_fraction if existing else 0.0,
+    )
+
+    others = tuple(d for d in ctx.deviations if d.domain != "self_report")
+
+    # The acute items travel with the context, and this was a bug worth the
+    # comment. `acute.submit` builds its own context to compute the override
+    # route, so the route came back correctly — but the verdict written to the
+    # case record was computed here, without them, and therefore said MONITOR.
+    # The person was routed to a mental-health authority and simultaneously
+    # recorded as not needing anybody's attention. Whichever of those two a
+    # screen happened to read, one of them was wrong.
+    return replace(
+        ctx,
+        deviations=(*others, fresh),
+        acute_items=acute_items_in(response),
+    )
+
+
+def rebuild_with_assessment(
+    state,
+    pid: str,
+    *,
+    total: int,
+    cutoff: int,
+    acute: bool,
+) -> bool:
+    """Re-decide one case with a self-report folded in. Returns whether it applied.
+
+    Shared by the live submission route and by the journal replay at startup,
+    so a restored assessment goes through exactly the arithmetic the original
+    did. Two implementations of "what does this score mean" would drift, and
+    the one nobody watches is the one that would be wrong.
+    """
+    run = state.run
+    if run is None:
+        return False
+    record = next((c for c in run.cases if c.pid == pid), None)
+    if record is None or record.ctx is None:
+        return False
+
+    response = InstrumentResponse(
+        pid=pid,
+        instrument="PHQ9",
+        taken_at=datetime.now(UTC),
+        # Item answers are not stored, so a replay cannot reconstruct them.
+        # Only item 9 changes a decision, and whether it fired is recorded —
+        # so the acute flag is reconstructed and the rest is left empty rather
+        # than invented. `_with_self_report` uses the total and the flag.
+        items={"item_9": 1} if acute else {},
+        total=total,
+        cutoff=cutoff,
+    )
+
+    merged = _with_self_report(record.ctx, response)
+    verdict = decide(merged, escalation_frozen=run.escalation_frozen)
+    index = run.cases.index(record)
+    run.cases[index] = replace(
+        record,
+        ctx=merged,
+        verdict=verdict,
+        state="ESCALATED" if verdict.names_a_person else record.state,
+    )
+    return True
+
+
 def create_app(state: AppState | None = None) -> FastAPI:
     app = FastAPI(
         title="SAMVEDNA",
@@ -116,6 +285,301 @@ def create_app(state: AppState | None = None) -> FastAPI:
         return state.run
 
     # ------------------------------------------------------------- system --
+    @app.get("/api/service")
+    def service_profile():
+        """Which service this deployment serves, and the words it uses.
+
+        Public, and it has to be: the console needs the correct rank ladder and
+        echelon names before it can render anything, and gating that behind a
+        role would mean the sign-in screen itself could not be labelled. None of
+        it is sensitive — it is the organisational chart of a service whose
+        structure is published.
+        """
+        # A run record does not carry the service, deliberately — it holds
+        # counts and no organisational detail. The deployment's service is
+        # configuration, so it comes from settings with a documented default.
+        code = getattr(settings(), "service", DEFAULT_SERVICE)
+        svc = forces.profile(code)
+        return {
+            "code": svc.code,
+            "abbr": svc.abbr,
+            "name": svc.name,
+            "ministry": svc.ministry,
+            "sub_unit": svc.sub_unit,
+            "unit": svc.unit,
+            "formation": svc.formation,
+            "personnel_word": svc.personnel_word,
+            "personnel_plural": svc.personnel_plural,
+            "ranks": list(svc.ranks),
+            "postings": list(svc.postings),
+            "catalogue": [
+                {"code": p.code, "abbr": p.abbr, "name": p.name,
+                 "ministry": p.ministry, "unit": p.unit}
+                for p in (*forces.ARMED_FORCES, *forces.CAPFS)
+            ],
+        }
+
+
+    @app.post("/api/me/{pid}/assessment")
+    def submit_assessment(
+        pid: str,
+        request: Request,
+        payload: dict,
+        principal: Principal = Depends(_principal),
+    ):
+        """A self-assessment, submitted by the person, decided immediately.
+
+        Until this route existed the wellness questionnaire computed a score in
+        the browser and sent it nowhere. A jawan could complete PHQ-9, see a
+        band, and nothing whatsoever happened — no record, no re-decision, and
+        no case for a welfare officer. That is the single most important input
+        the system has (self-report is the only T1 domain) and it was inert.
+
+        Three things happen here, in this order, and the order matters.
+
+        1. **The acute item is handled first.** PHQ-9 item 9 asks about
+           thoughts of self-harm. If it fired, `pipeline.acute.submit` routes
+           straight to the mental-health authority and **bypasses every gate** —
+           before any arithmetic about evidence or persistence. Someone at risk
+           today does not wait for a persistence window.
+        2. **The response is scored on the server.** The browser's arithmetic is
+           never trusted for a clinical instrument: a client that miscounts, or
+           a crafted request, must not be able to invent a total.
+        3. **The case is decided again** against the same evidence the night
+           used, with the new self-report deviation folded in.
+
+        What this route deliberately does **not** do is guarantee a case. One
+        domain alone can never clear the evidence gate — that is the arithmetic,
+        not a policy this endpoint may override — so a high score from somebody
+        with no other deviating domain correctly produces no name. The response
+        says so explicitly, and says what would change it, because a person who
+        completes a questionnaire and sees nothing happen deserves to know
+        whether the system heard them.
+        """
+        if principal.role != "personnel":
+            raise HTTPException(status_code=403, detail="personnel only")
+        if principal.subject_id not in (pid, "SELF"):
+            raise HTTPException(status_code=403, detail="you may only submit your own")
+
+        state = st(request)
+        run = _require_run(state)
+
+        consent = state.consent.state_for(pid)
+        if "self_report" not in getattr(consent, "scope", ()):  # pragma: no branch
+            raise HTTPException(
+                status_code=403,
+                detail=(
+                    "this needs your consent to the self-report domain. Turn it on "
+                    "under 'What I allow' first."
+                ),
+            )
+
+        instrument = str(payload.get("instrument", "PHQ9"))
+        raw_items = payload.get("items") or payload.get("answers") or []
+        if not isinstance(raw_items, list) or len(raw_items) != 9 or instrument != "PHQ9":
+            raise HTTPException(
+                status_code=422,
+                detail="expected 9 PHQ-9 item scores, each 0 to 3",
+            )
+        try:
+            answers = [int(v) for v in raw_items]
+        except (TypeError, ValueError) as exc:
+            raise HTTPException(status_code=422, detail="item scores must be integers") from exc
+        if any(v < 0 or v > 3 for v in answers):
+            raise HTTPException(status_code=422, detail="each item score must be 0 to 3")
+
+        response = InstrumentResponse(
+            pid=pid,
+            instrument="PHQ9",
+            taken_at=datetime.now(UTC),
+            items={f"item_{i + 1}": v for i, v in enumerate(answers)},
+            # Scored here, not in the browser.
+            total=sum(answers),
+            cutoff=PHQ9_CUTOFF,
+        )
+
+        record = next((c for c in run.cases if c.pid == pid), None)
+        if record is None or record.ctx is None:
+            raise HTTPException(
+                status_code=409,
+                detail=(
+                    "no screening context for this person in the current run, so "
+                    "there is no baseline to decide against. A person has to be "
+                    "enrolled and screened before a self-assessment can change a "
+                    "verdict."
+                ),
+            )
+
+        before = record.verdict.decision if record.verdict else "NONE"
+
+        # --- 1. acute first, before any gate arithmetic ------------------
+        route, note = acute.submit(response, record.ctx, state.ledger)
+
+        # --- 2. fold the self-report in and decide again -----------------
+        # Through the shared helper, which the journal replay also calls, so a
+        # restored assessment is decided by exactly this arithmetic.
+        rebuild_with_assessment(
+            state, pid,
+            total=response.total, cutoff=response.cutoff, acute=bool(route),
+        )
+        verdict = next(c for c in run.cases if c.pid == pid).verdict
+
+        state.ledger.append(
+            actor=f"personnel:{pid}",
+            action="assessment.submitted",
+            subject_pid=pid,
+            unit_id=record.unit_id,
+            purpose="welfare:self",
+            # The total and the band, never the item answers. An officer may
+            # not see raw psychometric responses and neither may the ledger.
+            detail={
+                "instrument": response.instrument,
+                "total": response.total,
+                "cutoff": response.cutoff,
+                "acute": bool(route),
+                "decision_before": before,
+                "decision_after": verdict.decision,
+            },
+        )
+
+        if state.journal:
+            # The score and whether an acute item fired. Never the nine item
+            # answers — an officer may not see raw psychometric responses, the
+            # ledger does not hold them, and neither does this.
+            state.journal.record("assessment.submitted", pid, {
+                "instrument": response.instrument,
+                "total": response.total,
+                "cutoff": response.cutoff,
+                "acute": bool(route),
+            })
+
+        return {
+            "pid": pid,
+            "total": response.total,
+            "cutoff": response.cutoff,
+            "acute": bool(route),
+            "acute_route": None if route is None else {
+                "routed_to": route.routed_to,
+                "acknowledge_by": route.acknowledge_by.isoformat(),
+                "message": route.shown_to_person,
+                # `HELP_RESOURCES` is (who, how) pairs, matching how
+                # `voice_routes` already renders them.
+                "resources": [
+                    {"who": who, "how": how} for who, how in route.resources
+                ],
+            },
+            "note": note,
+            "decision_before": before,
+            "decision": verdict.decision,
+            "named_to_an_officer": verdict.names_a_person,
+            "gates": [
+                {
+                    "name": name,
+                    "value": round(g.value, 4),
+                    "threshold": g.threshold,
+                    "passed": g.passed,
+                    "formula": g.formula,
+                }
+                for name, g in verdict.gates.items()
+            ],
+            "mind_change": [
+                {
+                    "gate": m.gate,
+                    "current": round(m.current, 4),
+                    "required": m.required,
+                    "would_change_if": list(m.would_change_if),
+                }
+                for m in verdict.mind_change
+            ],
+        }
+
+
+    @app.get("/api/me/whoami")
+    def whoami(request: Request, principal: Principal = Depends(_principal)):
+        """Which pid the signed-in person is, for the personnel console.
+
+        In a deployment this route does not exist: the pid comes from the
+        person's own token and the console never has to ask. It exists because
+        REPLAY has no sign-in — the console holds a role, not an identity — and
+        a screen that shows somebody their own drivers needs to know who they
+        are.
+
+        **Refused outside replay mode**, and that is the whole safety argument.
+        A route that hands out a resolvable pid on request would be a way to
+        enumerate the cohort, so it is available exactly where the cohort is
+        synthetic and nowhere else.
+
+        It prefers a MONITOR case over an escalated one. An already-escalated
+        person makes the self-assessment demonstration circular — they were
+        going to appear on the officer's screen regardless, so submitting a
+        questionnaire would prove nothing.
+        """
+        if principal.role != "personnel":
+            raise HTTPException(status_code=403, detail="personnel only")
+        if settings().mode != "replay":
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    "not available outside replay mode — the pid comes from the "
+                    "person's own token"
+                ),
+            )
+        state = st(request)
+        run = _require_run(state)
+
+        # Sticky. Whoever this console last acted as, it stays as — a
+        # correctness fix rather than a convenience.
+        #
+        # This used to return "the first MONITOR case", recomputed on every
+        # call. So the moment somebody submitted an acute assessment and their
+        # case escalated, they stopped being a MONITOR case, and the next page
+        # load handed the console a *different person* — whose consent had
+        # never been granted. The symptom was a voice sitting refused for want
+        # of consent seconds after consent was saved, which reads as the
+        # persistence having failed when it had in fact worked perfectly, for
+        # somebody the console was no longer being.
+        #
+        # The journal remembers who that was, so this survives a restart too.
+        # In a deployment none of it exists: the pid comes from the person's own
+        # token and cannot drift.
+        if state.journal is not None:
+            events = state.journal.replay()
+            if events:
+                case = next(
+                    (c for c in run.cases if c.pid == events[-1].pid), None
+                )
+                if case is not None:
+                    return {
+                        "pid": case.pid,
+                        "unit_id": case.unit_id,
+                        "decision": case.decision,
+                        "replay_shim": True,
+                        "sticky": True,
+                    }
+
+        # Sorted by unit, so the console lands in the lowest-numbered unit.
+        # Unsorted, this returned whichever MONITOR case happened to come first
+        # in the run — often CRPF-04 — and a demonstrator would submit an acute
+        # assessment, watch it escalate correctly, and see nothing appear on the
+        # welfare officer's screen. That was unit scoping working exactly as it
+        # should (an officer responsible for CRPF-01 has no business seeing a
+        # CRPF-04 jawan), but it makes for a baffling walkthrough. Picking the
+        # first unit puts the person inside the demo officer's scope without
+        # relaxing any boundary.
+        monitored = sorted(
+            (c for c in run.cases if c.decision == "MONITOR" and c.ctx),
+            key=lambda c: (c.unit_id, c.pid),
+        )
+        chosen = monitored[0] if monitored else (run.cases[0] if run.cases else None)
+        if chosen is None:
+            raise HTTPException(status_code=503, detail="no cases in the current run")
+        return {
+            "pid": chosen.pid,
+            "unit_id": chosen.unit_id,
+            "decision": chosen.decision,
+            "replay_shim": True,
+        }
+
     @app.get("/api/health")
     def health(request: Request):
         state = st(request)
@@ -139,14 +603,33 @@ def create_app(state: AppState | None = None) -> FastAPI:
     @app.get("/api/caseload")
     def caseload(request: Request, principal: Principal = Depends(_principal)):
         """ESCALATE cases only. No identity — that needs a separate, logged act."""
-        if principal.role != "welfare_officer":
-            raise HTTPException(status_code=403, detail="welfare officers only")
+        if principal.role not in ("welfare_officer", "mental_health_authority"):
+            raise HTTPException(
+                status_code=403,
+                detail="welfare officers and the mental-health authority only",
+            )
+        # Through `check()` rather than filtering inline, so the unit rule lives
+        # in one place. This route used to do its own `if not
+        # principal.unit_scope or ...`, which — like the rule it duplicated —
+        # read every unit when the scope was empty. Two copies of an
+        # authorisation rule is one copy too many, and it was the copy nobody
+        # was looking at that failed open.
+        try:
+            rbac_check(principal, "welfare:screening")
+        except Denied as exc:
+            raise HTTPException(status_code=403, detail=str(exc)) from exc
+
         state = st(request)
         run = _require_run(state)
-        cases = [
-            c for c in run.caseload()
-            if not principal.unit_scope or c.unit_id in principal.unit_scope
-        ]
+
+        if principal.role == "mental_health_authority":
+            # Only the acute referrals, and force-wide rather than by unit. An
+            # acute disclosure routes to a clinician centrally; scoping it to a
+            # battalion would mean a jawan's referral depends on which unit
+            # happened to have a clinician assigned.
+            cases = [c for c in run.caseload() if c.verdict and c.verdict.override]
+        else:
+            cases = [c for c in run.caseload() if c.unit_id in principal.unit_scope]
         escalated = tuple(c.pid for c in cases)
         return {
             "headline": run.headline,
@@ -175,8 +658,19 @@ def create_app(state: AppState | None = None) -> FastAPI:
 
     @app.get("/api/case/{pid}")
     def case_detail(pid: str, request: Request, principal: Principal = Depends(_principal)):
-        if principal.role != "welfare_officer":
-            raise HTTPException(status_code=403, detail="welfare officers only")
+            # The mental-health authority acts on the acute cases it is
+            # routed, so it has to be able to record contact and a close-out.
+            # This is route access, not a re-identification grant: it already
+            # resolved the identity under `welfare:acute`, and adding
+            # `welfare:contact` to its grants would have widened the set of
+            # (role, purpose) pairs that may ever produce a name from three to
+            # four. A test guards that number precisely so this cannot be done
+            # by accident.
+        if principal.role not in ("welfare_officer", "mental_health_authority"):
+            raise HTTPException(
+                status_code=403,
+                detail="welfare officers and the mental-health authority only",
+            )
         state = st(request)
         run = _require_run(state)
         case = next((c for c in run.cases if c.pid == pid), None)
@@ -198,8 +692,19 @@ def create_app(state: AppState | None = None) -> FastAPI:
         conversation is never written to this system — if clinical detail needs
         recording it belongs in the medical record, behind a different authority.
         """
-        if principal.role != "welfare_officer":
-            raise HTTPException(status_code=403, detail="welfare officers only")
+            # The mental-health authority acts on the acute cases it is
+            # routed, so it has to be able to record contact and a close-out.
+            # This is route access, not a re-identification grant: it already
+            # resolved the identity under `welfare:acute`, and adding
+            # `welfare:contact` to its grants would have widened the set of
+            # (role, purpose) pairs that may ever produce a name from three to
+            # four. A test guards that number precisely so this cannot be done
+            # by accident.
+        if principal.role not in ("welfare_officer", "mental_health_authority"):
+            raise HTTPException(
+                status_code=403,
+                detail="welfare officers and the mental-health authority only",
+            )
         state = st(request)
         when = state.book.record_contact(pid, principal, state.ledger)
         state.alerts.deliver(pid, state.ledger)
@@ -223,8 +728,19 @@ def create_app(state: AppState | None = None) -> FastAPI:
         training metric describes data the model was fitted to, and an officer
         typing `not_supported` describes what happened to a real jawan.
         """
-        if principal.role != "welfare_officer":
-            raise HTTPException(status_code=403, detail="welfare officers only")
+            # The mental-health authority acts on the acute cases it is
+            # routed, so it has to be able to record contact and a close-out.
+            # This is route access, not a re-identification grant: it already
+            # resolved the identity under `welfare:acute`, and adding
+            # `welfare:contact` to its grants would have widened the set of
+            # (role, purpose) pairs that may ever produce a name from three to
+            # four. A test guards that number precisely so this cannot be done
+            # by accident.
+        if principal.role not in ("welfare_officer", "mental_health_authority"):
+            raise HTTPException(
+                status_code=403,
+                detail="welfare officers and the mental-health authority only",
+            )
         state = st(request)
         try:
             record = state.book.close(
@@ -250,8 +766,19 @@ def create_app(state: AppState | None = None) -> FastAPI:
         principal: Principal = Depends(_principal),
     ):
         """Back to MONITOR with a reason. The reason is mandatory and logged."""
-        if principal.role != "welfare_officer":
-            raise HTTPException(status_code=403, detail="welfare officers only")
+            # The mental-health authority acts on the acute cases it is
+            # routed, so it has to be able to record contact and a close-out.
+            # This is route access, not a re-identification grant: it already
+            # resolved the identity under `welfare:acute`, and adding
+            # `welfare:contact` to its grants would have widened the set of
+            # (role, purpose) pairs that may ever produce a name from three to
+            # four. A test guards that number precisely so this cannot be done
+            # by accident.
+        if principal.role not in ("welfare_officer", "mental_health_authority"):
+            raise HTTPException(
+                status_code=403,
+                detail="welfare officers and the mental-health authority only",
+            )
         state = st(request)
         try:
             state.book.defer(pid, payload.get("reason", ""), principal, state.ledger)
@@ -272,8 +799,19 @@ def create_app(state: AppState | None = None) -> FastAPI:
         window, so the system stops being wrong about them in the same way next
         cycle. Without this every false positive is permanent.
         """
-        if principal.role != "welfare_officer":
-            raise HTTPException(status_code=403, detail="welfare officers only")
+            # The mental-health authority acts on the acute cases it is
+            # routed, so it has to be able to record contact and a close-out.
+            # This is route access, not a re-identification grant: it already
+            # resolved the identity under `welfare:acute`, and adding
+            # `welfare:contact` to its grants would have widened the set of
+            # (role, purpose) pairs that may ever produce a name from three to
+            # four. A test guards that number precisely so this cannot be done
+            # by accident.
+        if principal.role not in ("welfare_officer", "mental_health_authority"):
+            raise HTTPException(
+                status_code=403,
+                detail="welfare officers and the mental-health authority only",
+            )
         state = st(request)
         run = _require_run(state)
         kind = payload.get("kind", "")
@@ -408,6 +946,12 @@ def create_app(state: AppState | None = None) -> FastAPI:
             purpose="welfare:self",
             detail=receipt.to_ledger_detail(),
         )
+        if state.journal:
+            state.journal.record("consent.granted", pid, {
+                "scope": sorted(receipt.scope),
+                "welfare_contact": receipt.welfare_contact,
+                "locale": receipt.locale,
+            })
         return {
             "status": consent_state.status,
             "locale": receipt.locale,
@@ -541,6 +1085,12 @@ def create_app(state: AppState | None = None) -> FastAPI:
         # PART 8.12 criterion 1: an undelivered alert is cancelled, not just
         # marked. This is only possible because dispatch is deferred to 07:00.
         cancelled = state.alerts.cancel_for(pid, state.ledger)
+        # And the journal is erased, not flagged. A withdrawal that leaves a
+        # sealed questionnaire score and a voice sitting on disk has not erased
+        # anything — it has changed a boolean. The DPDP Act's erasure obligation
+        # reaches this table too, and `forget` overwrites and vacuums rather
+        # than unlinking.
+        forgotten = state.journal.forget(pid) if state.journal else 0
         state.ledger.append(
             actor=f"personnel:{pid}",
             action="consent.revoked",
@@ -552,6 +1102,7 @@ def create_app(state: AppState | None = None) -> FastAPI:
             "status": "REVOKED",
             "receipt": None,
             "alerts_cancelled": cancelled,
+            "journal_events_erased": forgotten,
         }
 
     @app.get("/api/unit/{unit_id}/heatmap")

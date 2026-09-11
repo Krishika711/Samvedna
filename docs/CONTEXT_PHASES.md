@@ -324,6 +324,92 @@ off**, so the option was present, correct, and irrelevant. Verified directly:
 
 ---
 
+## Phase 24 — The console became usable end to end (this phase)
+
+Four things a walkthrough found, none of which the 800-odd tests could see,
+because every one of them was a join between two parts that were each correct.
+
+- **DONE — the self-assessment sent nothing.** The form computed a band in the
+  browser and stopped. Self-report is the only T1 domain and it was inert.
+  Added `POST /api/me/{pid}/assessment`, scored on the server, with the acute
+  item handled *before* any gate arithmetic.
+- **DONE — "Save my choices" saved nothing.** Same shape: local receipt, no
+  request. Every toggle read "allowed", the button read SAVED, and the server
+  had never heard of it — so a submitted assessment was refused for want of
+  consent that appeared to have been given. Two surfaces disagreeing about
+  consent is the worst thing for them to disagree about.
+- **DONE — the officer console was scoped to units that no longer existed.**
+  Units gained their service abbreviation (`CRPF-01`) and the UI still asked
+  for `UNIT-01`, so the caseload was empty and nothing errored. Scopes now
+  derive from `/api/run`.
+- **DONE — the voice add-on could never be unlocked.** `/me` recorded voice
+  consent against the person's real pid; the voice routes asked whether
+  `"SELF"` had consented. The refusal told the person to do the thing they had
+  just done.
+
+**DONE — `whoami` was not sticky.** It returned "the first MONITOR case", so
+submitting an acute assessment escalated you out of the set and the next page
+load handed the console a different person. Every symptom above looked like
+persistence failing when it had worked perfectly for somebody the console was
+no longer being.
+
+---
+
+## Phase 25 — Persistence, and the gate bug it exposed (this phase)
+
+- **DONE** `db/journal.py` — an append-only event journal (consent,
+  assessments, voice sittings), sealed with the same AES-256-GCM and key
+  custody as the identity directory, replayed at startup. **It stores inputs,
+  never derived verdicts**, so a threshold change in `config/` reaches
+  somebody already decided.
+- **DONE** Erasure reaches it: withdrawal deletes the rows and vacuums.
+- **DONE** Degrades to nothing — no crypto library, no key, or
+  `persist_state=False` and the system runs exactly as before.
+- **DONE — the persistence gate treated *absent* as *zero*.** A domain with no
+  history for a window contributed nothing to the numerator and its full
+  weight to the denominator, diluting every domain that did have history. A
+  jawan submitting a severe self-assessment pushed their own persistence from
+  0.650 (passing) to 0.505 (failing) — **reporting distress made the system
+  less likely to act.** Twelve of 125 monitored cases flipped that way.
+- **DONE — and `_with_self_report` was destroying history.** 52 of 125 cases
+  already carried self-report history; it was replaced rather than merged.
+  `{7: 1.0, 30: 1.0, 90: 0.656}` became `{7: 1.0}`.
+- **DONE** The correct model came from the instrument: **PHQ-9 asks "over the
+  last 2 weeks"**, so a breaching score is a statement about a fortnight, not
+  a day. Recording it as "1 day in 7" understated what was asked. Two earlier
+  attempts at the fix were wrong in opposite directions and are documented at
+  the call site.
+- **Result:** no gate now ever flips PASS→FAIL from submitting, persistence
+  never falls, and the published calibration figures are unchanged — in those
+  rows every domain has all three windows, so the new rule reduces to the old
+  formula exactly. There is a test asserting that.
+
+---
+
+## Phase 26 — Transfer, split, and the copilot brief (this phase)
+
+- **DONE — a browser tab broke `run.sh`.** `lsof -ti :3100` returns every
+  socket on the port, and an open console tab contributes an ESTABLISHED
+  client socket owned by Chrome — so with the dev server running normally,
+  `--status` reported the port "held by something that is not ours" and
+  `--stop` refused to free it. Fixed with `-sTCP:LISTEN` behind a single
+  `listeners_on()` helper, because two call sites are two chances to forget.
+  `tests/core/test_shell_discipline.py` now fails on a port query without the
+  flag, and on a second definition of it.
+- **DONE** `tools/mailsafe.py --split N` and `--merge`. Every part carries the
+  **whole-file** checksum, not its own: the only question after a merge is
+  whether the reassembled file is the one that was sent, and a per-part
+  checksum cannot answer it. A wrong merge can still unzip partially, which is
+  worse than failing outright.
+- **DONE** `tools/export_dataset.py` — the cohort as CSV for judges, with
+  `latent_strain` beside `label_positive` so the circularity is visible by
+  sorting two columns. Records are sampled: the full set is 3.1 million rows
+  and 250 MB, which would fail the archive's own size check.
+- **DONE** `TRANSFER.md` — sending, receiving, merging, and briefing an AI
+  assistant, including the five things one will get wrong unless told.
+
+---
+
 ## Open
 
 Everything here needs something this project does not have, and none of it can
@@ -332,7 +418,8 @@ be closed by writing more code.
 | # | What | Why it is open |
 |--:|---|---|
 | 1 | **Validation on real cohort data** | There is no real dataset. The cohort is generated from seed 26186 and the training label is `strain >= 0.55`, which is circular — the model learns the generator. Any accuracy figure from it measures the generator, not the world. The model card is stamped `synthetic: true`. Needs an ethics approval and a data-sharing agreement, not an afternoon. |
-| 2 | **Clinical instrument licensing** | PHQ-9 is implemented with real items and real scoring. Validated translations cannot be invented; the locale files refuse to serve an instrument translation that has not been supplied. Needs the licence holder. |
+| 2 | **Persist the audit ledger** | State survives a restart; the ledger does not — it is rebuilt from the nightly run, so human actions taken before a restart are absent. Journal the entries with their original timestamps and hashes so the chain verifies across processes. About an hour, and the only known gap in the restart story. |
+| 3 | **Clinical instrument licensing** | PHQ-9 is implemented with real items and real scoring. Validated translations cannot be invented; the locale files refuse to serve an instrument translation that has not been supplied. Needs the licence holder. |
 | 3 | **Threshold calibration against a real welfare cell** | The operating point should be set by how many conversations a specific cell can hold. The dial is exposed and the curve is measured; the decision is a command one. |
 | 4 | **Feature-store tables on TimescaleDB** | The identity, ledger and consent tables are built and encrypted (`db/store.py`). The *feature store* is still in-memory: it is the volume that wants TimescaleDB's compression and continuous aggregates, and a half-tuned hypertable definition would be worse than the seam. REPLAY keeps an in-memory synthetic directory by default, because no demonstration may depend on live service-record access. |
 | 5 | **Multi-core benchmark** | The parallel claim is arithmetic from the measured linear per-person cost, not a measured multi-core run. |

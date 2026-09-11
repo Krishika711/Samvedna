@@ -53,6 +53,20 @@ EXCLUDE_SUFFIXES = {
     ".pyc", ".pyo", ".so", ".dylib", ".log", ".db", ".sqlite", ".tsbuildinfo",
 }
 
+# Databases and every sidecar they write, matched on a substring rather than a
+# suffix.
+#
+# A suffix set cannot do this: `Path("samvedna.db-wal").suffix` is `".db-wal"`,
+# not `".db"`, so the write-ahead log and the shared-memory file sailed past a
+# filter that was correctly excluding the database itself. Both shipped in an
+# archive — 103 KB of WAL and 32 KB of shm. This particular WAL happened to be
+# checkpointed and held nothing, and that is luck: a write-ahead log exists
+# precisely to hold writes the main file has not taken yet, which here means
+# sealed questionnaire scores and voice medians.
+#
+# Substring, so a sidecar convention nobody has invented yet is still caught.
+EXCLUDE_CONTAINING = (".db", ".sqlite")
+
 # File types mail gateways commonly block outright.
 BLOCKED_SUFFIXES = {
     ".exe", ".dll", ".bat", ".cmd", ".com", ".scr", ".msi", ".jar", ".vbs",
@@ -71,6 +85,9 @@ def _included() -> list[Path]:
         if any(part in EXCLUDE_DIRS for part in rel.parts):
             continue
         if path.name in EXCLUDE_NAMES or path.suffix.lower() in EXCLUDE_SUFFIXES:
+            continue
+        lowered = path.name.lower()
+        if any(marker in lowered for marker in EXCLUDE_CONTAINING):
             continue
         out.append(path)
     return sorted(out)

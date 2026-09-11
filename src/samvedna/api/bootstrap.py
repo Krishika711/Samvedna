@@ -16,6 +16,7 @@ from samvedna.analytics.reviewers.panel import Panel
 from samvedna.api.app import AppState
 from samvedna.config.flags import settings
 from samvedna.config.weights import ALL_DOMAINS
+from samvedna.db.journal import open_journal
 from samvedna.disclosure.reidentify import Identity
 from samvedna.ingest.connectors.replay import connectors_for
 from samvedna.ingest.generator import Force, generate_force
@@ -40,6 +41,81 @@ def _identity_for(index: int, person) -> Identity:
         rank=person.rank,
         unit_id=person.unit_id,
         contact=f"{person.unit_id} exchange, ext {4000 + (index % 900)}",
+    )
+
+
+def _replay_journal(state: AppState) -> dict[str, int]:
+    """Re-apply what people did, through the same code paths as the first time.
+
+    Order matters and is the reason this is a loop over events rather than three
+    passes: a person may grant consent, submit an assessment, then narrow their
+    consent again, and applying all the consents before all the assessments
+    would decide their case under permissions they had since withdrawn.
+
+    Verdicts are **recomputed, not restored**. The journal holds the score and
+    the acute flag; the gates run again here against whatever `config/` now
+    says. Storing the verdict instead would mean a governance-approved
+    threshold change silently failed to apply to anybody already decided.
+    """
+    journal = state.journal
+    if journal is None:
+        return {}
+
+    applied: dict[str, int] = {}
+
+    def bump(kind: str) -> None:
+        applied[kind] = applied.get(kind, 0) + 1
+
+    for event in journal.replay():
+        pid, payload = event.pid, event.payload
+        try:
+            if event.kind == "consent.granted":
+                state.consent.enrol_with_receipt(
+                    pid,
+                    tuple(payload.get("scope", ())),
+                    welfare_contact=bool(payload.get("welfare_contact", False)),
+                    locale=str(payload.get("locale", "en")),
+                    pilot_mode=settings().consent_pilot_mode,
+                )
+                bump(event.kind)
+
+            elif event.kind == "consent.withdrawn":
+                state.consent.revoke(pid)
+                bump(event.kind)
+
+            elif event.kind == "assessment.submitted":
+                if _reapply_assessment(state, pid, payload):
+                    bump(event.kind)
+
+            elif event.kind == "voice.sitting":
+                kept = payload.get("kept") or {}
+                if kept:
+                    # Straight into the history the next sitting compares
+                    # against. Without this a restart made everybody a
+                    # first-time speaker and `baseline_shift` had nothing to
+                    # work with — the one reading that needs more than today.
+                    state.voice.restore(pid, kept)
+                    bump(event.kind)
+        except Exception:
+            # One unreplayable event must not stop the process from starting.
+            # It stays on disk for an auditor; the rest of the journal applies.
+            continue
+
+    return applied
+
+
+def _reapply_assessment(state: AppState, pid: str, payload: dict) -> bool:
+    """Re-decide one case with a recorded self-report folded back in."""
+    from samvedna.api.app import rebuild_with_assessment
+
+    if state.run is None:
+        return False
+    return rebuild_with_assessment(
+        state,
+        pid,
+        total=int(payload.get("total", 0)),
+        cutoff=int(payload.get("cutoff", 10)),
+        acute=bool(payload.get("acute", False)),
     )
 
 
@@ -106,4 +182,17 @@ def build_state(
         model_dir=model_dir or settings().model_dir,
         drift_exceeded=drift,
     )
+    # Persistence last, and after the run, deliberately. The journal replays
+    # onto cases that already have a screening context, so the nightly run has
+    # to have happened first — an assessment cannot be re-decided against a
+    # baseline that does not exist yet.
+    state.journal = open_journal(settings())
+    if state.journal is not None:
+        applied = _replay_journal(state)
+        if applied:
+            print(
+                "  restored: "
+                + ", ".join(f"{n} {kind}" for kind, n in sorted(applied.items()))
+            )
+
     return state, force

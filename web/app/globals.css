@@ -8,11 +8,40 @@
  * ============================================================================
  */
 :root {
-  --brand-deep:   #16243D;  /* structural authority — header, hero, footers   */
-  --brand-mid:    #24406E;  /* interactive structure — active nav, links      */
-  --brand-accent: #E0571C;  /* the single action colour — buttons, emphasis   */
-  --brand-tint:   #F0F3F7;  /* the ground everything sits on                  */
+  --brand-deep:   #123262;  /* structural authority — header, hero, footers   */
+  --brand-mid:    #1F5199;  /* interactive structure — active nav, links      */
+  --brand-accent: #D4611A;  /* the single action colour — buttons, emphasis   */
+  --brand-tint:   #F4F2EC;  /* the ground everything sits on                  */
 }
+
+/*
+ * National palette, drawn from the tiranga and from Indian government service
+ * convention: deep Ashoka blue for structure, a deeper saffron for action, and
+ * India green carrying the semantic "clear". The ground is a warm off-white
+ * rather than a cool one, so the saffron and green sit on paper rather than on
+ * screen-grey.
+ *
+ * Three deliberate restraints.
+ *
+ * **No flag, and no Ashoka Chakra.** The Flag Code of India and the Prevention
+ * of Insults to National Honour Act, 1971 govern how the national flag and its
+ * emblems may be used, and a welfare dashboard has no business rendering
+ * either as ornament. Drawing on the palette is ordinary practice across
+ * Indian government digital services; depicting the flag to decorate a
+ * console is not, and it would also be in poor taste on a screen whose subject
+ * is a soldier in difficulty.
+ *
+ * **Saffron is deepened, not used at flag value.** #FF9933 at full strength
+ * cannot carry legible white text and, used across a whole interface, reads as
+ * a sports kit. #D4611A holds the same identity at interface weight.
+ *
+ * **The accent still may not be amber.** A gate that does not clear is AMBER,
+ * and an accent in that family would make "act on this" and "this did not
+ * clear" the same colour on the one screen where the difference decides whether
+ * a person gets named. Saffron-orange sits clearly apart from the amber below —
+ * the same separation every previous palette here kept, so an operator who
+ * learned one reads the next.
+ */
 
 /*
  * Colour is spent by role, not decoration. One accent, used sparingly enough
@@ -26,31 +55,36 @@
  */
 :root {
   --paper:     var(--brand-tint);
-  --paper-2:   #E3E9F1;
-  --card:      #FFFFFF;
-  --rule:      #C9D3E0;
-  --rule-soft: #DFE6EF;
+  --paper-2:   #E5E2D8;
+  --card:      #FFFDF8;
+  --rule:      #C7C3B6;
+  --rule-soft: #DCD8CE;
 
-  --ink:       #14203A;
-  --ink-2:     #46556F;
-  --ink-3:     #74819A;
-  --on-deep:   #F3F6FA;
-  --on-deep-2: #A9BAD4;
+  --ink:       #16202E;
+  --ink-2:     #445061;
+  --ink-3:     #767F8C;
+  --on-deep:   #F2F5FA;
+  --on-deep-2: #A9BCD8;
 
   --accent:      var(--brand-accent);
-  --accent-ink:  #A63A0E;
-  --accent-soft: #FCEBE1;
+  --accent-ink:  #9C440E;
+  --accent-soft: #FAE7D9;
 
   --deep:      var(--brand-deep);
   --mid:       var(--brand-mid);
-  --mid-soft:  #E4EAF4;
+  --mid-soft:  #E1E8F2;
 
-  --pass:      #14724A;
-  --pass-soft: #DEF0E7;
-  --hold:      #A9670A;
-  --hold-soft: #FBEDD6;
-  --stop:      #B3271C;
-  --stop-soft: #FBE4E1;
+  /* Semantic colour, separate from the accent and never borrowed for emphasis.
+   * `hold` stays amber: in this system a gate refusing to clear is usually the
+   * correct answer — the machine declining to accuse somebody — and painting
+   * that red would tell the reader the opposite of what happened. */
+  /* India green, darkened to hold text. */
+  --pass:      #14701C;
+  --pass-soft: #DDEEDC;
+  --hold:      #8D6207;
+  --hold-soft: #F6EBCF;
+  --stop:      #A33526;
+  --stop-soft: #F7E1DC;
 
   /* System stacks, and this is a deployment decision rather than a taste one.
    * A webfont CDN link fails in an on-premise force data centre with no
@@ -73,42 +107,42 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper:     #0E1626;
-    --paper-2:   #16223A;
-    --card:      #16223A;
-    --rule:      #2A3A57;
-    --rule-soft: #223047;
-    --ink:       #EAF0F8;
-    --ink-2:     #AEBDD3;
-    --ink-3:     #7B8CA8;
-    --on-deep:   #EAF0F8;
-    --on-deep-2: #9DB0CC;
-    --accent:      #FF7A3D;
-    --accent-ink:  #FFA377;
-    --accent-soft: #35200F;
-    --deep:      #0A1120;
-    --mid:       #4E7ACB;
-    --mid-soft:  #1B2942;
-    --pass:      #4FBF8B;
-    --pass-soft: #12291F;
-    --hold:      #E0A24C;
-    --hold-soft: #2E2211;
-    --stop:      #E8756A;
-    --stop-soft: #2F1714;
+    --paper:     #0B1220;
+    --paper-2:   #141D2E;
+    --card:      #141D2E;
+    --rule:      #29364B;
+    --rule-soft: #1F2A3C;
+    --ink:       #E9EEF6;
+    --ink-2:     #AEBBCE;
+    --ink-3:     #7C8A9E;
+    --on-deep:   #E9EEF6;
+    --on-deep-2: #9FB4D2;
+    --accent:      #F0813A;
+    --accent-ink:  #F8AB7C;
+    --accent-soft: #33190B;
+    --deep:      #071022;
+    --mid:       #5D96E0;
+    --mid-soft:  #16233A;
+    --pass:      #4CB85A;
+    --pass-soft: #10240F;
+    --hold:      #DDA544;
+    --hold-soft: #2C2210;
+    --stop:      #E37B6C;
+    --stop-soft: #2E1712;
     --shadow:    0 1px 2px rgba(0,0,0,0.4), 0 3px 10px rgba(0,0,0,0.3);
     --shadow-lg: 0 2px 4px rgba(0,0,0,0.45), 0 12px 32px rgba(0,0,0,0.4);
   }
 }
 :root[data-theme="dark"] {
-  --paper: #0E1626; --paper-2: #16223A; --card: #16223A;
-  --rule: #2A3A57; --rule-soft: #223047;
-  --ink: #EAF0F8; --ink-2: #AEBDD3; --ink-3: #7B8CA8;
-  --on-deep: #EAF0F8; --on-deep-2: #9DB0CC;
-  --accent: #FF7A3D; --accent-ink: #FFA377; --accent-soft: #35200F;
-  --deep: #0A1120; --mid: #4E7ACB; --mid-soft: #1B2942;
-  --pass: #4FBF8B; --pass-soft: #12291F;
-  --hold: #E0A24C; --hold-soft: #2E2211;
-  --stop: #E8756A; --stop-soft: #2F1714;
+  --paper: #0B1220; --paper-2: #141D2E; --card: #141D2E;
+  --rule: #29364B; --rule-soft: #1F2A3C;
+  --ink: #E9EEF6; --ink-2: #AEBBCE; --ink-3: #7C8A9E;
+  --on-deep: #E9EEF6; --on-deep-2: #9FB4D2;
+  --accent: #F0813A; --accent-ink: #F8AB7C; --accent-soft: #33190B;
+  --deep: #071022; --mid: #5D96E0; --mid-soft: #16233A;
+  --pass: #4CB85A; --pass-soft: #10240F;
+  --hold: #DDA544; --hold-soft: #2C2210;
+  --stop: #E37B6C; --stop-soft: #2E1712;
   --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 3px 10px rgba(0,0,0,0.3);
   --shadow-lg: 0 2px 4px rgba(0,0,0,0.45), 0 12px 32px rgba(0,0,0,0.4);
 }
@@ -475,11 +509,11 @@ table.heat th:first-child { text-align: left; }
   color: var(--ink-3); border-color: var(--rule);
 }
 :root[data-theme="dark"] .band-low,
-:root:not([data-theme="light"]) .band-low      { background: #24344F; color: var(--ink-2); }
+:root:not([data-theme="light"]) .band-low      { background: #24334C; color: var(--ink-2); }
 :root[data-theme="dark"] .band-moderate,
-:root:not([data-theme="light"]) .band-moderate { background: #4A3417; color: #E8BE8A; }
+:root:not([data-theme="light"]) .band-moderate { background: #4A3716; color: #E8C48A; }
 :root[data-theme="dark"] .band-high,
-:root:not([data-theme="light"]) .band-high     { background: #7A4415; color: #FFD9BB; }
+:root:not([data-theme="light"]) .band-high     { background: #784014; color: #FFD9BB; }
 
 /* ============================ voice ============================ */
 .wave { display: flex; align-items: flex-end; gap: 3px; height: 56px; }
@@ -679,3 +713,161 @@ table.heat th:first-child { text-align: left; }
 .card.fold[open] > summary::before { content: "▾"; }
 .card.fold[open] > summary { border-bottom: 1px solid var(--rule-soft); }
 .card.fold > *:not(summary) { padding: 0 18px 16px; }
+
+/*
+ * ============================================================================
+ * MAIN DASHBOARD  ·  the front door
+ * ============================================================================
+ * This used to be an explanation of the system, which now lives at /about.
+ * What sits here is a standing picture: what ran last night, whether the
+ * machinery is sound, and one door per role.
+ *
+ * The military register is carried by typography and structure rather than by
+ * ornament — wide-tracked mono labels the way field signage is set, chevrons
+ * where a list needs a marker, and deep olive blocks for anything structural.
+ * No camouflage, no stencil font, no insignia: this is a welfare system, and
+ * dressing it up as materiel would misrepresent what it does.
+ */
+
+/* ---- command banner ----------------------------------------------------- */
+.command {
+  position: relative;
+  background: var(--deep);
+  color: var(--on-deep);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 22px;
+}
+/* Two hairlines rather than one. A single rule reads as a border; a pair reads
+ * as a header band, which is what field documents use. */
+.command::after {
+  content: "";
+  position: absolute; inset: auto 0 0 0; height: 3px;
+  background: linear-gradient(to right,
+    var(--accent) 0 22%, transparent 22% 24%, var(--mid) 24% 100%);
+}
+.command-inner {
+  padding: 34px 34px 38px;
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 34px; align-items: center;
+}
+@media (max-width: 860px) { .command-inner { grid-template-columns: 1fr; gap: 22px; padding: 26px 22px 30px; } }
+
+.command .flash {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--on-deep-2);
+  display: flex; align-items: center; gap: 9px; margin: 0 0 14px;
+}
+.command .flash b { color: var(--accent); font-weight: 500; }
+.command h1 {
+  color: var(--on-deep); font-size: clamp(2.1rem, 4.6vw, 3.1rem);
+  letter-spacing: -0.018em; margin: 0;
+}
+.command .creed {
+  margin: 14px 0 0; max-width: 40ch; color: var(--on-deep-2);
+  font-size: 1.04rem;
+}
+.command .creed em { color: var(--on-deep); font-style: normal; font-weight: 600; }
+
+/* the standing figure, right of the banner */
+.standing {
+  border-left: 1px solid rgb(255 255 255 / 0.16);
+  padding-left: 30px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+@media (max-width: 860px) {
+  .standing { border-left: none; border-top: 1px solid rgb(255 255 255 / 0.16); padding: 18px 0 0; }
+}
+.standing .big {
+  font-family: var(--serif); font-size: clamp(3rem, 8vw, 4.4rem); font-weight: 600;
+  line-height: 0.94; color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.standing .of { font-size: 0.95rem; color: var(--on-deep-2); }
+.standing .of b { color: var(--on-deep); font-weight: 600; }
+.standing .note { font-size: 0.84rem; color: var(--on-deep-2); margin-top: 9px; }
+
+/* ---- section label with chevron ---------------------------------------- */
+.chev {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.17em;
+  text-transform: uppercase; color: var(--ink-3); margin: 0;
+}
+.chev::before {
+  content: "»"; color: var(--accent); font-size: 1rem; letter-spacing: 0;
+}
+
+/* ---- metric row --------------------------------------------------------- */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(146px, 1fr)); gap: 1px;
+           background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.metric { background: var(--card); padding: 16px 18px; display: flex; flex-direction: column; gap: 3px; }
+.metric .v {
+  font-family: var(--serif); font-size: 1.85rem; font-weight: 600; line-height: 1;
+  color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.metric .k {
+  font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.metric.lit  { background: var(--accent-soft); }
+.metric.lit .v { color: var(--accent-ink); }
+.metric.calm .v { color: var(--pass); }
+
+/* ---- stage strip: the pipeline as a live readout ----------------------- */
+.stages { display: flex; gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+          border-radius: 4px; overflow-x: auto; }
+.stage-cell {
+  background: var(--card); padding: 12px 14px; min-width: 116px; flex: 1;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.stage-cell .sn {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  color: var(--ink-3); text-transform: uppercase;
+}
+.stage-cell .st { font-size: 0.86rem; font-weight: 600; color: var(--ink); }
+.stage-cell .sv {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.stage-cell.decides { background: var(--mid-soft); }
+.stage-cell.decides .st { color: var(--mid); }
+.stage-cell.bad { background: var(--hold-soft); }
+
+/* ---- door cards --------------------------------------------------------- */
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: 14px; }
+.door {
+  background: var(--card); border: 1px solid var(--rule); border-radius: 4px;
+  border-top: 3px solid var(--rule);
+  padding: 18px 19px; display: flex; flex-direction: column; gap: 9px;
+  transition: box-shadow 0.14s ease, transform 0.14s ease;
+  color: inherit; text-decoration: none;
+}
+.door:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+.door h3 { font-size: 1.05rem; }
+.door .rank {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.door .can { font-size: 0.88rem; color: var(--ink-2); margin: 0; }
+.door .cant { font-size: 0.81rem; color: var(--ink-3); margin: 0; }
+.door .cant b { color: var(--ink-2); font-weight: 600; }
+.door .go {
+  margin-top: auto; padding-top: 10px;
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
+  color: var(--accent-ink); font-weight: 500;
+}
+
+/* ---- integrity panel ---------------------------------------------------- */
+.integrity { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.seal {
+  background: var(--paper-2); border-radius: 4px; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.seal .sk {
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.11em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.seal .sv { font-size: 0.94rem; font-weight: 600; color: var(--ink); }
+.seal .sv.ok { color: var(--pass); }
+.seal .sv.no { color: var(--stop); }
+.seal .hash {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3); word-break: break-all;
+}

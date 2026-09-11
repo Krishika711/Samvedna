@@ -10,6 +10,7 @@ import base64
 
 import numpy as np
 import pytest
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
 from samvedna.analytics.voice.acoustics import SAMPLE_RATE
@@ -349,3 +350,117 @@ def test_no_voice_route_reaches_an_external_service():
             names = [node.module.split(".")[0]]
         for name in names:
             assert name not in banned, f"voice_routes imports {name}"
+
+
+# ---------------------------------------------------------------------------
+# The pid the sitting belongs to.
+#
+# Voice was unreachable from the console for the same reason the
+# self-assessment had been inert: two surfaces using different identities for
+# the same person. `/me` recorded voice consent against the person's real pid;
+# this module then asked whether `"SELF"` — the console's operator id, not a
+# pid — had consented. It never had, so a sitting was refused however many
+# times the toggle was switched on, and the refusal told the person to do the
+# thing they had already done.
+#
+# Every test above passed throughout, because the `world` fixture enrols
+# `"SELF"` directly. That is a fair way to exercise this module and it cannot
+# see the join to the rest of the system, so these tests enrol a real pid and
+# act as `"SELF"`, which is what the browser actually does.
+# ---------------------------------------------------------------------------
+
+REAL_PID = "042b5c9578ceac8a1b173fe70e706770"
+
+
+@pytest.fixture
+def console():
+    """A state shaped like the running system: consent under a real pid."""
+    state = AppState()
+    state.consent.enrol(REAL_PID, ALL_DOMAINS, welfare_contact=True)
+    return TestClient(create_app(state)), state
+
+
+def test_a_sitting_opens_for_the_pid_the_consent_was_recorded_against(console):
+    client, _ = console
+    opened = client.post("/api/voice/session", headers=me(), json={"pid": REAL_PID})
+
+    assert opened.status_code == 200, opened.text
+    assert opened.json()["session_id"]
+
+
+def test_without_the_pid_it_still_refuses_and_says_why(console):
+    """The old behaviour, kept as a boundary rather than a regression.
+
+    With no pid the route falls back to the operator id, which is not enrolled.
+    Refusing is right; the fix was giving the console a way to say who it means.
+    """
+    client, _ = console
+    refused = client.post("/api/voice/session", headers=me(), json={})
+
+    assert refused.status_code == 403
+    assert "voice domain" in refused.json()["detail"]
+
+
+def test_voice_consent_is_still_separate_from_everything_else(console):
+    """Allowing every other domain must not smuggle in the recording."""
+    client, state = console
+    state.consent.enrol(
+        REAL_PID,
+        tuple(d for d in ALL_DOMAINS if d != "voice"),
+        welfare_contact=True,
+    )
+
+    refused = client.post("/api/voice/session", headers=me(), json={"pid": REAL_PID})
+    assert refused.status_code == 403
+    assert "voice domain" in refused.json()["detail"]
+
+
+def test_the_whole_sitting_works_under_the_resolved_pid(console):
+    """Open, push a window, speak, close — as the browser does it."""
+    client, _ = console
+    session_id = client.post(
+        "/api/voice/session", headers=me(), json={"pid": REAL_PID}
+    ).json()["session_id"]
+
+    audio = client.post(
+        f"/api/voice/{session_id}/audio", headers=me(),
+        json={"pcm16": pcm16(strained=True), "at_ms": 0},
+    )
+    assert audio.status_code == 200, audio.text
+
+    said = client.post(
+        f"/api/voice/{session_id}/utterance", headers=me(),
+        json={"text": "I am fine, no problems at all", "at_ms": 1000,
+              "source": "typed"},
+    )
+    assert said.status_code == 200, said.text
+
+    closed = client.post(f"/api/voice/{session_id}/close", headers=me(), json={})
+    assert closed.status_code == 200, closed.text
+    assert closed.json()["windows_measured"] >= 1
+
+
+def test_the_self_allowance_is_confined_to_replay_mode(monkeypatch):
+    """It is a shim for a console with no sign-in, not a way in.
+
+    In a deployment `subject_id` is the pid, from the person's own token, so a
+    mismatch must be refused. Ungated, the shim would let anybody open a
+    sitting as any pid they could name.
+    """
+    import samvedna.api.voice_routes as vr
+    from samvedna.disclosure.rbac import Principal
+
+    principal = Principal(subject_id="SELF", role="personnel")
+
+    # Replay: the shim applies.
+    assert vr._resolve_pid(principal, "somebody-else") == "somebody-else"
+    assert vr._owns(principal, "somebody-else") is True
+
+    # Live: it does not.
+    live = vr.settings().model_copy(update={"mode": "live"})
+    monkeypatch.setattr(vr, "settings", lambda: live)
+
+    with pytest.raises(HTTPException) as caught:
+        vr._resolve_pid(principal, "somebody-else")
+    assert caught.value.status_code == 403
+    assert vr._owns(principal, "somebody-else") is False

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Guard } from "@/components/Shell";
 import { api } from "@/lib/api";
+import { useService } from "@/lib/useService";
 import { useSession } from "@/lib/session";
 import type { UnitView } from "@/lib/types";
 
@@ -39,6 +40,7 @@ export default function UnitConsolePage() {
 
 function UnitConsole() {
   const { session, actor } = useSession();
+  const { service } = useService();
   const unitId = (actor?.units || "UNIT-01").split(",")[0].trim();
 
   const [view, setView] = useState<UnitView | null>(null);
@@ -69,14 +71,16 @@ function UnitConsole() {
     <>
       <div className="console-head">
         <div>
-          <p className="eyebrow">{unitId} · aggregate view · {view.as_of}</p>
+          <p className="eyebrow">
+            {service.unit} {unitId} · aggregate view · {view.as_of}
+          </p>
           <h1 style={{ fontSize: "1.85rem" }}>Unit strain</h1>
         </div>
         <div className="spacer" />
         <div className="kpi-row">
           <div className={`kpi ${attention.length ? "kpi-alert" : ""}`}>
             <span className="kpi-n num">{attention.length}</span>
-            <span className="kpi-k">cells raised</span>
+            <span className="kpi-k">{service.sub_unit.toLowerCase()}s raised</span>
           </div>
           <div className="kpi">
             <span className="kpi-n num">{heat.suppressed}</span>
@@ -108,7 +112,9 @@ function UnitConsole() {
         {/* ---- the matrix ---- */}
         <div className="card">
           <div className="row">
-            <h2 style={{ fontSize: "1.05rem", margin: 0 }}>Sub-unit × domain</h2>
+            <h2 style={{ fontSize: "1.05rem", margin: 0 }}>
+              {service.sub_unit} × domain
+            </h2>
             <span className="spacer" />
             <button className="ghost" onClick={() => { setRefreshes((r) => r + 1); load(); }}>
               Refresh
@@ -118,7 +124,7 @@ function UnitConsole() {
             <table className="matrix">
               <thead>
                 <tr>
-                  <th>Sub-unit</th>
+                  <th>{service.sub_unit}</th>
                   {heat.domains.map((d) => (
                     <th key={d}>{d.replace(/_/g, " ")}</th>
                   ))}

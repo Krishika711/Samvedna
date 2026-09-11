@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DEFAULT_SESSION, api } from "@/lib/api";
+import { DEFAULT_SESSION, api, sessionForRun } from "@/lib/api";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 /**
@@ -25,8 +25,11 @@ export function MyDrivers() {
   useEffect(() => {
     // In a deployment the pid comes from the person's own token. In REPLAY the
     // console asks the run for one so the screen has something real to show.
-    api
-      .caseload(DEFAULT_SESSION.welfare_officer)
+    // Scoped to the run's real units. This used to pass an unscoped officer
+    // session, which the API answered because an empty scope read everything.
+    // It is now refused, correctly.
+    sessionForRun("welfare_officer")
+      .then((s) => api.caseload(s))
       .then((run) => {
         const first = run.cases[0]?.pid ?? "";
         if (first) {

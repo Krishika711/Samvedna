@@ -43,6 +43,9 @@ export const ACTORS: Actor[] = [
   {
     role: "welfare_officer",
     operator: "WO-12",
+    // Fallback only. Overwritten at runtime from /api/run — see
+    // SessionProvider. Left as a neutral placeholder rather than a real
+    // unit id, so a stale value is obviously stale.
     units: "UNIT-01,UNIT-02",
     title: "Welfare Officer",
     who: "Maj. R. Sharma · Welfare cell, UNIT-01 and UNIT-02",
@@ -85,7 +88,7 @@ export const ACTORS: Actor[] = [
     who: "A jawan or officer, viewing their own record",
     routes: ["/me"],
     canSee: [
-      "Your own consent, in your own language, with one-tap withdrawal",
+      "Your own consent, per domain, in your own language",
       "The wellness self-assessment, if you choose to take it",
       "Why the system looked at you — the same reasons the officer got",
     ],
@@ -113,6 +116,26 @@ export const ACTORS: Actor[] = [
     ],
     accent: "var(--hold)",
   },
+  {
+    role: "mental_health_authority",
+    operator: "MHA-1",
+    // Force-wide. An acute referral routes to a clinician centrally.
+    units: "",
+    title: "Mental-Health Authority",
+    who: "The designated clinician for acute referrals, force-wide",
+    routes: ["/officer"],
+    canSee: [
+      "Acute referrals only — the cases the gates were bypassed for",
+      "Identity on request, under the one purpose that permits it",
+      "The gate values that were overridden, and why",
+    ],
+    cannotSee: [
+      "Ordinary escalations — those belong to the unit welfare officer",
+      "Anyone under MONITOR",
+      "Aggregate unit views or the ledger",
+    ],
+    accent: "var(--stop)",
+  },
 ];
 
 const STORAGE_KEY = "samvedna.actor";
@@ -132,6 +155,27 @@ const SessionContext = createContext<SessionValue | null>(null);
 export function SessionProvider({ children }: { children: React.ReactNode }) {
   const [role, setRole] = useState<Role | null>(null);
   const [ready, setReady] = useState(false);
+  // Units the current run actually covers, read from the public /api/run.
+  //
+  // These used to be literals on each actor: "UNIT-01,UNIT-02". Units were
+  // later renamed to carry their service abbreviation — CRPF-01, IA-01 — and
+  // the welfare officer console went quietly empty, because it was asking the
+  // API about units that no longer existed and the API was correctly answering
+  // "nothing there". Nothing errored; the caseload simply showed no cases,
+  // which is indistinguishable from a quiet night.
+  //
+  // Deriving the scope from the run means renaming a unit, or switching the
+  // deployment to a different service, cannot separate the two again.
+  const [runUnits, setRunUnits] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch("/api/run")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (Array.isArray(d?.units) && d.units.length > 0) setRunUnits(d.units);
+      })
+      .catch(() => { /* the literals below still apply */ });
+  }, []);
 
   // Read after mount, so the server and first client render agree and the page
   // does not flash a role nobody chose.
@@ -165,8 +209,28 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Roles whose authority is unit-scoped. Personnel and auditor are not:
+  // personnel see only themselves, and the ledger is force-wide, so handing
+  // either of them a unit list would widen what they can reach.
+  const scoped = useMemo(
+    () =>
+      ACTORS.map((a) => {
+        if (runUnits.length === 0) return a;
+        if (a.role === "welfare_officer") {
+          // A welfare cell covers more than one unit, so the first two.
+          return { ...a, units: runUnits.slice(0, 2).join(",") };
+        }
+        if (a.role === "commander") {
+          // A commanding officer holds exactly one.
+          return { ...a, units: runUnits[0] };
+        }
+        return a;
+      }),
+    [runUnits],
+  );
+
   const value = useMemo<SessionValue>(() => {
-    const actor = ACTORS.find((a) => a.role === role) ?? null;
+    const actor = scoped.find((a) => a.role === role) ?? null;
     return {
       actor,
       session: actor
@@ -175,9 +239,9 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
       signIn,
       signOut,
       ready,
-      actors: ACTORS,
+      actors: scoped,
     };
-  }, [role, signIn, signOut, ready]);
+  }, [role, signIn, signOut, ready, scoped]);
 
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
 }

@@ -31,6 +31,15 @@ class Settings(BaseSettings):
     # accidentally depend on live service records.
     mode: RunMode = "replay"
     fixtures_dir: str = "fixtures"
+    # Which uniformed service this deployment serves. Drives the rank ladder,
+    # the echelon names on every console, and the postings the generator uses.
+    # See `config/forces.py` for the eleven modelled services.
+    service: str = "crpf"
+    # Whether what a person does during the day survives a restart: consent,
+    # a submitted questionnaire, a closed voice sitting. Off means the system
+    # behaves exactly as it did before the journal existed — in memory, losing
+    # that state on restart. See `db/journal.py`.
+    persist_state: bool = True
 
     # --- privacy ------------------------------------------------------------
     # In production this is an HSM/KMS handle. In REPLAY it is a local secret so

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Guard } from "@/components/Shell";
 import { useSession } from "@/lib/session";
 import { useVoiceSession } from "@/lib/useVoiceSession";
@@ -57,7 +57,22 @@ export default function VoicePage() {
 
 function VoiceSitting() {
   const { session } = useSession();
-  const v = useVoiceSession(session);
+  // Who this sitting is for. In a deployment the pid comes from the person's
+  // own token; in REPLAY the server hands one over. Without it the route falls
+  // back to the console's operator id and refuses for want of consent that was
+  // in fact recorded — under the real pid.
+  const [pid, setPid] = useState("");
+
+  useEffect(() => {
+    fetch("/api/me/whoami", {
+      headers: { "X-Role": "personnel", "X-Operator": "SELF", "X-Units": "" },
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => d?.pid && setPid(d.pid))
+      .catch(() => { /* the page still explains itself without a sitting */ });
+  }, []);
+
+  const v = useVoiceSession(session, pid);
   const [text, setText] = useState("");
   const [showReference, setShowReference] = useState(false);
 

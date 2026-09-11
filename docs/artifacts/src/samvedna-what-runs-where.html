@@ -1,0 +1,721 @@
+<title>What Runs Where</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  /* ==========================================================================
+     Palette: cool paper with a slight green bias, deep teal as the primary,
+     muted gold as the single accent. Deliberately not the navy of the judging
+     deck — that one is a pitch, this one is an explanation, and a reader who
+     has both open should be able to tell them apart at a glance.
+
+     Type: Lora for headings and Public Sans for body. Public Sans was drawn
+     for US federal government use, which is exactly the register wanted here:
+     official, plain, and readable by somebody who is not an engineer. IBM Plex
+     Mono carries the file and tool names, matching the rest of the document
+     set.
+     ========================================================================== */
+  :root {
+    --paper:     #F1F5F3;
+    --paper-2:   #E3EAE7;
+    --card:      #FDFEFD;
+    --rule:      #C7D4CF;
+    --rule-soft: #DEE7E3;
+
+    --ink:   #12211E;
+    --ink-2: #445A54;
+    --ink-3: #74877F;
+
+    --teal:      #1C4D45;
+    --teal-2:    #2E6F63;
+    --teal-soft: #DCEAE5;
+    --on-teal:   #EEF6F3;
+    --on-teal-2: #A7C6BC;
+
+    --gold:      #96681B;
+    --gold-soft: #F6EDD9;
+
+    --display: "Lora", Georgia, "Times New Roman", serif;
+    --body:    "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:     #0E1614;
+      --paper-2:   #16211E;
+      --card:      #18241F;
+      --rule:      #2B3A35;
+      --rule-soft: #212E2A;
+
+      --ink:   #E6EFEB;
+      --ink-2: #A5B9B2;
+      --ink-3: #74877F;
+
+      --teal:      #0B1614;
+      --teal-2:    #7FC0B0;
+      --teal-soft: #172B26;
+      --on-teal:   #E6F2EE;
+      --on-teal-2: #8FB3A9;
+
+      --gold:      #D7A758;
+      --gold-soft: #2A2213;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:     #0E1614;
+    --paper-2:   #16211E;
+    --card:      #18241F;
+    --rule:      #2B3A35;
+    --rule-soft: #212E2A;
+
+    --ink:   #E6EFEB;
+    --ink-2: #A5B9B2;
+    --ink-3: #74877F;
+
+    --teal:      #0B1614;
+    --teal-2:    #7FC0B0;
+    --teal-soft: #172B26;
+    --on-teal:   #E6F2EE;
+    --on-teal-2: #8FB3A9;
+
+    --gold:      #D7A758;
+    --gold-soft: #2A2213;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px 90px; }
+
+  h1, h2, h3 {
+    font-family: var(--display); font-weight: 600; margin: 0;
+    text-wrap: balance; letter-spacing: -0.008em;
+  }
+  h1 { font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1.1; }
+  h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); line-height: 1.2; }
+  h3 { font-size: 1.08rem; line-height: 1.3; }
+  p  { margin: 0; max-width: 64ch; color: var(--ink-2); }
+  .ink { color: var(--ink); }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0;
+  }
+  .lede { font-size: 1.13rem; }
+  code, .mono { font-family: var(--mono); font-size: 0.85em; }
+
+  header {
+    padding: 58px 0 30px; border-bottom: 2px solid var(--teal);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  section { padding-top: 52px; display: flex; flex-direction: column; gap: 16px; }
+
+  /* ---- the tour ---------------------------------------------------------
+     Numbered because it is a real sequence — this is the order things happen
+     on one night, not a list dressed up with numerals.
+     -------------------------------------------------------------------- */
+  .stop {
+    display: grid; grid-template-columns: 46px 1fr; gap: 18px;
+    padding: 20px 0; border-top: 1px solid var(--rule);
+  }
+  .stop:first-of-type { border-top: none; }
+  .n {
+    font-family: var(--display); font-size: 1.5rem; font-weight: 600;
+    color: var(--teal-2); line-height: 1; padding-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stop-body { display: flex; flex-direction: column; gap: 10px; }
+  .stop h3 { color: var(--ink); }
+  .plain { font-size: 1rem; }
+
+  .tool {
+    background: var(--paper-2); border-radius: 4px; padding: 12px 15px;
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .tool-line {
+    display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline;
+    font-size: 0.9rem;
+  }
+  .tool-name {
+    font-family: var(--mono); font-size: 0.86rem; font-weight: 500;
+    color: var(--teal-2);
+  }
+  .tool-where {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--ink-3);
+  }
+  .tool .why { font-size: 0.88rem; color: var(--ink-2); margin: 0; max-width: none; }
+  .tool .why b { color: var(--ink); font-weight: 600; }
+
+  /* ---- callouts ---------------------------------------------------------- */
+  .note {
+    background: var(--card); border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold); border-radius: 3px;
+    padding: 18px 20px; display: flex; flex-direction: column; gap: 9px;
+  }
+  .note.teal { border-left-color: var(--teal-2); }
+  .note h3 { font-size: 1.02rem; }
+  .note p { max-width: none; font-size: 0.95rem; }
+
+  .banner {
+    background: var(--teal); color: var(--on-teal);
+    border-radius: 4px; padding: 22px 24px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .banner h2, .banner h3 { color: var(--on-teal); }
+  .banner p { color: var(--on-teal-2); max-width: none; }
+  .banner strong { color: #FFFFFF; }
+  .banner code { color: var(--on-teal); }
+
+  /* ---- tables ------------------------------------------------------------ */
+  .scroller { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th {
+    text-align: left; font-family: var(--mono); font-size: 0.64rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+    padding: 0 14px 8px 0; border-bottom: 1px solid var(--rule); font-weight: 500;
+    white-space: nowrap;
+  }
+  td {
+    padding: 10px 14px 10px 0; border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top; color: var(--ink-2);
+  }
+  td:first-child { color: var(--ink); font-weight: 500; }
+  td.mono { font-family: var(--mono); font-size: 0.8rem; }
+
+  ul { margin: 0; padding-inline-start: 20px; color: var(--ink-2); }
+  li { margin-bottom: 6px; }
+  li:last-child { margin-bottom: 0; }
+
+  footer {
+    margin-top: 66px; padding-top: 24px; border-top: 2px solid var(--teal);
+    display: flex; flex-direction: column; gap: 7px;
+    font-size: 0.87rem; color: var(--ink-3);
+  }
+  a { color: var(--teal-2); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  @media (max-width: 640px) {
+    .stop { grid-template-columns: 32px 1fr; gap: 12px; }
+    .n { font-size: 1.2rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  /* Printed as a PDF and read on paper as often as on screen. */
+  @page { size: A4; margin: 16mm 15mm; }
+  @media print {
+    body { background: #fff; font-size: 11.5pt; }
+    .wrap { max-width: none; padding: 0; }
+    section { padding-top: 22px; break-inside: avoid; }
+    .stop { break-inside: avoid; }
+    .banner, .note { break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    header { padding-top: 0; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">SAMVEDNA · SIH 2026 · PS 26186 · Team CodeZila</p>
+    <h1>What runs where</h1>
+    <p class="lede">
+      Every piece of technology in this system, what it actually does in plain
+      words, and the exact file it lives in. Written for someone who is not an
+      engineer.
+    </p>
+  </header>
+
+  <section>
+    <h2>The one-line version</h2>
+    <p class="lede ink">
+      The system reads records the force already keeps, looks for people whose
+      pattern has changed, and then argues itself out of naming almost all of
+      them.
+    </p>
+    <p>
+      Three of two hundred and forty reach a human on a typical night. Nearly
+      everything below exists to make that number small and to make each of the
+      three defensible.
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════ THE TOUR ═══════════════════════════════ -->
+  <section>
+    <p class="eyebrow">A walk through one night, 02:00 to 06:00</p>
+    <h2>Nine stops, and the tool at each one</h2>
+    <p style="margin-bottom:6px">
+      These are numbered because they genuinely happen in this order. Each stop
+      says what happens in plain words, then names the tool and the file.
+    </p>
+
+    <div class="stop">
+      <span class="n">1</span>
+      <div class="stop-body">
+        <h3>Collect the records</h3>
+        <p class="plain">
+          Seven separate readers each fetch one kind of record — leave, duty
+          roster, deployments, transfers, training, workload, and voluntary
+          self-assessments. Think of seven clerks, each sent to one filing
+          cabinet.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">Python + a file reader</span>
+            <span class="tool-where">ingest/connectors/hrms.py</span>
+          </div>
+          <p class="why">
+            <b>Why a file, not a live connection:</b> the HR system writes a
+            nightly export to a shared folder and we read it. Nothing dials out,
+            no password is stored on the analytics side, and a records server
+            being down cannot stop a welfare run.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="n">2</span>
+      <div class="stop-body">
+        <h3>Replace every name with a ticket number</h3>
+        <p class="plain">
+          Before anything is analysed, each service number is swapped for a
+          scrambled code. From here on, the system is working with
+          <span class="mono">7c4e2b91af…</span> and not with a person. The
+          scrambling is one-way — you cannot work backwards from the code.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">HMAC-SHA256 (built into Python)</span>
+            <span class="tool-where">ingest/pseudonymise.py</span>
+          </div>
+          <p class="why">
+            <b>Why it matters:</b> the consent check runs <em>after</em> this
+            step, so even the part of the system that decides who agreed to be
+            monitored never sees a name.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="n">3</span>
+      <div class="stop-body">
+        <h3>Work out what normal looks like — for that person</h3>
+        <p class="plain">
+          For each person the system builds their own history over 7, 30, 90 and
+          180 days, and separately the history of their whole unit. A jawan who
+          has always worked long hours has not changed. One whose hours doubled
+          last month has.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">Plain Python + NumPy</span>
+            <span class="tool-where">analytics/features/store.py</span>
+          </div>
+          <p class="why">
+            <b>Why two baselines:</b> comparing everyone to one fixed standard
+            would flag every person in a hard posting and nobody in an easy one
+            — the opposite of welfare.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="n">4</span>
+      <div class="stop-body">
+        <h3>Spot who has moved away from their own normal</h3>
+        <p class="plain">
+          A statistical check per person per record type. Out of 240 people,
+          roughly 128 show a change somewhere. That is not 128 problems — it is
+          128 things worth looking at properly.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">NumPy</span>
+            <span class="tool-where">analytics/features/deviation.py</span>
+          </div>
+          <p class="why">
+            <b>Numbers only.</b> No machine learning has run yet at this point.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="n">5</span>
+      <div class="stop-body">
+        <h3>The AI has its say</h3>
+        <p class="plain">
+          <em>Now</em> the machine-learning model runs. It has learned patterns
+          that often precede difficulty and gives each person a score. A second
+          model estimates <em>by when</em> — an even chance within thirty days,
+          say — which is what turns a score into something you can put in a
+          diary.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">scikit-learn — gradient boosting</span>
+            <span class="tool-where">analytics/models/tabular.py</span>
+          </div>
+          <p class="why">
+            <b>Why this one:</b> the submitted proposal named LightGBM, which is
+            faster. It is still supported and it is not the default, because it
+            needs an extra system library that a copied folder will not have.
+            Same family of algorithm, same explanations, one fewer thing to go
+            wrong on a strange machine.
+          </p>
+        </div>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">SHAP</span>
+            <span class="tool-where">analytics/attribution.py</span>
+          </div>
+          <p class="why">
+            <b>The interpreter.</b> A score on its own is useless to an officer.
+            SHAP takes the model apart and says which facts drove it, and the
+            system translates that into a sentence a person can repeat aloud:
+            not <span class="mono">roster_var_30d = 0.41</span> but
+            &ldquo;their shift pattern has been irregular for a month&rdquo;.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="n">6</span>
+      <div class="stop-body">
+        <h3>Three reviewers argue about it</h3>
+        <p class="plain">
+          One argues the case for concern. One deliberately looks for innocent
+          explanations — is the whole unit deployed, is this planned leave, is
+          it a training cycle. One checks what was tried for this person before.
+          They run at the same time and disagree on the record.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">Plain Python, rule-based</span>
+            <span class="tool-where">analytics/reviewers/</span>
+          </div>
+          <p class="why">
+            <b>No chatbot anywhere.</b> These are rules a person can read, not a
+            language model. There is no ChatGPT-style component in this system
+            and no request ever leaves the building.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="n">7</span>
+      <div class="stop-body">
+        <h3>Four checks decide — and this is the important stop</h3>
+        <p class="plain">
+          Four sums, each answering one question. Is there enough evidence? Do
+          the signals agree with each other? Has it lasted? Is there actually
+          something we can offer? <strong class="ink">All four must pass.</strong>
+          If any one fails, no name is produced — and the system states what
+          would have changed its answer.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">Plain Python arithmetic</span>
+            <span class="tool-where">core/gates.py</span>
+          </div>
+          <p class="why">
+            <b>Deliberately boring, and deliberately not AI.</b> The model
+            suggests; this decides. A test scans this file and fails the build if
+            anyone puts a database call, a clock, a random number or a model into
+            it. It is the one part of the system a governance board can read
+            line by line and check with a calculator.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="n">8</span>
+      <div class="stop-body">
+        <h3>Write it all down, in a book that cannot be edited</h3>
+        <p class="plain">
+          Every decision, every access, every disclosure goes into a log where
+          each entry is sealed with a code derived from the entry before it.
+          Tear a page out and every page after it stops matching — like a
+          numbered receipt book where the stubs must add up.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">SHA-256 hash chain</span>
+            <span class="tool-where">disclosure/audit.py</span>
+          </div>
+          <p class="why">
+            <b>The rule that makes it real:</b> the log entry is written
+            <em>before</em> a name is looked up, and if the write fails the
+            disclosure is cancelled. There is no sequence of events in which
+            somebody sees a name without a record of it.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="n">9</span>
+      <div class="stop-body">
+        <h3>Show it to the right person, and only them</h3>
+        <p class="plain">
+          Four different screens for four different jobs. The welfare officer
+          sees names. The commanding officer never does. The auditor sees every
+          decision but no identities. The individual sees only themselves.
+        </p>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">FastAPI</span>
+            <span class="tool-where">api/app.py</span>
+          </div>
+          <p class="why">
+            <b>The counter.</b> It receives every request and checks who is
+            asking before answering. The rules live here rather than in the
+            screens, so a bug in a screen cannot leak a name — the answer never
+            contained one.
+          </p>
+        </div>
+        <div class="tool">
+          <div class="tool-line">
+            <span class="tool-name">Next.js + React + TypeScript</span>
+            <span class="tool-where">web/</span>
+          </div>
+          <p class="why">
+            <b>The screens.</b> Also installable on a phone from the force's own
+            network, which is the &ldquo;mobile app&rdquo; the brief asks for —
+            no app store involved, so the force controls it end to end.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ PROTECTING THE DATA ════════════════════════ -->
+  <section>
+    <p class="eyebrow">The part the problem statement asks about most</p>
+    <h2>How the data is protected</h2>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th style="width:24%">What</th><th style="width:22%">Tool</th><th>In plain words</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Names → codes</td>
+            <td class="mono">HMAC-SHA256</td>
+            <td>A one-way scramble. The code cannot be turned back into a service number without a secret held separately.</td>
+          </tr>
+          <tr>
+            <td>Locked storage</td>
+            <td class="mono">AES-256-GCM</td>
+            <td>The one table that maps a code back to a person is encrypted. Someone who steals the database file gets codes and gibberish. Each record is also tied to its own code, so a thief cannot move one person's locked record onto another person's row.</td>
+          </tr>
+          <tr>
+            <td>Where the key lives</td>
+            <td class="mono">keyfile / HSM</td>
+            <td>Never beside the data, never inside the project folder, and never readable by other users. The system refuses to start rather than run with a key it considers unsafe.</td>
+          </tr>
+          <tr>
+            <td>Small groups hidden</td>
+            <td class="mono">k-anonymity</td>
+            <td>A figure covering fewer than five people is not shown at all — it is blanked, not rounded. Rounding still leaks.</td>
+          </tr>
+          <tr>
+            <td>Deliberate fuzzing</td>
+            <td class="mono">differential privacy</td>
+            <td>Group figures get a little noise added, so no individual can be worked out by comparing two views. Refreshing the page gives the <em>same</em> answer back, because otherwise averaging several refreshes would cancel the noise out.</td>
+          </tr>
+          <tr>
+            <td>Training without pooling</td>
+            <td class="mono">federated averaging</td>
+            <td>Units can improve the model by sharing what it learned rather than sharing their records. The records never leave the unit.</td>
+          </tr>
+          <tr>
+            <td>Deleting means deleting</td>
+            <td class="mono">secure delete + vacuum</td>
+            <td>When a record is removed, the actual bytes are overwritten and the file rebuilt. A row merely &ldquo;marked deleted&rdquo; is still sitting there for anyone who looks.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════ WHAT WE DIDN'T USE ══════════════════════ -->
+  <section>
+    <p class="eyebrow">Questions a judge may ask</p>
+    <h2>Things the proposal named that we did differently</h2>
+    <p>
+      Nine of the technologies in the submitted proposal are running as written.
+      Five were swapped, and every swap has the same reason: <strong
+      class="ink">the whole system had to survive being copied onto a pendrive
+      and emailed</strong>, then run on a machine with no internet.
+    </p>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th style="width:22%">Proposed</th><th style="width:26%">What we run</th><th>Why, in one line</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LightGBM</td>
+            <td>scikit-learn (LightGBM optional)</td>
+            <td>LightGBM needs an extra system library that a copied folder will not have. It installs fine and then fails to start.</td>
+          </tr>
+          <tr>
+            <td>Apache Airflow</td>
+            <td>Our own nine-stage runner</td>
+            <td>Airflow is for scheduling hundreds of jobs across a cluster. This is one job, once a night.</td>
+          </tr>
+          <tr>
+            <td>Redis</td>
+            <td>In-memory cache</td>
+            <td>Same thing, no extra server. And here it is a privacy control, not a speed-up.</td>
+          </tr>
+          <tr>
+            <td>Flutter app</td>
+            <td>Installable web app</td>
+            <td>No app store, so the force hosts and controls it — and there is one consent screen to maintain instead of three.</td>
+          </tr>
+          <tr>
+            <td>Temporal Transformer</td>
+            <td>Survival model + roster features</td>
+            <td>The deep-learning library is about 2 GB. It cannot be emailed.</td>
+          </tr>
+          <tr>
+            <td>Kubernetes</td>
+            <td>One server</td>
+            <td>Measured at 7.7 milliseconds per person. Ten lakh personnel finishes in about two hours on a single machine.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <h3>Nothing was dropped</h3>
+      <p>
+        Each swapped-out technology is either available as an optional add-on or
+        sits behind a connector designed for it, so a data centre that wants the
+        original choice can have it without rewriting anything.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ THE DATA ═══════════════════════════════ -->
+  <section>
+    <p class="eyebrow">Asked often, and the honest answer matters</p>
+    <h2>What the model was trained on</h2>
+
+    <div class="banner">
+      <h3>There is no real dataset, and there is no dataset file.</h3>
+      <p>
+        The data is <strong>generated by the system itself</strong> from a fixed
+        starting number (seed <code>26186</code>) each time the model is
+        trained. Same seed, same 1,680 synthetic personnel, every time. Nothing
+        is downloaded and no file sits on disk waiting to be read.
+      </p>
+      <p>
+        The model's own record card states this — <code>"synthetic": true</code>
+        — and it is stamped there so that no accuracy figure from it can be
+        quoted as validation by accident.
+      </p>
+    </div>
+
+    <div class="note">
+      <h3>And the part that makes the accuracy figure meaningless</h3>
+      <p>
+        The generator decides how strained each invented person is. The training
+        answer key is then <em>that same number</em> — anyone above 0.55 counts
+        as a positive case. So the model is being asked to rediscover a fact the
+        generator already knew. It scores well (AUROC 0.89) because the exercise
+        is circular, not because it can predict distress in a real force.
+      </p>
+      <p>
+        <strong class="ink">What the synthetic data does prove</strong> is that
+        the machinery works end to end: the pipeline runs, the gates compute,
+        the refusals happen for the stated reasons, and the privacy controls
+        hold. <strong class="ink">What it cannot prove</strong> is that the
+        model is any good. That needs a real cohort, an ethics approval and a
+        data-sharing agreement.
+      </p>
+      <p>
+        One figure in the card is worth pointing at deliberately: on the
+        <em>deployed</em> subgroup the model scores 0.50 — no better than a coin
+        toss. That is the exact case the four checks exist to catch, and it is
+        published rather than hidden.
+      </p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th style="width:34%">Question</th><th>Answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Where is the dataset file?</td><td>There isn't one. It is generated in memory when training runs.</td></tr>
+          <tr><td>What generates it?</td><td class="mono">src/samvedna/ingest/generator.py</td></tr>
+          <tr><td>Where is the answer key set?</td><td class="mono">tools/train_tabular.py, line 88</td></tr>
+          <tr><td>Where is the provenance recorded?</td><td class="mono">artefacts/models/tabular_card.json</td></tr>
+          <tr><td>How do I reproduce it exactly?</td><td class="mono">uv run --extra ml python tools/train_tabular.py --units 12 --strength 140 --seed 26186</td></tr>
+          <tr><td>How big is it?</td><td>1,680 personnel — 1,176 for training, 504 for testing. 3.2% positive.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ RUNNING IT ═════════════════════════════ -->
+  <section>
+    <p class="eyebrow">To see any of this yourself</p>
+    <h2>Running it</h2>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th style="width:44%">Command</th><th>What it does</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">./run.sh</td><td>Starts both servers and prints the address</td></tr>
+          <tr><td class="mono">./run.sh --stop</td><td>Stops them</td></tr>
+          <tr><td class="mono">./run.sh --status</td><td>Shows what is running</td></tr>
+          <tr><td class="mono">./check.sh</td><td>Runs every test and every safety check</td></tr>
+          <tr><td class="mono">uv run samvedna cohorts</td><td>The decision engine on its own, no screens</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note teal">
+      <h3>The two addresses</h3>
+      <p>
+        <code>http://localhost:3100/demo</code> — the four screens.<br>
+        <code>http://localhost:8090/api-console</code> — the backend, showing
+        every request the system can answer and which role is allowed to make
+        it. Built without any external dependency so it still works with no
+        internet, which the standard tool for this does not.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Every figure here was read from the running system.</span>
+    <span>Full engineering detail: <code>docs/TECH_STACK.md</code> · problem-statement audit: <code>docs/PS_COMPLIANCE.md</code></span>
+    <span>Welfare support, never disciplinary action. Outputs are barred in software from ACR, posting, promotion and disciplinary processes.</span>
+  </footer>
+
+</div>

@@ -142,6 +142,147 @@ def encode(archive: Path, out: Path | None = None) -> Path:
     return target
 
 
+def _part_header(
+    archive: Path, digest: str, part: int, total: int, part_lines: int
+) -> str:
+    """Header for one part of a split transfer.
+
+    Every part carries the checksum of the **whole** archive, not of itself.
+    That is deliberate: the only question that matters after a merge is whether
+    the reassembled file is the one that was sent, and a per-part checksum
+    cannot answer it. A recipient who joins the parts in the wrong order, or
+    misses one, gets a mismatch and knows immediately — rather than an archive
+    that unzips far enough to look fine.
+    """
+    return f"""SAMVEDNA - project archive, part {part} of {total}
+{"=" * 70}
+
+This is PART {part} OF {total}. On its own it decodes to nothing. You need all
+{total} parts, joined in order, before anything can be extracted.
+
+  final file      {archive.name}
+  final size      {archive.stat().st_size:,} bytes
+  sha256 (whole)  {digest}
+  this part       {part_lines:,} lines of base64
+
+HOW TO MERGE AND DECODE
+{"-" * 70}
+
+Save all {total} parts into one folder, then run this once. Order matters and
+the wildcard sorts correctly because the parts are numbered:
+
+macOS or Linux:
+
+    cat {archive.name}.part*of{total}.txt |
+      awk '/^{BEGIN}/{{f=1;next}} /^{END}/{{f=0}} f' |
+      base64 -d > {archive.name}
+
+Windows PowerShell:
+
+    $b = (Get-ChildItem "{archive.name}.part*of{total}.txt" | Sort-Object Name |
+          Get-Content | Where-Object {{ $_ -match '{PS_LINE}' }}) -join ''
+    [IO.File]::WriteAllBytes("{archive.name}", [Convert]::FromBase64String($b))
+
+Then check the merge - this number must match the sha256 above:
+
+    shasum -a 256 {archive.name}          # macOS / Linux
+    certutil -hashfile {archive.name} SHA256   # Windows
+
+If it does not match, a part is missing, truncated, or out of order. Do not
+unzip it; ask for the parts again. A wrong merge can still produce a file that
+unzips partially, which is worse than one that fails outright.
+
+Then:
+
+    unzip {archive.name} && cd samvedna
+    uv sync --all-extras && (cd web && npm install)
+    ./check.sh && ./run.sh
+
+{"=" * 70}
+
+"""
+
+
+def encode_split(archive: Path, parts: int, out_dir: Path | None = None) -> list[Path]:
+    """Encode into `parts` files, each independently mailable.
+
+    The payload is split by **line**, never mid-line. A base64 line boundary is
+    a safe cut; a byte boundary is not, because joining two halves of a line
+    with a newline between them produces a body that decodes to something
+    different rather than failing loudly.
+    """
+    if parts < 2:
+        raise ValueError("use encode() for a single file")
+
+    raw = archive.read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    body = base64.b64encode(raw).decode("ascii")
+    lines = [body[i : i + LINE] for i in range(0, len(body), LINE)]
+
+    per_part = -(-len(lines) // parts)  # ceiling, so the last part is the short one
+    target_dir = out_dir or archive.parent
+    target_dir.mkdir(parents=True, exist_ok=True)
+    written: list[Path] = []
+
+    for index in range(parts):
+        chunk = lines[index * per_part : (index + 1) * per_part]
+        number = index + 1
+        target = target_dir / f"{archive.name}.part{number}of{parts}.txt"
+        content = (
+            _part_header(archive, digest, number, parts, len(chunk))
+            + BEGIN + "\n" + "\n".join(chunk) + "\n" + END + "\n"
+        )
+        # ASCII, for the reason in `encode`.
+        content.encode("ascii")
+        target.write_text(content, encoding="ascii")
+        written.append(target)
+
+    return written
+
+
+def decode_parts(paths: list[Path], out_dir: Path | None = None) -> Path:
+    """Join numbered parts and decode, refusing anything that does not add up."""
+    ordered = sorted(paths, key=lambda p: p.name)
+    body: list[str] = []
+    expected: str | None = None
+    name: str | None = None
+
+    for path in ordered:
+        text = path.read_text(encoding="utf-8")
+        match = re.search(
+            rf"^{re.escape(BEGIN)}$(.*?)^{re.escape(END)}$", text, re.S | re.M
+        )
+        if match is None:
+            raise SystemExit(f"{path.name}: no payload between the markers")
+        body.append("".join(match.group(1).split()))
+
+        found = re.search(r"sha256 \(whole\)\s+([0-9a-f]{64})", text)
+        if found:
+            if expected and found.group(1) != expected:
+                raise SystemExit(
+                    f"{path.name} belongs to a different archive - its whole-file "
+                    f"checksum does not match the other parts"
+                )
+            expected = found.group(1)
+        named = re.search(r"final file\s+(\S+)", text)
+        if named:
+            name = named.group(1)
+
+    raw = base64.b64decode("".join(body), validate=True)
+    digest = hashlib.sha256(raw).hexdigest()
+    if expected and digest != expected:
+        raise SystemExit(
+            "the merged archive does not match the checksum in the headers.\n"
+            f"  expected {expected}\n  got      {digest}\n"
+            "A part is missing, truncated, or out of order. Ask for them again "
+            "rather than unzipping this."
+        )
+
+    target = (out_dir or ordered[0].parent) / (name or "samvedna.zip")
+    target.write_bytes(raw)
+    return target
+
+
 def decode(text_file: Path, out_dir: Path | None = None) -> Path:
     text = text_file.read_text(encoding="utf-8")
     # `re.M` plus `^` anchors, for the reason documented next to LINE above:
@@ -186,8 +327,22 @@ def decode(text_file: Path, out_dir: Path | None = None) -> Path:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--decode", metavar="FILE.txt")
+    parser.add_argument(
+        "--merge", nargs="+", metavar="PART.txt",
+        help="join split parts and decode, verifying the whole-file checksum",
+    )
     parser.add_argument("--archive", help="defaults to the newest dist/*.zip")
+    parser.add_argument(
+        "--split", type=int, metavar="N", default=0,
+        help="write N numbered parts instead of one file, for strict gateways",
+    )
     args = parser.parse_args()
+
+    if args.merge:
+        target = decode_parts([Path(x) for x in args.merge])
+        print(f"merged {len(args.merge)} parts -> {target}")
+        print("checksum matches the headers.")
+        return 0
 
     if args.decode:
         decode(Path(args.decode))
@@ -205,12 +360,28 @@ def main() -> int:
             raise SystemExit("no dist/samvedna-*.zip — run tools/package.py first")
         archive = candidates[0]
 
+    if args.split:
+        parts = encode_split(archive, args.split)
+        print(f"encoded {archive.name} ({archive.stat().st_size:,} bytes) "
+              f"into {len(parts)} parts")
+        for part in parts:
+            print(f"     -> {part.relative_to(ROOT)} "
+                  f"({part.stat().st_size / 1048576:.2f} MB)")
+        print()
+        print("Send every part. Each one carries the whole-file checksum and")
+        print("the merge command, so a recipient with all of them needs nothing")
+        print("else — and one with a part missing finds out before unzipping.")
+        return 0
+
     target = encode(archive)
     print(f"encoded {archive.name} ({archive.stat().st_size:,} bytes)")
-    print(f"     -> {target.relative_to(ROOT)} ({target.stat().st_size:,} bytes)")
+    print(f"     -> {target.relative_to(ROOT)} "
+          f"({target.stat().st_size / 1048576:.2f} MB)")
     print()
     print("Attach that .txt file. It is inert text: no zip header for a gateway")
     print("to recognise, no blocked extension, nothing executable to scan.")
+    print()
+    print("If a gateway still refuses it, --split 2 writes two smaller parts.")
     return 0
 
 

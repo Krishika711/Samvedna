@@ -35,10 +35,30 @@ WEB_PID_FILE="$LOG_DIR/web.pid"
 # inspecting process arguments. Next renames its process to "next-server (vX)",
 # which identifies no project, so an args match both fails to recognise our own
 # server *and* would have to fall back to something looser to work at all.
+# Who is *listening* on a port — never who is merely connected to it.
+#
+# There is one definition of this question because there were briefly two, and
+# both were wrong in the same way: `lsof -ti :3100` returns every socket on the
+# port, and a browser tab open on the console contributes an ESTABLISHED client
+# socket owned by Chrome. With the dev server running normally, that made
+# `--status` report
+#
+#     :3100 is held by something that is not ours: Google Chrome Helper
+#
+# and `--stop` refuse to free a port this project owned. The server had been
+# running the whole time; the check was reading the browser looking at it.
+#
+# `-sTCP:LISTEN` is the entire fix, and putting it behind a function is the
+# rest of it: a second call site is a second chance to forget. Enforced by
+# tests/core/test_shell_discipline.py.
+listeners_on() {
+  lsof -ti :"$1" -sTCP:LISTEN 2>/dev/null || true
+}
+
 free_port() {
   local port="$1" pid_file="$2"
   local pids ours
-  pids=$(lsof -ti :"$port" 2>/dev/null || true)
+  pids=$(listeners_on "$port")
   [ -z "$pids" ] && return 0
   ours=$(cat "$pid_file" 2>/dev/null || true)
 
@@ -70,7 +90,7 @@ free_port() {
 status() {
   for port in $API_PORT $WEB_PORT; do
     local pid
-    pid=$(lsof -ti :"$port" 2>/dev/null | head -1 || true)
+    pid=$(listeners_on "$port" | head -1)
     if [ -n "$pid" ]; then
       printf '  :%-5s  pid %-8s %s\n' "$port" "$pid" "$(ps -p "$pid" -o comm= 2>/dev/null)"
     else

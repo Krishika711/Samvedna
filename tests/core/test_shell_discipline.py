@@ -102,3 +102,60 @@ def test_no_pipeline_feeds_a_bare_grep_as_the_success_condition() -> None:
         assert "status=1" in check, (
             "the transfer block does not record a failure status"
         )
+
+
+# ---------------------------------------------------------------------------
+# Asking "who is on this port" must mean "who is listening on it".
+#
+# `lsof -ti :3100` returns every socket on the port. A browser tab open on the
+# console contributes an ESTABLISHED *client* socket owned by Chrome, so with
+# the dev server running perfectly normally, `run.sh --status` reported
+#
+#     :3100 is held by something that is not ours: Google Chrome Helper
+#
+# and `--stop` refused to free a port this project owned. Looking at the
+# console broke restarting it.
+# ---------------------------------------------------------------------------
+
+def test_port_queries_ask_only_for_listeners():
+    run_sh = ROOT / "run.sh"
+    offenders = [
+        (n, line.strip())
+        for n, line in _lines(run_sh)
+        # A port query is `lsof ... :"$port"` or `lsof ... :3100`.
+        if re.search(r"lsof[^|]*\s:\"?\$?\w+", line)
+        and "-sTCP:LISTEN" not in line
+        # `-p <pid>` queries a process, not a port, and needs no state filter.
+        and not re.search(r"-p\s", line)
+    ]
+    assert not offenders, (
+        "a port is being queried without -sTCP:LISTEN, so a client connection "
+        "(a browser tab on the console) can be mistaken for the server:\n"
+        + "\n".join(f"  line {n}: {line}" for n, line in offenders)
+    )
+
+
+def test_there_is_exactly_one_definition_of_who_holds_a_port():
+    """Two call sites are two chances to forget the flag.
+
+    There were briefly two, and both were wrong in the same way. The helper
+    exists so the next person adding a port check inherits the answer instead
+    of rediscovering the bug.
+    """
+    run_sh = ROOT / "run.sh"
+    text = run_sh.read_text(encoding="utf-8")
+
+    assert re.search(r"^listeners_on\(\)\s*\{", text, re.M), (
+        "run.sh has no listeners_on() helper"
+    )
+    # Code only. `_lines` drops comments, which matter here: the helper's own
+    # docstring quotes the broken command it replaced, and counting that as a
+    # definition would make the guard fail on the correct file.
+    definitions = [
+        (n, line.strip()) for n, line in _lines(run_sh) if "lsof -ti" in line
+    ]
+    assert len(definitions) == 1, (
+        "`lsof -ti` belongs only inside listeners_on(); found "
+        f"{len(definitions)} uses:\n"
+        + "\n".join(f"  line {n}: {line}" for n, line in definitions)
+    )

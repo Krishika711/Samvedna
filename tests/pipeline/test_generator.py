@@ -14,7 +14,7 @@ from datetime import timedelta
 import pytest
 
 from samvedna.config.weights import CONNECTOR_DOMAINS
-from samvedna.ingest.generator import generate_force
+from samvedna.ingest.generator import SYNTHETIC_PREFIX, generate_force
 
 
 @pytest.fixture(scope="module")
@@ -181,4 +181,9 @@ def test_no_service_number_looks_like_a_real_identifier(force):
     """Synthetic, and obviously so. A generator that produced plausible real
     service numbers would be a liability the first time a file leaked."""
     for person in force.personnel:
-        assert person.service_number.startswith("UNIT-")
+        # `SYNTH-` rather than the unit id. Units carry their real service
+        # abbreviation now (CRPF-01, IA-01) because an officer has to read it,
+        # and that made service numbers built from the unit id look genuine.
+        assert person.service_number.startswith(f"{SYNTHETIC_PREFIX}-")
+        # And it must not be mistakable for a real one at a glance.
+        assert not person.service_number.startswith(("CRPF-", "IA-", "IN-", "IAF-"))
